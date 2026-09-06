@@ -1,0 +1,63 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "cli": {
+    "analytics": false
+  },
+  "projects": {
+    "design-library": {
+      "projectType": "library",
+      "root": "projects/design-library",
+      "sourceRoot": "projects/design-library/src",
+      "prefix": "dl",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "options": {
+            "project": "projects/design-library/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/design-library/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/design-library/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "design-library:storybook-browser",
+            "port": 6006,
+            "compodoc": false
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": ".storybook",
+            "browserTarget": "design-library:storybook-browser",
+            "outputDir": "storybook-static",
+            "compodoc": false
+          }
+        },
+        "storybook-browser": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "tsConfig": ".storybook/tsconfig.json",
+            "polyfills": ["zone.js"],
+            "styles": ["projects/design-library/src/styles.css"],
+            "assets": [],
+            "index": ".storybook/index.html",
+            "main": ".storybook/main.ts",
+            "outputPath": "dist/storybook-browser"
+          }
+        }
+      }
+    }
+  }
+}

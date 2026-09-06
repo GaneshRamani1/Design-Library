@@ -141,3 +141,10 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Angular / Storybook
+.angular/
+out-tsc/
+storybook-static/
+playwright-report/
+test-results/

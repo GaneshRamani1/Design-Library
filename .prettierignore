@@ -1,0 +1,7 @@
+node_modules
+dist
+storybook-static
+.angular
+package-lock.json
+test-results
+playwright-report

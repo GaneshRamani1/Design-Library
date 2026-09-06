@@ -1,0 +1,47 @@
+{
+  "name": "design-library-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
+  },
+  "scripts": {
+    "start": "ng run design-library:storybook",
+    "storybook": "ng run design-library:storybook",
+    "build": "ng build design-library",
+    "build-storybook": "ng run design-library:build-storybook",
+    "typecheck": "tsc --noEmit -p .storybook/tsconfig.json",
+    "test": "playwright test",
+    "pack:library": "npm run build && npm pack ./dist/design-library --pack-destination ./dist",
+    "check": "npm run typecheck && npm run build && npm run build-storybook",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@angular/animations": "22.1.5",
+    "@angular/common": "22.1.5",
+    "@angular/compiler": "22.1.5",
+    "@angular/core": "22.1.5",
+    "@angular/forms": "22.1.5",
+    "@angular/platform-browser": "22.1.5",
+    "@angular/platform-browser-dynamic": "22.1.5",
+    "rxjs": "~7.8.2",
+    "tslib": "^2.8.1",
+    "zone.js": "~0.16.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "22.1.5",
+    "@angular/cli": "22.1.5",
+    "@angular/compiler-cli": "22.1.5",
+    "@playwright/test": "^1.58.2",
+    "@storybook/addon-a11y": "10.6.0",
+    "@storybook/addon-docs": "10.6.0",
+    "@storybook/angular": "10.6.0",
+    "http-server": "^14.1.1",
+    "ng-packagr": "22.1.1",
+    "prettier": "^3.8.1",
+    "storybook": "10.6.0",
+    "typescript": "~6.0.2"
+  }
+}
