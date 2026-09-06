@@ -32,7 +32,7 @@ import {
         class="brand"
         href="./?path=/story/welcome-overview--default"
         target="_top"
-        ><span class="mark">f</span> forma<span class="brand-sub"
+        ><span class="mark">a</span> Arcwell UI<span class="brand-sub"
           >DESIGN SYSTEM</span
         ></a
       >
@@ -73,10 +73,10 @@ import {
         <div class="orbit orbit-one"></div>
         <div class="orbit orbit-two"></div>
         <div class="art-tile tile-back"></div>
-        <div class="art-tile tile-front"><span>f</span></div>
+        <div class="art-tile tile-front"><span>a</span></div>
         <span class="art-dot dot-one"></span
         ><span class="art-dot dot-two"></span>
-        <div class="art-caption">LESS FRICTION. MORE FORMA.</div>
+        <div class="art-caption">A FOUNDATION FOR WHAT’S NEXT.</div>
       </div>
     </section>
     <div class="features">
@@ -273,7 +273,7 @@ import {
       </div>
     </section>
     <footer>
-      <span><b>forma</b> A foundation for what’s next.</span
+      <span><b>Arcwell UI</b> A foundation for what’s next.</span
       ><span
         >Angular 22 <span class="footer-dot">·</span> Storybook 10
         <span class="footer-dot">·</span> Made to be yours</span

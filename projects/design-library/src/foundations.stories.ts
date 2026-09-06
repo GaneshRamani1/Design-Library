@@ -6,8 +6,8 @@ const meta: Meta = {
 export default meta;
 export const Installation: StoryObj = {
   render: () => ({
-    template: `<article style="max-width:760px;margin:40px auto;line-height:1.8"><p style="font-size:11px;letter-spacing:2px;color:#647068">FORMA / DEVELOPER GUIDE</p><h1 style="font-size:40px;letter-spacing:-1.5px">Make it yours.</h1><p>Eight standalone Angular 22 components, ready to import into your application.</p><h2>1. Build and package</h2><pre>npm install
-npm run pack:library</pre><p>Install the generated tarball in your consuming Angular application:</p><pre>npm install /path/to/design-library/dist/design-library-ui-0.1.0.tgz</pre><h2>2. Add the shared tokens</h2><p>Add this import to your global stylesheet:</p><pre>&#64;import '&#64;design-library/ui/styles.css';</pre><h2>3. Import a component</h2><pre>import &#123; ButtonComponent &#125; from '&#64;design-library/ui';
+    template: `<article style="max-width:760px;margin:40px auto;line-height:1.8"><p style="font-size:11px;letter-spacing:2px;color:#647068">ARCWELL UI / DEVELOPER GUIDE</p><h1 style="font-size:40px;letter-spacing:-1.5px">Make it yours.</h1><p>Eight standalone Angular 22 components, ready to import into your application.</p><h2>1. Build and package</h2><pre>npm install
+npm run pack:library</pre><p>Install the generated tarball in your consuming Angular application:</p><pre>npm install /path/to/design-library/dist/arcwell-ui-0.1.0.tgz</pre><h2>2. Add the shared tokens</h2><p>Add this import to your global stylesheet:</p><pre>&#64;import '&#64;arcwell/ui/styles.css';</pre><h2>3. Import a component</h2><pre>import &#123; ButtonComponent &#125; from '&#64;arcwell/ui';
 
 &#64;Component(&#123;
   imports: [ButtonComponent],
@@ -21,7 +21,7 @@ npm run pack:library</pre><p>Install the generated tarball in your consuming Ang
 };
 export const Tokens: StoryObj = {
   render: () => ({
-    template: `<section style="max-width:800px;margin:40px auto"><p style="font-size:11px;letter-spacing:2px;color:#647068">FORMA / FOUNDATIONS</p><h1 style="font-size:40px">A naturally balanced palette.</h1><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px">${[
+    template: `<section style="max-width:800px;margin:40px auto"><p style="font-size:11px;letter-spacing:2px;color:#647068">ARCWELL UI / FOUNDATIONS</p><h1 style="font-size:40px">A naturally balanced palette.</h1><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px">${[
       ["Forest", "#285b45", "primary"],
       ["Sage", "#edf4ee", "primary-soft"],
       ["Ink", "#202a24", "text"],

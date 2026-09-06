@@ -3,7 +3,7 @@ import { create } from "storybook/theming";
 addons.setConfig({
   theme: create({
     base: "light",
-    brandTitle: "Forma / Angular",
+    brandTitle: "Arcwell UI / Angular",
     colorPrimary: "#285b45",
     colorSecondary: "#285b45",
     appBg: "#f6f7f4",

@@ -1,5 +1,5 @@
 {
-  "name": "@design-library/ui",
+  "name": "@arcwell/ui",
   "version": "0.1.0",
   "description": "Thoughtful, accessible Angular components. Documented with Storybook.",
   "peerDependencies": {

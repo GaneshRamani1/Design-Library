@@ -18,11 +18,11 @@
     "moduleResolution": "bundler",
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@design-library/ui": ["projects/design-library/src/public-api.ts"]
+      "@arcwell/ui": ["projects/design-library/src/public-api.ts"]
     }
   },
   "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
+    "enableI18nLegacyMessageIdArcwell UIt": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true

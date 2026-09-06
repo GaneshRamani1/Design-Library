@@ -1,4 +1,4 @@
-# Forma — Angular Design Library
+# Arcwell UI — Angular Design Library
 
 A themeable Angular 22 library with eight exported standalone components and a Storybook 10 catalog. Includes interactive controls, generated documentation, accessibility inspection, and GitHub Pages CI.
 
@@ -23,13 +23,13 @@ npm run pack:library
 Install the generated tarball in an Angular 22 application:
 
 ```sh
-npm install /path/to/Design-Library/dist/design-library-ui-0.1.0.tgz
+npm install /path/to/Design-Library/dist/arcwell-ui-0.1.0.tgz
 ```
 
 Add the shared theme to your application's global CSS:
 
 ```css
-@import "@design-library/ui/styles.css";
+@import "@arcwell/ui/styles.css";
 ```
 
 Then import the standalone components:
@@ -37,11 +37,7 @@ Then import the standalone components:
 ```ts
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import {
-  ButtonComponent,
-  InputComponent,
-  ToggleComponent,
-} from "@design-library/ui";
+import { ButtonComponent, InputComponent, ToggleComponent } from "@arcwell/ui";
 
 @Component({
   selector: "app-example",
@@ -100,6 +96,6 @@ npm test                         # Browser interaction checks against static Sto
 
 The expected URL for this repository is https://ganeshramani1.github.io/Design-Library/. Storybook's static output supports the repository subpath; there is no Angular router base-path configuration to maintain. Pull requests run validation without deploying.
 
-GitHub Pages hosts the catalog; the Angular package is built separately in `dist/design-library` and uploaded as a CI artifact. To publish to npm, first choose a package name/scope you own in `projects/design-library/package.json`, rebuild, and run `npm publish ./dist/design-library`. The default `@design-library/ui` name is a placeholder; no registry publication is performed automatically.
+GitHub Pages hosts the catalog; the Angular package is built separately in `dist/design-library` and uploaded as a CI artifact. To publish to npm, first choose a package name/scope you own in `projects/design-library/package.json`, rebuild, and run `npm publish ./dist/design-library`. The default `@arcwell/ui` name is a placeholder; no registry publication is performed automatically.
 
 Framework references: [Angular version compatibility](https://angular.dev/reference/versions), [Storybook for Angular](https://storybook.js.org/docs/get-started/frameworks/angular).
