@@ -32,6 +32,7 @@
           "options": {
             "configDir": ".storybook",
             "browserTarget": "design-library:storybook-browser",
+            "host": "127.0.0.1",
             "port": 6006,
             "compodoc": false
           }

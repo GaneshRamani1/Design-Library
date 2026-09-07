@@ -1,0 +1,20 @@
+#!/bin/sh
+# Storybook's isolated open-services worker defaults to the VS Code CLI even
+# when it is unavailable. Translate its `-r -g file:line:column` invocation to
+# a windowed system editor without changing the source path.
+target=""
+for argument in "$@"; do
+  case "$argument" in
+    -r|-g) ;;
+    *) target="$argument" ;;
+  esac
+done
+if [ -z "$target" ]; then
+  exit 1
+fi
+target="${target%:*}"
+target="${target%:*}"
+if [ "$(uname -s)" = "Darwin" ]; then
+  exec /usr/bin/open -a TextEdit "$target"
+fi
+exec xdg-open "$target"

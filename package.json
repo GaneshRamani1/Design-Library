@@ -7,14 +7,14 @@
     "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
   },
   "scripts": {
-    "start": "ng run design-library:storybook",
-    "storybook": "ng run design-library:storybook",
+    "start": "node scripts/start-storybook.mjs",
+    "storybook": "node scripts/start-storybook.mjs",
     "build": "ng build design-library",
     "build-storybook": "ng run design-library:build-storybook",
     "typecheck": "tsc --noEmit -p .storybook/tsconfig.json",
     "test": "playwright test",
     "pack:library": "npm run build && npm pack ./dist/design-library --pack-destination ./dist",
-    "check": "npm run skills:check && npm run skills:test && npm run typecheck && npm run build && npm run build-storybook && npm run skills:verify-storybook",
+    "check": "npm run skills:check && npm run skills:test && npm run storybook:test-editor && npm run typecheck && npm run build && npm run build-storybook && npm run skills:verify-storybook",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "stories:generate": "node scripts/generate-config-stories.mjs && node scripts/generate-llm-guidance.mjs",
@@ -23,7 +23,8 @@
     "skills:check": "npm run stories:check && node scripts/generate-llm-guidance.mjs --check",
     "skills:watch": "node scripts/watch-llm-guidance.mjs",
     "skills:test": "node --test scripts/llm-guidance.test.mjs",
-    "skills:verify-storybook": "node scripts/generate-llm-guidance.mjs --check --storybook-index=storybook-static/index.json"
+    "skills:verify-storybook": "node scripts/generate-llm-guidance.mjs --check --storybook-index=storybook-static/index.json",
+    "storybook:test-editor": "node --test scripts/storybook-editor.test.mjs"
   },
   "dependencies": {
     "@angular/animations": "22.1.5",
