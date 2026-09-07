@@ -32,20 +32,33 @@ A surface for related content, with optional heading and footer sections. Compar
 | surface | "solid" \| "transparent" \| "glass" | "glass" | input | CardComponent | See the dedicated configuration story below. |
 | heading | string | "" | input | CardComponent | See the dedicated configuration story below. |
 | description | string | "" | input | CardComponent | See the dedicated configuration story below. |
+| role | string | "" | input | CardComponent | See the dedicated configuration story below. |
+| interactive | boolean | false | input | CardComponent | See the dedicated configuration story below. |
+| disabled | boolean | false | input | CardComponent | See the dedicated configuration story below. |
+| loading | boolean | false | input | CardComponent | See the dedicated configuration story below. |
+| loadingLabel | string | "Loading" | input | CardComponent | See the dedicated configuration story below. |
+| error | string | "" | input | CardComponent | See the dedicated configuration story below. |
+| empty | boolean | false | input | CardComponent | See the dedicated configuration story below. |
+| emptyText | string | "No content available" | input | CardComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
-No declared outputs. Projected controls keep their own event handlers.
+| Event | Payload |
+|---|---|
+| activated | Event |
 
 ## Projection slots
 
+- `[cardLoading]`
+- `[cardError]`
+- `[cardEmpty]`
 - `default`
 - `[cardFooter]`
 
 ## Public instance state and methods
 
 
-
+- `activate(event: Event): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -125,6 +138,18 @@ import { CardComponent } from "./card.component";
 - `surface`: [Transparent](http://127.0.0.1:6006/?path=/story/layout-card--transparent) — Changes the surface background treatment. Here it is set to “transparent”.
 - `heading`: [CustomContent](http://127.0.0.1:6006/?path=/story/layout-card-configuration--custom-content) — Customizes the heading. Here it is set to “A custom heading”.
 - `description`: [CustomContent](http://127.0.0.1:6006/?path=/story/layout-card-configuration--custom-content) — Adds supporting context below the main label or heading. Here it is set to “More context, in your own words.”.
+- `role`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Changes the semantic role exposed to assistive technology. Here it is set to “Custom role”.
+- `interactive`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the interactive setting on this card. This example has it turned off.
+- `interactive`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the interactive setting on this card. This example has it turned on.
+- `disabled`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Prevents user interaction. This example has it turned off.
+- `disabled`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Prevents user interaction. This example has it turned on.
+- `loading`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Shows the loading state. This example has it turned off.
+- `loading`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Shows the loading state. This example has it turned on.
+- `loadingLabel`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Customizes the text for the loading action. Here it is set to “Working…”.
+- `error`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Displays an error message or error state. Here it is set to “Please review this value.”.
+- `empty`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the empty setting on this card. This example has it turned off.
+- `empty`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the empty setting on this card. This example has it turned on.
+- `emptyText`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Customizes the message when there are no items or matches. Here it is set to “Custom emptyText”.
 - `appearance.padding`: [Padding](http://127.0.0.1:6006/?path=/story/layout-card-appearance--padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [Radius](http://127.0.0.1:6006/?path=/story/layout-card-appearance--radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [BorderWidth](http://127.0.0.1:6006/?path=/story/layout-card-appearance--border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -135,6 +160,7 @@ import { CardComponent } from "./card.component";
 - `appearance.gap`: [Gap](http://127.0.0.1:6006/?path=/story/layout-card-appearance--gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.shadow`: [Shadow](http://127.0.0.1:6006/?path=/story/layout-card-appearance--shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [FocusColor](http://127.0.0.1:6006/?path=/story/layout-card-appearance--focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `event.activated`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Try the card below and inspect activated in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

@@ -7,7 +7,8 @@ import { Appearance } from "../shared/appearance";
     <span>{{ label() }}</span>
   }`,
   host: {
-    role: "separator",
+    "[attr.role]": "decorative() ? null : 'separator'",
+    "[attr.aria-hidden]": "decorative() ? 'true' : null",
     "[attr.aria-orientation]": "orientation()",
     "[attr.aria-label]": "label()||null",
     "[attr.data-orientation]": "orientation()",
@@ -59,6 +60,8 @@ import { Appearance } from "../shared/appearance";
   ],
 })
 export class DividerComponent extends Appearance {
+  /** Removes separator semantics when the line is purely visual. */
+  readonly decorative = input(false);
   readonly orientation = input<"horizontal" | "vertical">("horizontal");
   readonly label = input("");
   readonly thickness = input("1px");

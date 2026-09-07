@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from "@angular/common";
-import { Component, input, output } from "@angular/core";
+import { Component, TemplateRef, computed, input, model, output } from "@angular/core";
 import { Appearance } from "../shared/appearance";
 import { IconComponent } from "../icons/icon.component";
 export interface ListItem {
@@ -9,25 +9,30 @@ export interface ListItem {
   icon?: string;
   meta?: string;
   disabled?: boolean;
+  children?: ListItem[];
 }
+interface VisibleListItem { item: ListItem; depth: number; }
 @Component({
   selector: "dl-list",
   standalone: true,
   imports: [IconComponent, NgTemplateOutlet],
   template: `<ul [attr.aria-label]="label()" [class.divided]="dividers()">
-      @for (item of items(); track item.id) {
+      @for (entry of visibleItems(); track entry.item.id) {
+        @let item = entry.item;
         <li>
           @if (interactive()) {
             <button
               type="button"
               [disabled]="disabled() || item.disabled"
-              [attr.aria-current]="selected() === item.id ? 'true' : null"
-              (click)="itemClick.emit(item)"
+              [attr.aria-current]="selectionMode()==='single' && isSelected(item.id) ? 'true' : null"
+              [attr.aria-pressed]="selectionMode()==='multiple' ? isSelected(item.id) : null"
+              (click)="activate(item)"
+              [style.padding-inline-start]="nestedPadding(entry.depth)"
             >
-              <ng-container [ngTemplateOutlet]="row" />
+              <ng-container [ngTemplateOutlet]="itemTemplate() || row" [ngTemplateOutletContext]="{$implicit:item, depth:entry.depth, selected:isSelected(item.id), expanded:isExpanded(item.id)}" />
             </button>
           } @else {
-            <div class="row"><ng-container [ngTemplateOutlet]="row" /></div>
+            <div class="row" [style.padding-inline-start]="nestedPadding(entry.depth)"><ng-container [ngTemplateOutlet]="itemTemplate() || row" [ngTemplateOutletContext]="{$implicit:item, depth:entry.depth, selected:isSelected(item.id), expanded:isExpanded(item.id)}" /></div>
           }
           <ng-template #row>
             @if (showIcons() && item.icon) {
@@ -43,7 +48,7 @@ export interface ListItem {
               <small>{{ item.meta }}</small>
             }
             @if (interactive() && showChevron()) {
-              <dl-icon name="chevron-right" [size]="16" />
+              <dl-icon [name]="item.children?.length && isExpanded(item.id) ? 'chevron-down' : 'chevron-right'" [size]="16" />
             }
           </ng-template>
         </li>
@@ -135,7 +140,8 @@ export class ListComponent extends Appearance {
   readonly label = input("Items");
   readonly items = input<ListItem[]>([]);
   readonly interactive = input(false);
-  readonly selected = input("");
+  readonly selected = model<string | string[]>("");
+  readonly selectionMode = input<"none" | "single" | "multiple">("single");
   readonly disabled = input(false);
   readonly density = input<"compact" | "regular" | "comfortable">("regular");
   readonly dividers = input(true);
@@ -145,5 +151,33 @@ export class ListComponent extends Appearance {
   readonly showMeta = input(true);
   readonly showChevron = input(true);
   readonly emptyText = input("No items");
+  readonly itemTemplate = input<TemplateRef<{ $implicit: ListItem; depth: number; selected: boolean; expanded: boolean }> | null>(null);
+  readonly nestedIndent = input(24);
+  readonly expandOnActivate = input(true);
+  readonly expandedIds = model<string[]>([]);
   readonly itemClick = output<ListItem>();
+  readonly expandedChange = output<{ item: ListItem; expanded: boolean }>();
+  readonly visibleItems = computed<VisibleListItem[]>(() => {
+    const expanded = new Set(this.expandedIds());
+    const flatten = (items: ListItem[], depth = 0): VisibleListItem[] => items.flatMap((item) => [
+      { item, depth },
+      ...(item.children?.length && expanded.has(item.id) ? flatten(item.children, depth + 1) : []),
+    ]);
+    return flatten(this.items());
+  });
+  readonly selectedIds = computed(() => Array.isArray(this.selected()) ? this.selected() as string[] : this.selected() ? [this.selected() as string] : []);
+  isSelected(id: string): boolean { return this.selectedIds().includes(id); }
+  isExpanded(id: string): boolean { return this.expandedIds().includes(id); }
+  nestedPadding(depth: number): string { return `calc(var(--dl-ui-padding, 16px) + ${Math.max(0, depth) * this.nestedIndent()}px)`; }
+  activate(item: ListItem): void {
+    if (this.disabled() || item.disabled) return;
+    this.itemClick.emit(item);
+    if (this.expandOnActivate() && item.children?.length) {
+      const expanded = !this.isExpanded(item.id);
+      this.expandedIds.update((ids) => expanded ? [...ids, item.id] : ids.filter((id) => id !== item.id));
+      this.expandedChange.emit({ item, expanded });
+    }
+    if (this.selectionMode() === "single") this.selected.set(item.id);
+    else if (this.selectionMode() === "multiple") this.selected.set(this.isSelected(item.id) ? this.selectedIds().filter((id) => id !== item.id) : [...this.selectedIds(), item.id]);
+  }
 }

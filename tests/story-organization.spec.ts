@@ -22,6 +22,7 @@ test("catalog groups every component into the ordered learning journey", async (
         "Variations",
         "Events",
         "Appearance",
+        "Recipes",
       ].includes(title.split("/")[2]),
     ),
   ).toBe(true);
@@ -90,6 +91,7 @@ test("Card uses concise groups with its playground last", async ({ page }) => {
     "layout-card-configuration",
     "layout-card-variations",
     "layout-card-appearance",
+    "layout-card-recipes",
     "layout-card-playground--playground",
   ];
   for (const id of ids)

@@ -55,18 +55,35 @@ Open a panel attached to a viewport edge. Try its content, dismissal and focus r
 | closeOnConfirm | boolean | true | input | OverlayBase | See the dedicated configuration story below. |
 | confirmDisabled | boolean | false | input | OverlayBase | See the dedicated configuration story below. |
 | busy | boolean | false | input | OverlayBase | See the dedicated configuration story below. |
+| error | string | "" | input | OverlayBase | See the dedicated configuration story below. |
+| confirmationPhrase | string | "" | input | OverlayBase | See the dedicated configuration story below. |
+| confirmationValue | string | "" | model | OverlayBase | See the dedicated configuration story below. |
+| confirmationLabel | string | "Type the confirmation phrase to continue" | input | OverlayBase | See the dedicated configuration story below. |
 | autoFocus | string | "first-tabbable" | input | OverlayBase | See the dedicated configuration story below. |
 | restoreFocus | boolean | true | input | OverlayBase | See the dedicated configuration story below. |
 | scrollStrategy | "block" \| "noop" \| "reposition" | "block" | input | OverlayBase | See the dedicated configuration story below. |
+| fullScreenOnMobile | boolean | true | input | SidepanelComponent | See the dedicated configuration story below. |
+| mobileBreakpoint | number | 600 | input | OverlayBase | See the dedicated configuration story below. |
+| showDragHandle | boolean | false | input | OverlayBase | See the dedicated configuration story below. |
+| snapPoints | string[] | [] | input | OverlayBase | See the dedicated configuration story below. |
+| activeSnap | number | 0 | model | OverlayBase | See the dedicated configuration story below. |
+| controlledClose | boolean | false | input | OverlayBase | Emits closeRequested without closing, allowing an application to run an async guard and update open itself. |
+| beforeClose | ((reason: import("./overlay-base").OverlayCloseReason) => boolean \| Promise<boolean>) \| null | null | input | OverlayBase | Return false, or a promise resolving false, to keep the overlay open. |
 
 ## Outputs
 
 | Event | Payload |
 |---|---|
+| snapChanged | { index: number; height: string; } |
 | confirmed | void |
 | cancelled | void |
 | closed | import("./overlay-base").OverlayCloseReason |
+| closeRequested | import("./overlay-base").OverlayCloseReason |
+| closeBlocked | import("./overlay-base").OverlayCloseReason |
+| closeGuardError | unknown |
 | openChange | boolean |
+| confirmationValueChange | string |
+| activeSnapChange | number |
 
 ## Projection slots
 
@@ -75,9 +92,12 @@ No content projection slots declared.
 ## Public instance state and methods
 
 
-- `requestClose(reason: OverlayCloseReason = "close"): void`
+- `async requestClose(reason: OverlayCloseReason = "close"): Promise<void>`
 - `cancel(): void`
 - `confirm(): void`
+- `confirmUnavailable(): boolean`
+- `startSheetDrag(event: PointerEvent): void`
+- `endSheetDrag(event: PointerEvent): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -203,6 +223,10 @@ import { SidepanelComponent } from "./sidepanel.component";
 - `confirmDisabled`: [ConfirmDisabledTrue](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--confirm-disabled-true) — Demonstrates the confirm disabled setting on this sidepanel. This example has it turned on.
 - `busy`: [BusyFalse](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--busy-false) — Indicates pending work and blocks the relevant actions. This example has it turned off.
 - `busy`: [BusyTrue](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--busy-true) — Indicates pending work and blocks the relevant actions. This example has it turned on.
+- `error`: [Error](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--error) — Displays an error message or error state. Here it is set to “Please review this value.”.
+- `confirmationPhrase`: [ConfirmationPhrase](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--confirmation-phrase) — Demonstrates the confirmation phrase setting on this sidepanel. Here it is set to “Custom confirmationPhrase”.
+- `confirmationValue`: [ConfirmationValue](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--confirmation-value) — Demonstrates the confirmation value setting on this sidepanel. Here it is set to “Custom confirmationValue”.
+- `confirmationLabel`: [ConfirmationLabel](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--confirmation-label) — Customizes the text for the confirmation action. Here it is set to “Custom confirmationLabel”.
 - `autoFocus`: [AutoFocusDialog](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--auto-focus-dialog) — Controls where keyboard focus moves when the overlay opens. Here it is set to “dialog”. Open the example and try the relevant pointer or keyboard action.
 - `autoFocus`: [AutoFocusCancel](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--auto-focus-cancel) — Controls where keyboard focus moves when the overlay opens. Here it is set to “.cancel”. Open the example and try the relevant pointer or keyboard action.
 - `restoreFocus`: [RestoreFocusFalse](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--restore-focus-false) — Controls whether focus returns to the trigger after dismissal. This example has it turned off. Open the example and try the relevant pointer or keyboard action.
@@ -210,6 +234,16 @@ import { SidepanelComponent } from "./sidepanel.component";
 - `scrollStrategy`: [ScrollStrategyBlock](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--scroll-strategy-block) — Controls scrolling while the overlay is open. Here it is set to “block”.
 - `scrollStrategy`: [ScrollStrategyNoop](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--scroll-strategy-noop) — Controls scrolling while the overlay is open. Here it is set to “noop”.
 - `scrollStrategy`: [ScrollStrategyReposition](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--scroll-strategy-reposition) — Controls scrolling while the overlay is open. Here it is set to “reposition”.
+- `fullScreenOnMobile`: [FullScreenOnMobileFalse](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--full-screen-on-mobile-false) — Demonstrates the full screen on mobile setting on this sidepanel. This example has it turned off.
+- `fullScreenOnMobile`: [FullScreenOnMobileTrue](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--full-screen-on-mobile-true) — Demonstrates the full screen on mobile setting on this sidepanel. This example has it turned on.
+- `mobileBreakpoint`: [MobileBreakpoint](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--mobile-breakpoint) — Demonstrates the mobile breakpoint setting on this sidepanel. Here it is set to “608”.
+- `showDragHandle`: [ShowDragHandleFalse](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--show-drag-handle-false) — Controls whether drag handle are shown. This example has it turned off.
+- `showDragHandle`: [ShowDragHandleTrue](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--show-drag-handle-true) — Controls whether drag handle are shown. This example has it turned on.
+- `snapPoints`: [SnapPoints](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--snap-points) — Demonstrates the snap points setting on this sidepanel.
+- `activeSnap`: [ActiveSnap](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--active-snap) — Demonstrates the active snap setting on this sidepanel. Here it is set to “8”.
+- `controlledClose`: [ControlledCloseFalse](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--controlled-close-false) — Demonstrates the controlled close setting on this sidepanel. This example has it turned off.
+- `controlledClose`: [ControlledCloseTrue](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--controlled-close-true) — Demonstrates the controlled close setting on this sidepanel. This example has it turned on.
+- `beforeClose`: [BeforeClose](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-configuration--before-close) — Demonstrates the before close setting on this sidepanel.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -220,10 +254,16 @@ import { SidepanelComponent } from "./sidepanel.component";
 - `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `event.snapChanged`: [EventSnapChanged](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-events--event-snap-changed) — Try the sidepanel below and inspect snapChanged in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.confirmed`: [EventConfirmed](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-events--event-confirmed) — Try the sidepanel below and inspect confirmed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.cancelled`: [EventCancelled](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-events--event-cancelled) — Try the sidepanel below and inspect cancelled in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.closed`: [EventClosed](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-events--event-closed) — Try the sidepanel below and inspect closed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.closeRequested`: [EventCloseRequested](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-events--event-close-requested) — Try the sidepanel below and inspect closeRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.closeBlocked`: [EventCloseBlocked](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-events--event-close-blocked) — Try the sidepanel below and inspect closeBlocked in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.closeGuardError`: [EventCloseGuardError](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-events--event-close-guard-error) — Try the sidepanel below and inspect closeGuardError in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.openChange`: [EventOpenChange](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-events--event-open-change) — Try the sidepanel below and inspect openChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.confirmationValueChange`: [EventConfirmationValueChange](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-events--event-confirmation-value-change) — Try the sidepanel below and inspect confirmationValueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.activeSnapChange`: [EventActiveSnapChange](http://127.0.0.1:6006/?path=/story/overlays-sidepanel-events--event-active-snap-change) — Try the sidepanel below and inspect activeSnapChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

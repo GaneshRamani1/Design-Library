@@ -40,10 +40,21 @@ export interface NotificationOptions {
   dismissLabel?: string;
   actionLabel?: string;
   closeOnAction?: boolean;
+  secondaryActionLabel?: string;
+  closeOnSecondaryAction?: boolean;
   pauseOnHover?: boolean;
   showProgress?: boolean;
   live?: "polite" | "assertive" | "off";
   appearance?: ComponentAppearance;
+  /** Higher-priority notifications are presented before lower-priority entries. */
+  priority?: number;
+  /** Controls what happens when another active notification uses the same id. */
+  duplicatePolicy?: "replace" | "ignore";
+}
+export interface NotificationPromiseMessages<T> {
+  loading: string;
+  success: string | ((value: T) => string);
+  error: string | ((reason: unknown) => string);
 }
 export interface NotificationDefaults {
   maxVisible: number;
@@ -65,8 +76,10 @@ export class NotificationRef {
     NoticeDismissReason | "programmatic" | "overflow"
   >();
   private readonly actionSubject = new Subject<void>();
+  private readonly secondaryActionSubject = new Subject<void>();
   readonly afterDismissed = this.closeSubject.asObservable();
   readonly onAction = this.actionSubject.asObservable();
+  readonly onSecondaryAction = this.secondaryActionSubject.asObservable();
   constructor(
     readonly id: string,
     private readonly dismissFn: () => void,
@@ -80,9 +93,13 @@ export class NotificationRef {
     this.closeSubject.next(reason);
     this.closeSubject.complete();
     this.actionSubject.complete();
+    this.secondaryActionSubject.complete();
   }
   /** @internal */ notifyAction(): void {
     this.actionSubject.next();
+  }
+  /** @internal */ notifySecondaryAction(): void {
+    this.secondaryActionSubject.next();
   }
 }
 interface Entry extends NotificationOptions {
@@ -92,6 +109,7 @@ interface Entry extends NotificationOptions {
   ref: NotificationRef;
   position: NotificationPosition;
   duration: number;
+  priority: number;
 }
 const POSITIONS: NotificationPosition[] = [
   "top-left",
@@ -135,11 +153,14 @@ const POSITIONS: NotificationPosition[] = [
               [dismissLabel]="item.dismissLabel ?? 'Dismiss notification'"
               [actionLabel]="item.actionLabel ?? ''"
               [closeOnAction]="item.closeOnAction ?? true"
+              [secondaryActionLabel]="item.secondaryActionLabel ?? ''"
+              [closeOnSecondaryAction]="item.closeOnSecondaryAction ?? true"
               [pauseOnHover]="item.pauseOnHover ?? true"
               [showProgress]="item.showProgress ?? false"
               [live]="item.live ?? 'polite'"
               [appearance]="item.appearance ?? {}"
               (action)="item.ref.notifyAction()"
+              (secondaryAction)="item.ref.notifySecondaryAction()"
               (dismissed)="remove(item.id, $event)"
             />
           } @else {
@@ -162,11 +183,14 @@ const POSITIONS: NotificationPosition[] = [
               [dismissLabel]="item.dismissLabel ?? 'Dismiss notification'"
               [actionLabel]="item.actionLabel ?? ''"
               [closeOnAction]="item.closeOnAction ?? true"
+              [secondaryActionLabel]="item.secondaryActionLabel ?? ''"
+              [closeOnSecondaryAction]="item.closeOnSecondaryAction ?? true"
               [pauseOnHover]="item.pauseOnHover ?? true"
               [showProgress]="item.showProgress ?? false"
               [live]="item.live ?? 'polite'"
               [appearance]="item.appearance ?? {}"
               (action)="item.ref.notifyAction()"
+              (secondaryAction)="item.ref.notifySecondaryAction()"
               (dismissed)="remove(item.id, $event)"
             />
           }
@@ -253,6 +277,25 @@ export class NotificationService {
       ...options,
     });
   }
+  /** Tracks an asynchronous operation with one stable notification ID. */
+  async track<T>(
+    operation: Promise<T>,
+    messages: NotificationPromiseMessages<T>,
+    options: NotificationOptions = {},
+  ): Promise<T> {
+    const id = options.id ?? `dl-operation-${++this.sequence}`;
+    this.toast(messages.loading, { ...options, id, duration: 0 });
+    try {
+      const value = await operation;
+      const message = typeof messages.success === "function" ? messages.success(value) : messages.success;
+      this.toast(message, { ...options, id, duplicatePolicy: "replace" });
+      return value;
+    } catch (reason) {
+      const message = typeof messages.error === "function" ? messages.error(reason) : messages.error;
+      this.toast(message, { ...options, id, tone: "danger", duration: 0, duplicatePolicy: "replace" });
+      throw reason;
+    }
+  }
   dismiss(
     id: string,
     reason: NoticeDismissReason | "programmatic" | "overflow" = "programmatic",
@@ -284,6 +327,8 @@ export class NotificationService {
       this.outlet.remove = (id, reason) => this.dismiss(id, reason);
     }
     const id = options.id ?? `dl-notice-${++this.sequence}`;
+    const existing = this.outlet.items().find((item) => item.id === id);
+    if (existing && options.duplicatePolicy === "ignore") return existing.ref;
     this.dismiss(id);
     while (this.outlet.items().length >= Math.max(1, this.defaults.maxVisible))
       this.dismiss(this.outlet.items()[0].id, "overflow");
@@ -298,8 +343,9 @@ export class NotificationService {
         ref,
         position: options.position ?? this.defaults.position,
         duration: options.duration ?? this.defaults.duration,
+        priority: Number.isFinite(options.priority) ? Number(options.priority) : 0,
       },
-    ]);
+    ].sort((a, b) => b.priority - a.priority));
     return ref;
   }
 }

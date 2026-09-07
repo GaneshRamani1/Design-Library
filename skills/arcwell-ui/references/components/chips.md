@@ -40,6 +40,15 @@ Compact labels that can be selected or removed. The example shows how those acti
 | removable | boolean | true | input | ChipsComponent | See the dedicated configuration story below. |
 | removeLabel | string | "Remove" | input | ChipsComponent | See the dedicated configuration story below. |
 | emptyText | string | "No chips" | input | ChipsComponent | See the dedicated configuration story below. |
+| maxVisible | number \| null | null | input | ChipsComponent | See the dedicated configuration story below. |
+| overflowLabel | string | "+{count} more" | input | ChipsComponent | See the dedicated configuration story below. |
+| allowCreate | boolean | false | input | ChipsComponent | See the dedicated configuration story below. |
+| createPlaceholder | string | "Add a value" | input | ChipsComponent | See the dedicated configuration story below. |
+| createInputLabel | string | "New chip value" | input | ChipsComponent | See the dedicated configuration story below. |
+| createLabel | string | "Add" | input | ChipsComponent | See the dedicated configuration story below. |
+| reorderable | boolean | false | input | ChipsComponent | See the dedicated configuration story below. |
+| moveBeforeLabel | string | "Move before" | input | ChipsComponent | See the dedicated configuration story below. |
+| moveAfterLabel | string | "Move after" | input | ChipsComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
@@ -47,6 +56,8 @@ Compact labels that can be selected or removed. The example shows how those acti
 |---|---|
 | valueChange | string[] |
 | removed | ChipOption |
+| created | ChipOption |
+| reordered | { options: ChipOption[]; from: number; to: number; } |
 
 ## Projection slots
 
@@ -57,9 +68,14 @@ No content projection slots declared.
 - `value()` — string[] | null
 - `isDisabled()` — boolean
 - `descriptionId()` — string | null
+- `draft()` — string
+- `visibleOptions()` — ChipOption[]
+- `hiddenCount()` — number
 - `isSelected(v: string): boolean`
 - `toggleChip(chip: ChipOption): void`
 - `remove(chip: ChipOption): void`
+- `create(): void`
+- `move(from: number, direction: number): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -84,6 +100,8 @@ export interface SelectOption {
   label: string;
   description?: string;
   disabled?: boolean;
+  /** Optional visible group heading. Consecutive options with the same group share one heading. */
+  group?: string;
 }
 
 export interface ChipOption {
@@ -168,6 +186,17 @@ import { ChipsComponent } from "./chips.component";
 - `removable`: [RemovableTrue](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--removable-true) — Adds a remove action for each item. This example has it turned on.
 - `removeLabel`: [RemoveLabel](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--remove-label) — Customizes the text for the remove action. Here it is set to “Remove item”.
 - `emptyText`: [EmptyText](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--empty-text) — Customizes the message when there are no items or matches. Here it is set to “Custom emptyText”.
+- `maxVisible`: [MaxVisible](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--max-visible) — Demonstrates the max visible setting on this chips.
+- `overflowLabel`: [OverflowLabel](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--overflow-label) — Customizes the text for the overflow action. Here it is set to “Custom overflowLabel”.
+- `allowCreate`: [AllowCreateFalse](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--allow-create-false) — Demonstrates the allow create setting on this chips. This example has it turned off.
+- `allowCreate`: [AllowCreateTrue](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--allow-create-true) — Demonstrates the allow create setting on this chips. This example has it turned on.
+- `createPlaceholder`: [CreatePlaceholder](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--create-placeholder) — Demonstrates the create placeholder setting on this chips. Here it is set to “Custom createPlaceholder”.
+- `createInputLabel`: [CreateInputLabel](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--create-input-label) — Customizes the text for the create input action. Here it is set to “Custom createInputLabel”.
+- `createLabel`: [CreateLabel](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--create-label) — Customizes the text for the create action. Here it is set to “Custom createLabel”.
+- `reorderable`: [ReorderableFalse](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--reorderable-false) — Demonstrates the reorderable setting on this chips. This example has it turned off.
+- `reorderable`: [ReorderableTrue](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--reorderable-true) — Demonstrates the reorderable setting on this chips. This example has it turned on.
+- `moveBeforeLabel`: [MoveBeforeLabel](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--move-before-label) — Customizes the text for the move before action. Here it is set to “Custom moveBeforeLabel”.
+- `moveAfterLabel`: [MoveAfterLabel](http://127.0.0.1:6006/?path=/story/inputs-chips-configuration--move-after-label) — Customizes the text for the move after action. Here it is set to “Custom moveAfterLabel”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/inputs-chips-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/inputs-chips-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/inputs-chips-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -180,6 +209,8 @@ import { ChipsComponent } from "./chips.component";
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/inputs-chips-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.valueChange`: [EventValueChange](http://127.0.0.1:6006/?path=/story/inputs-chips-events--event-value-change) — Try the chips below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.removed`: [EventRemoved](http://127.0.0.1:6006/?path=/story/inputs-chips-events--event-removed) — Try the chips below and inspect removed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.created`: [EventCreated](http://127.0.0.1:6006/?path=/story/inputs-chips-events--event-created) — Try the chips below and inspect created in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.reordered`: [EventReordered](http://127.0.0.1:6006/?path=/story/inputs-chips-events--event-reordered) — Try the chips below and inspect reordered in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

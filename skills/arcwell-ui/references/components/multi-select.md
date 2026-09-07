@@ -36,6 +36,11 @@ Searchable checkbox disclosure. Tab navigates, Space selects, Escape closes.
 | stretch | boolean | false | input | FormControlBase | See the dedicated configuration story below. |
 | showChevron | boolean | true | input | MultiSelectComponent | See the dedicated configuration story below. |
 | options | SelectOption[] | [] | input | MultiSelectComponent | See the dedicated configuration story below. |
+| optionsProvider | ((query: string) => Promise<SelectOption[]>) \| null | null | input | MultiSelectComponent | See the dedicated configuration story below. |
+| searchDebounce | number | 250 | input | MultiSelectComponent | See the dedicated configuration story below. |
+| maxRenderedOptions | number | 0 | input | MultiSelectComponent | See the dedicated configuration story below. |
+| moreOptionsLabel | string | "{count} more options. Refine your search." | input | MultiSelectComponent | See the dedicated configuration story below. |
+| optionTemplate | TemplateRef<{ $implicit: SelectOption; selected: boolean; }> \| null | null | input | MultiSelectComponent | See the dedicated configuration story below. |
 | placeholder | string | "Select options" | input | MultiSelectComponent | See the dedicated configuration story below. |
 | searchable | boolean | true | input | MultiSelectComponent | See the dedicated configuration story below. |
 | showSelectAll | boolean | true | input | MultiSelectComponent | See the dedicated configuration story below. |
@@ -59,6 +64,8 @@ Searchable checkbox disclosure. Tab navigates, Space selects, Escape closes.
 | menuWidth | number \| null | null | input | MultiSelectComponent | See the dedicated configuration story below. |
 | closeOnSelect | boolean | false | input | MultiSelectComponent | See the dedicated configuration story below. |
 | resetSearchOnOpen | boolean | true | input | MultiSelectComponent | See the dedicated configuration story below. |
+| loading | boolean | false | input | MultiSelectComponent | See the dedicated configuration story below. |
+| loadingText | string | "Loading options…" | input | MultiSelectComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
@@ -68,6 +75,8 @@ Searchable checkbox disclosure. Tab navigates, Space selects, Escape closes.
 | selectAllChange | string[] |
 | clearChange | string[] |
 | searchChange | string |
+| optionsLoaded | SelectOption[] |
+| loadFailed | unknown |
 
 ## Projection slots
 
@@ -80,8 +89,12 @@ No content projection slots declared.
 - `descriptionId()` — string | null
 - `opened()` — boolean
 - `query()` — string
+- `busy()` — boolean
+- `effectiveOptions()` — SelectOption[]
 - `selected()` — string[]
 - `filtered()` — SelectOption[]
+- `renderedOptions()` — SelectOption[]
+- `hiddenOptionCount()` — number
 - `limit()` — number
 - `atLimit()` — boolean
 - `listHeight()` — number
@@ -96,11 +109,13 @@ No content projection slots declared.
 - `escape(event: Event): void`
 - `outside(event: Event): void`
 - `leave(event: FocusEvent): void`
+- `showGroup(index: number): boolean`
 - `optionDisabled(option: SelectOption): boolean`
 - `selectAll(): void`
 - `clear(): void`
 - `focusPanel(event: MouseEvent): void`
 - `search(event: Event): void`
+- `async loadOptions(query = this.query()): Promise<void>`
 - `select(option: SelectOption, event: Event): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
@@ -126,6 +141,8 @@ export interface SelectOption {
   label: string;
   description?: string;
   disabled?: boolean;
+  /** Optional visible group heading. Consecutive options with the same group share one heading. */
+  group?: string;
 }
 ```
 
@@ -230,6 +247,11 @@ import { MultiSelectComponent } from "./multi-select.component";
 - `showChevron`: [ShowChevronFalse](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--show-chevron-false) — Controls whether chevron are shown. This example has it turned off.
 - `showChevron`: [ShowChevronTrue](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--show-chevron-true) — Controls whether chevron are shown. This example has it turned on.
 - `options`: [Options](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--options) — Provides a custom set of choices, including a disabled option.
+- `optionsProvider`: [OptionsProvider](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--options-provider) — Demonstrates the options provider setting on this multi-select dropdown.
+- `searchDebounce`: [SearchDebounce](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--search-debounce) — Demonstrates the search debounce setting on this multi-select dropdown. Here it is set to “258”.
+- `maxRenderedOptions`: [MaxRenderedOptions](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--max-rendered-options) — Demonstrates the max rendered options setting on this multi-select dropdown. Here it is set to “8”.
+- `moreOptionsLabel`: [MoreOptionsLabel](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--more-options-label) — Customizes the text for the more options action. Here it is set to “Custom moreOptionsLabel”.
+- `optionTemplate`: [OptionTemplate](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--option-template) — Demonstrates the option template setting on this multi-select dropdown.
 - `placeholder`: [Placeholder](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--placeholder) — Shows guidance while no value has been entered. Here it is set to “Choose something…”.
 - `searchable`: [SearchableFalse](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--searchable-false) — Adds search to narrow the available options. This example has it turned off.
 - `searchable`: [SearchableTrue](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--searchable-true) — Adds search to narrow the available options. This example has it turned on.
@@ -263,6 +285,9 @@ import { MultiSelectComponent } from "./multi-select.component";
 - `closeOnSelect`: [CloseOnSelectTrue](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--close-on-select-true) — Controls whether the menu closes after choosing an option. This example has it turned on. Open the example and try the relevant pointer or keyboard action.
 - `resetSearchOnOpen`: [ResetSearchOnOpenFalse](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--reset-search-on-open-false) — Controls whether the previous search is cleared on opening. This example has it turned off.
 - `resetSearchOnOpen`: [ResetSearchOnOpenTrue](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--reset-search-on-open-true) — Controls whether the previous search is cleared on opening. This example has it turned on.
+- `loading`: [LoadingFalse](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--loading-false) — Shows the loading state. This example has it turned off.
+- `loading`: [LoadingTrue](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--loading-true) — Shows the loading state. This example has it turned on.
+- `loadingText`: [LoadingText](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-configuration--loading-text) — Demonstrates the loading text setting on this multi-select dropdown. Here it is set to “Custom loadingText”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -277,6 +302,8 @@ import { MultiSelectComponent } from "./multi-select.component";
 - `event.selectAllChange`: [EventSelectAllChange](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-events--event-select-all-change) — Try the multi-select dropdown below and inspect selectAllChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.clearChange`: [EventClearChange](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-events--event-clear-change) — Try the multi-select dropdown below and inspect clearChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.searchChange`: [EventSearchChange](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-events--event-search-change) — Try the multi-select dropdown below and inspect searchChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.optionsLoaded`: [EventOptionsLoaded](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-events--event-options-loaded) — Try the multi-select dropdown below and inspect optionsLoaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.loadFailed`: [EventLoadFailed](http://127.0.0.1:6006/?path=/story/inputs-multi-select-dropdown-events--event-load-failed) — Try the multi-select dropdown below and inspect loadFailed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

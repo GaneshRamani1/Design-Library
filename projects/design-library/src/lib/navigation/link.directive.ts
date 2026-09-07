@@ -41,6 +41,9 @@ export class LinkDirective extends Appearance {
   readonly fontWeight = input("500");
   readonly underlineOffset = input("3px");
   readonly activated = output<MouseEvent>();
+  /** Optional adapter for Angular Router or another client-side navigator. */
+  readonly navigate = input<((href: string, event: MouseEvent) => void | Promise<void>) | null>(null);
+  readonly navigationError = output<unknown>();
   readonly hovered = signal(false);
   readonly focused = signal(false);
   readonly resolvedRel = computed(() => {
@@ -85,6 +88,11 @@ export class LinkDirective extends Appearance {
   }
   activate(event: MouseEvent): void {
     this.blockDisabled(event);
-    if (!this.disabled()) this.activated.emit(event);
+    if (this.disabled()) return;
+    this.activated.emit(event);
+    const navigate = this.navigate();
+    if (!navigate || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || this.target() !== "_self") return;
+    event.preventDefault();
+    Promise.resolve(navigate(this.href(), event)).catch((error) => this.navigationError.emit(error));
   }
 }

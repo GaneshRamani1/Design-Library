@@ -38,13 +38,23 @@ Custom select-only combobox with keyboard navigation and typeahead.
 | showDescriptions | boolean | true | input | DropdownComponent | See the dedicated configuration story below. |
 | emptyText | string | "No options available." | input | DropdownComponent | See the dedicated configuration story below. |
 | options | SelectOption[] | [] | input | DropdownComponent | See the dedicated configuration story below. |
+| optionsProvider | (() => Promise<SelectOption[]>) \| null | null | input | DropdownComponent | See the dedicated configuration story below. |
+| optionTemplate | TemplateRef<{ $implicit: SelectOption; index: number; selected: boolean; }> \| null | null | input | DropdownComponent | See the dedicated configuration story below. |
 | placeholder | string | "Select an option" | input | DropdownComponent | See the dedicated configuration story below. |
+| loading | boolean | false | input | DropdownComponent | See the dedicated configuration story below. |
+| loadingText | string | "Loading options…" | input | DropdownComponent | See the dedicated configuration story below. |
+| clearable | boolean | false | input | DropdownComponent | See the dedicated configuration story below. |
+| maxRenderedOptions | number | 0 | input | DropdownComponent | See the dedicated configuration story below. |
+| moreOptionsLabel | string | "{count} more options. Refine your search." | input | DropdownComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
 | Event | Payload |
 |---|---|
 | valueChange | string |
+| cleared | void |
+| optionsLoaded | SelectOption[] |
+| loadFailed | unknown |
 
 ## Projection slots
 
@@ -56,7 +66,11 @@ No content projection slots declared.
 - `isDisabled()` — boolean
 - `descriptionId()` — string | null
 - `opened()` — boolean
+- `busy()` — boolean
+- `effectiveOptions()` — SelectOption[]
 - `choices()` — SelectOption[]
+- `renderedChoices()` — SelectOption[]
+- `hiddenOptionCount()` — number
 - `summary()` — string
 - `activeIndex()` — number
 - `toggle(): void`
@@ -64,10 +78,13 @@ No content projection slots declared.
 - `escape(event: Event): void`
 - `outside(event: Event): void`
 - `leave(event: FocusEvent): void`
-- `toggleMenu(): void`
+- `async toggleMenu(): Promise<void>`
+- `async loadOptions(): Promise<void>`
+- `refresh(): Promise<void>`
 - `activate(index: number): void`
 - `choose(index: number): void`
 - `key(event: KeyboardEvent): void`
+- `showGroup(index: number): boolean`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -92,6 +109,8 @@ export interface SelectOption {
   label: string;
   description?: string;
   disabled?: boolean;
+  /** Optional visible group heading. Consecutive options with the same group share one heading. */
+  group?: string;
 }
 ```
 
@@ -168,7 +187,16 @@ import { DropdownComponent } from "./dropdown.component";
 - `showDescriptions`: [ShowDescriptionsTrue](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--show-descriptions-true) — Controls whether descriptions are shown. This example has it turned on.
 - `emptyText`: [EmptyText](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--empty-text) — Customizes the message when there are no items or matches. Here it is set to “Custom emptyText”.
 - `options`: [Options](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--options) — Provides a custom set of choices, including a disabled option.
+- `optionsProvider`: [OptionsProvider](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--options-provider) — Demonstrates the options provider setting on this dropdown.
+- `optionTemplate`: [OptionTemplate](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--option-template) — Demonstrates the option template setting on this dropdown.
 - `placeholder`: [Placeholder](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--placeholder) — Shows guidance while no value has been entered. Here it is set to “Choose something…”.
+- `loading`: [LoadingFalse](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--loading-false) — Shows the loading state. This example has it turned off.
+- `loading`: [LoadingTrue](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--loading-true) — Shows the loading state. This example has it turned on.
+- `loadingText`: [LoadingText](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--loading-text) — Demonstrates the loading text setting on this dropdown. Here it is set to “Custom loadingText”.
+- `clearable`: [ClearableFalse](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--clearable-false) — Demonstrates the clearable setting on this dropdown. This example has it turned off.
+- `clearable`: [ClearableTrue](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--clearable-true) — Demonstrates the clearable setting on this dropdown. This example has it turned on.
+- `maxRenderedOptions`: [MaxRenderedOptions](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--max-rendered-options) — Demonstrates the max rendered options setting on this dropdown. Here it is set to “8”.
+- `moreOptionsLabel`: [MoreOptionsLabel](http://127.0.0.1:6006/?path=/story/inputs-dropdown-configuration--more-options-label) — Customizes the text for the more options action. Here it is set to “Custom moreOptionsLabel”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/inputs-dropdown-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/inputs-dropdown-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/inputs-dropdown-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -180,6 +208,9 @@ import { DropdownComponent } from "./dropdown.component";
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/inputs-dropdown-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/inputs-dropdown-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.valueChange`: [EventValueChange](http://127.0.0.1:6006/?path=/story/inputs-dropdown-events--event-value-change) — Try the dropdown below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.cleared`: [EventCleared](http://127.0.0.1:6006/?path=/story/inputs-dropdown-events--event-cleared) — Try the dropdown below and inspect cleared in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.optionsLoaded`: [EventOptionsLoaded](http://127.0.0.1:6006/?path=/story/inputs-dropdown-events--event-options-loaded) — Try the dropdown below and inspect optionsLoaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.loadFailed`: [EventLoadFailed](http://127.0.0.1:6006/?path=/story/inputs-dropdown-events--event-load-failed) — Try the dropdown below and inspect loadFailed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

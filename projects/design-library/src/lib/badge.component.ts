@@ -4,6 +4,7 @@ import {
   input,
   model,
   output,
+  computed,
 } from "@angular/core";
 import { ToneAppearance } from "./shared/tone";
 @Component({
@@ -13,6 +14,7 @@ import { ToneAppearance } from "./shared/tone";
   host: {
     "[style.display]": "visible()?null:'none'",
     "[attr.data-pill]": "pill()",
+    "[attr.aria-label]": "accessibleLabel() || null",
   },
   template: `@if (dot()) {
       <span class="dot" aria-hidden="true"></span>
@@ -20,7 +22,7 @@ import { ToneAppearance } from "./shared/tone";
     @if (icon()) {
       <span aria-hidden="true">{{ icon() }}</span>
     }
-    <span><ng-content /></span>
+    <span>@if(value()!==null){ {{ displayValue() }} }@else{<ng-content />}</span>
     @if (removable()) {
       <button
         type="button"
@@ -81,10 +83,15 @@ export class BadgeComponent extends ToneAppearance {
   readonly pill = input(false);
   readonly dot = input(false);
   readonly icon = input("");
+  readonly value = input<number | null>(null);
+  readonly max = input(99);
+  readonly overflowSuffix = input("+");
+  readonly accessibleLabel = input("");
   readonly removable = input(false);
   readonly removeLabel = input("Remove badge");
   readonly visible = model(true);
   readonly removed = output<void>();
+  readonly displayValue = computed(() => this.value() !== null && this.value()! > this.max() ? `${this.max()}${this.overflowSuffix()}` : String(this.value() ?? ""));
   remove(): void {
     this.visible.set(false);
     this.removed.emit();

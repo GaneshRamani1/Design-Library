@@ -2,8 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  DestroyRef,
   forwardRef,
+  inject,
   input,
+  output,
 } from "@angular/core";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 import {
@@ -24,7 +27,7 @@ import {
     },
   ],
   template:
-    `<label class="label" [for]="id()+'-control'">{{label()}}</label><div class="counter" [class.vertical]="orientation()==='vertical'">@if(showButtons()){<button type="button" [attr.aria-label]="decrementLabel()" [disabled]="isDisabled()||normalized()<=minimum()" (click)="adjust(-1)">{{decrementIcon()}}</button>}<input class="field" type="number" [id]="id()+'-control'" [value]="normalized()" [min]="minimum()" [max]="maximum()" [step]="increment()" [readOnly]="!editable()" [disabled]="isDisabled()" [attr.aria-describedby]="descriptionId()" [attr.aria-invalid]="error()?true:null" (change)="edit($event)" (blur)="onTouched()"/>@if(showButtons()){<button type="button" [attr.aria-label]="incrementLabel()" [disabled]="isDisabled()||normalized()>=maximum()" (click)="adjust(1)">{{incrementIcon()}}</button>}</div>` +
+    `<label class="label" [for]="id()+'-control'">{{label()}}</label><div class="counter" [class.vertical]="orientation()==='vertical'">@if(showButtons()){<button type="button" [attr.aria-label]="decrementLabel()" [disabled]="isDisabled()||normalized()<=minimum()" (click)="adjust(-1)" (pointerdown)="startRepeat(-1)" (pointerup)="stopRepeat()" (pointercancel)="stopRepeat()" (pointerleave)="stopRepeat()">{{decrementIcon()}}</button>}<input class="field" type="number" [id]="id()+'-control'" [value]="normalized()" [min]="minimum()" [max]="maximum()" [step]="increment()" [readOnly]="!editable()" [disabled]="isDisabled()" [attr.aria-describedby]="descriptionId()" [attr.aria-invalid]="error()?true:null" (change)="edit($event)" (blur)="onTouched()"/>@if(showButtons()){<button type="button" [attr.aria-label]="incrementLabel()" [disabled]="isDisabled()||normalized()>=maximum()" (click)="adjust(1)" (pointerdown)="startRepeat(1)" (pointerup)="stopRepeat()" (pointercancel)="stopRepeat()" (pointerleave)="stopRepeat()">{{incrementIcon()}}</button>}</div>` +
     fieldMessage,
   styles: [
     fieldStyles,
@@ -72,6 +75,16 @@ export class CounterComponent extends FormControlBase<number> {
   readonly decrementLabel = input("Decrease");
   readonly incrementIcon = input("+");
   readonly decrementIcon = input("−");
+  readonly repeat = input(true);
+  readonly repeatDelay = input(450);
+  readonly repeatInterval = input(90);
+  readonly limitReached = output<"min" | "max">();
+  private repeatDelayTimer: ReturnType<typeof setTimeout> | undefined;
+  private repeatTimer: ReturnType<typeof setInterval> | undefined;
+  constructor() {
+    super();
+    inject(DestroyRef).onDestroy(() => this.stopRepeat());
+  }
   readonly minimum = computed(() =>
     Number.isFinite(this.min()) ? this.min() : 0,
   );
@@ -91,12 +104,33 @@ export class CounterComponent extends FormControlBase<number> {
     );
   }
   adjust(direction: number): void {
-    this.commit(
-      this.clamp(
-        Number((this.normalized() + direction * this.increment()).toFixed(10)),
-      ),
+    const current = this.normalized();
+    const next = this.clamp(
+      Number((this.normalized() + direction * this.increment()).toFixed(10)),
     );
+    if (next === current) {
+      this.limitReached.emit(direction < 0 ? "min" : "max");
+      this.stopRepeat();
+      return;
+    }
+    this.commit(next);
     this.onTouched();
+  }
+  startRepeat(direction: number): void {
+    if (!this.repeat() || this.isDisabled()) return;
+    this.stopRepeat();
+    this.repeatDelayTimer = setTimeout(() => {
+      this.repeatTimer = setInterval(
+        () => this.adjust(direction),
+        Math.max(40, this.repeatInterval()),
+      );
+    }, Math.max(0, this.repeatDelay()));
+  }
+  stopRepeat(): void {
+    clearTimeout(this.repeatDelayTimer);
+    clearInterval(this.repeatTimer);
+    this.repeatDelayTimer = undefined;
+    this.repeatTimer = undefined;
   }
   edit(event: Event): void {
     const input = event.target as HTMLInputElement;

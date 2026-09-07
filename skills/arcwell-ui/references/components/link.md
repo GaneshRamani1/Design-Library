@@ -38,12 +38,14 @@ Styled native anchor; preserves browser navigation and modified clicks.
 | underline | "none" \| "always" \| "hover" | "hover" | input | LinkDirective | See the dedicated configuration story below. |
 | fontWeight | string | "500" | input | LinkDirective | See the dedicated configuration story below. |
 | underlineOffset | string | "3px" | input | LinkDirective | See the dedicated configuration story below. |
+| navigate | ((href: string, event: MouseEvent) => void \| Promise<void>) \| null | null | input | LinkDirective | Optional adapter for Angular Router or another client-side navigator. |
 
 ## Outputs
 
 | Event | Payload |
 |---|---|
 | activated | MouseEvent |
+| navigationError | unknown |
 
 ## Projection slots
 
@@ -145,6 +147,7 @@ import { LinkDirective } from "./link.directive";
 - `underline`: [UnderlineNone](http://127.0.0.1:6006/?path=/story/navigation-link-directive-appearance--underline-none) — Controls whether the link underline is always visible, appears on interaction, or is hidden. Here it is set to “none”.
 - `fontWeight`: [FontWeight](http://127.0.0.1:6006/?path=/story/navigation-link-directive-appearance--font-weight) — Adjusts the weight of the link text. Here it is set to “700”.
 - `underlineOffset`: [UnderlineOffset](http://127.0.0.1:6006/?path=/story/navigation-link-directive-appearance--underline-offset) — Changes the distance between the text and its underline. Here it is set to “6px”.
+- `navigate`: [Navigate](http://127.0.0.1:6006/?path=/story/navigation-link-directive-configuration--navigate) — Demonstrates the navigate setting on this link directive.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/navigation-link-directive-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/navigation-link-directive-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/navigation-link-directive-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -156,6 +159,7 @@ import { LinkDirective } from "./link.directive";
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/navigation-link-directive-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/navigation-link-directive-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.activated`: [EventActivated](http://127.0.0.1:6006/?path=/story/navigation-link-directive-events--event-activated) — Try the link directive below and inspect activated in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.navigationError`: [EventNavigationError](http://127.0.0.1:6006/?path=/story/navigation-link-directive-events--event-navigation-error) — Try the link directive below and inspect navigationError in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

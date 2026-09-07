@@ -1,4 +1,4 @@
-import { Component, input } from "@angular/core";
+import { Component, input, output } from "@angular/core";
 import { ButtonComponent, buttonStyles } from "../button.component";
 import { IconComponent } from "../icons/icon.component";
 /** A native icon-only button; label is required for assistive technology. */
@@ -15,6 +15,7 @@ import { IconComponent } from "../icons/icon.component";
   host: {
     "[attr.aria-label]": "label()",
     "[attr.aria-pressed]": "pressed()",
+    "(click)": "togglePressed()",
     "[style.border-radius]":
       "appearance().radius ?? (shape()==='circle'?'50%':'var(--dl-radius)')",
   },
@@ -46,4 +47,10 @@ export class IconButtonComponent extends ButtonComponent {
   readonly strokeWidth = input(2);
   readonly shape = input<"circle" | "rounded">("rounded");
   readonly pressed = input<boolean | null>(null);
+  /** Requests the next controlled pressed state for toggle-style icon buttons. */
+  readonly pressedChange = output<boolean>();
+  togglePressed(): void {
+    if (this.pressed() === null || this.disabled() || this.loading()) return;
+    this.pressedChange.emit(!this.pressed());
+  }
 }

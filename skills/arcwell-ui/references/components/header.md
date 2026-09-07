@@ -30,7 +30,7 @@ A page or section heading with arbitrary content projected to either side.
 | subheading | string | "" | input | HeaderComponent | See the dedicated configuration story below. |
 | eyebrow | string | "" | input | HeaderComponent | See the dedicated configuration story below. |
 | metadata | HeaderMetadata[] | [] | input | HeaderComponent | See the dedicated configuration story below. |
-| headingLevel | 2 \| 3 \| 4 \| 1 \| 6 \| 5 | 1 | input | HeaderComponent | See the dedicated configuration story below. |
+| headingLevel | 2 \| 1 \| 3 \| 4 \| 6 \| 5 | 1 | input | HeaderComponent | See the dedicated configuration story below. |
 | size | "sm" \| "md" \| "lg" | "md" | input | HeaderComponent | See the dedicated configuration story below. |
 | surface | "solid" \| "transparent" \| "glass" | "transparent" | input | HeaderComponent | See the dedicated configuration story below. |
 | width | string | "100%" | input | HeaderComponent | See the dedicated configuration story below. |
@@ -53,6 +53,11 @@ A page or section heading with arbitrary content projected to either side.
 | showLeft | boolean | true | input | HeaderComponent | See the dedicated configuration story below. |
 | showRight | boolean | true | input | HeaderComponent | See the dedicated configuration story below. |
 | showDivider | boolean | false | input | HeaderComponent | See the dedicated configuration story below. |
+| sticky | boolean | false | input | HeaderComponent | See the dedicated configuration story below. |
+| stickyOffset | string | "0px" | input | HeaderComponent | See the dedicated configuration story below. |
+| zIndex | number | 10 | input | HeaderComponent | See the dedicated configuration story below. |
+| headingLines | number \| null | null | input | HeaderComponent | See the dedicated configuration story below. |
+| subheadingLines | number \| null | null | input | HeaderComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
@@ -227,6 +232,12 @@ import { InputComponent } from "../input.component";
 - `showRight`: [ShowRightTrue](http://127.0.0.1:6006/?path=/story/layout-header-configuration--show-right-true) — Controls whether right are shown. This example has it turned on.
 - `showDivider`: [ShowDividerFalse](http://127.0.0.1:6006/?path=/story/layout-header-configuration--show-divider-false) — Controls whether divider are shown. This example has it turned off.
 - `showDivider`: [ShowDividerTrue](http://127.0.0.1:6006/?path=/story/layout-header-configuration--show-divider-true) — Controls whether divider are shown. This example has it turned on.
+- `sticky`: [StickyFalse](http://127.0.0.1:6006/?path=/story/layout-header-configuration--sticky-false) — Demonstrates the sticky setting on this header. This example has it turned off.
+- `sticky`: [StickyTrue](http://127.0.0.1:6006/?path=/story/layout-header-configuration--sticky-true) — Demonstrates the sticky setting on this header. This example has it turned on.
+- `stickyOffset`: [StickyOffset](http://127.0.0.1:6006/?path=/story/layout-header-configuration--sticky-offset) — Demonstrates the sticky offset setting on this header. Here it is set to “Custom stickyOffset”.
+- `zIndex`: [ZIndex](http://127.0.0.1:6006/?path=/story/layout-header-configuration--z-index) — Demonstrates the z index setting on this header. Here it is set to “18”.
+- `headingLines`: [HeadingLines](http://127.0.0.1:6006/?path=/story/layout-header-configuration--heading-lines) — Demonstrates the heading lines setting on this header.
+- `subheadingLines`: [SubheadingLines](http://127.0.0.1:6006/?path=/story/layout-header-configuration--subheading-lines) — Demonstrates the subheading lines setting on this header.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/layout-header-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/layout-header-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/layout-header-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.

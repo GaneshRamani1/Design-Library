@@ -34,3 +34,15 @@ export const Disabled: Story = { args: { disabled: true } };
 
 export const Small: Story = { args: { size: "sm" } };
 export const Large: Story = { args: { size: "lg" } };
+export const Clearable: Story = {
+  args: { label: "Search", type: "search", showClear: true },
+  parameters: { storyNote: "Enter a value and clear it with the labeled action. valueChange and cleared appear in Actions, and focus returns to the input." },
+};
+export const PasswordReveal: Story = {
+  args: { label: "Password", type: "password", showPasswordToggle: true, autocomplete: "current-password" },
+  parameters: { storyNote: "The reveal action changes only visual exposure. The form value is preserved and passwordVisibilityChange appears in Actions." },
+};
+export const PrefixAndSuffix: Story = {
+  args: { label: "Monthly budget", prefix: "$", suffix: "USD", inputMode: "decimal" },
+  parameters: { storyNote: "Prefix and suffix text remain outside the editable value. Rich projected content can use inputPrefix and inputSuffix." },
+};

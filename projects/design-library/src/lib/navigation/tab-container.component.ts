@@ -42,6 +42,7 @@ let nextTabContainer = 0;
               [tabIndex]="active() === tab ? 0 : -1"
               [disabled]="tab.disabled()"
               (click)="select(tab)"
+              (focus)="tabFocus.emit(tab.value())"
               (keydown)="key($event, index)"
             >
               @if (tab.icon()) {
@@ -58,7 +59,7 @@ let nextTabContainer = 0;
                 type="button"
                 [disabled]="tab.disabled()"
                 [attr.aria-label]="tab.closeLabel() || 'Close ' + tab.label()"
-                (click)="tab.closed.emit(); tabClose.emit(tab.value())"
+                (click)="closeTab(tab, index)"
               >
                 ×
               </button>
@@ -213,7 +214,13 @@ export class TabContainerComponent extends Appearance {
   readonly panelPadding = input("16px");
   readonly keepAlive = input(true);
   readonly showDivider = input(true);
+  readonly activateOnClose = input<"previous" | "next" | "first" | "none">("previous");
+  /** Emits selectionRequested without updating value, allowing router or async ownership. */
+  readonly controlledSelection = input(false);
   readonly tabClose = output<string>();
+  readonly tabCloseRequested = output<{ value: string; index: number; wasActive: boolean }>();
+  readonly selectionRequested = output<string>();
+  readonly tabFocus = output<string>();
   readonly tabs = contentChildren(TabComponent);
   readonly active = computed(
     () =>
@@ -223,7 +230,24 @@ export class TabContainerComponent extends Appearance {
   );
   private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
   select(tab: TabComponent): void {
-    if (!tab.disabled()) this.value.set(tab.value());
+    if (tab.disabled()) return;
+    this.selectionRequested.emit(tab.value());
+    if (!this.controlledSelection()) this.value.set(tab.value());
+  }
+  closeTab(tab: TabComponent, index: number): void {
+    if (tab.disabled()) return;
+    const wasActive = this.active() === tab;
+    tab.closed.emit();
+    this.tabClose.emit(tab.value());
+    this.tabCloseRequested.emit({ value: tab.value(), index, wasActive });
+    if (!wasActive || this.controlledSelection() || this.activateOnClose() === "none") return;
+    const candidates = this.tabs().filter((candidate) => candidate !== tab && !candidate.disabled());
+    const next = this.activateOnClose() === "first"
+      ? candidates[0]
+      : this.activateOnClose() === "next"
+        ? this.tabs().slice(index + 1).find((candidate) => !candidate.disabled()) ?? candidates.at(-1)
+        : this.tabs().slice(0, index).filter((candidate) => !candidate.disabled()).at(-1) ?? candidates[0];
+    this.value.set(next?.value() ?? null);
   }
   key(event: KeyboardEvent, index: number): void {
     const previous =

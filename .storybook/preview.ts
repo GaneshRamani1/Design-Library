@@ -47,6 +47,7 @@ const preview: Preview = {
         "Variations",
         "Events",
         "Appearance",
+        "Recipes",
         "Playground",
       ];
       const steps = journey.includes(section)
@@ -92,6 +93,7 @@ const preview: Preview = {
           "Variations",
           "Events",
           "Appearance",
+          "Recipes",
           "Playground",
         ];
         const left = a.title.split("/"),

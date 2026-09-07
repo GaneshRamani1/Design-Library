@@ -16,8 +16,9 @@ import { IconComponent } from "../icons/icon.component";
   host: {
     "[attr.aria-label]": "label()",
     "[class.extended]": "extended()",
+    "[class.collapse-mobile]": "collapseOnMobile()",
     "[style.position]": "placement()==='inline'?'relative':'fixed'",
-    "[style.bottom]": "placement()==='inline'?null:offset()",
+    "[style.bottom]": "placement()==='inline'?null:bottomOffset()",
     "[style.right]": "placement()==='bottom-right'?offset():null",
     "[style.left]": "placement()==='bottom-left'?offset():null",
     "[style.z-index]": "zIndex()",
@@ -47,6 +48,7 @@ import { IconComponent } from "../icons/icon.component";
       :host(.extended) {
         padding-inline: var(--dl-ui-padding, 24px);
       }
+      @media(max-width:600px){:host(.collapse-mobile) span{display:none}:host(.collapse-mobile){padding-inline:var(--dl-ui-padding,16px)}}
     `,
   ],
 })
@@ -59,4 +61,9 @@ export class FabButtonComponent extends ButtonComponent {
   );
   readonly offset = input("24px");
   readonly zIndex = input(100);
+  readonly safeArea = input(true);
+  readonly collapseOnMobile = input(false);
+  bottomOffset(): string {
+    return this.safeArea() ? `calc(${this.offset()} + env(safe-area-inset-bottom, 0px))` : this.offset();
+  }
 }

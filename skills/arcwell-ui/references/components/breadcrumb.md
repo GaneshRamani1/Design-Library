@@ -52,6 +52,7 @@ No content projection slots declared.
 
 ## Public instance state and methods
 
+- `structuredData()` — { "@context": string; "@type": string; itemListElement: { item?: string | undefined; "@type": string; position: number; name: string; }[]; }
 - `entries()` — { item: BreadcrumbItem; index: number; }[]
 - `expand(): void`
 

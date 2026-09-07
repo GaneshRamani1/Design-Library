@@ -20,12 +20,14 @@
       "dismissible",
       "dismissLabel",
       "actionLabel",
+      "secondaryActionLabel",
       "role",
       "live"
     ],
     "events": [
       "dismissed",
       "action",
+      "secondaryAction",
       "visibleChange"
     ],
     "stories": [
@@ -308,6 +310,15 @@
         "id": "feedback-alert-configuration--action-label"
       },
       {
+        "prop": "secondaryActionLabel",
+        "story": "SecondaryActionLabel",
+        "value": "Custom secondaryActionLabel",
+        "title": "Feedback/Alert/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the secondary action action. Here it is set to “Custom secondaryActionLabel”.",
+        "id": "feedback-alert-configuration--secondary-action-label"
+      },
+      {
         "prop": "role",
         "story": "RoleAuto",
         "value": "auto",
@@ -477,6 +488,14 @@
         "id": "feedback-alert-events--event-action"
       },
       {
+        "prop": "event.secondaryAction",
+        "story": "EventSecondaryAction",
+        "title": "Feedback/Alert/Events",
+        "group": "Events",
+        "description": "Try the alert below and inspect secondaryAction in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "feedback-alert-events--event-secondary-action"
+      },
+      {
         "prop": "event.visibleChange",
         "story": "EventVisibleChange",
         "title": "Feedback/Alert/Events",
@@ -497,10 +516,21 @@
       "shape",
       "showBorder",
       "status",
+      "groupIndex",
+      "overlap",
+      "reverseStack",
+      "excessCount",
+      "excessLabel",
+      "maxExcess",
+      "interactive",
       "name",
       "size"
     ],
-    "events": [],
+    "events": [
+      "imageLoaded",
+      "imageFailed",
+      "activated"
+    ],
     "stories": [
       {
         "prop": "appearance",
@@ -637,6 +667,87 @@
         "id": "data-display-avatar-configuration--status-away"
       },
       {
+        "prop": "groupIndex",
+        "story": "GroupIndex",
+        "value": 8,
+        "title": "Data display/Avatar/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the group index setting on this avatar. Here it is set to “8”.",
+        "id": "data-display-avatar-configuration--group-index"
+      },
+      {
+        "prop": "overlap",
+        "story": "Overlap",
+        "value": "Custom overlap",
+        "title": "Data display/Avatar/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the overlap setting on this avatar. Here it is set to “Custom overlap”.",
+        "id": "data-display-avatar-configuration--overlap"
+      },
+      {
+        "prop": "reverseStack",
+        "story": "ReverseStackFalse",
+        "value": false,
+        "title": "Data display/Avatar/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the reverse stack setting on this avatar. This example has it turned off.",
+        "id": "data-display-avatar-configuration--reverse-stack-false"
+      },
+      {
+        "prop": "reverseStack",
+        "story": "ReverseStackTrue",
+        "value": true,
+        "title": "Data display/Avatar/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the reverse stack setting on this avatar. This example has it turned on.",
+        "id": "data-display-avatar-configuration--reverse-stack-true"
+      },
+      {
+        "prop": "excessCount",
+        "story": "ExcessCount",
+        "value": 8,
+        "title": "Data display/Avatar/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the excess count setting on this avatar. Here it is set to “8”.",
+        "id": "data-display-avatar-configuration--excess-count"
+      },
+      {
+        "prop": "excessLabel",
+        "story": "ExcessLabel",
+        "value": "Custom excessLabel",
+        "title": "Data display/Avatar/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the excess action. Here it is set to “Custom excessLabel”.",
+        "id": "data-display-avatar-configuration--excess-label"
+      },
+      {
+        "prop": "maxExcess",
+        "story": "MaxExcess",
+        "value": 107,
+        "title": "Data display/Avatar/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the max excess setting on this avatar. Here it is set to “107”.",
+        "id": "data-display-avatar-configuration--max-excess"
+      },
+      {
+        "prop": "interactive",
+        "story": "InteractiveFalse",
+        "value": false,
+        "title": "Data display/Avatar/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the interactive setting on this avatar. This example has it turned off.",
+        "id": "data-display-avatar-configuration--interactive-false"
+      },
+      {
+        "prop": "interactive",
+        "story": "InteractiveTrue",
+        "value": true,
+        "title": "Data display/Avatar/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the interactive setting on this avatar. This example has it turned on.",
+        "id": "data-display-avatar-configuration--interactive-true"
+      },
+      {
         "prop": "name",
         "story": "Name",
         "value": "Taylor Lee",
@@ -761,6 +872,30 @@
         "group": "Appearance",
         "description": "Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
         "id": "data-display-avatar-appearance--appearance-focus-color"
+      },
+      {
+        "prop": "event.imageLoaded",
+        "story": "EventImageLoaded",
+        "title": "Data display/Avatar/Events",
+        "group": "Events",
+        "description": "Try the avatar below and inspect imageLoaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-avatar-events--event-image-loaded"
+      },
+      {
+        "prop": "event.imageFailed",
+        "story": "EventImageFailed",
+        "title": "Data display/Avatar/Events",
+        "group": "Events",
+        "description": "Try the avatar below and inspect imageFailed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-avatar-events--event-image-failed"
+      },
+      {
+        "prop": "event.activated",
+        "story": "EventActivated",
+        "title": "Data display/Avatar/Events",
+        "group": "Events",
+        "description": "Try the avatar below and inspect activated in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-avatar-events--event-activated"
       }
     ]
   },
@@ -779,6 +914,10 @@
       "pill",
       "dot",
       "icon",
+      "value",
+      "max",
+      "overflowSuffix",
+      "accessibleLabel",
       "removable",
       "removeLabel",
       "visible"
@@ -995,6 +1134,42 @@
         "id": "data-display-badge-configuration--icon"
       },
       {
+        "prop": "value",
+        "story": "Value",
+        "value": 2,
+        "title": "Data display/Badge/Configuration",
+        "group": "Configuration",
+        "description": "Sets the selected or displayed value. Here it is set to “2”.",
+        "id": "data-display-badge-configuration--value"
+      },
+      {
+        "prop": "max",
+        "story": "Max",
+        "value": 10,
+        "title": "Data display/Badge/Configuration",
+        "group": "Configuration",
+        "description": "Sets the upper allowed bound. Here it is set to “10”.",
+        "id": "data-display-badge-configuration--max"
+      },
+      {
+        "prop": "overflowSuffix",
+        "story": "OverflowSuffix",
+        "value": "Custom overflowSuffix",
+        "title": "Data display/Badge/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the overflow suffix setting on this badge. Here it is set to “Custom overflowSuffix”.",
+        "id": "data-display-badge-configuration--overflow-suffix"
+      },
+      {
+        "prop": "accessibleLabel",
+        "story": "AccessibleLabel",
+        "value": "Custom accessibleLabel",
+        "title": "Data display/Badge/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the accessible action. Here it is set to “Custom accessibleLabel”.",
+        "id": "data-display-badge-configuration--accessible-label"
+      },
+      {
         "prop": "removable",
         "story": "RemovableFalse",
         "value": false,
@@ -1161,6 +1336,7 @@
       "size",
       "disabled",
       "loading",
+      "loadingMinWidth",
       "type"
     ],
     "events": [],
@@ -1354,6 +1530,15 @@
         "id": "actions-button-configuration--loading-true"
       },
       {
+        "prop": "loadingMinWidth",
+        "story": "LoadingMinWidth",
+        "value": "Custom loadingMinWidth",
+        "title": "Actions/Button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the loading min width setting on this button. Here it is set to “Custom loadingMinWidth”.",
+        "id": "actions-button-configuration--loading-min-width"
+      },
+      {
         "prop": "type",
         "story": "TypeButton",
         "value": "button",
@@ -1483,9 +1668,19 @@
       "headingLevel",
       "surface",
       "heading",
-      "description"
+      "description",
+      "role",
+      "interactive",
+      "disabled",
+      "loading",
+      "loadingLabel",
+      "error",
+      "empty",
+      "emptyText"
     ],
-    "events": [],
+    "events": [
+      "activated"
+    ],
     "stories": [
       {
         "prop": "appearance",
@@ -1622,6 +1817,114 @@
         "id": "layout-card-configuration--custom-content"
       },
       {
+        "prop": "role",
+        "story": "Default",
+        "value": "Custom role",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Changes the semantic role exposed to assistive technology. Here it is set to “Custom role”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "interactive",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the interactive setting on this card. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "interactive",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the interactive setting on this card. This example has it turned on.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "disabled",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Prevents user interaction. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "disabled",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Prevents user interaction. This example has it turned on.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "loading",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Shows the loading state. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "loading",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Shows the loading state. This example has it turned on.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "loadingLabel",
+        "story": "Default",
+        "value": "Working…",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the loading action. Here it is set to “Working…”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "error",
+        "story": "Default",
+        "value": "Please review this value.",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Displays an error message or error state. Here it is set to “Please review this value.”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "empty",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the empty setting on this card. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "empty",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the empty setting on this card. This example has it turned on.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "emptyText",
+        "story": "Default",
+        "value": "Custom emptyText",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the message when there are no items or matches. Here it is set to “Custom emptyText”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
         "prop": "appearance.padding",
         "story": "Padding",
         "value": "28px",
@@ -1710,6 +2013,14 @@
         "group": "Appearance",
         "description": "Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
         "id": "layout-card-appearance--focus-color"
+      },
+      {
+        "prop": "event.activated",
+        "story": "Default",
+        "title": "Layout/Card/Configuration",
+        "group": "Events",
+        "description": "Try the card below and inspect activated in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "layout-card-configuration--default"
       }
     ]
   },
@@ -1749,9 +2060,18 @@
       "maskCase",
       "maskDefinitions",
       "maskOptions",
-      "inputMode"
+      "inputMode",
+      "prefix",
+      "suffix",
+      "showClear",
+      "clearLabel",
+      "showPasswordToggle",
+      "passwordShowLabel",
+      "passwordHideLabel"
     ],
     "events": [
+      "cleared",
+      "passwordVisibilityChange",
       "maskAccept",
       "maskComplete",
       "valueChange"
@@ -2446,6 +2766,87 @@
         "id": "inputs-input-configuration--input-mode-none"
       },
       {
+        "prop": "prefix",
+        "story": "Prefix",
+        "value": "Custom prefix",
+        "title": "Inputs/Input/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the prefix setting on this input. Here it is set to “Custom prefix”.",
+        "id": "inputs-input-configuration--prefix"
+      },
+      {
+        "prop": "suffix",
+        "story": "Suffix",
+        "value": "Custom suffix",
+        "title": "Inputs/Input/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the suffix setting on this input. Here it is set to “Custom suffix”.",
+        "id": "inputs-input-configuration--suffix"
+      },
+      {
+        "prop": "showClear",
+        "story": "ShowClearFalse",
+        "value": false,
+        "title": "Inputs/Input/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether clear are shown. This example has it turned off.",
+        "id": "inputs-input-configuration--show-clear-false"
+      },
+      {
+        "prop": "showClear",
+        "story": "ShowClearTrue",
+        "value": true,
+        "title": "Inputs/Input/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether clear are shown. This example has it turned on.",
+        "id": "inputs-input-configuration--show-clear-true"
+      },
+      {
+        "prop": "clearLabel",
+        "story": "ClearLabel",
+        "value": "Custom clearLabel",
+        "title": "Inputs/Input/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the clear action. Here it is set to “Custom clearLabel”.",
+        "id": "inputs-input-configuration--clear-label"
+      },
+      {
+        "prop": "showPasswordToggle",
+        "story": "ShowPasswordToggleFalse",
+        "value": false,
+        "title": "Inputs/Input/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether password toggle are shown. This example has it turned off.",
+        "id": "inputs-input-configuration--show-password-toggle-false"
+      },
+      {
+        "prop": "showPasswordToggle",
+        "story": "ShowPasswordToggleTrue",
+        "value": true,
+        "title": "Inputs/Input/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether password toggle are shown. This example has it turned on.",
+        "id": "inputs-input-configuration--show-password-toggle-true"
+      },
+      {
+        "prop": "passwordShowLabel",
+        "story": "PasswordShowLabel",
+        "value": "Custom passwordShowLabel",
+        "title": "Inputs/Input/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the password show action. Here it is set to “Custom passwordShowLabel”.",
+        "id": "inputs-input-configuration--password-show-label"
+      },
+      {
+        "prop": "passwordHideLabel",
+        "story": "PasswordHideLabel",
+        "value": "Custom passwordHideLabel",
+        "title": "Inputs/Input/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the password hide action. Here it is set to “Custom passwordHideLabel”.",
+        "id": "inputs-input-configuration--password-hide-label"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -2536,6 +2937,22 @@
         "id": "inputs-input-appearance--appearance-focus-color"
       },
       {
+        "prop": "event.cleared",
+        "story": "EventCleared",
+        "title": "Inputs/Input/Events",
+        "group": "Events",
+        "description": "Try the input below and inspect cleared in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-input-events--event-cleared"
+      },
+      {
+        "prop": "event.passwordVisibilityChange",
+        "story": "EventPasswordVisibilityChange",
+        "title": "Inputs/Input/Events",
+        "group": "Events",
+        "description": "Try the input below and inspect passwordVisibilityChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-input-events--event-password-visibility-change"
+      },
+      {
         "prop": "event.maskAccept",
         "story": "EventMaskAccept",
         "title": "Inputs/Input/Events",
@@ -2577,9 +2994,14 @@
       "height",
       "trackColor",
       "barColor",
-      "valueLabel"
+      "valueLabel",
+      "variant",
+      "segments",
+      "circleSize"
     ],
-    "events": [],
+    "events": [
+      "completed"
+    ],
     "stories": [
       {
         "prop": "appearance",
@@ -2734,6 +3156,42 @@
         "id": "feedback-progress-configuration--value-label"
       },
       {
+        "prop": "variant",
+        "story": "VariantLinear",
+        "value": "linear",
+        "title": "Feedback/Progress/Variations",
+        "group": "Variations",
+        "description": "Changes the visual treatment. Here it is set to “linear”.",
+        "id": "feedback-progress-variations--variant-linear"
+      },
+      {
+        "prop": "variant",
+        "story": "VariantCircular",
+        "value": "circular",
+        "title": "Feedback/Progress/Variations",
+        "group": "Variations",
+        "description": "Changes the visual treatment. Here it is set to “circular”.",
+        "id": "feedback-progress-variations--variant-circular"
+      },
+      {
+        "prop": "segments",
+        "story": "Segments",
+        "value": 9,
+        "title": "Feedback/Progress/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the segments setting on this progress. Here it is set to “9”.",
+        "id": "feedback-progress-configuration--segments"
+      },
+      {
+        "prop": "circleSize",
+        "story": "CircleSize",
+        "value": "Custom circleSize",
+        "title": "Feedback/Progress/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the circle size setting on this progress. Here it is set to “Custom circleSize”.",
+        "id": "feedback-progress-configuration--circle-size"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -2822,6 +3280,14 @@
         "group": "Appearance",
         "description": "Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
         "id": "feedback-progress-appearance--appearance-focus-color"
+      },
+      {
+        "prop": "event.completed",
+        "story": "EventCompleted",
+        "title": "Feedback/Progress/Events",
+        "group": "Events",
+        "description": "Try the progress below and inspect completed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "feedback-progress-events--event-completed"
       }
     ]
   },
@@ -3081,13 +3547,16 @@
       "size",
       "disabled",
       "loading",
+      "loadingMinWidth",
       "type",
       "label",
       "extended",
       "iconSize",
       "placement",
       "offset",
-      "zIndex"
+      "zIndex",
+      "safeArea",
+      "collapseOnMobile"
     ],
     "events": [],
     "stories": [
@@ -3280,6 +3749,15 @@
         "id": "actions-fab-button-configuration--loading-true"
       },
       {
+        "prop": "loadingMinWidth",
+        "story": "LoadingMinWidth",
+        "value": "Custom loadingMinWidth",
+        "title": "Actions/FAB button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the loading min width setting on this fab button. Here it is set to “Custom loadingMinWidth”.",
+        "id": "actions-fab-button-configuration--loading-min-width"
+      },
+      {
         "prop": "type",
         "story": "TypeButton",
         "value": "button",
@@ -3388,6 +3866,42 @@
         "id": "actions-fab-button-configuration--z-index"
       },
       {
+        "prop": "safeArea",
+        "story": "SafeAreaFalse",
+        "value": false,
+        "title": "Actions/FAB button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the safe area setting on this fab button. This example has it turned off.",
+        "id": "actions-fab-button-configuration--safe-area-false"
+      },
+      {
+        "prop": "safeArea",
+        "story": "SafeAreaTrue",
+        "value": true,
+        "title": "Actions/FAB button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the safe area setting on this fab button. This example has it turned on.",
+        "id": "actions-fab-button-configuration--safe-area-true"
+      },
+      {
+        "prop": "collapseOnMobile",
+        "story": "CollapseOnMobileFalse",
+        "value": false,
+        "title": "Actions/FAB button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the collapse on mobile setting on this fab button. This example has it turned off.",
+        "id": "actions-fab-button-configuration--collapse-on-mobile-false"
+      },
+      {
+        "prop": "collapseOnMobile",
+        "story": "CollapseOnMobileTrue",
+        "value": true,
+        "title": "Actions/FAB button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the collapse on mobile setting on this fab button. This example has it turned on.",
+        "id": "actions-fab-button-configuration--collapse-on-mobile-true"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -3493,6 +4007,7 @@
       "size",
       "disabled",
       "loading",
+      "loadingMinWidth",
       "type",
       "label",
       "iconSize",
@@ -3500,7 +4015,9 @@
       "shape",
       "pressed"
     ],
-    "events": [],
+    "events": [
+      "pressedChange"
+    ],
     "stories": [
       {
         "prop": "appearance",
@@ -3689,6 +4206,15 @@
         "group": "Configuration",
         "description": "Shows the loading state. This example has it turned on.",
         "id": "actions-icon-button-configuration--loading-true"
+      },
+      {
+        "prop": "loadingMinWidth",
+        "story": "LoadingMinWidth",
+        "value": "Custom loadingMinWidth",
+        "title": "Actions/Icon button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the loading min width setting on this icon button. Here it is set to “Custom loadingMinWidth”.",
+        "id": "actions-icon-button-configuration--loading-min-width"
       },
       {
         "prop": "type",
@@ -3887,6 +4413,14 @@
         "group": "Appearance",
         "description": "Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
         "id": "actions-icon-button-appearance--appearance-focus-color"
+      },
+      {
+        "prop": "event.pressedChange",
+        "story": "EventPressedChange",
+        "title": "Actions/Icon button/Events",
+        "group": "Events",
+        "description": "Try the icon button below and inspect pressedChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "actions-icon-button-events--event-pressed-change"
       }
     ]
   },
@@ -3896,6 +4430,7 @@
     "inputs": [
       "appearance",
       "styleTokens",
+      "decorative",
       "orientation",
       "label",
       "thickness",
@@ -3931,6 +4466,24 @@
         "group": "Appearance",
         "description": "Overrides CSS theme tokens for this instance and its descendants.",
         "id": "layout-divider-appearance--style-tokens"
+      },
+      {
+        "prop": "decorative",
+        "story": "DecorativeFalse",
+        "value": false,
+        "title": "Layout/Divider/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the decorative setting on this divider. This example has it turned off.",
+        "id": "layout-divider-configuration--decorative-false"
+      },
+      {
+        "prop": "decorative",
+        "story": "DecorativeTrue",
+        "value": true,
+        "title": "Layout/Divider/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the decorative setting on this divider. This example has it turned on.",
+        "id": "layout-divider-configuration--decorative-true"
       },
       {
         "prop": "orientation",
@@ -4124,6 +4677,7 @@
       "items",
       "interactive",
       "selected",
+      "selectionMode",
       "disabled",
       "density",
       "dividers",
@@ -4132,10 +4686,17 @@
       "showDescriptions",
       "showMeta",
       "showChevron",
-      "emptyText"
+      "emptyText",
+      "itemTemplate",
+      "nestedIndent",
+      "expandOnActivate",
+      "expandedIds"
     ],
     "events": [
-      "itemClick"
+      "itemClick",
+      "expandedChange",
+      "selectedChange",
+      "expandedIdsChange"
     ],
     "stories": [
       {
@@ -4220,6 +4781,33 @@
         "group": "Configuration",
         "description": "Controls which item is selected. Here it is set to “Custom selected”.",
         "id": "data-display-list-configuration--selected"
+      },
+      {
+        "prop": "selectionMode",
+        "story": "SelectionModeNone",
+        "value": "none",
+        "title": "Data display/List/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the selection mode setting on this list. Here it is set to “none”.",
+        "id": "data-display-list-configuration--selection-mode-none"
+      },
+      {
+        "prop": "selectionMode",
+        "story": "SelectionModeSingle",
+        "value": "single",
+        "title": "Data display/List/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the selection mode setting on this list. Here it is set to “single”.",
+        "id": "data-display-list-configuration--selection-mode-single"
+      },
+      {
+        "prop": "selectionMode",
+        "story": "SelectionModeMultiple",
+        "value": "multiple",
+        "title": "Data display/List/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the selection mode setting on this list. Here it is set to “multiple”.",
+        "id": "data-display-list-configuration--selection-mode-multiple"
       },
       {
         "prop": "disabled",
@@ -4375,6 +4963,53 @@
         "id": "data-display-list-configuration--empty-text"
       },
       {
+        "prop": "itemTemplate",
+        "story": "ItemTemplate",
+        "value": null,
+        "title": "Data display/List/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the item template setting on this list.",
+        "id": "data-display-list-configuration--item-template"
+      },
+      {
+        "prop": "nestedIndent",
+        "story": "NestedIndent",
+        "value": 32,
+        "title": "Data display/List/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the nested indent setting on this list. Here it is set to “32”.",
+        "id": "data-display-list-configuration--nested-indent"
+      },
+      {
+        "prop": "expandOnActivate",
+        "story": "ExpandOnActivateFalse",
+        "value": false,
+        "title": "Data display/List/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the expand on activate setting on this list. This example has it turned off.",
+        "id": "data-display-list-configuration--expand-on-activate-false"
+      },
+      {
+        "prop": "expandOnActivate",
+        "story": "ExpandOnActivateTrue",
+        "value": true,
+        "title": "Data display/List/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the expand on activate setting on this list. This example has it turned on.",
+        "id": "data-display-list-configuration--expand-on-activate-true"
+      },
+      {
+        "prop": "expandedIds",
+        "story": "ExpandedIds",
+        "value": [
+          "one"
+        ],
+        "title": "Data display/List/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the expanded ids setting on this list.",
+        "id": "data-display-list-configuration--expanded-ids"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -4471,6 +5106,30 @@
         "group": "Events",
         "description": "Try the list below and inspect itemClick in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "data-display-list-events--event-item-click"
+      },
+      {
+        "prop": "event.expandedChange",
+        "story": "EventExpandedChange",
+        "title": "Data display/List/Events",
+        "group": "Events",
+        "description": "Try the list below and inspect expandedChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-list-events--event-expanded-change"
+      },
+      {
+        "prop": "event.selectedChange",
+        "story": "EventSelectedChange",
+        "title": "Data display/List/Events",
+        "group": "Events",
+        "description": "Try the list below and inspect selectedChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-list-events--event-selected-change"
+      },
+      {
+        "prop": "event.expandedIdsChange",
+        "story": "EventExpandedIdsChange",
+        "title": "Data display/List/Events",
+        "group": "Events",
+        "description": "Try the list below and inspect expandedIdsChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-list-events--event-expanded-ids-change"
       }
     ]
   },
@@ -4487,6 +5146,7 @@
       "customColor",
       "customBorder",
       "showHeader",
+      "showDefaultHeader",
       "label",
       "description",
       "value",
@@ -4497,6 +5157,7 @@
       "valueSize",
       "valueColor",
       "showValue",
+      "showDefaultValue",
       "icon",
       "iconSize",
       "showIcon",
@@ -4511,6 +5172,7 @@
       "showTrend",
       "series",
       "showChart",
+      "showDefaultChart",
       "chartLabel",
       "chartHeight",
       "chartColor",
@@ -4521,7 +5183,9 @@
       "progressLabel",
       "loading",
       "loadingLabel",
+      "showDefaultLoading",
       "error",
+      "showDefaultError",
       "showFooter",
       "footerText",
       "actionLabel",
@@ -4713,6 +5377,24 @@
         "id": "data-display-tiles-configuration--show-header-true"
       },
       {
+        "prop": "showDefaultHeader",
+        "story": "ShowDefaultHeaderFalse",
+        "value": false,
+        "title": "Data display/Tiles/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether default header are shown. This example has it turned off.",
+        "id": "data-display-tiles-configuration--show-default-header-false"
+      },
+      {
+        "prop": "showDefaultHeader",
+        "story": "ShowDefaultHeaderTrue",
+        "value": true,
+        "title": "Data display/Tiles/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether default header are shown. This example has it turned on.",
+        "id": "data-display-tiles-configuration--show-default-header-true"
+      },
+      {
         "prop": "label",
         "story": "Label",
         "value": "Custom label",
@@ -4810,6 +5492,24 @@
         "group": "Configuration",
         "description": "Controls whether value are shown. This example has it turned on.",
         "id": "data-display-tiles-configuration--show-value-true"
+      },
+      {
+        "prop": "showDefaultValue",
+        "story": "ShowDefaultValueFalse",
+        "value": false,
+        "title": "Data display/Tiles/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether default value are shown. This example has it turned off.",
+        "id": "data-display-tiles-configuration--show-default-value-false"
+      },
+      {
+        "prop": "showDefaultValue",
+        "story": "ShowDefaultValueTrue",
+        "value": true,
+        "title": "Data display/Tiles/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether default value are shown. This example has it turned on.",
+        "id": "data-display-tiles-configuration--show-default-value-true"
       },
       {
         "prop": "icon",
@@ -5027,6 +5727,24 @@
         "id": "data-display-tiles-configuration--show-chart-true"
       },
       {
+        "prop": "showDefaultChart",
+        "story": "ShowDefaultChartFalse",
+        "value": false,
+        "title": "Data display/Tiles/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether default chart are shown. This example has it turned off.",
+        "id": "data-display-tiles-configuration--show-default-chart-false"
+      },
+      {
+        "prop": "showDefaultChart",
+        "story": "ShowDefaultChartTrue",
+        "value": true,
+        "title": "Data display/Tiles/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether default chart are shown. This example has it turned on.",
+        "id": "data-display-tiles-configuration--show-default-chart-true"
+      },
+      {
         "prop": "chartLabel",
         "story": "ChartLabel",
         "value": "Custom chartLabel",
@@ -5144,6 +5862,24 @@
         "id": "data-display-tiles-configuration--loading-label"
       },
       {
+        "prop": "showDefaultLoading",
+        "story": "ShowDefaultLoadingFalse",
+        "value": false,
+        "title": "Data display/Tiles/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether default loading are shown. This example has it turned off.",
+        "id": "data-display-tiles-configuration--show-default-loading-false"
+      },
+      {
+        "prop": "showDefaultLoading",
+        "story": "ShowDefaultLoadingTrue",
+        "value": true,
+        "title": "Data display/Tiles/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether default loading are shown. This example has it turned on.",
+        "id": "data-display-tiles-configuration--show-default-loading-true"
+      },
+      {
         "prop": "error",
         "story": "Error",
         "value": "Please review this value.",
@@ -5151,6 +5887,24 @@
         "group": "Configuration",
         "description": "Displays an error message or error state. Here it is set to “Please review this value.”.",
         "id": "data-display-tiles-configuration--error"
+      },
+      {
+        "prop": "showDefaultError",
+        "story": "ShowDefaultErrorFalse",
+        "value": false,
+        "title": "Data display/Tiles/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether default error are shown. This example has it turned off.",
+        "id": "data-display-tiles-configuration--show-default-error-false"
+      },
+      {
+        "prop": "showDefaultError",
+        "story": "ShowDefaultErrorTrue",
+        "value": true,
+        "title": "Data display/Tiles/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether default error are shown. This example has it turned on.",
+        "id": "data-display-tiles-configuration--show-default-error-true"
       },
       {
         "prop": "showFooter",
@@ -5371,6 +6125,8 @@
       "dismissLabel",
       "actionLabel",
       "closeOnAction",
+      "secondaryActionLabel",
+      "closeOnSecondaryAction",
       "duration",
       "pauseOnHover",
       "showProgress",
@@ -5388,6 +6144,7 @@
     "events": [
       "dismissed",
       "action",
+      "secondaryAction",
       "visibleChange"
     ],
     "stories": [
@@ -5650,6 +6407,33 @@
         "group": "Configuration",
         "description": "Controls whether the notification closes after its action. This example has it turned on. Open the example and try the relevant pointer or keyboard action.",
         "id": "feedback-global-notification-configuration--close-on-action-true"
+      },
+      {
+        "prop": "secondaryActionLabel",
+        "story": "SecondaryActionLabel",
+        "value": "Custom secondaryActionLabel",
+        "title": "Feedback/Global notification/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the secondary action action. Here it is set to “Custom secondaryActionLabel”.",
+        "id": "feedback-global-notification-configuration--secondary-action-label"
+      },
+      {
+        "prop": "closeOnSecondaryAction",
+        "story": "CloseOnSecondaryActionFalse",
+        "value": false,
+        "title": "Feedback/Global notification/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the close on secondary action setting on this global notification. This example has it turned off. Open the example and try the relevant pointer or keyboard action.",
+        "id": "feedback-global-notification-configuration--close-on-secondary-action-false"
+      },
+      {
+        "prop": "closeOnSecondaryAction",
+        "story": "CloseOnSecondaryActionTrue",
+        "value": true,
+        "title": "Feedback/Global notification/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the close on secondary action setting on this global notification. This example has it turned on. Open the example and try the relevant pointer or keyboard action.",
+        "id": "feedback-global-notification-configuration--close-on-secondary-action-true"
       },
       {
         "prop": "duration",
@@ -5974,6 +6758,14 @@
         "id": "feedback-global-notification-events--event-action"
       },
       {
+        "prop": "event.secondaryAction",
+        "story": "EventSecondaryAction",
+        "title": "Feedback/Global notification/Events",
+        "group": "Events",
+        "description": "Try the global notification below and inspect secondaryAction in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "feedback-global-notification-events--event-secondary-action"
+      },
+      {
         "prop": "event.visibleChange",
         "story": "EventVisibleChange",
         "title": "Feedback/Global notification/Events",
@@ -6003,6 +6795,8 @@
       "dismissLabel",
       "actionLabel",
       "closeOnAction",
+      "secondaryActionLabel",
+      "closeOnSecondaryAction",
       "duration",
       "pauseOnHover",
       "showProgress",
@@ -6015,6 +6809,7 @@
     "events": [
       "dismissed",
       "action",
+      "secondaryAction",
       "visibleChange"
     ],
     "stories": [
@@ -6279,6 +7074,33 @@
         "id": "feedback-inline-notification-configuration--close-on-action-true"
       },
       {
+        "prop": "secondaryActionLabel",
+        "story": "SecondaryActionLabel",
+        "value": "Custom secondaryActionLabel",
+        "title": "Feedback/Inline notification/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the secondary action action. Here it is set to “Custom secondaryActionLabel”.",
+        "id": "feedback-inline-notification-configuration--secondary-action-label"
+      },
+      {
+        "prop": "closeOnSecondaryAction",
+        "story": "CloseOnSecondaryActionFalse",
+        "value": false,
+        "title": "Feedback/Inline notification/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the close on secondary action setting on this inline notification. This example has it turned off. Open the example and try the relevant pointer or keyboard action.",
+        "id": "feedback-inline-notification-configuration--close-on-secondary-action-false"
+      },
+      {
+        "prop": "closeOnSecondaryAction",
+        "story": "CloseOnSecondaryActionTrue",
+        "value": true,
+        "title": "Feedback/Inline notification/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the close on secondary action setting on this inline notification. This example has it turned on. Open the example and try the relevant pointer or keyboard action.",
+        "id": "feedback-inline-notification-configuration--close-on-secondary-action-true"
+      },
+      {
         "prop": "duration",
         "story": "Duration0",
         "value": 0,
@@ -6529,6 +7351,14 @@
         "id": "feedback-inline-notification-events--event-action"
       },
       {
+        "prop": "event.secondaryAction",
+        "story": "EventSecondaryAction",
+        "title": "Feedback/Inline notification/Events",
+        "group": "Events",
+        "description": "Try the inline notification below and inspect secondaryAction in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "feedback-inline-notification-events--event-secondary-action"
+      },
+      {
         "prop": "event.visibleChange",
         "story": "EventVisibleChange",
         "title": "Feedback/Inline notification/Events",
@@ -6556,7 +7386,9 @@
       "animation",
       "color"
     ],
-    "events": [],
+    "events": [
+      "loaded"
+    ],
     "stories": [
       {
         "prop": "appearance",
@@ -6817,6 +7649,14 @@
         "group": "Appearance",
         "description": "Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
         "id": "feedback-loading-skeleton-appearance--appearance-focus-color"
+      },
+      {
+        "prop": "event.loaded",
+        "story": "EventLoaded",
+        "title": "Feedback/Loading skeleton/Events",
+        "group": "Events",
+        "description": "Try the loading skeleton below and inspect loaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "feedback-loading-skeleton-events--event-loaded"
       }
     ]
   },
@@ -6840,6 +7680,8 @@
       "dismissLabel",
       "actionLabel",
       "closeOnAction",
+      "secondaryActionLabel",
+      "closeOnSecondaryAction",
       "duration",
       "pauseOnHover",
       "showProgress",
@@ -6849,6 +7691,7 @@
     "events": [
       "dismissed",
       "action",
+      "secondaryAction",
       "visibleChange"
     ],
     "stories": [
@@ -7113,6 +7956,33 @@
         "id": "feedback-snackbar-configuration--close-on-action-true"
       },
       {
+        "prop": "secondaryActionLabel",
+        "story": "SecondaryActionLabel",
+        "value": "Custom secondaryActionLabel",
+        "title": "Feedback/Snackbar/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the secondary action action. Here it is set to “Custom secondaryActionLabel”.",
+        "id": "feedback-snackbar-configuration--secondary-action-label"
+      },
+      {
+        "prop": "closeOnSecondaryAction",
+        "story": "CloseOnSecondaryActionFalse",
+        "value": false,
+        "title": "Feedback/Snackbar/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the close on secondary action setting on this snackbar. This example has it turned off. Open the example and try the relevant pointer or keyboard action.",
+        "id": "feedback-snackbar-configuration--close-on-secondary-action-false"
+      },
+      {
+        "prop": "closeOnSecondaryAction",
+        "story": "CloseOnSecondaryActionTrue",
+        "value": true,
+        "title": "Feedback/Snackbar/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the close on secondary action setting on this snackbar. This example has it turned on. Open the example and try the relevant pointer or keyboard action.",
+        "id": "feedback-snackbar-configuration--close-on-secondary-action-true"
+      },
+      {
         "prop": "duration",
         "story": "Duration0",
         "value": 0,
@@ -7327,6 +8197,14 @@
         "id": "feedback-snackbar-events--event-action"
       },
       {
+        "prop": "event.secondaryAction",
+        "story": "EventSecondaryAction",
+        "title": "Feedback/Snackbar/Events",
+        "group": "Events",
+        "description": "Try the snackbar below and inspect secondaryAction in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "feedback-snackbar-events--event-secondary-action"
+      },
+      {
         "prop": "event.visibleChange",
         "story": "EventVisibleChange",
         "title": "Feedback/Snackbar/Events",
@@ -7356,6 +8234,8 @@
       "dismissLabel",
       "actionLabel",
       "closeOnAction",
+      "secondaryActionLabel",
+      "closeOnSecondaryAction",
       "duration",
       "pauseOnHover",
       "showProgress",
@@ -7365,6 +8245,7 @@
     "events": [
       "dismissed",
       "action",
+      "secondaryAction",
       "visibleChange"
     ],
     "stories": [
@@ -7629,6 +8510,33 @@
         "id": "feedback-toast-configuration--close-on-action-true"
       },
       {
+        "prop": "secondaryActionLabel",
+        "story": "SecondaryActionLabel",
+        "value": "Custom secondaryActionLabel",
+        "title": "Feedback/Toast/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the secondary action action. Here it is set to “Custom secondaryActionLabel”.",
+        "id": "feedback-toast-configuration--secondary-action-label"
+      },
+      {
+        "prop": "closeOnSecondaryAction",
+        "story": "CloseOnSecondaryActionFalse",
+        "value": false,
+        "title": "Feedback/Toast/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the close on secondary action setting on this toast. This example has it turned off. Open the example and try the relevant pointer or keyboard action.",
+        "id": "feedback-toast-configuration--close-on-secondary-action-false"
+      },
+      {
+        "prop": "closeOnSecondaryAction",
+        "story": "CloseOnSecondaryActionTrue",
+        "value": true,
+        "title": "Feedback/Toast/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the close on secondary action setting on this toast. This example has it turned on. Open the example and try the relevant pointer or keyboard action.",
+        "id": "feedback-toast-configuration--close-on-secondary-action-true"
+      },
+      {
         "prop": "duration",
         "story": "Duration0",
         "value": 0,
@@ -7841,6 +8749,14 @@
         "group": "Events",
         "description": "Try the toast below and inspect action in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "feedback-toast-events--event-action"
+      },
+      {
+        "prop": "event.secondaryAction",
+        "story": "EventSecondaryAction",
+        "title": "Feedback/Toast/Events",
+        "group": "Events",
+        "description": "Try the toast below and inspect secondaryAction in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "feedback-toast-events--event-secondary-action"
       },
       {
         "prop": "event.visibleChange",
@@ -8186,10 +9102,13 @@
       "stretch",
       "indeterminate",
       "description",
-      "labelPosition"
+      "labelPosition",
+      "checkedCount",
+      "totalCount"
     ],
     "events": [
       "valueChange",
+      "cascade",
       "indeterminateChange"
     ],
     "stories": [
@@ -8382,6 +9301,24 @@
         "id": "inputs-checkbox-configuration--label-position-end"
       },
       {
+        "prop": "checkedCount",
+        "story": "CheckedCount",
+        "value": null,
+        "title": "Inputs/Checkbox/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the checked count setting on this checkbox.",
+        "id": "inputs-checkbox-configuration--checked-count"
+      },
+      {
+        "prop": "totalCount",
+        "story": "TotalCount",
+        "value": null,
+        "title": "Inputs/Checkbox/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the total count setting on this checkbox.",
+        "id": "inputs-checkbox-configuration--total-count"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -8480,6 +9417,14 @@
         "id": "inputs-checkbox-events--event-value-change"
       },
       {
+        "prop": "event.cascade",
+        "story": "EventCascade",
+        "title": "Inputs/Checkbox/Events",
+        "group": "Events",
+        "description": "Try the checkbox below and inspect cascade in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-checkbox-events--event-cascade"
+      },
+      {
         "prop": "event.indeterminateChange",
         "story": "EventIndeterminateChange",
         "title": "Inputs/Checkbox/Events",
@@ -8508,11 +9453,22 @@
       "multiple",
       "removable",
       "removeLabel",
-      "emptyText"
+      "emptyText",
+      "maxVisible",
+      "overflowLabel",
+      "allowCreate",
+      "createPlaceholder",
+      "createInputLabel",
+      "createLabel",
+      "reorderable",
+      "moveBeforeLabel",
+      "moveAfterLabel"
     ],
     "events": [
       "valueChange",
-      "removed"
+      "removed",
+      "created",
+      "reordered"
     ],
     "stories": [
       {
@@ -8755,6 +9711,105 @@
         "id": "inputs-chips-configuration--empty-text"
       },
       {
+        "prop": "maxVisible",
+        "story": "MaxVisible",
+        "value": null,
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the max visible setting on this chips.",
+        "id": "inputs-chips-configuration--max-visible"
+      },
+      {
+        "prop": "overflowLabel",
+        "story": "OverflowLabel",
+        "value": "Custom overflowLabel",
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the overflow action. Here it is set to “Custom overflowLabel”.",
+        "id": "inputs-chips-configuration--overflow-label"
+      },
+      {
+        "prop": "allowCreate",
+        "story": "AllowCreateFalse",
+        "value": false,
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the allow create setting on this chips. This example has it turned off.",
+        "id": "inputs-chips-configuration--allow-create-false"
+      },
+      {
+        "prop": "allowCreate",
+        "story": "AllowCreateTrue",
+        "value": true,
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the allow create setting on this chips. This example has it turned on.",
+        "id": "inputs-chips-configuration--allow-create-true"
+      },
+      {
+        "prop": "createPlaceholder",
+        "story": "CreatePlaceholder",
+        "value": "Custom createPlaceholder",
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the create placeholder setting on this chips. Here it is set to “Custom createPlaceholder”.",
+        "id": "inputs-chips-configuration--create-placeholder"
+      },
+      {
+        "prop": "createInputLabel",
+        "story": "CreateInputLabel",
+        "value": "Custom createInputLabel",
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the create input action. Here it is set to “Custom createInputLabel”.",
+        "id": "inputs-chips-configuration--create-input-label"
+      },
+      {
+        "prop": "createLabel",
+        "story": "CreateLabel",
+        "value": "Custom createLabel",
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the create action. Here it is set to “Custom createLabel”.",
+        "id": "inputs-chips-configuration--create-label"
+      },
+      {
+        "prop": "reorderable",
+        "story": "ReorderableFalse",
+        "value": false,
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the reorderable setting on this chips. This example has it turned off.",
+        "id": "inputs-chips-configuration--reorderable-false"
+      },
+      {
+        "prop": "reorderable",
+        "story": "ReorderableTrue",
+        "value": true,
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the reorderable setting on this chips. This example has it turned on.",
+        "id": "inputs-chips-configuration--reorderable-true"
+      },
+      {
+        "prop": "moveBeforeLabel",
+        "story": "MoveBeforeLabel",
+        "value": "Custom moveBeforeLabel",
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the move before action. Here it is set to “Custom moveBeforeLabel”.",
+        "id": "inputs-chips-configuration--move-before-label"
+      },
+      {
+        "prop": "moveAfterLabel",
+        "story": "MoveAfterLabel",
+        "value": "Custom moveAfterLabel",
+        "title": "Inputs/Chips/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the move after action. Here it is set to “Custom moveAfterLabel”.",
+        "id": "inputs-chips-configuration--move-after-label"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -8859,6 +9914,22 @@
         "group": "Events",
         "description": "Try the chips below and inspect removed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "inputs-chips-events--event-removed"
+      },
+      {
+        "prop": "event.created",
+        "story": "EventCreated",
+        "title": "Inputs/Chips/Events",
+        "group": "Events",
+        "description": "Try the chips below and inspect created in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-chips-events--event-created"
+      },
+      {
+        "prop": "event.reordered",
+        "story": "EventReordered",
+        "title": "Inputs/Chips/Events",
+        "group": "Events",
+        "description": "Try the chips below and inspect reordered in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-chips-events--event-reordered"
       }
     ]
   },
@@ -9175,12 +10246,16 @@
       "incrementLabel",
       "decrementLabel",
       "incrementIcon",
-      "decrementIcon"
+      "decrementIcon",
+      "repeat",
+      "repeatDelay",
+      "repeatInterval"
     ],
     "events": [
       "valueChange",
       "incremented",
-      "decremented"
+      "decremented",
+      "limitReached"
     ],
     "stories": [
       {
@@ -9462,6 +10537,42 @@
         "id": "inputs-counter-button-configuration--decrement-icon"
       },
       {
+        "prop": "repeat",
+        "story": "RepeatFalse",
+        "value": false,
+        "title": "Inputs/Counter button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the repeat setting on this counter button. This example has it turned off.",
+        "id": "inputs-counter-button-configuration--repeat-false"
+      },
+      {
+        "prop": "repeat",
+        "story": "RepeatTrue",
+        "value": true,
+        "title": "Inputs/Counter button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the repeat setting on this counter button. This example has it turned on.",
+        "id": "inputs-counter-button-configuration--repeat-true"
+      },
+      {
+        "prop": "repeatDelay",
+        "story": "RepeatDelay",
+        "value": 458,
+        "title": "Inputs/Counter button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the repeat delay setting on this counter button. Here it is set to “458”.",
+        "id": "inputs-counter-button-configuration--repeat-delay"
+      },
+      {
+        "prop": "repeatInterval",
+        "story": "RepeatInterval",
+        "value": 98,
+        "title": "Inputs/Counter button/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the repeat interval setting on this counter button. Here it is set to “98”.",
+        "id": "inputs-counter-button-configuration--repeat-interval"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -9574,6 +10685,14 @@
         "group": "Events",
         "description": "Try the counter button below and inspect decremented in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "inputs-counter-button-events--event-decremented"
+      },
+      {
+        "prop": "event.limitReached",
+        "story": "EventLimitReached",
+        "title": "Inputs/Counter button/Events",
+        "group": "Events",
+        "description": "Try the counter button below and inspect limitReached in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-counter-button-events--event-limit-reached"
       }
     ]
   },
@@ -9600,10 +10719,14 @@
       "incrementLabel",
       "decrementLabel",
       "incrementIcon",
-      "decrementIcon"
+      "decrementIcon",
+      "repeat",
+      "repeatDelay",
+      "repeatInterval"
     ],
     "events": [
-      "valueChange"
+      "valueChange",
+      "limitReached"
     ],
     "stories": [
       {
@@ -9867,6 +10990,42 @@
         "id": "inputs-counter-configuration--decrement-icon"
       },
       {
+        "prop": "repeat",
+        "story": "RepeatFalse",
+        "value": false,
+        "title": "Inputs/Counter/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the repeat setting on this counter. This example has it turned off.",
+        "id": "inputs-counter-configuration--repeat-false"
+      },
+      {
+        "prop": "repeat",
+        "story": "RepeatTrue",
+        "value": true,
+        "title": "Inputs/Counter/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the repeat setting on this counter. This example has it turned on.",
+        "id": "inputs-counter-configuration--repeat-true"
+      },
+      {
+        "prop": "repeatDelay",
+        "story": "RepeatDelay",
+        "value": 458,
+        "title": "Inputs/Counter/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the repeat delay setting on this counter. Here it is set to “458”.",
+        "id": "inputs-counter-configuration--repeat-delay"
+      },
+      {
+        "prop": "repeatInterval",
+        "story": "RepeatInterval",
+        "value": 98,
+        "title": "Inputs/Counter/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the repeat interval setting on this counter. Here it is set to “98”.",
+        "id": "inputs-counter-configuration--repeat-interval"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -9963,6 +11122,14 @@
         "group": "Events",
         "description": "Try the counter below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "inputs-counter-events--event-value-change"
+      },
+      {
+        "prop": "event.limitReached",
+        "story": "EventLimitReached",
+        "title": "Inputs/Counter/Events",
+        "group": "Events",
+        "description": "Try the counter below and inspect limitReached in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-counter-events--event-limit-reached"
       }
     ]
   },
@@ -9998,10 +11165,18 @@
       "nextLabel",
       "calendarLabel",
       "displayFormat",
-      "calendarWidth"
+      "calendarWidth",
+      "selectionMode",
+      "rangeEnd",
+      "rangeSeparator",
+      "showMonthYearSelectors",
+      "monthSelectLabel",
+      "yearSelectLabel",
+      "yearRange"
     ],
     "events": [
-      "valueChange"
+      "valueChange",
+      "rangeEndChange"
     ],
     "stories": [
       {
@@ -10385,6 +11560,87 @@
         "id": "inputs-datepicker-configuration--calendar-width"
       },
       {
+        "prop": "selectionMode",
+        "story": "SelectionModeSingle",
+        "value": "single",
+        "title": "Inputs/Datepicker/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the selection mode setting on this datepicker. Here it is set to “single”.",
+        "id": "inputs-datepicker-configuration--selection-mode-single"
+      },
+      {
+        "prop": "selectionMode",
+        "story": "SelectionModeRange",
+        "value": "range",
+        "title": "Inputs/Datepicker/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the selection mode setting on this datepicker. Here it is set to “range”.",
+        "id": "inputs-datepicker-configuration--selection-mode-range"
+      },
+      {
+        "prop": "rangeEnd",
+        "story": "RangeEnd",
+        "value": null,
+        "title": "Inputs/Datepicker/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the range end setting on this datepicker.",
+        "id": "inputs-datepicker-configuration--range-end"
+      },
+      {
+        "prop": "rangeSeparator",
+        "story": "RangeSeparator",
+        "value": "Custom rangeSeparator",
+        "title": "Inputs/Datepicker/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the range separator setting on this datepicker. Here it is set to “Custom rangeSeparator”.",
+        "id": "inputs-datepicker-configuration--range-separator"
+      },
+      {
+        "prop": "showMonthYearSelectors",
+        "story": "ShowMonthYearSelectorsFalse",
+        "value": false,
+        "title": "Inputs/Datepicker/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether month year selectors are shown. This example has it turned off.",
+        "id": "inputs-datepicker-configuration--show-month-year-selectors-false"
+      },
+      {
+        "prop": "showMonthYearSelectors",
+        "story": "ShowMonthYearSelectorsTrue",
+        "value": true,
+        "title": "Inputs/Datepicker/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether month year selectors are shown. This example has it turned on.",
+        "id": "inputs-datepicker-configuration--show-month-year-selectors-true"
+      },
+      {
+        "prop": "monthSelectLabel",
+        "story": "MonthSelectLabel",
+        "value": "Custom monthSelectLabel",
+        "title": "Inputs/Datepicker/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the month select action. Here it is set to “Custom monthSelectLabel”.",
+        "id": "inputs-datepicker-configuration--month-select-label"
+      },
+      {
+        "prop": "yearSelectLabel",
+        "story": "YearSelectLabel",
+        "value": "Custom yearSelectLabel",
+        "title": "Inputs/Datepicker/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the year select action. Here it is set to “Custom yearSelectLabel”.",
+        "id": "inputs-datepicker-configuration--year-select-label"
+      },
+      {
+        "prop": "yearRange",
+        "story": "YearRange",
+        "value": 108,
+        "title": "Inputs/Datepicker/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the year range setting on this datepicker. Here it is set to “108”.",
+        "id": "inputs-datepicker-configuration--year-range"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -10481,6 +11737,14 @@
         "group": "Events",
         "description": "Try the datepicker below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "inputs-datepicker-events--event-value-change"
+      },
+      {
+        "prop": "event.rangeEndChange",
+        "story": "EventRangeEndChange",
+        "title": "Inputs/Datepicker/Events",
+        "group": "Events",
+        "description": "Try the datepicker below and inspect rangeEndChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-datepicker-events--event-range-end-change"
       }
     ]
   },
@@ -10502,10 +11766,20 @@
       "showDescriptions",
       "emptyText",
       "options",
-      "placeholder"
+      "optionsProvider",
+      "optionTemplate",
+      "placeholder",
+      "loading",
+      "loadingText",
+      "clearable",
+      "maxRenderedOptions",
+      "moreOptionsLabel"
     ],
     "events": [
-      "valueChange"
+      "valueChange",
+      "cleared",
+      "optionsLoaded",
+      "loadFailed"
     ],
     "stories": [
       {
@@ -10721,6 +11995,24 @@
         "id": "inputs-dropdown-configuration--options"
       },
       {
+        "prop": "optionsProvider",
+        "story": "OptionsProvider",
+        "value": null,
+        "title": "Inputs/Dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the options provider setting on this dropdown.",
+        "id": "inputs-dropdown-configuration--options-provider"
+      },
+      {
+        "prop": "optionTemplate",
+        "story": "OptionTemplate",
+        "value": null,
+        "title": "Inputs/Dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the option template setting on this dropdown.",
+        "id": "inputs-dropdown-configuration--option-template"
+      },
+      {
         "prop": "placeholder",
         "story": "Placeholder",
         "value": "Choose something…",
@@ -10728,6 +12020,69 @@
         "group": "Configuration",
         "description": "Shows guidance while no value has been entered. Here it is set to “Choose something…”.",
         "id": "inputs-dropdown-configuration--placeholder"
+      },
+      {
+        "prop": "loading",
+        "story": "LoadingFalse",
+        "value": false,
+        "title": "Inputs/Dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Shows the loading state. This example has it turned off.",
+        "id": "inputs-dropdown-configuration--loading-false"
+      },
+      {
+        "prop": "loading",
+        "story": "LoadingTrue",
+        "value": true,
+        "title": "Inputs/Dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Shows the loading state. This example has it turned on.",
+        "id": "inputs-dropdown-configuration--loading-true"
+      },
+      {
+        "prop": "loadingText",
+        "story": "LoadingText",
+        "value": "Custom loadingText",
+        "title": "Inputs/Dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the loading text setting on this dropdown. Here it is set to “Custom loadingText”.",
+        "id": "inputs-dropdown-configuration--loading-text"
+      },
+      {
+        "prop": "clearable",
+        "story": "ClearableFalse",
+        "value": false,
+        "title": "Inputs/Dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the clearable setting on this dropdown. This example has it turned off.",
+        "id": "inputs-dropdown-configuration--clearable-false"
+      },
+      {
+        "prop": "clearable",
+        "story": "ClearableTrue",
+        "value": true,
+        "title": "Inputs/Dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the clearable setting on this dropdown. This example has it turned on.",
+        "id": "inputs-dropdown-configuration--clearable-true"
+      },
+      {
+        "prop": "maxRenderedOptions",
+        "story": "MaxRenderedOptions",
+        "value": 8,
+        "title": "Inputs/Dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the max rendered options setting on this dropdown. Here it is set to “8”.",
+        "id": "inputs-dropdown-configuration--max-rendered-options"
+      },
+      {
+        "prop": "moreOptionsLabel",
+        "story": "MoreOptionsLabel",
+        "value": "Custom moreOptionsLabel",
+        "title": "Inputs/Dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the more options action. Here it is set to “Custom moreOptionsLabel”.",
+        "id": "inputs-dropdown-configuration--more-options-label"
       },
       {
         "prop": "appearance.padding",
@@ -10826,6 +12181,30 @@
         "group": "Events",
         "description": "Try the dropdown below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "inputs-dropdown-events--event-value-change"
+      },
+      {
+        "prop": "event.cleared",
+        "story": "EventCleared",
+        "title": "Inputs/Dropdown/Events",
+        "group": "Events",
+        "description": "Try the dropdown below and inspect cleared in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-dropdown-events--event-cleared"
+      },
+      {
+        "prop": "event.optionsLoaded",
+        "story": "EventOptionsLoaded",
+        "title": "Inputs/Dropdown/Events",
+        "group": "Events",
+        "description": "Try the dropdown below and inspect optionsLoaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-dropdown-events--event-options-loaded"
+      },
+      {
+        "prop": "event.loadFailed",
+        "story": "EventLoadFailed",
+        "title": "Inputs/Dropdown/Events",
+        "group": "Events",
+        "description": "Try the dropdown below and inspect loadFailed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-dropdown-events--event-load-failed"
       }
     ]
   },
@@ -10845,6 +12224,11 @@
       "stretch",
       "showChevron",
       "options",
+      "optionsProvider",
+      "searchDebounce",
+      "maxRenderedOptions",
+      "moreOptionsLabel",
+      "optionTemplate",
       "placeholder",
       "searchable",
       "showSelectAll",
@@ -10867,13 +12251,17 @@
       "optionsMaxHeight",
       "menuWidth",
       "closeOnSelect",
-      "resetSearchOnOpen"
+      "resetSearchOnOpen",
+      "loading",
+      "loadingText"
     ],
     "events": [
       "valueChange",
       "selectAllChange",
       "clearChange",
-      "searchChange"
+      "searchChange",
+      "optionsLoaded",
+      "loadFailed"
     ],
     "stories": [
       {
@@ -11060,6 +12448,51 @@
         "group": "Configuration",
         "description": "Provides a custom set of choices, including a disabled option.",
         "id": "inputs-multi-select-dropdown-configuration--options"
+      },
+      {
+        "prop": "optionsProvider",
+        "story": "OptionsProvider",
+        "value": null,
+        "title": "Inputs/Multi-select dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the options provider setting on this multi-select dropdown.",
+        "id": "inputs-multi-select-dropdown-configuration--options-provider"
+      },
+      {
+        "prop": "searchDebounce",
+        "story": "SearchDebounce",
+        "value": 258,
+        "title": "Inputs/Multi-select dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the search debounce setting on this multi-select dropdown. Here it is set to “258”.",
+        "id": "inputs-multi-select-dropdown-configuration--search-debounce"
+      },
+      {
+        "prop": "maxRenderedOptions",
+        "story": "MaxRenderedOptions",
+        "value": 8,
+        "title": "Inputs/Multi-select dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the max rendered options setting on this multi-select dropdown. Here it is set to “8”.",
+        "id": "inputs-multi-select-dropdown-configuration--max-rendered-options"
+      },
+      {
+        "prop": "moreOptionsLabel",
+        "story": "MoreOptionsLabel",
+        "value": "Custom moreOptionsLabel",
+        "title": "Inputs/Multi-select dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the more options action. Here it is set to “Custom moreOptionsLabel”.",
+        "id": "inputs-multi-select-dropdown-configuration--more-options-label"
+      },
+      {
+        "prop": "optionTemplate",
+        "story": "OptionTemplate",
+        "value": null,
+        "title": "Inputs/Multi-select dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the option template setting on this multi-select dropdown.",
+        "id": "inputs-multi-select-dropdown-configuration--option-template"
       },
       {
         "prop": "placeholder",
@@ -11359,6 +12792,33 @@
         "id": "inputs-multi-select-dropdown-configuration--reset-search-on-open-true"
       },
       {
+        "prop": "loading",
+        "story": "LoadingFalse",
+        "value": false,
+        "title": "Inputs/Multi-select dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Shows the loading state. This example has it turned off.",
+        "id": "inputs-multi-select-dropdown-configuration--loading-false"
+      },
+      {
+        "prop": "loading",
+        "story": "LoadingTrue",
+        "value": true,
+        "title": "Inputs/Multi-select dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Shows the loading state. This example has it turned on.",
+        "id": "inputs-multi-select-dropdown-configuration--loading-true"
+      },
+      {
+        "prop": "loadingText",
+        "story": "LoadingText",
+        "value": "Custom loadingText",
+        "title": "Inputs/Multi-select dropdown/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the loading text setting on this multi-select dropdown. Here it is set to “Custom loadingText”.",
+        "id": "inputs-multi-select-dropdown-configuration--loading-text"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -11479,6 +12939,22 @@
         "group": "Events",
         "description": "Try the multi-select dropdown below and inspect searchChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "inputs-multi-select-dropdown-events--event-search-change"
+      },
+      {
+        "prop": "event.optionsLoaded",
+        "story": "EventOptionsLoaded",
+        "title": "Inputs/Multi-select dropdown/Events",
+        "group": "Events",
+        "description": "Try the multi-select dropdown below and inspect optionsLoaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-multi-select-dropdown-events--event-options-loaded"
+      },
+      {
+        "prop": "event.loadFailed",
+        "story": "EventLoadFailed",
+        "title": "Inputs/Multi-select dropdown/Events",
+        "group": "Events",
+        "description": "Try the multi-select dropdown below and inspect loadFailed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "inputs-multi-select-dropdown-events--event-load-failed"
       }
     ]
   },
@@ -12439,7 +13915,10 @@
       "max",
       "step",
       "range",
-      "unit"
+      "unit",
+      "orientation",
+      "ticks",
+      "valueFormat"
     ],
     "events": [
       "valueChange"
@@ -12641,6 +14120,42 @@
         "group": "Configuration",
         "description": "Demonstrates the unit setting on this range selector. Here it is set to “ units”.",
         "id": "inputs-range-selector-configuration--unit"
+      },
+      {
+        "prop": "orientation",
+        "story": "OrientationHorizontal",
+        "value": "horizontal",
+        "title": "Inputs/Range selector/Configuration",
+        "group": "Configuration",
+        "description": "Switches between horizontal and vertical arrangements. Here it is set to “horizontal”.",
+        "id": "inputs-range-selector-configuration--orientation-horizontal"
+      },
+      {
+        "prop": "orientation",
+        "story": "OrientationVertical",
+        "value": "vertical",
+        "title": "Inputs/Range selector/Configuration",
+        "group": "Configuration",
+        "description": "Switches between horizontal and vertical arrangements. Here it is set to “vertical”.",
+        "id": "inputs-range-selector-configuration--orientation-vertical"
+      },
+      {
+        "prop": "ticks",
+        "story": "Ticks",
+        "value": 8,
+        "title": "Inputs/Range selector/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the ticks setting on this range selector. Here it is set to “8”.",
+        "id": "inputs-range-selector-configuration--ticks"
+      },
+      {
+        "prop": "valueFormat",
+        "story": "ValueFormat",
+        "value": "Custom valueFormat",
+        "title": "Inputs/Range selector/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the value format setting on this range selector. Here it is set to “Custom valueFormat”.",
+        "id": "inputs-range-selector-configuration--value-format"
       },
       {
         "prop": "appearance.padding",
@@ -13507,7 +15022,17 @@
       "padding",
       "height",
       "minHeight",
-      "variant"
+      "flexGrow",
+      "flexShrink",
+      "flexBasis",
+      "mobileDirection",
+      "mobileAlign",
+      "mobileJustify",
+      "mobileGap",
+      "mobilePadding",
+      "variant",
+      "role",
+      "ariaLabel"
     ],
     "events": [],
     "stories": [
@@ -13790,6 +15315,168 @@
         "id": "layout-container-configuration--min-height"
       },
       {
+        "prop": "flexGrow",
+        "story": "FlexGrow",
+        "value": null,
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the flex grow setting on this container.",
+        "id": "layout-container-configuration--flex-grow"
+      },
+      {
+        "prop": "flexShrink",
+        "story": "FlexShrink",
+        "value": null,
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the flex shrink setting on this container.",
+        "id": "layout-container-configuration--flex-shrink"
+      },
+      {
+        "prop": "flexBasis",
+        "story": "FlexBasis",
+        "value": null,
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the flex basis setting on this container.",
+        "id": "layout-container-configuration--flex-basis"
+      },
+      {
+        "prop": "mobileDirection",
+        "story": "MobileDirectionRow",
+        "value": "row",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile direction setting on this container. Here it is set to “row”.",
+        "id": "layout-container-configuration--mobile-direction-row"
+      },
+      {
+        "prop": "mobileDirection",
+        "story": "MobileDirectionColumn",
+        "value": "column",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile direction setting on this container. Here it is set to “column”.",
+        "id": "layout-container-configuration--mobile-direction-column"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignStretch",
+        "value": "stretch",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this container. Here it is set to “stretch”.",
+        "id": "layout-container-configuration--mobile-align-stretch"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignFlexStart",
+        "value": "flex-start",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this container. Here it is set to “flex-start”.",
+        "id": "layout-container-configuration--mobile-align-flex-start"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignCenter",
+        "value": "center",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this container. Here it is set to “center”.",
+        "id": "layout-container-configuration--mobile-align-center"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignFlexEnd",
+        "value": "flex-end",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this container. Here it is set to “flex-end”.",
+        "id": "layout-container-configuration--mobile-align-flex-end"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignBaseline",
+        "value": "baseline",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this container. Here it is set to “baseline”.",
+        "id": "layout-container-configuration--mobile-align-baseline"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifyFlexStart",
+        "value": "flex-start",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this container. Here it is set to “flex-start”.",
+        "id": "layout-container-configuration--mobile-justify-flex-start"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifyCenter",
+        "value": "center",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this container. Here it is set to “center”.",
+        "id": "layout-container-configuration--mobile-justify-center"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifyFlexEnd",
+        "value": "flex-end",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this container. Here it is set to “flex-end”.",
+        "id": "layout-container-configuration--mobile-justify-flex-end"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifySpaceBetween",
+        "value": "space-between",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this container. Here it is set to “space-between”.",
+        "id": "layout-container-configuration--mobile-justify-space-between"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifySpaceAround",
+        "value": "space-around",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this container. Here it is set to “space-around”.",
+        "id": "layout-container-configuration--mobile-justify-space-around"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifySpaceEvenly",
+        "value": "space-evenly",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this container. Here it is set to “space-evenly”.",
+        "id": "layout-container-configuration--mobile-justify-space-evenly"
+      },
+      {
+        "prop": "mobileGap",
+        "story": "MobileGap",
+        "value": null,
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile gap setting on this container.",
+        "id": "layout-container-configuration--mobile-gap"
+      },
+      {
+        "prop": "mobilePadding",
+        "story": "MobilePadding",
+        "value": null,
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile padding setting on this container.",
+        "id": "layout-container-configuration--mobile-padding"
+      },
+      {
         "prop": "variant",
         "story": "VariantPrimary",
         "value": "primary",
@@ -13815,6 +15502,24 @@
         "group": "Variations",
         "description": "Changes the visual treatment. Here it is set to “tertiary”.",
         "id": "layout-container-variations--variant-tertiary"
+      },
+      {
+        "prop": "role",
+        "story": "Role",
+        "value": "Custom role",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Changes the semantic role exposed to assistive technology. Here it is set to “Custom role”.",
+        "id": "layout-container-configuration--role"
+      },
+      {
+        "prop": "ariaLabel",
+        "story": "AriaLabel",
+        "value": "Custom accessible dialog name",
+        "title": "Layout/Container/Configuration",
+        "group": "Configuration",
+        "description": "Changes the accessible name announced by assistive technology. Here it is set to “Custom accessible dialog name”.",
+        "id": "layout-container-configuration--aria-label"
       },
       {
         "prop": "appearance.padding",
@@ -13940,7 +15645,12 @@
       "showMetadata",
       "showLeft",
       "showRight",
-      "showDivider"
+      "showDivider",
+      "sticky",
+      "stickyOffset",
+      "zIndex",
+      "headingLines",
+      "subheadingLines"
     ],
     "events": [],
     "stories": [
@@ -14412,6 +16122,60 @@
         "id": "layout-header-configuration--show-divider-true"
       },
       {
+        "prop": "sticky",
+        "story": "StickyFalse",
+        "value": false,
+        "title": "Layout/Header/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the sticky setting on this header. This example has it turned off.",
+        "id": "layout-header-configuration--sticky-false"
+      },
+      {
+        "prop": "sticky",
+        "story": "StickyTrue",
+        "value": true,
+        "title": "Layout/Header/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the sticky setting on this header. This example has it turned on.",
+        "id": "layout-header-configuration--sticky-true"
+      },
+      {
+        "prop": "stickyOffset",
+        "story": "StickyOffset",
+        "value": "Custom stickyOffset",
+        "title": "Layout/Header/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the sticky offset setting on this header. Here it is set to “Custom stickyOffset”.",
+        "id": "layout-header-configuration--sticky-offset"
+      },
+      {
+        "prop": "zIndex",
+        "story": "ZIndex",
+        "value": 18,
+        "title": "Layout/Header/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the z index setting on this header. Here it is set to “18”.",
+        "id": "layout-header-configuration--z-index"
+      },
+      {
+        "prop": "headingLines",
+        "story": "HeadingLines",
+        "value": null,
+        "title": "Layout/Header/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the heading lines setting on this header.",
+        "id": "layout-header-configuration--heading-lines"
+      },
+      {
+        "prop": "subheadingLines",
+        "story": "SubheadingLines",
+        "value": null,
+        "title": "Layout/Header/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the subheading lines setting on this header.",
+        "id": "layout-header-configuration--subheading-lines"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -14520,10 +16284,23 @@
       "padding",
       "height",
       "minHeight",
+      "flexGrow",
+      "flexShrink",
+      "flexBasis",
+      "mobileDirection",
+      "mobileAlign",
+      "mobileJustify",
+      "mobileGap",
+      "mobilePadding",
       "surface",
-      "overflow"
+      "overflow",
+      "minWidth",
+      "maxWidth",
+      "resizable"
     ],
-    "events": [],
+    "events": [
+      "resized"
+    ],
     "stories": [
       {
         "prop": "appearance",
@@ -14804,6 +16581,168 @@
         "id": "layout-pane-configuration--min-height"
       },
       {
+        "prop": "flexGrow",
+        "story": "FlexGrow",
+        "value": null,
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the flex grow setting on this pane.",
+        "id": "layout-pane-configuration--flex-grow"
+      },
+      {
+        "prop": "flexShrink",
+        "story": "FlexShrink",
+        "value": null,
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the flex shrink setting on this pane.",
+        "id": "layout-pane-configuration--flex-shrink"
+      },
+      {
+        "prop": "flexBasis",
+        "story": "FlexBasis",
+        "value": null,
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the flex basis setting on this pane.",
+        "id": "layout-pane-configuration--flex-basis"
+      },
+      {
+        "prop": "mobileDirection",
+        "story": "MobileDirectionRow",
+        "value": "row",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile direction setting on this pane. Here it is set to “row”.",
+        "id": "layout-pane-configuration--mobile-direction-row"
+      },
+      {
+        "prop": "mobileDirection",
+        "story": "MobileDirectionColumn",
+        "value": "column",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile direction setting on this pane. Here it is set to “column”.",
+        "id": "layout-pane-configuration--mobile-direction-column"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignStretch",
+        "value": "stretch",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this pane. Here it is set to “stretch”.",
+        "id": "layout-pane-configuration--mobile-align-stretch"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignFlexStart",
+        "value": "flex-start",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this pane. Here it is set to “flex-start”.",
+        "id": "layout-pane-configuration--mobile-align-flex-start"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignCenter",
+        "value": "center",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this pane. Here it is set to “center”.",
+        "id": "layout-pane-configuration--mobile-align-center"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignFlexEnd",
+        "value": "flex-end",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this pane. Here it is set to “flex-end”.",
+        "id": "layout-pane-configuration--mobile-align-flex-end"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignBaseline",
+        "value": "baseline",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this pane. Here it is set to “baseline”.",
+        "id": "layout-pane-configuration--mobile-align-baseline"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifyFlexStart",
+        "value": "flex-start",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this pane. Here it is set to “flex-start”.",
+        "id": "layout-pane-configuration--mobile-justify-flex-start"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifyCenter",
+        "value": "center",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this pane. Here it is set to “center”.",
+        "id": "layout-pane-configuration--mobile-justify-center"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifyFlexEnd",
+        "value": "flex-end",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this pane. Here it is set to “flex-end”.",
+        "id": "layout-pane-configuration--mobile-justify-flex-end"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifySpaceBetween",
+        "value": "space-between",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this pane. Here it is set to “space-between”.",
+        "id": "layout-pane-configuration--mobile-justify-space-between"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifySpaceAround",
+        "value": "space-around",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this pane. Here it is set to “space-around”.",
+        "id": "layout-pane-configuration--mobile-justify-space-around"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifySpaceEvenly",
+        "value": "space-evenly",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this pane. Here it is set to “space-evenly”.",
+        "id": "layout-pane-configuration--mobile-justify-space-evenly"
+      },
+      {
+        "prop": "mobileGap",
+        "story": "MobileGap",
+        "value": null,
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile gap setting on this pane.",
+        "id": "layout-pane-configuration--mobile-gap"
+      },
+      {
+        "prop": "mobilePadding",
+        "story": "MobilePadding",
+        "value": null,
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile padding setting on this pane.",
+        "id": "layout-pane-configuration--mobile-padding"
+      },
+      {
         "prop": "surface",
         "story": "SurfaceGlass",
         "value": "glass",
@@ -14856,6 +16795,60 @@
         "group": "Configuration",
         "description": "Controls whether oversized content is visible, hidden, or scrollable. Here it is set to “hidden”.",
         "id": "layout-pane-configuration--overflow-hidden"
+      },
+      {
+        "prop": "minWidth",
+        "story": "MinWidth",
+        "value": 8,
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the min width setting on this pane. Here it is set to “8”.",
+        "id": "layout-pane-configuration--min-width"
+      },
+      {
+        "prop": "maxWidth",
+        "story": "MaxWidth",
+        "value": "90vw",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Limits how wide the component can grow. Here it is set to “90vw”.",
+        "id": "layout-pane-configuration--max-width"
+      },
+      {
+        "prop": "resizable",
+        "story": "ResizableNone",
+        "value": "none",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the resizable setting on this pane. Here it is set to “none”.",
+        "id": "layout-pane-configuration--resizable-none"
+      },
+      {
+        "prop": "resizable",
+        "story": "ResizableHorizontal",
+        "value": "horizontal",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the resizable setting on this pane. Here it is set to “horizontal”.",
+        "id": "layout-pane-configuration--resizable-horizontal"
+      },
+      {
+        "prop": "resizable",
+        "story": "ResizableVertical",
+        "value": "vertical",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the resizable setting on this pane. Here it is set to “vertical”.",
+        "id": "layout-pane-configuration--resizable-vertical"
+      },
+      {
+        "prop": "resizable",
+        "story": "ResizableBoth",
+        "value": "both",
+        "title": "Layout/Pane/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the resizable setting on this pane. Here it is set to “both”.",
+        "id": "layout-pane-configuration--resizable-both"
       },
       {
         "prop": "appearance.padding",
@@ -14946,6 +16939,14 @@
         "group": "Appearance",
         "description": "Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
         "id": "layout-pane-appearance--appearance-focus-color"
+      },
+      {
+        "prop": "event.resized",
+        "story": "EventResized",
+        "title": "Layout/Pane/Events",
+        "group": "Events",
+        "description": "Try the pane below and inspect resized in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "layout-pane-events--event-resized"
       }
     ]
   },
@@ -14966,7 +16967,16 @@
       "padding",
       "height",
       "minHeight",
-      "label"
+      "flexGrow",
+      "flexShrink",
+      "flexBasis",
+      "mobileDirection",
+      "mobileAlign",
+      "mobileJustify",
+      "mobileGap",
+      "mobilePadding",
+      "label",
+      "labelledBy"
     ],
     "events": [],
     "stories": [
@@ -15249,6 +17259,168 @@
         "id": "layout-section-configuration--min-height"
       },
       {
+        "prop": "flexGrow",
+        "story": "FlexGrow",
+        "value": null,
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the flex grow setting on this section.",
+        "id": "layout-section-configuration--flex-grow"
+      },
+      {
+        "prop": "flexShrink",
+        "story": "FlexShrink",
+        "value": null,
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the flex shrink setting on this section.",
+        "id": "layout-section-configuration--flex-shrink"
+      },
+      {
+        "prop": "flexBasis",
+        "story": "FlexBasis",
+        "value": null,
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the flex basis setting on this section.",
+        "id": "layout-section-configuration--flex-basis"
+      },
+      {
+        "prop": "mobileDirection",
+        "story": "MobileDirectionRow",
+        "value": "row",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile direction setting on this section. Here it is set to “row”.",
+        "id": "layout-section-configuration--mobile-direction-row"
+      },
+      {
+        "prop": "mobileDirection",
+        "story": "MobileDirectionColumn",
+        "value": "column",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile direction setting on this section. Here it is set to “column”.",
+        "id": "layout-section-configuration--mobile-direction-column"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignStretch",
+        "value": "stretch",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this section. Here it is set to “stretch”.",
+        "id": "layout-section-configuration--mobile-align-stretch"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignFlexStart",
+        "value": "flex-start",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this section. Here it is set to “flex-start”.",
+        "id": "layout-section-configuration--mobile-align-flex-start"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignCenter",
+        "value": "center",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this section. Here it is set to “center”.",
+        "id": "layout-section-configuration--mobile-align-center"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignFlexEnd",
+        "value": "flex-end",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this section. Here it is set to “flex-end”.",
+        "id": "layout-section-configuration--mobile-align-flex-end"
+      },
+      {
+        "prop": "mobileAlign",
+        "story": "MobileAlignBaseline",
+        "value": "baseline",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile align setting on this section. Here it is set to “baseline”.",
+        "id": "layout-section-configuration--mobile-align-baseline"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifyFlexStart",
+        "value": "flex-start",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this section. Here it is set to “flex-start”.",
+        "id": "layout-section-configuration--mobile-justify-flex-start"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifyCenter",
+        "value": "center",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this section. Here it is set to “center”.",
+        "id": "layout-section-configuration--mobile-justify-center"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifyFlexEnd",
+        "value": "flex-end",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this section. Here it is set to “flex-end”.",
+        "id": "layout-section-configuration--mobile-justify-flex-end"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifySpaceBetween",
+        "value": "space-between",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this section. Here it is set to “space-between”.",
+        "id": "layout-section-configuration--mobile-justify-space-between"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifySpaceAround",
+        "value": "space-around",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this section. Here it is set to “space-around”.",
+        "id": "layout-section-configuration--mobile-justify-space-around"
+      },
+      {
+        "prop": "mobileJustify",
+        "story": "MobileJustifySpaceEvenly",
+        "value": "space-evenly",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile justify setting on this section. Here it is set to “space-evenly”.",
+        "id": "layout-section-configuration--mobile-justify-space-evenly"
+      },
+      {
+        "prop": "mobileGap",
+        "story": "MobileGap",
+        "value": null,
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile gap setting on this section.",
+        "id": "layout-section-configuration--mobile-gap"
+      },
+      {
+        "prop": "mobilePadding",
+        "story": "MobilePadding",
+        "value": null,
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile padding setting on this section.",
+        "id": "layout-section-configuration--mobile-padding"
+      },
+      {
         "prop": "label",
         "story": "Label",
         "value": "Custom label",
@@ -15256,6 +17428,15 @@
         "group": "Configuration",
         "description": "Customizes the visible label. Here it is set to “Custom label”.",
         "id": "layout-section-configuration--label"
+      },
+      {
+        "prop": "labelledBy",
+        "story": "LabelledBy",
+        "value": "Custom labelledBy",
+        "title": "Layout/Section/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the labelled by setting on this section. Here it is set to “Custom labelledBy”.",
+        "id": "layout-section-configuration--labelled-by"
       },
       {
         "prop": "appearance.padding",
@@ -15743,6 +17924,8 @@
       "step",
       "loop",
       "keyboard",
+      "draggable",
+      "dragThreshold",
       "disabled",
       "behavior",
       "showScrollbar",
@@ -15755,6 +17938,8 @@
     ],
     "events": [
       "slideChange",
+      "dragStarted",
+      "dragEnded",
       "indexChange"
     ],
     "stories": [
@@ -15896,6 +18081,33 @@
         "group": "Configuration",
         "description": "Demonstrates the keyboard setting on this carousel directive. This example has it turned on.",
         "id": "navigation-carousel-directive-configuration--keyboard-true"
+      },
+      {
+        "prop": "draggable",
+        "story": "DraggableFalse",
+        "value": false,
+        "title": "Navigation/Carousel directive/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the draggable setting on this carousel directive. This example has it turned off.",
+        "id": "navigation-carousel-directive-configuration--draggable-false"
+      },
+      {
+        "prop": "draggable",
+        "story": "DraggableTrue",
+        "value": true,
+        "title": "Navigation/Carousel directive/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the draggable setting on this carousel directive. This example has it turned on.",
+        "id": "navigation-carousel-directive-configuration--draggable-true"
+      },
+      {
+        "prop": "dragThreshold",
+        "story": "DragThreshold",
+        "value": 56,
+        "title": "Navigation/Carousel directive/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the drag threshold setting on this carousel directive. Here it is set to “56”.",
+        "id": "navigation-carousel-directive-configuration--drag-threshold"
       },
       {
         "prop": "disabled",
@@ -16041,6 +18253,22 @@
         "id": "navigation-carousel-directive-events--event-slide-change"
       },
       {
+        "prop": "event.dragStarted",
+        "story": "EventDragStarted",
+        "title": "Navigation/Carousel directive/Events",
+        "group": "Events",
+        "description": "Try the carousel directive below and inspect dragStarted in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "navigation-carousel-directive-events--event-drag-started"
+      },
+      {
+        "prop": "event.dragEnded",
+        "story": "EventDragEnded",
+        "title": "Navigation/Carousel directive/Events",
+        "group": "Events",
+        "description": "Try the carousel directive below and inspect dragEnded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "navigation-carousel-directive-events--event-drag-ended"
+      },
+      {
         "prop": "event.indexChange",
         "story": "EventIndexChange",
         "title": "Navigation/Carousel directive/Events",
@@ -16068,10 +18296,12 @@
       "tone",
       "underline",
       "fontWeight",
-      "underlineOffset"
+      "underlineOffset",
+      "navigate"
     ],
     "events": [
-      "activated"
+      "activated",
+      "navigationError"
     ],
     "stories": [
       {
@@ -16344,6 +18574,15 @@
         "id": "navigation-link-directive-appearance--underline-offset"
       },
       {
+        "prop": "navigate",
+        "story": "Navigate",
+        "value": null,
+        "title": "Navigation/Link directive/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the navigate setting on this link directive.",
+        "id": "navigation-link-directive-configuration--navigate"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -16440,6 +18679,14 @@
         "group": "Events",
         "description": "Try the link directive below and inspect activated in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "navigation-link-directive-events--event-activated"
+      },
+      {
+        "prop": "event.navigationError",
+        "story": "EventNavigationError",
+        "title": "Navigation/Link directive/Events",
+        "group": "Events",
+        "description": "Try the link directive below and inspect navigationError in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "navigation-link-directive-events--event-navigation-error"
       }
     ]
   },
@@ -16696,10 +18943,15 @@
       "nextLabel",
       "finishLabel",
       "optionalLabel",
-      "panelPadding"
+      "panelPadding",
+      "controlledNavigation",
+      "beforeNavigate"
     ],
     "events": [
       "finished",
+      "navigationRequested",
+      "navigationBlocked",
+      "navigationError",
       "valueChange"
     ],
     "stories": [
@@ -16910,6 +19162,33 @@
         "id": "navigation-stepper-container-configuration--panel-padding"
       },
       {
+        "prop": "controlledNavigation",
+        "story": "ControlledNavigationFalse",
+        "value": false,
+        "title": "Navigation/Stepper container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled navigation setting on this stepper container. This example has it turned off.",
+        "id": "navigation-stepper-container-configuration--controlled-navigation-false"
+      },
+      {
+        "prop": "controlledNavigation",
+        "story": "ControlledNavigationTrue",
+        "value": true,
+        "title": "Navigation/Stepper container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled navigation setting on this stepper container. This example has it turned on.",
+        "id": "navigation-stepper-container-configuration--controlled-navigation-true"
+      },
+      {
+        "prop": "beforeNavigate",
+        "story": "BeforeNavigate",
+        "value": null,
+        "title": "Navigation/Stepper container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the before navigate setting on this stepper container.",
+        "id": "navigation-stepper-container-configuration--before-navigate"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -17008,6 +19287,30 @@
         "id": "navigation-stepper-container-events--event-finished"
       },
       {
+        "prop": "event.navigationRequested",
+        "story": "EventNavigationRequested",
+        "title": "Navigation/Stepper container/Events",
+        "group": "Events",
+        "description": "Try the stepper container below and inspect navigationRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "navigation-stepper-container-events--event-navigation-requested"
+      },
+      {
+        "prop": "event.navigationBlocked",
+        "story": "EventNavigationBlocked",
+        "title": "Navigation/Stepper container/Events",
+        "group": "Events",
+        "description": "Try the stepper container below and inspect navigationBlocked in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "navigation-stepper-container-events--event-navigation-blocked"
+      },
+      {
+        "prop": "event.navigationError",
+        "story": "EventNavigationError",
+        "title": "Navigation/Stepper container/Events",
+        "group": "Events",
+        "description": "Try the stepper container below and inspect navigationError in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "navigation-stepper-container-events--event-navigation-error"
+      },
+      {
         "prop": "event.valueChange",
         "story": "EventValueChange",
         "title": "Navigation/Stepper container/Events",
@@ -17035,10 +19338,15 @@
       "gap",
       "panelPadding",
       "keepAlive",
-      "showDivider"
+      "showDivider",
+      "activateOnClose",
+      "controlledSelection"
     ],
     "events": [
       "tabClose",
+      "tabCloseRequested",
+      "selectionRequested",
+      "tabFocus",
       "valueChange"
     ],
     "stories": [
@@ -17276,6 +19584,60 @@
         "id": "navigation-tab-container-configuration--show-divider-true"
       },
       {
+        "prop": "activateOnClose",
+        "story": "ActivateOnClosePrevious",
+        "value": "previous",
+        "title": "Navigation/Tab container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the activate on close setting on this tab container. Here it is set to “previous”.",
+        "id": "navigation-tab-container-configuration--activate-on-close-previous"
+      },
+      {
+        "prop": "activateOnClose",
+        "story": "ActivateOnCloseNext",
+        "value": "next",
+        "title": "Navigation/Tab container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the activate on close setting on this tab container. Here it is set to “next”.",
+        "id": "navigation-tab-container-configuration--activate-on-close-next"
+      },
+      {
+        "prop": "activateOnClose",
+        "story": "ActivateOnCloseFirst",
+        "value": "first",
+        "title": "Navigation/Tab container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the activate on close setting on this tab container. Here it is set to “first”.",
+        "id": "navigation-tab-container-configuration--activate-on-close-first"
+      },
+      {
+        "prop": "activateOnClose",
+        "story": "ActivateOnCloseNone",
+        "value": "none",
+        "title": "Navigation/Tab container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the activate on close setting on this tab container. Here it is set to “none”.",
+        "id": "navigation-tab-container-configuration--activate-on-close-none"
+      },
+      {
+        "prop": "controlledSelection",
+        "story": "ControlledSelectionFalse",
+        "value": false,
+        "title": "Navigation/Tab container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled selection setting on this tab container. This example has it turned off.",
+        "id": "navigation-tab-container-configuration--controlled-selection-false"
+      },
+      {
+        "prop": "controlledSelection",
+        "story": "ControlledSelectionTrue",
+        "value": true,
+        "title": "Navigation/Tab container/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled selection setting on this tab container. This example has it turned on.",
+        "id": "navigation-tab-container-configuration--controlled-selection-true"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -17372,6 +19734,30 @@
         "group": "Events",
         "description": "Try the tab container below and inspect tabClose in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "navigation-tab-container-events--event-tab-close"
+      },
+      {
+        "prop": "event.tabCloseRequested",
+        "story": "EventTabCloseRequested",
+        "title": "Navigation/Tab container/Events",
+        "group": "Events",
+        "description": "Try the tab container below and inspect tabCloseRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "navigation-tab-container-events--event-tab-close-requested"
+      },
+      {
+        "prop": "event.selectionRequested",
+        "story": "EventSelectionRequested",
+        "title": "Navigation/Tab container/Events",
+        "group": "Events",
+        "description": "Try the tab container below and inspect selectionRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "navigation-tab-container-events--event-selection-requested"
+      },
+      {
+        "prop": "event.tabFocus",
+        "story": "EventTabFocus",
+        "title": "Navigation/Tab container/Events",
+        "group": "Events",
+        "description": "Try the tab container below and inspect tabFocus in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "navigation-tab-container-events--event-tab-focus"
       },
       {
         "prop": "event.valueChange",
@@ -17644,15 +20030,32 @@
       "closeOnConfirm",
       "confirmDisabled",
       "busy",
+      "error",
+      "confirmationPhrase",
+      "confirmationValue",
+      "confirmationLabel",
       "autoFocus",
       "restoreFocus",
-      "scrollStrategy"
+      "scrollStrategy",
+      "fullScreenOnMobile",
+      "mobileBreakpoint",
+      "showDragHandle",
+      "snapPoints",
+      "activeSnap",
+      "controlledClose",
+      "beforeClose"
     ],
     "events": [
+      "snapChanged",
       "confirmed",
       "cancelled",
       "closed",
-      "openChange"
+      "closeRequested",
+      "closeBlocked",
+      "closeGuardError",
+      "openChange",
+      "confirmationValueChange",
+      "activeSnapChange"
     ],
     "stories": [
       {
@@ -18141,6 +20544,42 @@
         "id": "overlays-bottom-sheet-configuration--busy-true"
       },
       {
+        "prop": "error",
+        "story": "Error",
+        "value": "Please review this value.",
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Displays an error message or error state. Here it is set to “Please review this value.”.",
+        "id": "overlays-bottom-sheet-configuration--error"
+      },
+      {
+        "prop": "confirmationPhrase",
+        "story": "ConfirmationPhrase",
+        "value": "Custom confirmationPhrase",
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the confirmation phrase setting on this bottom sheet. Here it is set to “Custom confirmationPhrase”.",
+        "id": "overlays-bottom-sheet-configuration--confirmation-phrase"
+      },
+      {
+        "prop": "confirmationValue",
+        "story": "ConfirmationValue",
+        "value": "Custom confirmationValue",
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the confirmation value setting on this bottom sheet. Here it is set to “Custom confirmationValue”.",
+        "id": "overlays-bottom-sheet-configuration--confirmation-value"
+      },
+      {
+        "prop": "confirmationLabel",
+        "story": "ConfirmationLabel",
+        "value": "Custom confirmationLabel",
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the confirmation action. Here it is set to “Custom confirmationLabel”.",
+        "id": "overlays-bottom-sheet-configuration--confirmation-label"
+      },
+      {
         "prop": "autoFocus",
         "story": "AutoFocusDialog",
         "value": "dialog",
@@ -18202,6 +20641,100 @@
         "group": "Configuration",
         "description": "Controls scrolling while the overlay is open. Here it is set to “reposition”.",
         "id": "overlays-bottom-sheet-configuration--scroll-strategy-reposition"
+      },
+      {
+        "prop": "fullScreenOnMobile",
+        "story": "FullScreenOnMobileFalse",
+        "value": false,
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the full screen on mobile setting on this bottom sheet. This example has it turned off.",
+        "id": "overlays-bottom-sheet-configuration--full-screen-on-mobile-false"
+      },
+      {
+        "prop": "fullScreenOnMobile",
+        "story": "FullScreenOnMobileTrue",
+        "value": true,
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the full screen on mobile setting on this bottom sheet. This example has it turned on.",
+        "id": "overlays-bottom-sheet-configuration--full-screen-on-mobile-true"
+      },
+      {
+        "prop": "mobileBreakpoint",
+        "story": "MobileBreakpoint",
+        "value": 608,
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile breakpoint setting on this bottom sheet. Here it is set to “608”.",
+        "id": "overlays-bottom-sheet-configuration--mobile-breakpoint"
+      },
+      {
+        "prop": "showDragHandle",
+        "story": "ShowDragHandleFalse",
+        "value": false,
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether drag handle are shown. This example has it turned off.",
+        "id": "overlays-bottom-sheet-configuration--show-drag-handle-false"
+      },
+      {
+        "prop": "showDragHandle",
+        "story": "ShowDragHandleTrue",
+        "value": true,
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether drag handle are shown. This example has it turned on.",
+        "id": "overlays-bottom-sheet-configuration--show-drag-handle-true"
+      },
+      {
+        "prop": "snapPoints",
+        "story": "SnapPoints",
+        "value": [
+          "45dvh",
+          "70dvh",
+          "90dvh"
+        ],
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the snap points setting on this bottom sheet.",
+        "id": "overlays-bottom-sheet-configuration--snap-points"
+      },
+      {
+        "prop": "activeSnap",
+        "story": "ActiveSnap",
+        "value": 8,
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the active snap setting on this bottom sheet. Here it is set to “8”.",
+        "id": "overlays-bottom-sheet-configuration--active-snap"
+      },
+      {
+        "prop": "controlledClose",
+        "story": "ControlledCloseFalse",
+        "value": false,
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled close setting on this bottom sheet. This example has it turned off.",
+        "id": "overlays-bottom-sheet-configuration--controlled-close-false"
+      },
+      {
+        "prop": "controlledClose",
+        "story": "ControlledCloseTrue",
+        "value": true,
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled close setting on this bottom sheet. This example has it turned on.",
+        "id": "overlays-bottom-sheet-configuration--controlled-close-true"
+      },
+      {
+        "prop": "beforeClose",
+        "story": "BeforeClose",
+        "value": null,
+        "title": "Overlays/Bottom sheet/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the before close setting on this bottom sheet.",
+        "id": "overlays-bottom-sheet-configuration--before-close"
       },
       {
         "prop": "appearance.padding",
@@ -18294,6 +20827,14 @@
         "id": "overlays-bottom-sheet-appearance--appearance-focus-color"
       },
       {
+        "prop": "event.snapChanged",
+        "story": "EventSnapChanged",
+        "title": "Overlays/Bottom sheet/Events",
+        "group": "Events",
+        "description": "Try the bottom sheet below and inspect snapChanged in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-bottom-sheet-events--event-snap-changed"
+      },
+      {
         "prop": "event.confirmed",
         "story": "EventConfirmed",
         "title": "Overlays/Bottom sheet/Events",
@@ -18318,12 +20859,52 @@
         "id": "overlays-bottom-sheet-events--event-closed"
       },
       {
+        "prop": "event.closeRequested",
+        "story": "EventCloseRequested",
+        "title": "Overlays/Bottom sheet/Events",
+        "group": "Events",
+        "description": "Try the bottom sheet below and inspect closeRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-bottom-sheet-events--event-close-requested"
+      },
+      {
+        "prop": "event.closeBlocked",
+        "story": "EventCloseBlocked",
+        "title": "Overlays/Bottom sheet/Events",
+        "group": "Events",
+        "description": "Try the bottom sheet below and inspect closeBlocked in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-bottom-sheet-events--event-close-blocked"
+      },
+      {
+        "prop": "event.closeGuardError",
+        "story": "EventCloseGuardError",
+        "title": "Overlays/Bottom sheet/Events",
+        "group": "Events",
+        "description": "Try the bottom sheet below and inspect closeGuardError in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-bottom-sheet-events--event-close-guard-error"
+      },
+      {
         "prop": "event.openChange",
         "story": "EventOpenChange",
         "title": "Overlays/Bottom sheet/Events",
         "group": "Events",
         "description": "Try the bottom sheet below and inspect openChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "overlays-bottom-sheet-events--event-open-change"
+      },
+      {
+        "prop": "event.confirmationValueChange",
+        "story": "EventConfirmationValueChange",
+        "title": "Overlays/Bottom sheet/Events",
+        "group": "Events",
+        "description": "Try the bottom sheet below and inspect confirmationValueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-bottom-sheet-events--event-confirmation-value-change"
+      },
+      {
+        "prop": "event.activeSnapChange",
+        "story": "EventActiveSnapChange",
+        "title": "Overlays/Bottom sheet/Events",
+        "group": "Events",
+        "description": "Try the bottom sheet below and inspect activeSnapChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-bottom-sheet-events--event-active-snap-change"
       }
     ]
   },
@@ -18363,15 +20944,32 @@
       "closeOnConfirm",
       "confirmDisabled",
       "busy",
+      "error",
+      "confirmationPhrase",
+      "confirmationValue",
+      "confirmationLabel",
       "autoFocus",
       "restoreFocus",
-      "scrollStrategy"
+      "scrollStrategy",
+      "fullScreenOnMobile",
+      "mobileBreakpoint",
+      "showDragHandle",
+      "snapPoints",
+      "activeSnap",
+      "controlledClose",
+      "beforeClose"
     ],
     "events": [
+      "snapChanged",
       "confirmed",
       "cancelled",
       "closed",
-      "openChange"
+      "closeRequested",
+      "closeBlocked",
+      "closeGuardError",
+      "openChange",
+      "confirmationValueChange",
+      "activeSnapChange"
     ],
     "stories": [
       {
@@ -18860,6 +21458,42 @@
         "id": "overlays-confirmation-dialog-configuration--busy-true"
       },
       {
+        "prop": "error",
+        "story": "Error",
+        "value": "Please review this value.",
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Displays an error message or error state. Here it is set to “Please review this value.”.",
+        "id": "overlays-confirmation-dialog-configuration--error"
+      },
+      {
+        "prop": "confirmationPhrase",
+        "story": "ConfirmationPhrase",
+        "value": "Custom confirmationPhrase",
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the confirmation phrase setting on this confirmation dialog. Here it is set to “Custom confirmationPhrase”.",
+        "id": "overlays-confirmation-dialog-configuration--confirmation-phrase"
+      },
+      {
+        "prop": "confirmationValue",
+        "story": "ConfirmationValue",
+        "value": "Custom confirmationValue",
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the confirmation value setting on this confirmation dialog. Here it is set to “Custom confirmationValue”.",
+        "id": "overlays-confirmation-dialog-configuration--confirmation-value"
+      },
+      {
+        "prop": "confirmationLabel",
+        "story": "ConfirmationLabel",
+        "value": "Custom confirmationLabel",
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the confirmation action. Here it is set to “Custom confirmationLabel”.",
+        "id": "overlays-confirmation-dialog-configuration--confirmation-label"
+      },
+      {
         "prop": "autoFocus",
         "story": "AutoFocusDialog",
         "value": "dialog",
@@ -18921,6 +21555,100 @@
         "group": "Configuration",
         "description": "Controls scrolling while the overlay is open. Here it is set to “reposition”.",
         "id": "overlays-confirmation-dialog-configuration--scroll-strategy-reposition"
+      },
+      {
+        "prop": "fullScreenOnMobile",
+        "story": "FullScreenOnMobileFalse",
+        "value": false,
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the full screen on mobile setting on this confirmation dialog. This example has it turned off.",
+        "id": "overlays-confirmation-dialog-configuration--full-screen-on-mobile-false"
+      },
+      {
+        "prop": "fullScreenOnMobile",
+        "story": "FullScreenOnMobileTrue",
+        "value": true,
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the full screen on mobile setting on this confirmation dialog. This example has it turned on.",
+        "id": "overlays-confirmation-dialog-configuration--full-screen-on-mobile-true"
+      },
+      {
+        "prop": "mobileBreakpoint",
+        "story": "MobileBreakpoint",
+        "value": 608,
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile breakpoint setting on this confirmation dialog. Here it is set to “608”.",
+        "id": "overlays-confirmation-dialog-configuration--mobile-breakpoint"
+      },
+      {
+        "prop": "showDragHandle",
+        "story": "ShowDragHandleFalse",
+        "value": false,
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether drag handle are shown. This example has it turned off.",
+        "id": "overlays-confirmation-dialog-configuration--show-drag-handle-false"
+      },
+      {
+        "prop": "showDragHandle",
+        "story": "ShowDragHandleTrue",
+        "value": true,
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether drag handle are shown. This example has it turned on.",
+        "id": "overlays-confirmation-dialog-configuration--show-drag-handle-true"
+      },
+      {
+        "prop": "snapPoints",
+        "story": "SnapPoints",
+        "value": [
+          "45dvh",
+          "70dvh",
+          "90dvh"
+        ],
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the snap points setting on this confirmation dialog.",
+        "id": "overlays-confirmation-dialog-configuration--snap-points"
+      },
+      {
+        "prop": "activeSnap",
+        "story": "ActiveSnap",
+        "value": 8,
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the active snap setting on this confirmation dialog. Here it is set to “8”.",
+        "id": "overlays-confirmation-dialog-configuration--active-snap"
+      },
+      {
+        "prop": "controlledClose",
+        "story": "ControlledCloseFalse",
+        "value": false,
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled close setting on this confirmation dialog. This example has it turned off.",
+        "id": "overlays-confirmation-dialog-configuration--controlled-close-false"
+      },
+      {
+        "prop": "controlledClose",
+        "story": "ControlledCloseTrue",
+        "value": true,
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled close setting on this confirmation dialog. This example has it turned on.",
+        "id": "overlays-confirmation-dialog-configuration--controlled-close-true"
+      },
+      {
+        "prop": "beforeClose",
+        "story": "BeforeClose",
+        "value": null,
+        "title": "Overlays/Confirmation dialog/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the before close setting on this confirmation dialog.",
+        "id": "overlays-confirmation-dialog-configuration--before-close"
       },
       {
         "prop": "appearance.padding",
@@ -19013,6 +21741,14 @@
         "id": "overlays-confirmation-dialog-appearance--appearance-focus-color"
       },
       {
+        "prop": "event.snapChanged",
+        "story": "EventSnapChanged",
+        "title": "Overlays/Confirmation dialog/Events",
+        "group": "Events",
+        "description": "Try the confirmation dialog below and inspect snapChanged in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-confirmation-dialog-events--event-snap-changed"
+      },
+      {
         "prop": "event.confirmed",
         "story": "EventConfirmed",
         "title": "Overlays/Confirmation dialog/Events",
@@ -19037,12 +21773,52 @@
         "id": "overlays-confirmation-dialog-events--event-closed"
       },
       {
+        "prop": "event.closeRequested",
+        "story": "EventCloseRequested",
+        "title": "Overlays/Confirmation dialog/Events",
+        "group": "Events",
+        "description": "Try the confirmation dialog below and inspect closeRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-confirmation-dialog-events--event-close-requested"
+      },
+      {
+        "prop": "event.closeBlocked",
+        "story": "EventCloseBlocked",
+        "title": "Overlays/Confirmation dialog/Events",
+        "group": "Events",
+        "description": "Try the confirmation dialog below and inspect closeBlocked in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-confirmation-dialog-events--event-close-blocked"
+      },
+      {
+        "prop": "event.closeGuardError",
+        "story": "EventCloseGuardError",
+        "title": "Overlays/Confirmation dialog/Events",
+        "group": "Events",
+        "description": "Try the confirmation dialog below and inspect closeGuardError in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-confirmation-dialog-events--event-close-guard-error"
+      },
+      {
         "prop": "event.openChange",
         "story": "EventOpenChange",
         "title": "Overlays/Confirmation dialog/Events",
         "group": "Events",
         "description": "Try the confirmation dialog below and inspect openChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "overlays-confirmation-dialog-events--event-open-change"
+      },
+      {
+        "prop": "event.confirmationValueChange",
+        "story": "EventConfirmationValueChange",
+        "title": "Overlays/Confirmation dialog/Events",
+        "group": "Events",
+        "description": "Try the confirmation dialog below and inspect confirmationValueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-confirmation-dialog-events--event-confirmation-value-change"
+      },
+      {
+        "prop": "event.activeSnapChange",
+        "story": "EventActiveSnapChange",
+        "title": "Overlays/Confirmation dialog/Events",
+        "group": "Events",
+        "description": "Try the confirmation dialog below and inspect activeSnapChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-confirmation-dialog-events--event-active-snap-change"
       }
     ]
   },
@@ -19082,15 +21858,32 @@
       "closeOnConfirm",
       "confirmDisabled",
       "busy",
+      "error",
+      "confirmationPhrase",
+      "confirmationValue",
+      "confirmationLabel",
       "autoFocus",
       "restoreFocus",
-      "scrollStrategy"
+      "scrollStrategy",
+      "fullScreenOnMobile",
+      "mobileBreakpoint",
+      "showDragHandle",
+      "snapPoints",
+      "activeSnap",
+      "controlledClose",
+      "beforeClose"
     ],
     "events": [
+      "snapChanged",
       "confirmed",
       "cancelled",
       "closed",
-      "openChange"
+      "closeRequested",
+      "closeBlocked",
+      "closeGuardError",
+      "openChange",
+      "confirmationValueChange",
+      "activeSnapChange"
     ],
     "stories": [
       {
@@ -19579,6 +22372,42 @@
         "id": "overlays-modal-configuration--busy-true"
       },
       {
+        "prop": "error",
+        "story": "Error",
+        "value": "Please review this value.",
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Displays an error message or error state. Here it is set to “Please review this value.”.",
+        "id": "overlays-modal-configuration--error"
+      },
+      {
+        "prop": "confirmationPhrase",
+        "story": "ConfirmationPhrase",
+        "value": "Custom confirmationPhrase",
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the confirmation phrase setting on this modal. Here it is set to “Custom confirmationPhrase”.",
+        "id": "overlays-modal-configuration--confirmation-phrase"
+      },
+      {
+        "prop": "confirmationValue",
+        "story": "ConfirmationValue",
+        "value": "Custom confirmationValue",
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the confirmation value setting on this modal. Here it is set to “Custom confirmationValue”.",
+        "id": "overlays-modal-configuration--confirmation-value"
+      },
+      {
+        "prop": "confirmationLabel",
+        "story": "ConfirmationLabel",
+        "value": "Custom confirmationLabel",
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the confirmation action. Here it is set to “Custom confirmationLabel”.",
+        "id": "overlays-modal-configuration--confirmation-label"
+      },
+      {
         "prop": "autoFocus",
         "story": "AutoFocusDialog",
         "value": "dialog",
@@ -19640,6 +22469,100 @@
         "group": "Configuration",
         "description": "Controls scrolling while the overlay is open. Here it is set to “reposition”.",
         "id": "overlays-modal-configuration--scroll-strategy-reposition"
+      },
+      {
+        "prop": "fullScreenOnMobile",
+        "story": "FullScreenOnMobileFalse",
+        "value": false,
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the full screen on mobile setting on this modal. This example has it turned off.",
+        "id": "overlays-modal-configuration--full-screen-on-mobile-false"
+      },
+      {
+        "prop": "fullScreenOnMobile",
+        "story": "FullScreenOnMobileTrue",
+        "value": true,
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the full screen on mobile setting on this modal. This example has it turned on.",
+        "id": "overlays-modal-configuration--full-screen-on-mobile-true"
+      },
+      {
+        "prop": "mobileBreakpoint",
+        "story": "MobileBreakpoint",
+        "value": 608,
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile breakpoint setting on this modal. Here it is set to “608”.",
+        "id": "overlays-modal-configuration--mobile-breakpoint"
+      },
+      {
+        "prop": "showDragHandle",
+        "story": "ShowDragHandleFalse",
+        "value": false,
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether drag handle are shown. This example has it turned off.",
+        "id": "overlays-modal-configuration--show-drag-handle-false"
+      },
+      {
+        "prop": "showDragHandle",
+        "story": "ShowDragHandleTrue",
+        "value": true,
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether drag handle are shown. This example has it turned on.",
+        "id": "overlays-modal-configuration--show-drag-handle-true"
+      },
+      {
+        "prop": "snapPoints",
+        "story": "SnapPoints",
+        "value": [
+          "45dvh",
+          "70dvh",
+          "90dvh"
+        ],
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the snap points setting on this modal.",
+        "id": "overlays-modal-configuration--snap-points"
+      },
+      {
+        "prop": "activeSnap",
+        "story": "ActiveSnap",
+        "value": 8,
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the active snap setting on this modal. Here it is set to “8”.",
+        "id": "overlays-modal-configuration--active-snap"
+      },
+      {
+        "prop": "controlledClose",
+        "story": "ControlledCloseFalse",
+        "value": false,
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled close setting on this modal. This example has it turned off.",
+        "id": "overlays-modal-configuration--controlled-close-false"
+      },
+      {
+        "prop": "controlledClose",
+        "story": "ControlledCloseTrue",
+        "value": true,
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled close setting on this modal. This example has it turned on.",
+        "id": "overlays-modal-configuration--controlled-close-true"
+      },
+      {
+        "prop": "beforeClose",
+        "story": "BeforeClose",
+        "value": null,
+        "title": "Overlays/Modal/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the before close setting on this modal.",
+        "id": "overlays-modal-configuration--before-close"
       },
       {
         "prop": "appearance.padding",
@@ -19732,6 +22655,14 @@
         "id": "overlays-modal-appearance--appearance-focus-color"
       },
       {
+        "prop": "event.snapChanged",
+        "story": "EventSnapChanged",
+        "title": "Overlays/Modal/Events",
+        "group": "Events",
+        "description": "Try the modal below and inspect snapChanged in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-modal-events--event-snap-changed"
+      },
+      {
         "prop": "event.confirmed",
         "story": "EventConfirmed",
         "title": "Overlays/Modal/Events",
@@ -19756,12 +22687,52 @@
         "id": "overlays-modal-events--event-closed"
       },
       {
+        "prop": "event.closeRequested",
+        "story": "EventCloseRequested",
+        "title": "Overlays/Modal/Events",
+        "group": "Events",
+        "description": "Try the modal below and inspect closeRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-modal-events--event-close-requested"
+      },
+      {
+        "prop": "event.closeBlocked",
+        "story": "EventCloseBlocked",
+        "title": "Overlays/Modal/Events",
+        "group": "Events",
+        "description": "Try the modal below and inspect closeBlocked in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-modal-events--event-close-blocked"
+      },
+      {
+        "prop": "event.closeGuardError",
+        "story": "EventCloseGuardError",
+        "title": "Overlays/Modal/Events",
+        "group": "Events",
+        "description": "Try the modal below and inspect closeGuardError in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-modal-events--event-close-guard-error"
+      },
+      {
         "prop": "event.openChange",
         "story": "EventOpenChange",
         "title": "Overlays/Modal/Events",
         "group": "Events",
         "description": "Try the modal below and inspect openChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "overlays-modal-events--event-open-change"
+      },
+      {
+        "prop": "event.confirmationValueChange",
+        "story": "EventConfirmationValueChange",
+        "title": "Overlays/Modal/Events",
+        "group": "Events",
+        "description": "Try the modal below and inspect confirmationValueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-modal-events--event-confirmation-value-change"
+      },
+      {
+        "prop": "event.activeSnapChange",
+        "story": "EventActiveSnapChange",
+        "title": "Overlays/Modal/Events",
+        "group": "Events",
+        "description": "Try the modal below and inspect activeSnapChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-modal-events--event-active-snap-change"
       }
     ]
   },
@@ -19780,6 +22751,7 @@
       "maxWidth",
       "showDelay",
       "hideDelay",
+      "longPressDelay",
       "closeOnEscape",
       "closeOnOutside",
       "panelClass",
@@ -19982,6 +22954,15 @@
         "group": "Configuration",
         "description": "Sets the delay before anchored content disappears. Here it is set to “108”.",
         "id": "overlays-popover-directive-configuration--hide-delay"
+      },
+      {
+        "prop": "longPressDelay",
+        "story": "LongPressDelay",
+        "value": 558,
+        "title": "Overlays/Popover directive/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the long press delay setting on this popover directive. Here it is set to “558”.",
+        "id": "overlays-popover-directive-configuration--long-press-delay"
       },
       {
         "prop": "closeOnEscape",
@@ -20261,15 +23242,32 @@
       "closeOnConfirm",
       "confirmDisabled",
       "busy",
+      "error",
+      "confirmationPhrase",
+      "confirmationValue",
+      "confirmationLabel",
       "autoFocus",
       "restoreFocus",
-      "scrollStrategy"
+      "scrollStrategy",
+      "fullScreenOnMobile",
+      "mobileBreakpoint",
+      "showDragHandle",
+      "snapPoints",
+      "activeSnap",
+      "controlledClose",
+      "beforeClose"
     ],
     "events": [
+      "snapChanged",
       "confirmed",
       "cancelled",
       "closed",
-      "openChange"
+      "closeRequested",
+      "closeBlocked",
+      "closeGuardError",
+      "openChange",
+      "confirmationValueChange",
+      "activeSnapChange"
     ],
     "stories": [
       {
@@ -20758,6 +23756,42 @@
         "id": "overlays-sidepanel-configuration--busy-true"
       },
       {
+        "prop": "error",
+        "story": "Error",
+        "value": "Please review this value.",
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Displays an error message or error state. Here it is set to “Please review this value.”.",
+        "id": "overlays-sidepanel-configuration--error"
+      },
+      {
+        "prop": "confirmationPhrase",
+        "story": "ConfirmationPhrase",
+        "value": "Custom confirmationPhrase",
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the confirmation phrase setting on this sidepanel. Here it is set to “Custom confirmationPhrase”.",
+        "id": "overlays-sidepanel-configuration--confirmation-phrase"
+      },
+      {
+        "prop": "confirmationValue",
+        "story": "ConfirmationValue",
+        "value": "Custom confirmationValue",
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the confirmation value setting on this sidepanel. Here it is set to “Custom confirmationValue”.",
+        "id": "overlays-sidepanel-configuration--confirmation-value"
+      },
+      {
+        "prop": "confirmationLabel",
+        "story": "ConfirmationLabel",
+        "value": "Custom confirmationLabel",
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the confirmation action. Here it is set to “Custom confirmationLabel”.",
+        "id": "overlays-sidepanel-configuration--confirmation-label"
+      },
+      {
         "prop": "autoFocus",
         "story": "AutoFocusDialog",
         "value": "dialog",
@@ -20819,6 +23853,100 @@
         "group": "Configuration",
         "description": "Controls scrolling while the overlay is open. Here it is set to “reposition”.",
         "id": "overlays-sidepanel-configuration--scroll-strategy-reposition"
+      },
+      {
+        "prop": "fullScreenOnMobile",
+        "story": "FullScreenOnMobileFalse",
+        "value": false,
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the full screen on mobile setting on this sidepanel. This example has it turned off.",
+        "id": "overlays-sidepanel-configuration--full-screen-on-mobile-false"
+      },
+      {
+        "prop": "fullScreenOnMobile",
+        "story": "FullScreenOnMobileTrue",
+        "value": true,
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the full screen on mobile setting on this sidepanel. This example has it turned on.",
+        "id": "overlays-sidepanel-configuration--full-screen-on-mobile-true"
+      },
+      {
+        "prop": "mobileBreakpoint",
+        "story": "MobileBreakpoint",
+        "value": 608,
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the mobile breakpoint setting on this sidepanel. Here it is set to “608”.",
+        "id": "overlays-sidepanel-configuration--mobile-breakpoint"
+      },
+      {
+        "prop": "showDragHandle",
+        "story": "ShowDragHandleFalse",
+        "value": false,
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether drag handle are shown. This example has it turned off.",
+        "id": "overlays-sidepanel-configuration--show-drag-handle-false"
+      },
+      {
+        "prop": "showDragHandle",
+        "story": "ShowDragHandleTrue",
+        "value": true,
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether drag handle are shown. This example has it turned on.",
+        "id": "overlays-sidepanel-configuration--show-drag-handle-true"
+      },
+      {
+        "prop": "snapPoints",
+        "story": "SnapPoints",
+        "value": [
+          "45dvh",
+          "70dvh",
+          "90dvh"
+        ],
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the snap points setting on this sidepanel.",
+        "id": "overlays-sidepanel-configuration--snap-points"
+      },
+      {
+        "prop": "activeSnap",
+        "story": "ActiveSnap",
+        "value": 8,
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the active snap setting on this sidepanel. Here it is set to “8”.",
+        "id": "overlays-sidepanel-configuration--active-snap"
+      },
+      {
+        "prop": "controlledClose",
+        "story": "ControlledCloseFalse",
+        "value": false,
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled close setting on this sidepanel. This example has it turned off.",
+        "id": "overlays-sidepanel-configuration--controlled-close-false"
+      },
+      {
+        "prop": "controlledClose",
+        "story": "ControlledCloseTrue",
+        "value": true,
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the controlled close setting on this sidepanel. This example has it turned on.",
+        "id": "overlays-sidepanel-configuration--controlled-close-true"
+      },
+      {
+        "prop": "beforeClose",
+        "story": "BeforeClose",
+        "value": null,
+        "title": "Overlays/Sidepanel/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the before close setting on this sidepanel.",
+        "id": "overlays-sidepanel-configuration--before-close"
       },
       {
         "prop": "appearance.padding",
@@ -20911,6 +24039,14 @@
         "id": "overlays-sidepanel-appearance--appearance-focus-color"
       },
       {
+        "prop": "event.snapChanged",
+        "story": "EventSnapChanged",
+        "title": "Overlays/Sidepanel/Events",
+        "group": "Events",
+        "description": "Try the sidepanel below and inspect snapChanged in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-sidepanel-events--event-snap-changed"
+      },
+      {
         "prop": "event.confirmed",
         "story": "EventConfirmed",
         "title": "Overlays/Sidepanel/Events",
@@ -20935,12 +24071,52 @@
         "id": "overlays-sidepanel-events--event-closed"
       },
       {
+        "prop": "event.closeRequested",
+        "story": "EventCloseRequested",
+        "title": "Overlays/Sidepanel/Events",
+        "group": "Events",
+        "description": "Try the sidepanel below and inspect closeRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-sidepanel-events--event-close-requested"
+      },
+      {
+        "prop": "event.closeBlocked",
+        "story": "EventCloseBlocked",
+        "title": "Overlays/Sidepanel/Events",
+        "group": "Events",
+        "description": "Try the sidepanel below and inspect closeBlocked in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-sidepanel-events--event-close-blocked"
+      },
+      {
+        "prop": "event.closeGuardError",
+        "story": "EventCloseGuardError",
+        "title": "Overlays/Sidepanel/Events",
+        "group": "Events",
+        "description": "Try the sidepanel below and inspect closeGuardError in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-sidepanel-events--event-close-guard-error"
+      },
+      {
         "prop": "event.openChange",
         "story": "EventOpenChange",
         "title": "Overlays/Sidepanel/Events",
         "group": "Events",
         "description": "Try the sidepanel below and inspect openChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "overlays-sidepanel-events--event-open-change"
+      },
+      {
+        "prop": "event.confirmationValueChange",
+        "story": "EventConfirmationValueChange",
+        "title": "Overlays/Sidepanel/Events",
+        "group": "Events",
+        "description": "Try the sidepanel below and inspect confirmationValueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-sidepanel-events--event-confirmation-value-change"
+      },
+      {
+        "prop": "event.activeSnapChange",
+        "story": "EventActiveSnapChange",
+        "title": "Overlays/Sidepanel/Events",
+        "group": "Events",
+        "description": "Try the sidepanel below and inspect activeSnapChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "overlays-sidepanel-events--event-active-snap-change"
       }
     ]
   },
@@ -20959,6 +24135,7 @@
       "maxWidth",
       "showDelay",
       "hideDelay",
+      "longPressDelay",
       "closeOnEscape",
       "closeOnOutside",
       "panelClass",
@@ -21161,6 +24338,15 @@
         "id": "overlays-tooltip-directive-configuration--hide-delay"
       },
       {
+        "prop": "longPressDelay",
+        "story": "LongPressDelay",
+        "value": 558,
+        "title": "Overlays/Tooltip directive/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the long press delay setting on this tooltip directive. Here it is set to “558”.",
+        "id": "overlays-tooltip-directive-configuration--long-press-delay"
+      },
+      {
         "prop": "closeOnEscape",
         "story": "CloseOnEscapeFalse",
         "value": false,
@@ -21231,6 +24417,15 @@
         "group": "Configuration",
         "description": "Chooses the interaction that opens the anchored content. Here it is set to “hover”. Open the example and try the relevant pointer or keyboard action.",
         "id": "overlays-tooltip-directive-configuration--trigger-hover"
+      },
+      {
+        "prop": "trigger",
+        "story": "TriggerLongpress",
+        "value": "longpress",
+        "title": "Overlays/Tooltip directive/Configuration",
+        "group": "Configuration",
+        "description": "Chooses the interaction that opens the anchored content. Here it is set to “longpress”. Open the example and try the relevant pointer or keyboard action.",
+        "id": "overlays-tooltip-directive-configuration--trigger-longpress"
       },
       {
         "prop": "trigger",

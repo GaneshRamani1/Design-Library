@@ -31,6 +31,11 @@ export interface HeaderMetadata {
     "[style.--header-subheading-color]": "subheadingColor()",
     "[style.--header-metadata-color]": "metadataColor()",
     "[style.--header-metadata-gap]": "metadataGap()",
+    "[style.position]": "sticky() ? 'sticky' : null",
+    "[style.top]": "sticky() ? stickyOffset() : null",
+    "[style.z-index]": "sticky() ? zIndex() : null",
+    "[style.--header-heading-lines]": "headingLines()",
+    "[style.--header-subheading-lines]": "subheadingLines()",
   },
   template: `<header
     class="header"
@@ -176,6 +181,10 @@ export interface HeaderMetadata {
         letter-spacing: -0.025em;
         font-weight: 650;
         color: var(--header-heading-color, var(--dl-ui-color, var(--dl-text)));
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: var(--header-heading-lines, initial);
+        overflow: hidden;
       }
       :host([data-size="sm"]) :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--dl-ui-font-size, 20px);
@@ -195,6 +204,10 @@ export interface HeaderMetadata {
         font-size: 14px;
         line-height: 1.6;
         color: var(--header-subheading-color, var(--dl-muted));
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: var(--header-subheading-lines, initial);
+        overflow: hidden;
       }
       .metadata {
         display: flex;
@@ -293,6 +306,11 @@ export class HeaderComponent extends Appearance {
   readonly showLeft = input(true);
   readonly showRight = input(true);
   readonly showDivider = input(false);
+  readonly sticky = input(false);
+  readonly stickyOffset = input("0px");
+  readonly zIndex = input(10);
+  readonly headingLines = input<number | null>(null);
+  readonly subheadingLines = input<number | null>(null);
   private readonly containerWidth = signal(Infinity);
   private readonly hostElement = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly destroyRef = inject(DestroyRef);

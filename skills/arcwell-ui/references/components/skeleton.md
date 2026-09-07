@@ -40,7 +40,9 @@ Preview a loading placeholder before content arrives. Compare shapes, animation 
 
 ## Outputs
 
-No declared outputs. Projected controls keep their own event handlers.
+| Event | Payload |
+|---|---|
+| loaded | void |
 
 ## Projection slots
 
@@ -134,6 +136,7 @@ import { SkeletonComponent } from "./skeleton.component";
 - `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/feedback-loading-skeleton-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/feedback-loading-skeleton-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/feedback-loading-skeleton-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `event.loaded`: [EventLoaded](http://127.0.0.1:6006/?path=/story/feedback-loading-skeleton-events--event-loaded) — Try the loading skeleton below and inspect loaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

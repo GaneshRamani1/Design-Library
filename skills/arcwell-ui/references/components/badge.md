@@ -35,6 +35,10 @@ A compact status label. Compare the semantic tones, custom colors, icons and rem
 | pill | boolean | false | input | BadgeComponent | See the dedicated configuration story below. |
 | dot | boolean | false | input | BadgeComponent | See the dedicated configuration story below. |
 | icon | string | "" | input | BadgeComponent | See the dedicated configuration story below. |
+| value | number \| null | null | input | BadgeComponent | See the dedicated configuration story below. |
+| max | number | 99 | input | BadgeComponent | See the dedicated configuration story below. |
+| overflowSuffix | string | "+" | input | BadgeComponent | See the dedicated configuration story below. |
+| accessibleLabel | string | "" | input | BadgeComponent | See the dedicated configuration story below. |
 | removable | boolean | false | input | BadgeComponent | See the dedicated configuration story below. |
 | removeLabel | string | "Remove badge" | input | BadgeComponent | See the dedicated configuration story below. |
 | visible | boolean | true | model | BadgeComponent | See the dedicated configuration story below. |
@@ -55,6 +59,7 @@ A compact status label. Compare the semantic tones, custom colors, icons and rem
 - `toneBackground()` — string
 - `toneText()` — string
 - `toneBorder()` — string
+- `displayValue()` — string
 - `remove(): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
@@ -145,6 +150,10 @@ import { BadgeComponent } from "./badge.component";
 - `dot`: [DotFalse](http://127.0.0.1:6006/?path=/story/data-display-badge-appearance--dot-false) — Demonstrates the dot setting on this badge. This example has it turned off.
 - `dot`: [DotTrue](http://127.0.0.1:6006/?path=/story/data-display-badge-appearance--dot-true) — Demonstrates the dot setting on this badge. This example has it turned on.
 - `icon`: [Icon](http://127.0.0.1:6006/?path=/story/data-display-badge-configuration--icon) — Changes the leading icon. Here it is set to “★”.
+- `value`: [Value](http://127.0.0.1:6006/?path=/story/data-display-badge-configuration--value) — Sets the selected or displayed value. Here it is set to “2”.
+- `max`: [Max](http://127.0.0.1:6006/?path=/story/data-display-badge-configuration--max) — Sets the upper allowed bound. Here it is set to “10”.
+- `overflowSuffix`: [OverflowSuffix](http://127.0.0.1:6006/?path=/story/data-display-badge-configuration--overflow-suffix) — Demonstrates the overflow suffix setting on this badge. Here it is set to “Custom overflowSuffix”.
+- `accessibleLabel`: [AccessibleLabel](http://127.0.0.1:6006/?path=/story/data-display-badge-configuration--accessible-label) — Customizes the text for the accessible action. Here it is set to “Custom accessibleLabel”.
 - `removable`: [RemovableFalse](http://127.0.0.1:6006/?path=/story/data-display-badge-configuration--removable-false) — Adds a remove action for each item. This example has it turned off.
 - `removable`: [RemovableTrue](http://127.0.0.1:6006/?path=/story/data-display-badge-configuration--removable-true) — Adds a remove action for each item. This example has it turned on.
 - `removeLabel`: [RemoveLabel](http://127.0.0.1:6006/?path=/story/data-display-badge-configuration--remove-label) — Customizes the text for the remove action. Here it is set to “Remove item”.

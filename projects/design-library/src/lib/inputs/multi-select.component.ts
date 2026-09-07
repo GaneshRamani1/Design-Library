@@ -7,7 +7,9 @@ import {
   input,
   output,
   signal,
+  TemplateRef,
 } from "@angular/core";
+import { NgTemplateOutlet } from "@angular/common";
 import { PopoverControlBase } from "./popover-control-base";
 import { selectionStyles, chevron } from "./selection-styles";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
@@ -20,6 +22,7 @@ import {
 @Component({
   selector: "dl-multi-select",
   standalone: true,
+  imports: [NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
@@ -31,7 +34,7 @@ import {
   template:
     `<span class="label" [id]="id() + '-label'">{{ label() }}{{ required() ? ' *' : '' }}</span>
     <button #trigger class="field trigger" type="button" [id]="id() + '-control'" [disabled]="isDisabled()" [attr.aria-labelledby]="id() + '-label ' + id() + '-selection'" [attr.aria-expanded]="opened()" [attr.aria-controls]="id() + '-panel'" [attr.aria-describedby]="descriptionId()" [attr.aria-invalid]="error() ? true : null" (click)="toggle()">
-      <span [id]="id() + '-selection'">{{ summary() }}</span>@if(showChevron()){${chevron}}
+      <span [id]="id() + '-selection'">{{ busy() ? loadingText() : summary() }}</span>@if(showChevron()){${chevron}}
     </button>
       <div #panel popover="manual" class="panel" (mousedown)="focusPanel($event)" role="group" [id]="id() + '-panel'" [attr.aria-labelledby]="id() + '-label'">
         @if (searchable()) { <input class="field search" type="search" [disabled]="isDisabled()" [attr.aria-label]="searchLabel() || 'Search ' + label()" [placeholder]="searchPlaceholder()" [value]="query()" (input)="search($event)" /> }
@@ -42,9 +45,10 @@ import {
           </div>
         }
         <div class="options" [style.max-height.px]="listHeight()">
-          @for (option of filtered(); track option.value) {
-            <label class="option"><input type="checkbox" [checked]="selected().includes(option.value)" [disabled]="optionDisabled(option)" (change)="select(option, $event)" /><span>{{ option.label }} @if (showDescriptions() && option.description) { <small>{{ option.description }}</small> }</span></label>
-          } @empty { <p class="empty">{{ emptyText() }}</p> }
+          @for (option of renderedOptions(); track option.value) {
+            @if (showGroup($index)) { <div class="group-label" role="presentation">{{ option.group }}</div> }
+            <label class="option"><input type="checkbox" [checked]="selected().includes(option.value)" [disabled]="optionDisabled(option)" (change)="select(option, $event)" /><span>@if(optionTemplate()){<ng-container [ngTemplateOutlet]="optionTemplate()" [ngTemplateOutletContext]="{$implicit:option,selected:selected().includes(option.value)}"/>}@else{{{ option.label }}} @if (!optionTemplate() && showDescriptions() && option.description) { <small>{{ option.description }}</small> }</span></label>
+          } @empty { <p class="empty">{{ emptyText() }}</p> }@if(hiddenOptionCount()){<p class="empty">{{moreOptionsLabel().replace('{count}',hiddenOptionCount().toString())}}</p>}
         </div>
         @if (atLimit()) { <p class="limit-message" role="status">{{ limitText() }}</p> }
         @if (showCount() || showDone()) {
@@ -143,12 +147,18 @@ import {
         color: var(--dl-ui-color, var(--dl-muted));
         font-size: var(--dl-ui-font-size, 12px);
       }
+      .group-label { padding:12px 8px 4px; color:var(--dl-muted); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
     `,
   ],
 })
 export class MultiSelectComponent extends PopoverControlBase<string[]> {
   readonly showChevron = input(true);
   readonly options = input<SelectOption[]>([]);
+  readonly optionsProvider = input<((query: string) => Promise<SelectOption[]>) | null>(null);
+  readonly searchDebounce = input(250);
+  readonly maxRenderedOptions = input(0);
+  readonly moreOptionsLabel = input("{count} more options. Refine your search.");
+  readonly optionTemplate = input<TemplateRef<{ $implicit: SelectOption; selected: boolean }> | null>(null);
   readonly placeholder = input("Select options");
   readonly searchable = input(true);
   readonly showSelectAll = input(true);
@@ -172,18 +182,30 @@ export class MultiSelectComponent extends PopoverControlBase<string[]> {
   readonly menuWidth = input<number | null>(null);
   readonly closeOnSelect = input(false);
   readonly resetSearchOnOpen = input(true);
+  readonly loading = input(false);
+  readonly loadingText = input("Loading options…");
   readonly selectAllChange = output<string[]>();
   readonly clearChange = output<string[]>();
   readonly searchChange = output<string>();
+  readonly optionsLoaded = output<SelectOption[]>();
+  readonly loadFailed = output<unknown>();
   readonly query = signal("");
+  private readonly remoteOptions = signal<SelectOption[] | null>(null);
+  private readonly internalLoading = signal(false);
+  private request = 0;
+  private searchTimer: ReturnType<typeof setTimeout> | undefined;
+  readonly busy = computed(() => this.loading() || this.internalLoading());
+  readonly effectiveOptions = computed(() => this.remoteOptions() ?? this.options());
   readonly selected = computed(() => [...new Set(this.value() ?? [])]);
   readonly filtered = computed(() =>
-    this.options().filter((option) =>
+    this.effectiveOptions().filter((option) =>
       `${option.label} ${option.description ?? ""}`
         .toLowerCase()
         .includes(this.searchable() ? this.query().trim().toLowerCase() : ""),
     ),
   );
+  readonly renderedOptions = computed(() => this.maxRenderedOptions() > 0 ? this.filtered().slice(0, this.maxRenderedOptions()) : this.filtered());
+  readonly hiddenOptionCount = computed(() => this.filtered().length - this.renderedOptions().length);
   readonly limit = computed(() => {
     const limit = this.maxSelected();
     return limit === null || !Number.isFinite(limit)
@@ -208,7 +230,7 @@ export class MultiSelectComponent extends PopoverControlBase<string[]> {
       .replaceAll("{count}", String(this.selected().length)),
   );
   readonly bulkOptions = computed(() =>
-    (this.bulkScope() === "filtered" ? this.filtered() : this.options()).filter(
+    (this.bulkScope() === "filtered" ? this.filtered() : this.effectiveOptions()).filter(
       (option) => !option.disabled,
     ),
   );
@@ -229,7 +251,7 @@ export class MultiSelectComponent extends PopoverControlBase<string[]> {
           )
         : this.selected().some(
             (value) =>
-              !this.options().some(
+              !this.effectiveOptions().some(
                 (option) => option.value === value && option.disabled,
               ),
           )),
@@ -241,7 +263,7 @@ export class MultiSelectComponent extends PopoverControlBase<string[]> {
     return selected
       .map(
         (value) =>
-          this.options().find((option) => option.value === value)?.label ??
+          this.effectiveOptions().find((option) => option.value === value)?.label ??
           value,
       )
       .join(this.labelSeparator());
@@ -262,8 +284,14 @@ export class MultiSelectComponent extends PopoverControlBase<string[]> {
     });
   }
   override toggle(): void {
+    if (this.busy()) return;
     if (!this.opened() && this.resetSearchOnOpen()) this.query.set("");
     super.toggle();
+    if (this.opened() && this.optionsProvider()) this.loadOptions(this.query());
+  }
+  showGroup(index: number): boolean {
+    const group = this.renderedOptions()[index]?.group;
+    return !!group && group !== this.renderedOptions()[index - 1]?.group;
   }
   protected override requestedPanelWidth(anchorWidth: number): number {
     const width = this.menuWidth();
@@ -295,7 +323,7 @@ export class MultiSelectComponent extends PopoverControlBase<string[]> {
     const selected = this.selected().filter((value) =>
       this.bulkScope() === "filtered"
         ? !editable.has(value)
-        : this.options().some(
+        : this.effectiveOptions().some(
             (option) => option.value === value && option.disabled,
           ),
     );
@@ -322,6 +350,19 @@ export class MultiSelectComponent extends PopoverControlBase<string[]> {
     const query = (event.target as HTMLInputElement).value;
     this.query.set(query);
     this.searchChange.emit(query);
+    if (this.optionsProvider()) {
+      clearTimeout(this.searchTimer);
+      this.searchTimer = setTimeout(() => this.loadOptions(query), Math.max(0, this.searchDebounce()));
+    }
+  }
+  async loadOptions(query = this.query()): Promise<void> {
+    const provider = this.optionsProvider();
+    if (!provider) return;
+    const request = ++this.request;
+    this.internalLoading.set(true);
+    try { const options = await provider(query); if (request === this.request) { this.remoteOptions.set(options); this.optionsLoaded.emit(options); } }
+    catch (error) { if (request === this.request) this.loadFailed.emit(error); }
+    finally { if (request === this.request) this.internalLoading.set(false); }
   }
   select(option: SelectOption, event: Event): void {
     if (this.optionDisabled(option)) return;

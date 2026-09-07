@@ -36,6 +36,10 @@ import { ToneAppearance } from "./shared/tone";
           {{ actionLabel() }}
         </button>
       }
+      @if (secondaryActionLabel()) {
+        <button type="button" class="action secondary" (click)="secondaryAction.emit()">{{ secondaryActionLabel() }}</button>
+      }
+      <div class="projected-actions"><ng-content select="[alertActions]" /></div>
     </div>
     @if (dismissible()) {
       <button
@@ -130,10 +134,12 @@ export class AlertComponent extends ToneAppearance {
   readonly dismissible = input(false);
   readonly dismissLabel = input("Dismiss alert");
   readonly actionLabel = input("");
+  readonly secondaryActionLabel = input("");
   readonly role = input<"auto" | "status" | "alert" | "none">("auto");
   readonly live = input<"off" | "polite" | "assertive">("polite");
   readonly dismissed = output<void>();
   readonly action = output<void>();
+  readonly secondaryAction = output<void>();
   readonly resolvedIcon = computed(
     () =>
       this.icon() ||

@@ -47,6 +47,9 @@ A compact decrement/value/increment control with bounds, decimal steps, keyboard
 | decrementLabel | string | "Decrease" | input | CounterButtonComponent | See the dedicated configuration story below. |
 | incrementIcon | string | "+" | input | CounterButtonComponent | See the dedicated configuration story below. |
 | decrementIcon | string | "−" | input | CounterButtonComponent | See the dedicated configuration story below. |
+| repeat | boolean | true | input | CounterButtonComponent | See the dedicated configuration story below. |
+| repeatDelay | number | 450 | input | CounterButtonComponent | See the dedicated configuration story below. |
+| repeatInterval | number | 90 | input | CounterButtonComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
@@ -55,6 +58,7 @@ A compact decrement/value/increment control with bounds, decimal steps, keyboard
 | valueChange | number |
 | incremented | number |
 | decremented | number |
+| limitReached | "min" \| "max" |
 
 ## Projection slots
 
@@ -70,6 +74,8 @@ No content projection slots declared.
 - `current()` — number
 - `formatted()` — string
 - `adjust(direction: number): void`
+- `startRepeat(direction: number): void`
+- `stopRepeat(): void`
 - `key(event: KeyboardEvent): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
@@ -95,6 +101,8 @@ export interface SelectOption {
   label: string;
   description?: string;
   disabled?: boolean;
+  /** Optional visible group heading. Consecutive options with the same group share one heading. */
+  group?: string;
 }
 ```
 
@@ -189,6 +197,10 @@ import { CounterButtonComponent } from "./counter-button.component";
 - `decrementLabel`: [DecrementLabel](http://127.0.0.1:6006/?path=/story/inputs-counter-button-configuration--decrement-label) — Customizes the text for the decrement action. Here it is set to “Remove one”.
 - `incrementIcon`: [IncrementIcon](http://127.0.0.1:6006/?path=/story/inputs-counter-button-configuration--increment-icon) — Demonstrates the increment icon setting on this counter button. Here it is set to “＋”.
 - `decrementIcon`: [DecrementIcon](http://127.0.0.1:6006/?path=/story/inputs-counter-button-configuration--decrement-icon) — Demonstrates the decrement icon setting on this counter button. Here it is set to “−”.
+- `repeat`: [RepeatFalse](http://127.0.0.1:6006/?path=/story/inputs-counter-button-configuration--repeat-false) — Demonstrates the repeat setting on this counter button. This example has it turned off.
+- `repeat`: [RepeatTrue](http://127.0.0.1:6006/?path=/story/inputs-counter-button-configuration--repeat-true) — Demonstrates the repeat setting on this counter button. This example has it turned on.
+- `repeatDelay`: [RepeatDelay](http://127.0.0.1:6006/?path=/story/inputs-counter-button-configuration--repeat-delay) — Demonstrates the repeat delay setting on this counter button. Here it is set to “458”.
+- `repeatInterval`: [RepeatInterval](http://127.0.0.1:6006/?path=/story/inputs-counter-button-configuration--repeat-interval) — Demonstrates the repeat interval setting on this counter button. Here it is set to “98”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/inputs-counter-button-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/inputs-counter-button-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/inputs-counter-button-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -202,6 +214,7 @@ import { CounterButtonComponent } from "./counter-button.component";
 - `event.valueChange`: [EventValueChange](http://127.0.0.1:6006/?path=/story/inputs-counter-button-events--event-value-change) — Try the counter button below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.incremented`: [EventIncremented](http://127.0.0.1:6006/?path=/story/inputs-counter-button-events--event-incremented) — Try the counter button below and inspect incremented in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.decremented`: [EventDecremented](http://127.0.0.1:6006/?path=/story/inputs-counter-button-events--event-decremented) — Try the counter button below and inspect decremented in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.limitReached`: [EventLimitReached](http://127.0.0.1:6006/?path=/story/inputs-counter-button-events--event-limit-reached) — Try the counter button below and inspect limitReached in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

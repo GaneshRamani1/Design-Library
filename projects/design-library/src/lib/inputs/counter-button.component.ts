@@ -2,7 +2,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  DestroyRef,
   forwardRef,
+  inject,
   input,
   output,
 } from "@angular/core";
@@ -25,7 +27,7 @@ import { formatNumber, numberPrecision } from "./number-format";
     },
   ],
   template:
-    `<span class="label" [id]="id()+'-label'">{{label()}}</span><div class="counter" [class.vertical]="orientation()==='vertical'"><button type="button" [disabled]="isDisabled()||readOnly()||current()<=minimum()" [attr.aria-label]="decrementLabel()" (click)="adjust(-1)" (blur)="onTouched()">{{decrementIcon()}}</button><span class="value" role="spinbutton" [attr.tabindex]="isDisabled()?-1:0" [attr.aria-labelledby]="id()+'-label'" [attr.aria-valuenow]="current()" [attr.aria-valuemin]="minimum()" [attr.aria-valuemax]="maximum()" [attr.aria-valuetext]="prefix()+formatted()+suffix()" [attr.aria-disabled]="isDisabled()||null" [attr.aria-readonly]="readOnly()||null" [attr.aria-describedby]="descriptionId()" [attr.aria-invalid]="error()?true:null" (keydown)="key($event)" (blur)="onTouched()">{{prefix()}}{{formatted()}}{{suffix()}}</span><button type="button" [disabled]="isDisabled()||readOnly()||current()>=maximum()" [attr.aria-label]="incrementLabel()" (click)="adjust(1)" (blur)="onTouched()">{{incrementIcon()}}</button></div>` +
+    `<span class="label" [id]="id()+'-label'">{{label()}}</span><div class="counter" [class.vertical]="orientation()==='vertical'"><button type="button" [disabled]="isDisabled()||readOnly()||current()<=minimum()" [attr.aria-label]="decrementLabel()" (click)="adjust(-1)" (pointerdown)="startRepeat(-1)" (pointerup)="stopRepeat()" (pointercancel)="stopRepeat()" (pointerleave)="stopRepeat()" (blur)="onTouched()">{{decrementIcon()}}</button><span class="value" role="spinbutton" [attr.tabindex]="isDisabled()?-1:0" [attr.aria-labelledby]="id()+'-label'" [attr.aria-valuenow]="current()" [attr.aria-valuemin]="minimum()" [attr.aria-valuemax]="maximum()" [attr.aria-valuetext]="prefix()+formatted()+suffix()" [attr.aria-disabled]="isDisabled()||null" [attr.aria-readonly]="readOnly()||null" [attr.aria-describedby]="descriptionId()" [attr.aria-invalid]="error()?true:null" (keydown)="key($event)" (blur)="onTouched()">{{prefix()}}{{formatted()}}{{suffix()}}</span><button type="button" [disabled]="isDisabled()||readOnly()||current()>=maximum()" [attr.aria-label]="incrementLabel()" (click)="adjust(1)" (pointerdown)="startRepeat(1)" (pointerup)="stopRepeat()" (pointercancel)="stopRepeat()" (pointerleave)="stopRepeat()" (blur)="onTouched()">{{incrementIcon()}}</button></div>` +
     fieldMessage,
   styles: [
     fieldStyles,
@@ -90,8 +92,18 @@ export class CounterButtonComponent extends FormControlBase<number> {
   readonly decrementLabel = input("Decrease");
   readonly incrementIcon = input("+");
   readonly decrementIcon = input("−");
+  readonly repeat = input(true);
+  readonly repeatDelay = input(450);
+  readonly repeatInterval = input(90);
   readonly incremented = output<number>();
   readonly decremented = output<number>();
+  readonly limitReached = output<"min" | "max">();
+  private repeatDelayTimer: ReturnType<typeof setTimeout> | undefined;
+  private repeatTimer: ReturnType<typeof setInterval> | undefined;
+  constructor() {
+    super();
+    inject(DestroyRef).onDestroy(() => this.stopRepeat());
+  }
   readonly minimum = computed(() =>
     Number.isFinite(this.min()) ? this.min() : 0,
   );
@@ -122,7 +134,28 @@ export class CounterButtonComponent extends FormControlBase<number> {
         ),
       ),
     );
+    if (next === this.current()) {
+      this.limitReached.emit(direction < 0 ? "min" : "max");
+      this.stopRepeat();
+      return;
+    }
     this.change(next);
+  }
+  startRepeat(direction: number): void {
+    if (!this.repeat() || this.isDisabled() || this.readOnly()) return;
+    this.stopRepeat();
+    this.repeatDelayTimer = setTimeout(() => {
+      this.repeatTimer = setInterval(
+        () => this.adjust(direction),
+        Math.max(40, this.repeatInterval()),
+      );
+    }, Math.max(0, this.repeatDelay()));
+  }
+  stopRepeat(): void {
+    clearTimeout(this.repeatDelayTimer);
+    clearInterval(this.repeatTimer);
+    this.repeatDelayTimer = undefined;
+    this.repeatTimer = undefined;
   }
   private change(next: number): void {
     const previous = this.current();

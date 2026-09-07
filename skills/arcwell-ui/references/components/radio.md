@@ -78,6 +78,8 @@ export interface SelectOption {
   label: string;
   description?: string;
   disabled?: boolean;
+  /** Optional visible group heading. Consecutive options with the same group share one heading. */
+  group?: string;
 }
 ```
 

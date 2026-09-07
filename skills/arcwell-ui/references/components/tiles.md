@@ -33,6 +33,7 @@ A dashboard metric tile. Compose multiple tiles with a layout container or CSS g
 | customColor | string | "var(--dl-primary)" | input | ToneAppearance | See the dedicated configuration story below. |
 | customBorder | string | "var(--dl-primary)" | input | ToneAppearance | See the dedicated configuration story below. |
 | showHeader | boolean | true | input | TilesComponent | See the dedicated configuration story below. |
+| showDefaultHeader | boolean | true | input | TilesComponent | Keep projected tileHeader content while hiding the built-in label and icon. |
 | label | string | "Total revenue" | input | TilesComponent | See the dedicated configuration story below. |
 | description | string | "" | input | TilesComponent | See the dedicated configuration story below. |
 | value | string \| number \| null | "48,250" | input | TilesComponent | See the dedicated configuration story below. |
@@ -43,6 +44,7 @@ A dashboard metric tile. Compose multiple tiles with a layout container or CSS g
 | valueSize | string | "36px" | input | TilesComponent | See the dedicated configuration story below. |
 | valueColor | string | "var(--dl-text)" | input | TilesComponent | See the dedicated configuration story below. |
 | showValue | boolean | true | input | TilesComponent | See the dedicated configuration story below. |
+| showDefaultValue | boolean | true | input | TilesComponent | See the dedicated configuration story below. |
 | icon | string | "star" | input | TilesComponent | See the dedicated configuration story below. |
 | iconSize | number | 20 | input | TilesComponent | See the dedicated configuration story below. |
 | showIcon | boolean | true | input | TilesComponent | See the dedicated configuration story below. |
@@ -51,12 +53,13 @@ A dashboard metric tile. Compose multiple tiles with a layout container or CSS g
 | height | string | "auto" | input | TilesComponent | See the dedicated configuration story below. |
 | minHeight | string | "220px" | input | TilesComponent | See the dedicated configuration story below. |
 | trend | string | "" | input | TilesComponent | See the dedicated configuration story below. |
-| trendDirection | "up" \| "down" \| "flat" | "up" | input | TilesComponent | See the dedicated configuration story below. |
+| trendDirection | "flat" \| "up" \| "down" | "up" | input | TilesComponent | See the dedicated configuration story below. |
 | trendTone | "neutral" \| "success" \| "danger" | "success" | input | TilesComponent | See the dedicated configuration story below. |
 | comparison | string | "" | input | TilesComponent | See the dedicated configuration story below. |
 | showTrend | boolean | true | input | TilesComponent | See the dedicated configuration story below. |
 | series | number[] | [] | input | TilesComponent | See the dedicated configuration story below. |
 | showChart | boolean | true | input | TilesComponent | See the dedicated configuration story below. |
+| showDefaultChart | boolean | true | input | TilesComponent | See the dedicated configuration story below. |
 | chartLabel | string | "Metric history" | input | TilesComponent | See the dedicated configuration story below. |
 | chartHeight | string | "64px" | input | TilesComponent | See the dedicated configuration story below. |
 | chartColor | string | "var(--tone-text)" | input | TilesComponent | See the dedicated configuration story below. |
@@ -67,7 +70,9 @@ A dashboard metric tile. Compose multiple tiles with a layout container or CSS g
 | progressLabel | string | "Goal completion" | input | TilesComponent | See the dedicated configuration story below. |
 | loading | boolean | false | input | TilesComponent | See the dedicated configuration story below. |
 | loadingLabel | string | "Loading metric" | input | TilesComponent | See the dedicated configuration story below. |
+| showDefaultLoading | boolean | true | input | TilesComponent | See the dedicated configuration story below. |
 | error | string | "" | input | TilesComponent | See the dedicated configuration story below. |
+| showDefaultError | boolean | true | input | TilesComponent | See the dedicated configuration story below. |
 | showFooter | boolean | true | input | TilesComponent | See the dedicated configuration story below. |
 | footerText | string | "" | input | TilesComponent | See the dedicated configuration story below. |
 | actionLabel | string | "" | input | TilesComponent | See the dedicated configuration story below. |
@@ -83,6 +88,11 @@ A dashboard metric tile. Compose multiple tiles with a layout container or CSS g
 
 ## Projection slots
 
+- `[tileHeader]`
+- `[tileLoading]`
+- `[tileError]`
+- `[tileValue]`
+- `[tileChart]`
 - `default`
 - `[tileFooter]`
 
@@ -168,6 +178,7 @@ import { TilesComponent } from "./tiles.component";
 - [Goal](http://127.0.0.1:6006/?path=/story/data-display-tiles--goal)
 - [Empty](http://127.0.0.1:6006/?path=/story/data-display-tiles--empty)
 - [Custom Content](http://127.0.0.1:6006/?path=/story/data-display-tiles--custom-content)
+- [Replaced Regions](http://127.0.0.1:6006/?path=/story/data-display-tiles--replaced-regions)
 - [Flat History](http://127.0.0.1:6006/?path=/story/data-display-tiles--flat-history)
 - [Single Data Point](http://127.0.0.1:6006/?path=/story/data-display-tiles--single-data-point)
 
@@ -192,6 +203,8 @@ import { TilesComponent } from "./tiles.component";
 - `customBorder`: [CustomBorder](http://127.0.0.1:6006/?path=/story/data-display-tiles-appearance--custom-border) — Demonstrates the custom border setting on this tiles. Here it is set to “#a78bfa”.
 - `showHeader`: [ShowHeaderFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-header-false) — Controls whether header are shown. This example has it turned off.
 - `showHeader`: [ShowHeaderTrue](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-header-true) — Controls whether header are shown. This example has it turned on.
+- `showDefaultHeader`: [ShowDefaultHeaderFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-default-header-false) — Controls whether default header are shown. This example has it turned off.
+- `showDefaultHeader`: [ShowDefaultHeaderTrue](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-default-header-true) — Controls whether default header are shown. This example has it turned on.
 - `label`: [Label](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--label) — Customizes the visible label. Here it is set to “Custom label”.
 - `description`: [Description](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--description) — Adds supporting context below the main label or heading. Here it is set to “More context, in your own words.”.
 - `value`: [Value](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--value) — Sets the selected or displayed value. Here it is set to “2”.
@@ -203,6 +216,8 @@ import { TilesComponent } from "./tiles.component";
 - `valueColor`: [ValueColor](http://127.0.0.1:6006/?path=/story/data-display-tiles-appearance--value-color) — Demonstrates the value color setting on this tiles. Here it is set to “#a78bfa”.
 - `showValue`: [ShowValueFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-value-false) — Controls whether value are shown. This example has it turned off.
 - `showValue`: [ShowValueTrue](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-value-true) — Controls whether value are shown. This example has it turned on.
+- `showDefaultValue`: [ShowDefaultValueFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-default-value-false) — Controls whether default value are shown. This example has it turned off.
+- `showDefaultValue`: [ShowDefaultValueTrue](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-default-value-true) — Controls whether default value are shown. This example has it turned on.
 - `icon`: [Icon](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--icon) — Changes the leading icon. Here it is set to “heart”.
 - `iconSize`: [IconSize](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--icon-size) — Demonstrates the icon size setting on this tiles. Here it is set to “28”.
 - `showIcon`: [ShowIconFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-icon-false) — Controls whether icon are shown. This example has it turned off.
@@ -226,6 +241,8 @@ import { TilesComponent } from "./tiles.component";
 - `series`: [Series](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--series) — Demonstrates the series setting on this tiles.
 - `showChart`: [ShowChartFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-chart-false) — Controls whether chart are shown. This example has it turned off.
 - `showChart`: [ShowChartTrue](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-chart-true) — Controls whether chart are shown. This example has it turned on.
+- `showDefaultChart`: [ShowDefaultChartFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-default-chart-false) — Controls whether default chart are shown. This example has it turned off.
+- `showDefaultChart`: [ShowDefaultChartTrue](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-default-chart-true) — Controls whether default chart are shown. This example has it turned on.
 - `chartLabel`: [ChartLabel](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--chart-label) — Customizes the text for the chart action. Here it is set to “Custom chartLabel”.
 - `chartHeight`: [ChartHeight](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--chart-height) — Demonstrates the chart height setting on this tiles. Here it is set to “100px”.
 - `chartColor`: [ChartColor](http://127.0.0.1:6006/?path=/story/data-display-tiles-appearance--chart-color) — Demonstrates the chart color setting on this tiles. Here it is set to “#a78bfa”.
@@ -239,7 +256,11 @@ import { TilesComponent } from "./tiles.component";
 - `loading`: [LoadingFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--loading-false) — Shows the loading state. This example has it turned off.
 - `loading`: [LoadingTrue](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--loading-true) — Shows the loading state. This example has it turned on.
 - `loadingLabel`: [LoadingLabel](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--loading-label) — Customizes the text for the loading action. Here it is set to “Working…”.
+- `showDefaultLoading`: [ShowDefaultLoadingFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-default-loading-false) — Controls whether default loading are shown. This example has it turned off.
+- `showDefaultLoading`: [ShowDefaultLoadingTrue](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-default-loading-true) — Controls whether default loading are shown. This example has it turned on.
 - `error`: [Error](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--error) — Displays an error message or error state. Here it is set to “Please review this value.”.
+- `showDefaultError`: [ShowDefaultErrorFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-default-error-false) — Controls whether default error are shown. This example has it turned off.
+- `showDefaultError`: [ShowDefaultErrorTrue](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-default-error-true) — Controls whether default error are shown. This example has it turned on.
 - `showFooter`: [ShowFooterFalse](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-footer-false) — Controls whether footer are shown. This example has it turned off.
 - `showFooter`: [ShowFooterTrue](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--show-footer-true) — Controls whether footer are shown. This example has it turned on.
 - `footerText`: [FooterText](http://127.0.0.1:6006/?path=/story/data-display-tiles-configuration--footer-text) — Demonstrates the footer text setting on this tiles. Here it is set to “Updated 5 minutes ago”.

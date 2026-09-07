@@ -7,6 +7,7 @@ import {
   input,
   model,
   output,
+  signal,
 } from "@angular/core";
 import { NgTemplateOutlet } from "@angular/common";
 import { ButtonComponent } from "../button.component";
@@ -78,7 +79,7 @@ let nextStepper = 0;
               (click)="previous()"
             >
               {{ previousLabel() }}</button
-            ><button dlButton [disabled]="!canAdvance()" (click)="next()">
+            ><button dlButton [disabled]="!canAdvance()" [loading]="navigating()" (click)="next()">
               {{ nextIndex() < 0 ? finishLabel() : nextLabel() }}
             </button>
           </footer>
@@ -228,7 +229,14 @@ export class StepperContainerComponent extends Appearance {
   readonly finishLabel = input("Finish");
   readonly optionalLabel = input("Optional");
   readonly panelPadding = input("24px 0");
+  /** Emits navigationRequested without updating value so applications can validate asynchronously. */
+  readonly controlledNavigation = input(false);
+  readonly beforeNavigate = input<((from: string | null, to: string) => boolean | Promise<boolean>) | null>(null);
+  readonly navigating = signal(false);
   readonly finished = output<void>();
+  readonly navigationRequested = output<{ from: string | null; to: string; direction: "forward" | "backward" | "direct" }>();
+  readonly navigationBlocked = output<{ from: string | null; to: string }>();
+  readonly navigationError = output<unknown>();
   readonly steps = contentChildren(StepComponent);
   readonly active = computed(
     () =>
@@ -261,6 +269,7 @@ export class StepperContainerComponent extends Appearance {
     const step = this.steps()[index];
     return (
       !!step &&
+      !this.navigating() &&
       !step.disabled() &&
       (this.allowBack() || index >= this.activeIndex()) &&
       (!this.linear() ||
@@ -269,8 +278,25 @@ export class StepperContainerComponent extends Appearance {
           .every((s) => s.disabled() || s.completed() || s.optional()))
     );
   }
-  select(index: number): void {
-    if (this.canSelect(index)) this.value.set(this.steps()[index].value());
+  async select(index: number): Promise<void> {
+    if (!this.canSelect(index)) return;
+    const target = this.steps()[index].value();
+    const direction = index > this.activeIndex() ? "forward" : index < this.activeIndex() ? "backward" : "direct";
+    this.navigationRequested.emit({ from: this.active()?.value() ?? null, to: target, direction });
+    if (this.controlledNavigation()) return;
+    const from = this.active()?.value() ?? null;
+    try {
+      this.navigating.set(true);
+      if ((await this.beforeNavigate()?.(from, target)) === false) {
+        this.navigationBlocked.emit({ from, to: target });
+        return;
+      }
+      this.value.set(target);
+    } catch (error) {
+      this.navigationError.emit(error);
+    } finally {
+      this.navigating.set(false);
+    }
   }
   previous(): void {
     if (this.allowBack() && this.previousIndex() >= 0)

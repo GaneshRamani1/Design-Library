@@ -39,6 +39,9 @@ One native slider or a bounded lower/upper pair. Values snap to step.
 | step | number | 1 | input | RangeSelectorComponent | See the dedicated configuration story below. |
 | range | boolean | false | input | RangeSelectorComponent | See the dedicated configuration story below. |
 | unit | string | "" | input | RangeSelectorComponent | See the dedicated configuration story below. |
+| orientation | "horizontal" \| "vertical" | "horizontal" | input | RangeSelectorComponent | See the dedicated configuration story below. |
+| ticks | number | 0 | input | RangeSelectorComponent | Number of evenly spaced native tick marks; zero hides ticks. |
+| valueFormat | string | "{value}{unit}" | input | RangeSelectorComponent | Display template supporting {value} and {unit}. |
 
 ## Outputs
 
@@ -55,11 +58,13 @@ No content projection slots declared.
 - `value()` — RangeValue | null
 - `isDisabled()` — boolean
 - `descriptionId()` — string | null
+- `tickValues()` — number[]
 - `minimum()` — number
 - `maximum()` — number
 - `increment()` — number
 - `lower()` — number
 - `upper()` — number
+- `formatValue(value: number): string`
 - `slide(event: Event, upper: boolean): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
@@ -85,6 +90,8 @@ export interface SelectOption {
   label: string;
   description?: string;
   disabled?: boolean;
+  /** Optional visible group heading. Consecutive options with the same group share one heading. */
+  group?: string;
 }
 
 export type RangeValue = number | [number, number];
@@ -167,6 +174,10 @@ import { RangeSelectorComponent } from "./range-selector.component";
 - `range`: [RangeFalse](http://127.0.0.1:6006/?path=/story/inputs-range-selector-configuration--range-false) — Demonstrates the range setting on this range selector. This example has it turned off.
 - `range`: [RangeTrue](http://127.0.0.1:6006/?path=/story/inputs-range-selector-configuration--range-true) — Demonstrates the range setting on this range selector. This example has it turned on.
 - `unit`: [Unit](http://127.0.0.1:6006/?path=/story/inputs-range-selector-configuration--unit) — Demonstrates the unit setting on this range selector. Here it is set to “ units”.
+- `orientation`: [OrientationHorizontal](http://127.0.0.1:6006/?path=/story/inputs-range-selector-configuration--orientation-horizontal) — Switches between horizontal and vertical arrangements. Here it is set to “horizontal”.
+- `orientation`: [OrientationVertical](http://127.0.0.1:6006/?path=/story/inputs-range-selector-configuration--orientation-vertical) — Switches between horizontal and vertical arrangements. Here it is set to “vertical”.
+- `ticks`: [Ticks](http://127.0.0.1:6006/?path=/story/inputs-range-selector-configuration--ticks) — Demonstrates the ticks setting on this range selector. Here it is set to “8”.
+- `valueFormat`: [ValueFormat](http://127.0.0.1:6006/?path=/story/inputs-range-selector-configuration--value-format) — Demonstrates the value format setting on this range selector. Here it is set to “Custom valueFormat”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/inputs-range-selector-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/inputs-range-selector-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/inputs-range-selector-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.

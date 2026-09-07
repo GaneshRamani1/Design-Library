@@ -39,6 +39,8 @@ A compact notification with an optional action such as Undo. Try its action and 
 | dismissLabel | string | "Dismiss notification" | input | NoticeBase | See the dedicated configuration story below. |
 | actionLabel | string | "" | input | NoticeBase | See the dedicated configuration story below. |
 | closeOnAction | boolean | true | input | NoticeBase | See the dedicated configuration story below. |
+| secondaryActionLabel | string | "" | input | NoticeBase | See the dedicated configuration story below. |
+| closeOnSecondaryAction | boolean | true | input | NoticeBase | See the dedicated configuration story below. |
 | duration | number | 5000 | input | NoticeBase | See the dedicated configuration story below. |
 | pauseOnHover | boolean | true | input | NoticeBase | See the dedicated configuration story below. |
 | showProgress | boolean | false | input | NoticeBase | See the dedicated configuration story below. |
@@ -51,6 +53,7 @@ A compact notification with an optional action such as Undo. Try its action and 
 |---|---|
 | dismissed | import("./notice-base").NoticeDismissReason |
 | action | void |
+| secondaryAction | void |
 | visibleChange | boolean |
 
 ## Projection slots
@@ -68,6 +71,7 @@ No content projection slots declared.
 - `focus(value: boolean): void`
 - `dismiss(reason: NoticeDismissReason = "close"): void`
 - `act(): void`
+- `actSecondary(): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -95,7 +99,7 @@ export type ComponentTone =
   | "danger"
   | "custom";
 
-export type NoticeDismissReason = "close" | "timeout" | "action";
+export type NoticeDismissReason = "close" | "timeout" | "action" | "secondary-action";
 ```
 
 ## Storybook defaults
@@ -130,6 +134,7 @@ import { SnackbarComponent } from "./snackbar.component";
 - [Default](http://127.0.0.1:6006/?path=/story/feedback-snackbar--default)
 - [Timed](http://127.0.0.1:6006/?path=/story/feedback-snackbar--timed)
 - [Persistent](http://127.0.0.1:6006/?path=/story/feedback-snackbar--persistent)
+- [Recovery Actions](http://127.0.0.1:6006/?path=/story/feedback-snackbar--recovery-actions)
 
 ## Configuration coverage
 
@@ -161,6 +166,9 @@ import { SnackbarComponent } from "./snackbar.component";
 - `actionLabel`: [ActionLabel](http://127.0.0.1:6006/?path=/story/feedback-snackbar-configuration--action-label) — Customizes the text for the action action. Here it is set to “Review details”.
 - `closeOnAction`: [CloseOnActionFalse](http://127.0.0.1:6006/?path=/story/feedback-snackbar-configuration--close-on-action-false) — Controls whether the notification closes after its action. This example has it turned off. Open the example and try the relevant pointer or keyboard action.
 - `closeOnAction`: [CloseOnActionTrue](http://127.0.0.1:6006/?path=/story/feedback-snackbar-configuration--close-on-action-true) — Controls whether the notification closes after its action. This example has it turned on. Open the example and try the relevant pointer or keyboard action.
+- `secondaryActionLabel`: [SecondaryActionLabel](http://127.0.0.1:6006/?path=/story/feedback-snackbar-configuration--secondary-action-label) — Customizes the text for the secondary action action. Here it is set to “Custom secondaryActionLabel”.
+- `closeOnSecondaryAction`: [CloseOnSecondaryActionFalse](http://127.0.0.1:6006/?path=/story/feedback-snackbar-configuration--close-on-secondary-action-false) — Demonstrates the close on secondary action setting on this snackbar. This example has it turned off. Open the example and try the relevant pointer or keyboard action.
+- `closeOnSecondaryAction`: [CloseOnSecondaryActionTrue](http://127.0.0.1:6006/?path=/story/feedback-snackbar-configuration--close-on-secondary-action-true) — Demonstrates the close on secondary action setting on this snackbar. This example has it turned on. Open the example and try the relevant pointer or keyboard action.
 - `duration`: [Duration0](http://127.0.0.1:6006/?path=/story/feedback-snackbar-configuration--duration-0) — Sets how long a notification remains visible; zero keeps it open. Here it is set to “0”.
 - `duration`: [Duration3000](http://127.0.0.1:6006/?path=/story/feedback-snackbar-configuration--duration-3000) — Sets how long a notification remains visible; zero keeps it open. Here it is set to “3000”.
 - `duration`: [Duration8000](http://127.0.0.1:6006/?path=/story/feedback-snackbar-configuration--duration-8000) — Sets how long a notification remains visible; zero keeps it open. Here it is set to “8000”.
@@ -185,6 +193,7 @@ import { SnackbarComponent } from "./snackbar.component";
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/feedback-snackbar-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.dismissed`: [EventDismissed](http://127.0.0.1:6006/?path=/story/feedback-snackbar-events--event-dismissed) — Try the snackbar below and inspect dismissed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.action`: [EventAction](http://127.0.0.1:6006/?path=/story/feedback-snackbar-events--event-action) — Try the snackbar below and inspect action in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.secondaryAction`: [EventSecondaryAction](http://127.0.0.1:6006/?path=/story/feedback-snackbar-events--event-secondary-action) — Try the snackbar below and inspect secondaryAction in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.visibleChange`: [EventVisibleChange](http://127.0.0.1:6006/?path=/story/feedback-snackbar-events--event-visible-change) — Try the snackbar below and inspect visibleChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns

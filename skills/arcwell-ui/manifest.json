@@ -29,6 +29,7 @@
     "actions-button-configuration--icon-position-start",
     "actions-button-configuration--loading-false",
     "actions-button-configuration--loading-label",
+    "actions-button-configuration--loading-min-width",
     "actions-button-configuration--loading-true",
     "actions-button-configuration--size-lg",
     "actions-button-configuration--size-md",
@@ -56,6 +57,8 @@
     "actions-fab-button-appearance--appearance-radius",
     "actions-fab-button-appearance--appearance-shadow",
     "actions-fab-button-appearance--style-tokens",
+    "actions-fab-button-configuration--collapse-on-mobile-false",
+    "actions-fab-button-configuration--collapse-on-mobile-true",
     "actions-fab-button-configuration--disabled-false",
     "actions-fab-button-configuration--disabled-true",
     "actions-fab-button-configuration--extended-false",
@@ -69,11 +72,14 @@
     "actions-fab-button-configuration--label",
     "actions-fab-button-configuration--loading-false",
     "actions-fab-button-configuration--loading-label",
+    "actions-fab-button-configuration--loading-min-width",
     "actions-fab-button-configuration--loading-true",
     "actions-fab-button-configuration--offset",
     "actions-fab-button-configuration--placement-bottom-left",
     "actions-fab-button-configuration--placement-bottom-right",
     "actions-fab-button-configuration--placement-inline",
+    "actions-fab-button-configuration--safe-area-false",
+    "actions-fab-button-configuration--safe-area-true",
     "actions-fab-button-configuration--size-lg",
     "actions-fab-button-configuration--size-md",
     "actions-fab-button-configuration--size-sm",
@@ -115,6 +121,7 @@
     "actions-icon-button-configuration--label",
     "actions-icon-button-configuration--loading-false",
     "actions-icon-button-configuration--loading-label",
+    "actions-icon-button-configuration--loading-min-width",
     "actions-icon-button-configuration--loading-true",
     "actions-icon-button-configuration--pressed-false",
     "actions-icon-button-configuration--pressed-true",
@@ -124,12 +131,14 @@
     "actions-icon-button-configuration--type-button",
     "actions-icon-button-configuration--type-reset",
     "actions-icon-button-configuration--type-submit",
+    "actions-icon-button-events--event-pressed-change",
     "actions-icon-button-variations--variant-danger",
     "actions-icon-button-variations--variant-ghost",
     "actions-icon-button-variations--variant-primary",
     "actions-icon-button-variations--variant-secondary",
     "actions-icon-button-variations--variant-tertiary",
     "data-display-avatar--default",
+    "data-display-avatar--group-with-overflow",
     "data-display-avatar--large",
     "data-display-avatar-appearance--appearance",
     "data-display-avatar-appearance--appearance-background",
@@ -149,7 +158,16 @@
     "data-display-avatar-appearance--show-border-true",
     "data-display-avatar-appearance--style-tokens",
     "data-display-avatar-configuration--custom-initials",
+    "data-display-avatar-configuration--excess-count",
+    "data-display-avatar-configuration--excess-label",
+    "data-display-avatar-configuration--group-index",
+    "data-display-avatar-configuration--interactive-false",
+    "data-display-avatar-configuration--interactive-true",
+    "data-display-avatar-configuration--max-excess",
     "data-display-avatar-configuration--name",
+    "data-display-avatar-configuration--overlap",
+    "data-display-avatar-configuration--reverse-stack-false",
+    "data-display-avatar-configuration--reverse-stack-true",
     "data-display-avatar-configuration--size-lg",
     "data-display-avatar-configuration--size-md",
     "data-display-avatar-configuration--size-sm",
@@ -159,6 +177,9 @@
     "data-display-avatar-configuration--status-busy",
     "data-display-avatar-configuration--status-offline",
     "data-display-avatar-configuration--status-online",
+    "data-display-avatar-events--event-activated",
+    "data-display-avatar-events--event-image-failed",
+    "data-display-avatar-events--event-image-loaded",
     "data-display-badge--custom",
     "data-display-badge--danger",
     "data-display-badge--default",
@@ -185,13 +206,17 @@
     "data-display-badge-appearance--pill-false",
     "data-display-badge-appearance--pill-true",
     "data-display-badge-appearance--style-tokens",
+    "data-display-badge-configuration--accessible-label",
     "data-display-badge-configuration--icon",
+    "data-display-badge-configuration--max",
+    "data-display-badge-configuration--overflow-suffix",
     "data-display-badge-configuration--removable-false",
     "data-display-badge-configuration--removable-true",
     "data-display-badge-configuration--remove-label",
     "data-display-badge-configuration--size-lg",
     "data-display-badge-configuration--size-md",
     "data-display-badge-configuration--size-sm",
+    "data-display-badge-configuration--value",
     "data-display-badge-configuration--visible-false",
     "data-display-badge-configuration--visible-true",
     "data-display-badge-events--event-removed",
@@ -239,7 +264,9 @@
     "data-display-icon-configuration--size-24",
     "data-display-icon-configuration--size-32",
     "data-display-icon-configuration--size-48",
+    "data-display-list--custom-row-template",
     "data-display-list--default",
+    "data-display-list--nested",
     "data-display-list-appearance--appearance",
     "data-display-list-appearance--appearance-background",
     "data-display-list-appearance--appearance-border-color",
@@ -260,12 +287,20 @@
     "data-display-list-configuration--dividers-false",
     "data-display-list-configuration--dividers-true",
     "data-display-list-configuration--empty-text",
+    "data-display-list-configuration--expand-on-activate-false",
+    "data-display-list-configuration--expand-on-activate-true",
+    "data-display-list-configuration--expanded-ids",
     "data-display-list-configuration--icon-size",
     "data-display-list-configuration--interactive-false",
     "data-display-list-configuration--interactive-true",
+    "data-display-list-configuration--item-template",
     "data-display-list-configuration--items",
     "data-display-list-configuration--label",
+    "data-display-list-configuration--nested-indent",
     "data-display-list-configuration--selected",
+    "data-display-list-configuration--selection-mode-multiple",
+    "data-display-list-configuration--selection-mode-none",
+    "data-display-list-configuration--selection-mode-single",
     "data-display-list-configuration--show-chevron-false",
     "data-display-list-configuration--show-chevron-true",
     "data-display-list-configuration--show-descriptions-false",
@@ -274,7 +309,10 @@
     "data-display-list-configuration--show-icons-true",
     "data-display-list-configuration--show-meta-false",
     "data-display-list-configuration--show-meta-true",
+    "data-display-list-events--event-expanded-change",
+    "data-display-list-events--event-expanded-ids-change",
     "data-display-list-events--event-item-click",
+    "data-display-list-events--event-selected-change",
     "data-display-tiles--custom-content",
     "data-display-tiles--dashboard",
     "data-display-tiles--default",
@@ -283,6 +321,7 @@
     "data-display-tiles--flat-history",
     "data-display-tiles--goal",
     "data-display-tiles--loading",
+    "data-display-tiles--replaced-regions",
     "data-display-tiles--single-data-point",
     "data-display-tiles-appearance--appearance",
     "data-display-tiles-appearance--appearance-background",
@@ -336,6 +375,16 @@
     "data-display-tiles-configuration--series",
     "data-display-tiles-configuration--show-chart-false",
     "data-display-tiles-configuration--show-chart-true",
+    "data-display-tiles-configuration--show-default-chart-false",
+    "data-display-tiles-configuration--show-default-chart-true",
+    "data-display-tiles-configuration--show-default-error-false",
+    "data-display-tiles-configuration--show-default-error-true",
+    "data-display-tiles-configuration--show-default-header-false",
+    "data-display-tiles-configuration--show-default-header-true",
+    "data-display-tiles-configuration--show-default-loading-false",
+    "data-display-tiles-configuration--show-default-loading-true",
+    "data-display-tiles-configuration--show-default-value-false",
+    "data-display-tiles-configuration--show-default-value-true",
     "data-display-tiles-configuration--show-footer-false",
     "data-display-tiles-configuration--show-footer-true",
     "data-display-tiles-configuration--show-header-false",
@@ -411,6 +460,7 @@
     "feedback-alert-configuration--role-auto",
     "feedback-alert-configuration--role-none",
     "feedback-alert-configuration--role-status",
+    "feedback-alert-configuration--secondary-action-label",
     "feedback-alert-configuration--show-icon-false",
     "feedback-alert-configuration--show-icon-true",
     "feedback-alert-configuration--size-lg",
@@ -420,6 +470,7 @@
     "feedback-alert-configuration--visible-true",
     "feedback-alert-events--event-action",
     "feedback-alert-events--event-dismissed",
+    "feedback-alert-events--event-secondary-action",
     "feedback-alert-events--event-visible-change",
     "feedback-alert-variations--tone-custom",
     "feedback-alert-variations--tone-danger",
@@ -451,6 +502,8 @@
     "feedback-global-notification-configuration--action-label",
     "feedback-global-notification-configuration--close-on-action-false",
     "feedback-global-notification-configuration--close-on-action-true",
+    "feedback-global-notification-configuration--close-on-secondary-action-false",
+    "feedback-global-notification-configuration--close-on-secondary-action-true",
     "feedback-global-notification-configuration--content-width",
     "feedback-global-notification-configuration--dismiss-label",
     "feedback-global-notification-configuration--dismissible-false",
@@ -475,6 +528,7 @@
     "feedback-global-notification-configuration--position-fixed",
     "feedback-global-notification-configuration--position-static",
     "feedback-global-notification-configuration--position-sticky",
+    "feedback-global-notification-configuration--secondary-action-label",
     "feedback-global-notification-configuration--show-icon-false",
     "feedback-global-notification-configuration--show-icon-true",
     "feedback-global-notification-configuration--show-progress-false",
@@ -488,6 +542,7 @@
     "feedback-global-notification-configuration--z-index",
     "feedback-global-notification-events--event-action",
     "feedback-global-notification-events--event-dismissed",
+    "feedback-global-notification-events--event-secondary-action",
     "feedback-global-notification-events--event-visible-change",
     "feedback-global-notification-variations--tone-custom",
     "feedback-global-notification-variations--tone-danger",
@@ -520,6 +575,8 @@
     "feedback-inline-notification-configuration--action-label",
     "feedback-inline-notification-configuration--close-on-action-false",
     "feedback-inline-notification-configuration--close-on-action-true",
+    "feedback-inline-notification-configuration--close-on-secondary-action-false",
+    "feedback-inline-notification-configuration--close-on-secondary-action-true",
     "feedback-inline-notification-configuration--dismiss-label",
     "feedback-inline-notification-configuration--dismissible-false",
     "feedback-inline-notification-configuration--dismissible-true",
@@ -537,6 +594,7 @@
     "feedback-inline-notification-configuration--message",
     "feedback-inline-notification-configuration--pause-on-hover-false",
     "feedback-inline-notification-configuration--pause-on-hover-true",
+    "feedback-inline-notification-configuration--secondary-action-label",
     "feedback-inline-notification-configuration--show-icon-false",
     "feedback-inline-notification-configuration--show-icon-true",
     "feedback-inline-notification-configuration--show-progress-false",
@@ -549,6 +607,7 @@
     "feedback-inline-notification-configuration--width",
     "feedback-inline-notification-events--event-action",
     "feedback-inline-notification-events--event-dismissed",
+    "feedback-inline-notification-events--event-secondary-action",
     "feedback-inline-notification-events--event-visible-change",
     "feedback-inline-notification-variations--tone-custom",
     "feedback-inline-notification-variations--tone-danger",
@@ -591,6 +650,7 @@
     "feedback-loading-skeleton-configuration--loading-false",
     "feedback-loading-skeleton-configuration--loading-true",
     "feedback-loading-skeleton-configuration--width",
+    "feedback-loading-skeleton-events--event-loaded",
     "feedback-notifications-service--bottom-center",
     "feedback-notifications-service--bottom-left",
     "feedback-notifications-service--bottom-right",
@@ -618,20 +678,26 @@
     "feedback-progress-appearance--bar-color",
     "feedback-progress-appearance--style-tokens",
     "feedback-progress-appearance--track-color",
+    "feedback-progress-configuration--circle-size",
     "feedback-progress-configuration--height",
     "feedback-progress-configuration--indeterminate-false",
     "feedback-progress-configuration--indeterminate-true",
     "feedback-progress-configuration--label",
     "feedback-progress-configuration--max",
     "feedback-progress-configuration--min",
+    "feedback-progress-configuration--segments",
     "feedback-progress-configuration--show-label-false",
     "feedback-progress-configuration--show-label-true",
     "feedback-progress-configuration--show-value-false",
     "feedback-progress-configuration--show-value-true",
     "feedback-progress-configuration--value",
     "feedback-progress-configuration--value-label",
+    "feedback-progress-events--event-completed",
+    "feedback-progress-variations--variant-circular",
+    "feedback-progress-variations--variant-linear",
     "feedback-snackbar--default",
     "feedback-snackbar--persistent",
+    "feedback-snackbar--recovery-actions",
     "feedback-snackbar--timed",
     "feedback-snackbar-appearance--appearance",
     "feedback-snackbar-appearance--appearance-background",
@@ -651,6 +717,8 @@
     "feedback-snackbar-configuration--action-label",
     "feedback-snackbar-configuration--close-on-action-false",
     "feedback-snackbar-configuration--close-on-action-true",
+    "feedback-snackbar-configuration--close-on-secondary-action-false",
+    "feedback-snackbar-configuration--close-on-secondary-action-true",
     "feedback-snackbar-configuration--dismiss-label",
     "feedback-snackbar-configuration--dismissible-false",
     "feedback-snackbar-configuration--dismissible-true",
@@ -665,6 +733,7 @@
     "feedback-snackbar-configuration--message",
     "feedback-snackbar-configuration--pause-on-hover-false",
     "feedback-snackbar-configuration--pause-on-hover-true",
+    "feedback-snackbar-configuration--secondary-action-label",
     "feedback-snackbar-configuration--show-icon-false",
     "feedback-snackbar-configuration--show-icon-true",
     "feedback-snackbar-configuration--show-progress-false",
@@ -676,6 +745,7 @@
     "feedback-snackbar-configuration--visible-true",
     "feedback-snackbar-events--event-action",
     "feedback-snackbar-events--event-dismissed",
+    "feedback-snackbar-events--event-secondary-action",
     "feedback-snackbar-events--event-visible-change",
     "feedback-snackbar-variations--tone-custom",
     "feedback-snackbar-variations--tone-danger",
@@ -708,6 +778,8 @@
     "feedback-toast-configuration--action-label",
     "feedback-toast-configuration--close-on-action-false",
     "feedback-toast-configuration--close-on-action-true",
+    "feedback-toast-configuration--close-on-secondary-action-false",
+    "feedback-toast-configuration--close-on-secondary-action-true",
     "feedback-toast-configuration--dismiss-label",
     "feedback-toast-configuration--dismissible-false",
     "feedback-toast-configuration--dismissible-true",
@@ -722,6 +794,7 @@
     "feedback-toast-configuration--message",
     "feedback-toast-configuration--pause-on-hover-false",
     "feedback-toast-configuration--pause-on-hover-true",
+    "feedback-toast-configuration--secondary-action-label",
     "feedback-toast-configuration--show-icon-false",
     "feedback-toast-configuration--show-icon-true",
     "feedback-toast-configuration--show-progress-false",
@@ -733,6 +806,7 @@
     "feedback-toast-configuration--visible-true",
     "feedback-toast-events--event-action",
     "feedback-toast-events--event-dismissed",
+    "feedback-toast-events--event-secondary-action",
     "feedback-toast-events--event-visible-change",
     "feedback-toast-variations--tone-custom",
     "feedback-toast-variations--tone-danger",
@@ -757,6 +831,7 @@
     "inputs-checkbox-appearance--appearance-radius",
     "inputs-checkbox-appearance--appearance-shadow",
     "inputs-checkbox-appearance--style-tokens",
+    "inputs-checkbox-configuration--checked-count",
     "inputs-checkbox-configuration--description",
     "inputs-checkbox-configuration--disabled-false",
     "inputs-checkbox-configuration--disabled-true",
@@ -775,6 +850,8 @@
     "inputs-checkbox-configuration--size-sm",
     "inputs-checkbox-configuration--stretch-false",
     "inputs-checkbox-configuration--stretch-true",
+    "inputs-checkbox-configuration--total-count",
+    "inputs-checkbox-events--event-cascade",
     "inputs-checkbox-events--event-indeterminate-change",
     "inputs-checkbox-events--event-value-change",
     "inputs-chips--default",
@@ -792,6 +869,11 @@
     "inputs-chips-appearance--appearance-radius",
     "inputs-chips-appearance--appearance-shadow",
     "inputs-chips-appearance--style-tokens",
+    "inputs-chips-configuration--allow-create-false",
+    "inputs-chips-configuration--allow-create-true",
+    "inputs-chips-configuration--create-input-label",
+    "inputs-chips-configuration--create-label",
+    "inputs-chips-configuration--create-placeholder",
     "inputs-chips-configuration--disabled-false",
     "inputs-chips-configuration--disabled-true",
     "inputs-chips-configuration--empty-text",
@@ -799,12 +881,18 @@
     "inputs-chips-configuration--hint",
     "inputs-chips-configuration--id",
     "inputs-chips-configuration--label",
+    "inputs-chips-configuration--max-visible",
+    "inputs-chips-configuration--move-after-label",
+    "inputs-chips-configuration--move-before-label",
     "inputs-chips-configuration--multiple-false",
     "inputs-chips-configuration--multiple-true",
     "inputs-chips-configuration--options",
+    "inputs-chips-configuration--overflow-label",
     "inputs-chips-configuration--removable-false",
     "inputs-chips-configuration--removable-true",
     "inputs-chips-configuration--remove-label",
+    "inputs-chips-configuration--reorderable-false",
+    "inputs-chips-configuration--reorderable-true",
     "inputs-chips-configuration--required-false",
     "inputs-chips-configuration--required-true",
     "inputs-chips-configuration--selectable-false",
@@ -814,7 +902,9 @@
     "inputs-chips-configuration--size-sm",
     "inputs-chips-configuration--stretch-false",
     "inputs-chips-configuration--stretch-true",
+    "inputs-chips-events--event-created",
     "inputs-chips-events--event-removed",
+    "inputs-chips-events--event-reordered",
     "inputs-chips-events--event-value-change",
     "inputs-context-selector--default",
     "inputs-context-selector--disabled",
@@ -897,6 +987,10 @@
     "inputs-counter-button-configuration--prefix",
     "inputs-counter-button-configuration--read-only-false",
     "inputs-counter-button-configuration--read-only-true",
+    "inputs-counter-button-configuration--repeat-delay",
+    "inputs-counter-button-configuration--repeat-false",
+    "inputs-counter-button-configuration--repeat-interval",
+    "inputs-counter-button-configuration--repeat-true",
     "inputs-counter-button-configuration--required-false",
     "inputs-counter-button-configuration--required-true",
     "inputs-counter-button-configuration--size-lg",
@@ -908,6 +1002,7 @@
     "inputs-counter-button-configuration--suffix",
     "inputs-counter-button-events--event-decremented",
     "inputs-counter-button-events--event-incremented",
+    "inputs-counter-button-events--event-limit-reached",
     "inputs-counter-button-events--event-value-change",
     "inputs-counter-configuration--decrement-icon",
     "inputs-counter-configuration--decrement-label",
@@ -925,6 +1020,10 @@
     "inputs-counter-configuration--min",
     "inputs-counter-configuration--orientation-horizontal",
     "inputs-counter-configuration--orientation-vertical",
+    "inputs-counter-configuration--repeat-delay",
+    "inputs-counter-configuration--repeat-false",
+    "inputs-counter-configuration--repeat-interval",
+    "inputs-counter-configuration--repeat-true",
     "inputs-counter-configuration--required-false",
     "inputs-counter-configuration--required-true",
     "inputs-counter-configuration--show-buttons-false",
@@ -935,6 +1034,7 @@
     "inputs-counter-configuration--step",
     "inputs-counter-configuration--stretch-false",
     "inputs-counter-configuration--stretch-true",
+    "inputs-counter-events--event-limit-reached",
     "inputs-counter-events--event-value-change",
     "inputs-datepicker--default",
     "inputs-datepicker--disabled",
@@ -970,17 +1070,24 @@
     "inputs-datepicker-configuration--locale",
     "inputs-datepicker-configuration--max",
     "inputs-datepicker-configuration--min",
+    "inputs-datepicker-configuration--month-select-label",
     "inputs-datepicker-configuration--next-label",
     "inputs-datepicker-configuration--placeholder",
     "inputs-datepicker-configuration--previous-label",
+    "inputs-datepicker-configuration--range-end",
+    "inputs-datepicker-configuration--range-separator",
     "inputs-datepicker-configuration--read-only-false",
     "inputs-datepicker-configuration--read-only-true",
     "inputs-datepicker-configuration--required-false",
     "inputs-datepicker-configuration--required-true",
+    "inputs-datepicker-configuration--selection-mode-range",
+    "inputs-datepicker-configuration--selection-mode-single",
     "inputs-datepicker-configuration--show-clear-false",
     "inputs-datepicker-configuration--show-clear-true",
     "inputs-datepicker-configuration--show-icon-false",
     "inputs-datepicker-configuration--show-icon-true",
+    "inputs-datepicker-configuration--show-month-year-selectors-false",
+    "inputs-datepicker-configuration--show-month-year-selectors-true",
     "inputs-datepicker-configuration--show-outside-days-false",
     "inputs-datepicker-configuration--show-outside-days-true",
     "inputs-datepicker-configuration--show-today-false",
@@ -992,6 +1099,9 @@
     "inputs-datepicker-configuration--stretch-true",
     "inputs-datepicker-configuration--today-label",
     "inputs-datepicker-configuration--week-starts-on",
+    "inputs-datepicker-configuration--year-range",
+    "inputs-datepicker-configuration--year-select-label",
+    "inputs-datepicker-events--event-range-end-change",
     "inputs-datepicker-events--event-value-change",
     "inputs-dropdown--default",
     "inputs-dropdown--disabled",
@@ -1009,6 +1119,8 @@
     "inputs-dropdown-appearance--appearance-radius",
     "inputs-dropdown-appearance--appearance-shadow",
     "inputs-dropdown-appearance--style-tokens",
+    "inputs-dropdown-configuration--clearable-false",
+    "inputs-dropdown-configuration--clearable-true",
     "inputs-dropdown-configuration--disabled-false",
     "inputs-dropdown-configuration--disabled-true",
     "inputs-dropdown-configuration--empty-text",
@@ -1016,7 +1128,14 @@
     "inputs-dropdown-configuration--hint",
     "inputs-dropdown-configuration--id",
     "inputs-dropdown-configuration--label",
+    "inputs-dropdown-configuration--loading-false",
+    "inputs-dropdown-configuration--loading-text",
+    "inputs-dropdown-configuration--loading-true",
+    "inputs-dropdown-configuration--max-rendered-options",
+    "inputs-dropdown-configuration--more-options-label",
+    "inputs-dropdown-configuration--option-template",
     "inputs-dropdown-configuration--options",
+    "inputs-dropdown-configuration--options-provider",
     "inputs-dropdown-configuration--placeholder",
     "inputs-dropdown-configuration--required-false",
     "inputs-dropdown-configuration--required-true",
@@ -1029,11 +1148,17 @@
     "inputs-dropdown-configuration--size-sm",
     "inputs-dropdown-configuration--stretch-false",
     "inputs-dropdown-configuration--stretch-true",
+    "inputs-dropdown-events--event-cleared",
+    "inputs-dropdown-events--event-load-failed",
+    "inputs-dropdown-events--event-options-loaded",
     "inputs-dropdown-events--event-value-change",
+    "inputs-input--clearable",
     "inputs-input--default",
     "inputs-input--disabled",
     "inputs-input--invalid",
     "inputs-input--large",
+    "inputs-input--password-reveal",
+    "inputs-input--prefix-and-suffix",
     "inputs-input--small",
     "inputs-input-appearance--appearance",
     "inputs-input-appearance--appearance-background",
@@ -1048,6 +1173,7 @@
     "inputs-input-appearance--appearance-shadow",
     "inputs-input-appearance--style-tokens",
     "inputs-input-configuration--autocomplete",
+    "inputs-input-configuration--clear-label",
     "inputs-input-configuration--disabled-false",
     "inputs-input-configuration--disabled-true",
     "inputs-input-configuration--error",
@@ -1101,17 +1227,25 @@
     "inputs-input-configuration--max-length",
     "inputs-input-configuration--min-length",
     "inputs-input-configuration--name",
+    "inputs-input-configuration--password-hide-label",
+    "inputs-input-configuration--password-show-label",
     "inputs-input-configuration--pattern",
     "inputs-input-configuration--placeholder",
+    "inputs-input-configuration--prefix",
     "inputs-input-configuration--read-only-false",
     "inputs-input-configuration--read-only-true",
     "inputs-input-configuration--required-false",
     "inputs-input-configuration--required-true",
+    "inputs-input-configuration--show-clear-false",
+    "inputs-input-configuration--show-clear-true",
+    "inputs-input-configuration--show-password-toggle-false",
+    "inputs-input-configuration--show-password-toggle-true",
     "inputs-input-configuration--size-lg",
     "inputs-input-configuration--size-md",
     "inputs-input-configuration--size-sm",
     "inputs-input-configuration--stretch-false",
     "inputs-input-configuration--stretch-true",
+    "inputs-input-configuration--suffix",
     "inputs-input-configuration--tin-type-business",
     "inputs-input-configuration--tin-type-individual",
     "inputs-input-configuration--type-email",
@@ -1120,8 +1254,10 @@
     "inputs-input-configuration--type-tel",
     "inputs-input-configuration--type-text",
     "inputs-input-configuration--type-url",
+    "inputs-input-events--event-cleared",
     "inputs-input-events--event-mask-accept",
     "inputs-input-events--event-mask-complete",
+    "inputs-input-events--event-password-visibility-change",
     "inputs-input-events--event-value-change",
     "inputs-multi-select-dropdown--close-after-selection",
     "inputs-multi-select-dropdown--count-summary",
@@ -1162,15 +1298,23 @@
     "inputs-multi-select-dropdown-configuration--label",
     "inputs-multi-select-dropdown-configuration--label-separator",
     "inputs-multi-select-dropdown-configuration--limit-message",
+    "inputs-multi-select-dropdown-configuration--loading-false",
+    "inputs-multi-select-dropdown-configuration--loading-text",
+    "inputs-multi-select-dropdown-configuration--loading-true",
+    "inputs-multi-select-dropdown-configuration--max-rendered-options",
     "inputs-multi-select-dropdown-configuration--max-selected",
     "inputs-multi-select-dropdown-configuration--menu-width",
+    "inputs-multi-select-dropdown-configuration--more-options-label",
+    "inputs-multi-select-dropdown-configuration--option-template",
     "inputs-multi-select-dropdown-configuration--options",
     "inputs-multi-select-dropdown-configuration--options-max-height",
+    "inputs-multi-select-dropdown-configuration--options-provider",
     "inputs-multi-select-dropdown-configuration--placeholder",
     "inputs-multi-select-dropdown-configuration--required-false",
     "inputs-multi-select-dropdown-configuration--required-true",
     "inputs-multi-select-dropdown-configuration--reset-search-on-open-false",
     "inputs-multi-select-dropdown-configuration--reset-search-on-open-true",
+    "inputs-multi-select-dropdown-configuration--search-debounce",
     "inputs-multi-select-dropdown-configuration--search-label",
     "inputs-multi-select-dropdown-configuration--search-placeholder",
     "inputs-multi-select-dropdown-configuration--searchable-false",
@@ -1197,6 +1341,8 @@
     "inputs-multi-select-dropdown-configuration--summary-mode-count",
     "inputs-multi-select-dropdown-configuration--summary-mode-labels",
     "inputs-multi-select-dropdown-events--event-clear-change",
+    "inputs-multi-select-dropdown-events--event-load-failed",
+    "inputs-multi-select-dropdown-events--event-options-loaded",
     "inputs-multi-select-dropdown-events--event-search-change",
     "inputs-multi-select-dropdown-events--event-select-all-change",
     "inputs-multi-select-dropdown-events--event-value-change",
@@ -1335,6 +1481,8 @@
     "inputs-range-selector-configuration--label",
     "inputs-range-selector-configuration--max",
     "inputs-range-selector-configuration--min",
+    "inputs-range-selector-configuration--orientation-horizontal",
+    "inputs-range-selector-configuration--orientation-vertical",
     "inputs-range-selector-configuration--range-false",
     "inputs-range-selector-configuration--range-true",
     "inputs-range-selector-configuration--required-false",
@@ -1345,7 +1493,9 @@
     "inputs-range-selector-configuration--step",
     "inputs-range-selector-configuration--stretch-false",
     "inputs-range-selector-configuration--stretch-true",
+    "inputs-range-selector-configuration--ticks",
     "inputs-range-selector-configuration--unit",
+    "inputs-range-selector-configuration--value-format",
     "inputs-range-selector-events--event-value-change",
     "inputs-segmented-buttons--default",
     "inputs-segmented-buttons--multiple",
@@ -1510,8 +1660,12 @@
     "layout-container-configuration--align-flex-end",
     "layout-container-configuration--align-flex-start",
     "layout-container-configuration--align-stretch",
+    "layout-container-configuration--aria-label",
     "layout-container-configuration--direction-column",
     "layout-container-configuration--direction-row",
+    "layout-container-configuration--flex-basis",
+    "layout-container-configuration--flex-grow",
+    "layout-container-configuration--flex-shrink",
     "layout-container-configuration--gap",
     "layout-container-configuration--height",
     "layout-container-configuration--justify-center",
@@ -1523,7 +1677,23 @@
     "layout-container-configuration--layout-block",
     "layout-container-configuration--layout-flex",
     "layout-container-configuration--min-height",
+    "layout-container-configuration--mobile-align-baseline",
+    "layout-container-configuration--mobile-align-center",
+    "layout-container-configuration--mobile-align-flex-end",
+    "layout-container-configuration--mobile-align-flex-start",
+    "layout-container-configuration--mobile-align-stretch",
+    "layout-container-configuration--mobile-direction-column",
+    "layout-container-configuration--mobile-direction-row",
+    "layout-container-configuration--mobile-gap",
+    "layout-container-configuration--mobile-justify-center",
+    "layout-container-configuration--mobile-justify-flex-end",
+    "layout-container-configuration--mobile-justify-flex-start",
+    "layout-container-configuration--mobile-justify-space-around",
+    "layout-container-configuration--mobile-justify-space-between",
+    "layout-container-configuration--mobile-justify-space-evenly",
+    "layout-container-configuration--mobile-padding",
     "layout-container-configuration--padding",
+    "layout-container-configuration--role",
     "layout-container-configuration--size-full",
     "layout-container-configuration--size-lg",
     "layout-container-configuration--size-md",
@@ -1554,6 +1724,8 @@
     "layout-divider-appearance--line-style-solid",
     "layout-divider-appearance--style-tokens",
     "layout-divider-appearance--thickness",
+    "layout-divider-configuration--decorative-false",
+    "layout-divider-configuration--decorative-true",
     "layout-divider-configuration--inset",
     "layout-divider-configuration--label",
     "layout-divider-configuration--margin",
@@ -1597,6 +1769,7 @@
     "layout-header-configuration--heading-level-4",
     "layout-header-configuration--heading-level-5",
     "layout-header-configuration--heading-level-6",
+    "layout-header-configuration--heading-lines",
     "layout-header-configuration--layout-column",
     "layout-header-configuration--layout-responsive",
     "layout-header-configuration--layout-row",
@@ -1621,11 +1794,16 @@
     "layout-header-configuration--size-lg",
     "layout-header-configuration--size-md",
     "layout-header-configuration--size-sm",
+    "layout-header-configuration--sticky-false",
+    "layout-header-configuration--sticky-offset",
+    "layout-header-configuration--sticky-true",
     "layout-header-configuration--subheading",
+    "layout-header-configuration--subheading-lines",
     "layout-header-configuration--text-align-center",
     "layout-header-configuration--text-align-end",
     "layout-header-configuration--text-align-start",
     "layout-header-configuration--width",
+    "layout-header-configuration--z-index",
     "layout-header-variations--surface-glass",
     "layout-header-variations--surface-solid",
     "layout-header-variations--surface-transparent",
@@ -1653,6 +1831,9 @@
     "layout-pane-configuration--align-stretch",
     "layout-pane-configuration--direction-column",
     "layout-pane-configuration--direction-row",
+    "layout-pane-configuration--flex-basis",
+    "layout-pane-configuration--flex-grow",
+    "layout-pane-configuration--flex-shrink",
     "layout-pane-configuration--gap",
     "layout-pane-configuration--height",
     "layout-pane-configuration--justify-center",
@@ -1663,11 +1844,32 @@
     "layout-pane-configuration--justify-space-evenly",
     "layout-pane-configuration--layout-block",
     "layout-pane-configuration--layout-flex",
+    "layout-pane-configuration--max-width",
     "layout-pane-configuration--min-height",
+    "layout-pane-configuration--min-width",
+    "layout-pane-configuration--mobile-align-baseline",
+    "layout-pane-configuration--mobile-align-center",
+    "layout-pane-configuration--mobile-align-flex-end",
+    "layout-pane-configuration--mobile-align-flex-start",
+    "layout-pane-configuration--mobile-align-stretch",
+    "layout-pane-configuration--mobile-direction-column",
+    "layout-pane-configuration--mobile-direction-row",
+    "layout-pane-configuration--mobile-gap",
+    "layout-pane-configuration--mobile-justify-center",
+    "layout-pane-configuration--mobile-justify-flex-end",
+    "layout-pane-configuration--mobile-justify-flex-start",
+    "layout-pane-configuration--mobile-justify-space-around",
+    "layout-pane-configuration--mobile-justify-space-between",
+    "layout-pane-configuration--mobile-justify-space-evenly",
+    "layout-pane-configuration--mobile-padding",
     "layout-pane-configuration--overflow-auto",
     "layout-pane-configuration--overflow-hidden",
     "layout-pane-configuration--overflow-visible",
     "layout-pane-configuration--padding",
+    "layout-pane-configuration--resizable-both",
+    "layout-pane-configuration--resizable-horizontal",
+    "layout-pane-configuration--resizable-none",
+    "layout-pane-configuration--resizable-vertical",
     "layout-pane-configuration--size-full",
     "layout-pane-configuration--size-lg",
     "layout-pane-configuration--size-md",
@@ -1677,6 +1879,7 @@
     "layout-pane-configuration--stretch-true",
     "layout-pane-configuration--wrap-false",
     "layout-pane-configuration--wrap-true",
+    "layout-pane-events--event-resized",
     "layout-pane-variations--surface-glass",
     "layout-pane-variations--surface-solid",
     "layout-pane-variations--surface-transparent",
@@ -1703,6 +1906,9 @@
     "layout-section-configuration--align-stretch",
     "layout-section-configuration--direction-column",
     "layout-section-configuration--direction-row",
+    "layout-section-configuration--flex-basis",
+    "layout-section-configuration--flex-grow",
+    "layout-section-configuration--flex-shrink",
     "layout-section-configuration--gap",
     "layout-section-configuration--height",
     "layout-section-configuration--justify-center",
@@ -1712,9 +1918,25 @@
     "layout-section-configuration--justify-space-between",
     "layout-section-configuration--justify-space-evenly",
     "layout-section-configuration--label",
+    "layout-section-configuration--labelled-by",
     "layout-section-configuration--layout-block",
     "layout-section-configuration--layout-flex",
     "layout-section-configuration--min-height",
+    "layout-section-configuration--mobile-align-baseline",
+    "layout-section-configuration--mobile-align-center",
+    "layout-section-configuration--mobile-align-flex-end",
+    "layout-section-configuration--mobile-align-flex-start",
+    "layout-section-configuration--mobile-align-stretch",
+    "layout-section-configuration--mobile-direction-column",
+    "layout-section-configuration--mobile-direction-row",
+    "layout-section-configuration--mobile-gap",
+    "layout-section-configuration--mobile-justify-center",
+    "layout-section-configuration--mobile-justify-flex-end",
+    "layout-section-configuration--mobile-justify-flex-start",
+    "layout-section-configuration--mobile-justify-space-around",
+    "layout-section-configuration--mobile-justify-space-between",
+    "layout-section-configuration--mobile-justify-space-evenly",
+    "layout-section-configuration--mobile-padding",
     "layout-section-configuration--padding",
     "layout-section-configuration--size-full",
     "layout-section-configuration--size-lg",
@@ -1787,6 +2009,9 @@
     "navigation-carousel-directive-configuration--disabled-true",
     "navigation-carousel-directive-configuration--dl-carousel-false",
     "navigation-carousel-directive-configuration--dl-carousel-true",
+    "navigation-carousel-directive-configuration--drag-threshold",
+    "navigation-carousel-directive-configuration--draggable-false",
+    "navigation-carousel-directive-configuration--draggable-true",
     "navigation-carousel-directive-configuration--gap",
     "navigation-carousel-directive-configuration--height",
     "navigation-carousel-directive-configuration--index",
@@ -1807,6 +2032,8 @@
     "navigation-carousel-directive-configuration--slides-per-view",
     "navigation-carousel-directive-configuration--step",
     "navigation-carousel-directive-configuration--width",
+    "navigation-carousel-directive-events--event-drag-ended",
+    "navigation-carousel-directive-events--event-drag-started",
     "navigation-carousel-directive-events--event-index-change",
     "navigation-carousel-directive-events--event-slide-change",
     "navigation-link-directive--default",
@@ -1838,6 +2065,7 @@
     "navigation-link-directive-configuration--disabled-true",
     "navigation-link-directive-configuration--download",
     "navigation-link-directive-configuration--href",
+    "navigation-link-directive-configuration--navigate",
     "navigation-link-directive-configuration--rel",
     "navigation-link-directive-configuration--size-lg",
     "navigation-link-directive-configuration--size-md",
@@ -1848,6 +2076,7 @@
     "navigation-link-directive-configuration--target-self",
     "navigation-link-directive-configuration--target-top",
     "navigation-link-directive-events--event-activated",
+    "navigation-link-directive-events--event-navigation-error",
     "navigation-link-directive-variations--tone-danger",
     "navigation-link-directive-variations--tone-inherit",
     "navigation-link-directive-variations--tone-neutral",
@@ -1891,6 +2120,9 @@
     "navigation-stepper-container-appearance--style-tokens",
     "navigation-stepper-container-configuration--allow-back-false",
     "navigation-stepper-container-configuration--allow-back-true",
+    "navigation-stepper-container-configuration--before-navigate",
+    "navigation-stepper-container-configuration--controlled-navigation-false",
+    "navigation-stepper-container-configuration--controlled-navigation-true",
     "navigation-stepper-container-configuration--finish-label",
     "navigation-stepper-container-configuration--id",
     "navigation-stepper-container-configuration--label",
@@ -1910,6 +2142,9 @@
     "navigation-stepper-container-configuration--show-numbers-true",
     "navigation-stepper-container-configuration--value",
     "navigation-stepper-container-events--event-finished",
+    "navigation-stepper-container-events--event-navigation-blocked",
+    "navigation-stepper-container-events--event-navigation-error",
+    "navigation-stepper-container-events--event-navigation-requested",
     "navigation-stepper-container-events--event-value-change",
     "navigation-tab--default",
     "navigation-tab-appearance--appearance",
@@ -1946,11 +2181,17 @@
     "navigation-tab-container-appearance--appearance-radius",
     "navigation-tab-container-appearance--appearance-shadow",
     "navigation-tab-container-appearance--style-tokens",
+    "navigation-tab-container-configuration--activate-on-close-first",
+    "navigation-tab-container-configuration--activate-on-close-next",
+    "navigation-tab-container-configuration--activate-on-close-none",
+    "navigation-tab-container-configuration--activate-on-close-previous",
     "navigation-tab-container-configuration--activation-automatic",
     "navigation-tab-container-configuration--activation-manual",
     "navigation-tab-container-configuration--align-center",
     "navigation-tab-container-configuration--align-flex-end",
     "navigation-tab-container-configuration--align-flex-start",
+    "navigation-tab-container-configuration--controlled-selection-false",
+    "navigation-tab-container-configuration--controlled-selection-true",
     "navigation-tab-container-configuration--gap",
     "navigation-tab-container-configuration--id",
     "navigation-tab-container-configuration--keep-alive-false",
@@ -1967,7 +2208,10 @@
     "navigation-tab-container-configuration--stretch-false",
     "navigation-tab-container-configuration--stretch-true",
     "navigation-tab-container-configuration--value",
+    "navigation-tab-container-events--event-selection-requested",
     "navigation-tab-container-events--event-tab-close",
+    "navigation-tab-container-events--event-tab-close-requested",
+    "navigation-tab-container-events--event-tab-focus",
     "navigation-tab-container-events--event-value-change",
     "navigation-tab-container-variations--variant-pill",
     "navigation-tab-container-variations--variant-underline",
@@ -1986,10 +2230,12 @@
     "overlays-bottom-sheet-appearance--appearance-shadow",
     "overlays-bottom-sheet-appearance--radius",
     "overlays-bottom-sheet-appearance--style-tokens",
+    "overlays-bottom-sheet-configuration--active-snap",
     "overlays-bottom-sheet-configuration--aria-label",
     "overlays-bottom-sheet-configuration--auto-focus-cancel",
     "overlays-bottom-sheet-configuration--auto-focus-dialog",
     "overlays-bottom-sheet-configuration--backdrop-class",
+    "overlays-bottom-sheet-configuration--before-close",
     "overlays-bottom-sheet-configuration--busy-false",
     "overlays-bottom-sheet-configuration--busy-true",
     "overlays-bottom-sheet-configuration--cancel-label",
@@ -2006,7 +2252,15 @@
     "overlays-bottom-sheet-configuration--confirm-variant-danger",
     "overlays-bottom-sheet-configuration--confirm-variant-primary",
     "overlays-bottom-sheet-configuration--confirm-variant-secondary",
+    "overlays-bottom-sheet-configuration--confirmation-label",
+    "overlays-bottom-sheet-configuration--confirmation-phrase",
+    "overlays-bottom-sheet-configuration--confirmation-value",
+    "overlays-bottom-sheet-configuration--controlled-close-false",
+    "overlays-bottom-sheet-configuration--controlled-close-true",
     "overlays-bottom-sheet-configuration--description",
+    "overlays-bottom-sheet-configuration--error",
+    "overlays-bottom-sheet-configuration--full-screen-on-mobile-false",
+    "overlays-bottom-sheet-configuration--full-screen-on-mobile-true",
     "overlays-bottom-sheet-configuration--has-backdrop-false",
     "overlays-bottom-sheet-configuration--has-backdrop-true",
     "overlays-bottom-sheet-configuration--heading",
@@ -2014,6 +2268,7 @@
     "overlays-bottom-sheet-configuration--id",
     "overlays-bottom-sheet-configuration--max-height",
     "overlays-bottom-sheet-configuration--max-width",
+    "overlays-bottom-sheet-configuration--mobile-breakpoint",
     "overlays-bottom-sheet-configuration--open-false",
     "overlays-bottom-sheet-configuration--open-true",
     "overlays-bottom-sheet-configuration--padding",
@@ -2034,6 +2289,8 @@
     "overlays-bottom-sheet-configuration--show-close-true",
     "overlays-bottom-sheet-configuration--show-confirm-false",
     "overlays-bottom-sheet-configuration--show-confirm-true",
+    "overlays-bottom-sheet-configuration--show-drag-handle-false",
+    "overlays-bottom-sheet-configuration--show-drag-handle-true",
     "overlays-bottom-sheet-configuration--show-footer-false",
     "overlays-bottom-sheet-configuration--show-footer-true",
     "overlays-bottom-sheet-configuration--show-header-false",
@@ -2042,11 +2299,18 @@
     "overlays-bottom-sheet-configuration--size-lg",
     "overlays-bottom-sheet-configuration--size-md",
     "overlays-bottom-sheet-configuration--size-sm",
+    "overlays-bottom-sheet-configuration--snap-points",
     "overlays-bottom-sheet-configuration--width",
+    "overlays-bottom-sheet-events--event-active-snap-change",
     "overlays-bottom-sheet-events--event-cancelled",
+    "overlays-bottom-sheet-events--event-close-blocked",
+    "overlays-bottom-sheet-events--event-close-guard-error",
+    "overlays-bottom-sheet-events--event-close-requested",
     "overlays-bottom-sheet-events--event-closed",
+    "overlays-bottom-sheet-events--event-confirmation-value-change",
     "overlays-bottom-sheet-events--event-confirmed",
     "overlays-bottom-sheet-events--event-open-change",
+    "overlays-bottom-sheet-events--event-snap-changed",
     "overlays-confirmation-dialog--default",
     "overlays-confirmation-dialog-appearance--appearance",
     "overlays-confirmation-dialog-appearance--appearance-background",
@@ -2061,10 +2325,12 @@
     "overlays-confirmation-dialog-appearance--appearance-shadow",
     "overlays-confirmation-dialog-appearance--radius",
     "overlays-confirmation-dialog-appearance--style-tokens",
+    "overlays-confirmation-dialog-configuration--active-snap",
     "overlays-confirmation-dialog-configuration--aria-label",
     "overlays-confirmation-dialog-configuration--auto-focus-cancel",
     "overlays-confirmation-dialog-configuration--auto-focus-dialog",
     "overlays-confirmation-dialog-configuration--backdrop-class",
+    "overlays-confirmation-dialog-configuration--before-close",
     "overlays-confirmation-dialog-configuration--busy-false",
     "overlays-confirmation-dialog-configuration--busy-true",
     "overlays-confirmation-dialog-configuration--cancel-label",
@@ -2081,7 +2347,15 @@
     "overlays-confirmation-dialog-configuration--confirm-variant-danger",
     "overlays-confirmation-dialog-configuration--confirm-variant-primary",
     "overlays-confirmation-dialog-configuration--confirm-variant-secondary",
+    "overlays-confirmation-dialog-configuration--confirmation-label",
+    "overlays-confirmation-dialog-configuration--confirmation-phrase",
+    "overlays-confirmation-dialog-configuration--confirmation-value",
+    "overlays-confirmation-dialog-configuration--controlled-close-false",
+    "overlays-confirmation-dialog-configuration--controlled-close-true",
     "overlays-confirmation-dialog-configuration--description",
+    "overlays-confirmation-dialog-configuration--error",
+    "overlays-confirmation-dialog-configuration--full-screen-on-mobile-false",
+    "overlays-confirmation-dialog-configuration--full-screen-on-mobile-true",
     "overlays-confirmation-dialog-configuration--has-backdrop-false",
     "overlays-confirmation-dialog-configuration--has-backdrop-true",
     "overlays-confirmation-dialog-configuration--heading",
@@ -2089,6 +2363,7 @@
     "overlays-confirmation-dialog-configuration--id",
     "overlays-confirmation-dialog-configuration--max-height",
     "overlays-confirmation-dialog-configuration--max-width",
+    "overlays-confirmation-dialog-configuration--mobile-breakpoint",
     "overlays-confirmation-dialog-configuration--open-false",
     "overlays-confirmation-dialog-configuration--open-true",
     "overlays-confirmation-dialog-configuration--padding",
@@ -2109,6 +2384,8 @@
     "overlays-confirmation-dialog-configuration--show-close-true",
     "overlays-confirmation-dialog-configuration--show-confirm-false",
     "overlays-confirmation-dialog-configuration--show-confirm-true",
+    "overlays-confirmation-dialog-configuration--show-drag-handle-false",
+    "overlays-confirmation-dialog-configuration--show-drag-handle-true",
     "overlays-confirmation-dialog-configuration--show-footer-false",
     "overlays-confirmation-dialog-configuration--show-footer-true",
     "overlays-confirmation-dialog-configuration--show-header-false",
@@ -2117,11 +2394,18 @@
     "overlays-confirmation-dialog-configuration--size-lg",
     "overlays-confirmation-dialog-configuration--size-md",
     "overlays-confirmation-dialog-configuration--size-sm",
+    "overlays-confirmation-dialog-configuration--snap-points",
     "overlays-confirmation-dialog-configuration--width",
+    "overlays-confirmation-dialog-events--event-active-snap-change",
     "overlays-confirmation-dialog-events--event-cancelled",
+    "overlays-confirmation-dialog-events--event-close-blocked",
+    "overlays-confirmation-dialog-events--event-close-guard-error",
+    "overlays-confirmation-dialog-events--event-close-requested",
     "overlays-confirmation-dialog-events--event-closed",
+    "overlays-confirmation-dialog-events--event-confirmation-value-change",
     "overlays-confirmation-dialog-events--event-confirmed",
     "overlays-confirmation-dialog-events--event-open-change",
+    "overlays-confirmation-dialog-events--event-snap-changed",
     "overlays-modal--default",
     "overlays-modal-appearance--appearance",
     "overlays-modal-appearance--appearance-background",
@@ -2136,10 +2420,12 @@
     "overlays-modal-appearance--appearance-shadow",
     "overlays-modal-appearance--radius",
     "overlays-modal-appearance--style-tokens",
+    "overlays-modal-configuration--active-snap",
     "overlays-modal-configuration--aria-label",
     "overlays-modal-configuration--auto-focus-cancel",
     "overlays-modal-configuration--auto-focus-dialog",
     "overlays-modal-configuration--backdrop-class",
+    "overlays-modal-configuration--before-close",
     "overlays-modal-configuration--busy-false",
     "overlays-modal-configuration--busy-true",
     "overlays-modal-configuration--cancel-label",
@@ -2156,7 +2442,15 @@
     "overlays-modal-configuration--confirm-variant-danger",
     "overlays-modal-configuration--confirm-variant-primary",
     "overlays-modal-configuration--confirm-variant-secondary",
+    "overlays-modal-configuration--confirmation-label",
+    "overlays-modal-configuration--confirmation-phrase",
+    "overlays-modal-configuration--confirmation-value",
+    "overlays-modal-configuration--controlled-close-false",
+    "overlays-modal-configuration--controlled-close-true",
     "overlays-modal-configuration--description",
+    "overlays-modal-configuration--error",
+    "overlays-modal-configuration--full-screen-on-mobile-false",
+    "overlays-modal-configuration--full-screen-on-mobile-true",
     "overlays-modal-configuration--has-backdrop-false",
     "overlays-modal-configuration--has-backdrop-true",
     "overlays-modal-configuration--heading",
@@ -2164,6 +2458,7 @@
     "overlays-modal-configuration--id",
     "overlays-modal-configuration--max-height",
     "overlays-modal-configuration--max-width",
+    "overlays-modal-configuration--mobile-breakpoint",
     "overlays-modal-configuration--open-false",
     "overlays-modal-configuration--open-true",
     "overlays-modal-configuration--padding",
@@ -2184,6 +2479,8 @@
     "overlays-modal-configuration--show-close-true",
     "overlays-modal-configuration--show-confirm-false",
     "overlays-modal-configuration--show-confirm-true",
+    "overlays-modal-configuration--show-drag-handle-false",
+    "overlays-modal-configuration--show-drag-handle-true",
     "overlays-modal-configuration--show-footer-false",
     "overlays-modal-configuration--show-footer-true",
     "overlays-modal-configuration--show-header-false",
@@ -2192,11 +2489,18 @@
     "overlays-modal-configuration--size-lg",
     "overlays-modal-configuration--size-md",
     "overlays-modal-configuration--size-sm",
+    "overlays-modal-configuration--snap-points",
     "overlays-modal-configuration--width",
+    "overlays-modal-events--event-active-snap-change",
     "overlays-modal-events--event-cancelled",
+    "overlays-modal-events--event-close-blocked",
+    "overlays-modal-events--event-close-guard-error",
+    "overlays-modal-events--event-close-requested",
     "overlays-modal-events--event-closed",
+    "overlays-modal-events--event-confirmation-value-change",
     "overlays-modal-events--event-confirmed",
     "overlays-modal-events--event-open-change",
+    "overlays-modal-events--event-snap-changed",
     "overlays-popover-directive--default",
     "overlays-popover-directive--interactive",
     "overlays-popover-directive--nested-anchor",
@@ -2225,6 +2529,7 @@
     "overlays-popover-directive-configuration--dl-popover",
     "overlays-popover-directive-configuration--hide-delay",
     "overlays-popover-directive-configuration--id",
+    "overlays-popover-directive-configuration--long-press-delay",
     "overlays-popover-directive-configuration--max-width",
     "overlays-popover-directive-configuration--offset",
     "overlays-popover-directive-configuration--open-false",
@@ -2262,10 +2567,12 @@
     "overlays-sidepanel-appearance--appearance-shadow",
     "overlays-sidepanel-appearance--radius",
     "overlays-sidepanel-appearance--style-tokens",
+    "overlays-sidepanel-configuration--active-snap",
     "overlays-sidepanel-configuration--aria-label",
     "overlays-sidepanel-configuration--auto-focus-cancel",
     "overlays-sidepanel-configuration--auto-focus-dialog",
     "overlays-sidepanel-configuration--backdrop-class",
+    "overlays-sidepanel-configuration--before-close",
     "overlays-sidepanel-configuration--busy-false",
     "overlays-sidepanel-configuration--busy-true",
     "overlays-sidepanel-configuration--cancel-label",
@@ -2282,7 +2589,15 @@
     "overlays-sidepanel-configuration--confirm-variant-danger",
     "overlays-sidepanel-configuration--confirm-variant-primary",
     "overlays-sidepanel-configuration--confirm-variant-secondary",
+    "overlays-sidepanel-configuration--confirmation-label",
+    "overlays-sidepanel-configuration--confirmation-phrase",
+    "overlays-sidepanel-configuration--confirmation-value",
+    "overlays-sidepanel-configuration--controlled-close-false",
+    "overlays-sidepanel-configuration--controlled-close-true",
     "overlays-sidepanel-configuration--description",
+    "overlays-sidepanel-configuration--error",
+    "overlays-sidepanel-configuration--full-screen-on-mobile-false",
+    "overlays-sidepanel-configuration--full-screen-on-mobile-true",
     "overlays-sidepanel-configuration--has-backdrop-false",
     "overlays-sidepanel-configuration--has-backdrop-true",
     "overlays-sidepanel-configuration--heading",
@@ -2290,6 +2605,7 @@
     "overlays-sidepanel-configuration--id",
     "overlays-sidepanel-configuration--max-height",
     "overlays-sidepanel-configuration--max-width",
+    "overlays-sidepanel-configuration--mobile-breakpoint",
     "overlays-sidepanel-configuration--open-false",
     "overlays-sidepanel-configuration--open-true",
     "overlays-sidepanel-configuration--padding",
@@ -2310,6 +2626,8 @@
     "overlays-sidepanel-configuration--show-close-true",
     "overlays-sidepanel-configuration--show-confirm-false",
     "overlays-sidepanel-configuration--show-confirm-true",
+    "overlays-sidepanel-configuration--show-drag-handle-false",
+    "overlays-sidepanel-configuration--show-drag-handle-true",
     "overlays-sidepanel-configuration--show-footer-false",
     "overlays-sidepanel-configuration--show-footer-true",
     "overlays-sidepanel-configuration--show-header-false",
@@ -2318,11 +2636,18 @@
     "overlays-sidepanel-configuration--size-lg",
     "overlays-sidepanel-configuration--size-md",
     "overlays-sidepanel-configuration--size-sm",
+    "overlays-sidepanel-configuration--snap-points",
     "overlays-sidepanel-configuration--width",
+    "overlays-sidepanel-events--event-active-snap-change",
     "overlays-sidepanel-events--event-cancelled",
+    "overlays-sidepanel-events--event-close-blocked",
+    "overlays-sidepanel-events--event-close-guard-error",
+    "overlays-sidepanel-events--event-close-requested",
     "overlays-sidepanel-events--event-closed",
+    "overlays-sidepanel-events--event-confirmation-value-change",
     "overlays-sidepanel-events--event-confirmed",
     "overlays-sidepanel-events--event-open-change",
+    "overlays-sidepanel-events--event-snap-changed",
     "overlays-tooltip-directive--default",
     "overlays-tooltip-directive--immediate",
     "overlays-tooltip-directive--nested-anchor",
@@ -2348,6 +2673,7 @@
     "overlays-tooltip-directive-configuration--dl-tooltip",
     "overlays-tooltip-directive-configuration--hide-delay",
     "overlays-tooltip-directive-configuration--id",
+    "overlays-tooltip-directive-configuration--long-press-delay",
     "overlays-tooltip-directive-configuration--max-width",
     "overlays-tooltip-directive-configuration--offset",
     "overlays-tooltip-directive-configuration--open-false",
@@ -2363,6 +2689,7 @@
     "overlays-tooltip-directive-configuration--placement-top-start",
     "overlays-tooltip-directive-configuration--show-delay",
     "overlays-tooltip-directive-configuration--trigger-hover",
+    "overlays-tooltip-directive-configuration--trigger-longpress",
     "overlays-tooltip-directive-configuration--trigger-manual",
     "overlays-tooltip-directive-configuration--width",
     "overlays-tooltip-directive-events--event-hidden",
@@ -2530,6 +2857,15 @@
           "declaredIn": "AlertComponent"
         },
         {
+          "name": "secondaryActionLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "AlertComponent"
+        },
+        {
           "name": "role",
           "kind": "input",
           "required": false,
@@ -2558,12 +2894,17 @@
           "type": "void"
         },
         {
+          "name": "secondaryAction",
+          "type": "void"
+        },
+        {
           "name": "visibleChange",
           "type": "boolean"
         }
       ],
       "slots": [
-        "default"
+        "default",
+        "[alertActions]"
       ]
     },
     {
@@ -2635,6 +2976,69 @@
           "declaredIn": "AvatarComponent"
         },
         {
+          "name": "groupIndex",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "0",
+          "description": "Zero-based position when avatars overlap in a group.",
+          "declaredIn": "AvatarComponent"
+        },
+        {
+          "name": "overlap",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"10px\"",
+          "description": "",
+          "declaredIn": "AvatarComponent"
+        },
+        {
+          "name": "reverseStack",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "AvatarComponent"
+        },
+        {
+          "name": "excessCount",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "0",
+          "description": "Renders an overflow avatar such as +4 when greater than zero.",
+          "declaredIn": "AvatarComponent"
+        },
+        {
+          "name": "excessLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"{count} more people\"",
+          "description": "",
+          "declaredIn": "AvatarComponent"
+        },
+        {
+          "name": "maxExcess",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "99",
+          "description": "",
+          "declaredIn": "AvatarComponent"
+        },
+        {
+          "name": "interactive",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "AvatarComponent"
+        },
+        {
           "name": "name",
           "kind": "input",
           "required": true,
@@ -2653,7 +3057,20 @@
           "declaredIn": "AvatarComponent"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "imageLoaded",
+          "type": "{ src: string; }"
+        },
+        {
+          "name": "imageFailed",
+          "type": "{ src: string; }"
+        },
+        {
+          "name": "activated",
+          "type": "{ name: string; excessCount: number; }"
+        }
+      ],
       "slots": []
     },
     {
@@ -2753,6 +3170,42 @@
         },
         {
           "name": "icon",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "BadgeComponent"
+        },
+        {
+          "name": "value",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "BadgeComponent"
+        },
+        {
+          "name": "max",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "99",
+          "description": "",
+          "declaredIn": "BadgeComponent"
+        },
+        {
+          "name": "overflowSuffix",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"+\"",
+          "description": "",
+          "declaredIn": "BadgeComponent"
+        },
+        {
+          "name": "accessibleLabel",
           "kind": "input",
           "required": false,
           "type": "string",
@@ -2898,6 +3351,15 @@
           "declaredIn": "ButtonComponent"
         },
         {
+          "name": "loadingMinWidth",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "Optional stable minimum width applied while loading.",
+          "declaredIn": "ButtonComponent"
+        },
+        {
           "name": "type",
           "kind": "input",
           "required": false,
@@ -2988,10 +3450,90 @@
           "default": "\"\"",
           "description": "",
           "declaredIn": "CardComponent"
+        },
+        {
+          "name": "role",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "interactive",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "disabled",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "loading",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "loadingLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Loading\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "error",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "empty",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "emptyText",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"No content available\"",
+          "description": "",
+          "declaredIn": "CardComponent"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "activated",
+          "type": "Event"
+        }
+      ],
       "slots": [
+        "[cardLoading]",
+        "[cardError]",
+        "[cardEmpty]",
         "default",
         "[cardFooter]"
       ]
@@ -3297,9 +3839,80 @@
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "InputComponent"
+        },
+        {
+          "name": "prefix",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "Plain text rendered before the editable value; use inputPrefix projection for rich content.",
+          "declaredIn": "InputComponent"
+        },
+        {
+          "name": "suffix",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "Plain text rendered after the editable value; use inputSuffix projection for rich content.",
+          "declaredIn": "InputComponent"
+        },
+        {
+          "name": "showClear",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "InputComponent"
+        },
+        {
+          "name": "clearLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Clear value\"",
+          "description": "",
+          "declaredIn": "InputComponent"
+        },
+        {
+          "name": "showPasswordToggle",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "InputComponent"
+        },
+        {
+          "name": "passwordShowLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Show password\"",
+          "description": "",
+          "declaredIn": "InputComponent"
+        },
+        {
+          "name": "passwordHideLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Hide password\"",
+          "description": "",
+          "declaredIn": "InputComponent"
         }
       ],
       "outputs": [
+        {
+          "name": "cleared",
+          "type": "void"
+        },
+        {
+          "name": "passwordVisibilityChange",
+          "type": "boolean"
+        },
         {
           "name": "maskAccept",
           "type": "InputMaskValue"
@@ -3313,7 +3926,10 @@
           "type": "string"
         }
       ],
-      "slots": []
+      "slots": [
+        "[inputPrefix]",
+        "[inputSuffix]"
+      ]
     },
     {
       "component": "ProgressComponent",
@@ -3436,9 +4052,41 @@
           "default": "\"{percent}%\"",
           "description": "",
           "declaredIn": "ProgressComponent"
+        },
+        {
+          "name": "variant",
+          "kind": "input",
+          "required": false,
+          "type": "\"linear\" | \"circular\"",
+          "default": "\"linear\"",
+          "description": "",
+          "declaredIn": "ProgressComponent"
+        },
+        {
+          "name": "segments",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "1",
+          "description": "",
+          "declaredIn": "ProgressComponent"
+        },
+        {
+          "name": "circleSize",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"72px\"",
+          "description": "",
+          "declaredIn": "ProgressComponent"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "completed",
+          "type": "{ value: number; max: number; }"
+        }
+      ],
       "slots": []
     },
     {
@@ -3623,6 +4271,15 @@
           "declaredIn": "ButtonComponent"
         },
         {
+          "name": "loadingMinWidth",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "Optional stable minimum width applied while loading.",
+          "declaredIn": "ButtonComponent"
+        },
+        {
           "name": "type",
           "kind": "input",
           "required": false,
@@ -3682,6 +4339,24 @@
           "required": false,
           "type": "number",
           "default": "100",
+          "description": "",
+          "declaredIn": "FabButtonComponent"
+        },
+        {
+          "name": "safeArea",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "FabButtonComponent"
+        },
+        {
+          "name": "collapseOnMobile",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
           "description": "",
           "declaredIn": "FabButtonComponent"
         }
@@ -3785,6 +4460,15 @@
           "declaredIn": "ButtonComponent"
         },
         {
+          "name": "loadingMinWidth",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "Optional stable minimum width applied while loading.",
+          "declaredIn": "ButtonComponent"
+        },
+        {
           "name": "type",
           "kind": "input",
           "required": false,
@@ -3839,7 +4523,12 @@
           "declaredIn": "IconButtonComponent"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "pressedChange",
+          "type": "boolean"
+        }
+      ],
       "slots": []
     },
     {
@@ -3864,6 +4553,15 @@
           "default": "{}",
           "description": "Any --dl-* token can be overridden without changing the global theme.",
           "declaredIn": "Appearance"
+        },
+        {
+          "name": "decorative",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "Removes separator semantics when the line is purely visual.",
+          "declaredIn": "DividerComponent"
         },
         {
           "name": "orientation",
@@ -3984,10 +4682,19 @@
         },
         {
           "name": "selected",
+          "kind": "model",
+          "required": false,
+          "type": "string | string[]",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "ListComponent"
+        },
+        {
+          "name": "selectionMode",
           "kind": "input",
           "required": false,
-          "type": "string",
-          "default": "\"\"",
+          "type": "\"none\" | \"single\" | \"multiple\"",
+          "default": "\"single\"",
           "description": "",
           "declaredIn": "ListComponent"
         },
@@ -4071,12 +4778,60 @@
           "default": "\"No items\"",
           "description": "",
           "declaredIn": "ListComponent"
+        },
+        {
+          "name": "itemTemplate",
+          "kind": "input",
+          "required": false,
+          "type": "TemplateRef<{ $implicit: ListItem; depth: number; selected: boolean; expanded: boolean; }> | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "ListComponent"
+        },
+        {
+          "name": "nestedIndent",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "24",
+          "description": "",
+          "declaredIn": "ListComponent"
+        },
+        {
+          "name": "expandOnActivate",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "ListComponent"
+        },
+        {
+          "name": "expandedIds",
+          "kind": "model",
+          "required": false,
+          "type": "string[]",
+          "default": "[]",
+          "description": "",
+          "declaredIn": "ListComponent"
         }
       ],
       "outputs": [
         {
           "name": "itemClick",
           "type": "ListItem"
+        },
+        {
+          "name": "expandedChange",
+          "type": "{ item: ListItem; expanded: boolean; }"
+        },
+        {
+          "name": "selectedChange",
+          "type": "string | string[]"
+        },
+        {
+          "name": "expandedIdsChange",
+          "type": "string[]"
         }
       ],
       "slots": [
@@ -4170,6 +4925,15 @@
           "declaredIn": "TilesComponent"
         },
         {
+          "name": "showDefaultHeader",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "Keep projected tileHeader content while hiding the built-in label and icon.",
+          "declaredIn": "TilesComponent"
+        },
+        {
           "name": "label",
           "kind": "input",
           "required": false,
@@ -4260,6 +5024,15 @@
           "declaredIn": "TilesComponent"
         },
         {
+          "name": "showDefaultValue",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "TilesComponent"
+        },
+        {
           "name": "icon",
           "kind": "input",
           "required": false,
@@ -4335,7 +5108,7 @@
           "name": "trendDirection",
           "kind": "input",
           "required": false,
-          "type": "\"up\" | \"down\" | \"flat\"",
+          "type": "\"flat\" | \"up\" | \"down\"",
           "default": "\"up\"",
           "description": "",
           "declaredIn": "TilesComponent"
@@ -4378,6 +5151,15 @@
         },
         {
           "name": "showChart",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "TilesComponent"
+        },
+        {
+          "name": "showDefaultChart",
           "kind": "input",
           "required": false,
           "type": "boolean",
@@ -4476,11 +5258,29 @@
           "declaredIn": "TilesComponent"
         },
         {
+          "name": "showDefaultLoading",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "TilesComponent"
+        },
+        {
           "name": "error",
           "kind": "input",
           "required": false,
           "type": "string",
           "default": "\"\"",
+          "description": "",
+          "declaredIn": "TilesComponent"
+        },
+        {
+          "name": "showDefaultError",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
           "description": "",
           "declaredIn": "TilesComponent"
         },
@@ -4546,6 +5346,11 @@
         }
       ],
       "slots": [
+        "[tileHeader]",
+        "[tileLoading]",
+        "[tileError]",
+        "[tileValue]",
+        "[tileChart]",
         "default",
         "[tileFooter]"
       ]
@@ -4700,6 +5505,24 @@
           "declaredIn": "InlineNotificationComponent"
         },
         {
+          "name": "secondaryActionLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "NoticeBase"
+        },
+        {
+          "name": "closeOnSecondaryAction",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "NoticeBase"
+        },
+        {
           "name": "duration",
           "kind": "input",
           "required": false,
@@ -4824,6 +5647,10 @@
         },
         {
           "name": "action",
+          "type": "void"
+        },
+        {
+          "name": "secondaryAction",
           "type": "void"
         },
         {
@@ -4983,6 +5810,24 @@
           "declaredIn": "InlineNotificationComponent"
         },
         {
+          "name": "secondaryActionLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "NoticeBase"
+        },
+        {
+          "name": "closeOnSecondaryAction",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "NoticeBase"
+        },
+        {
           "name": "duration",
           "kind": "input",
           "required": false,
@@ -5062,6 +5907,10 @@
         },
         {
           "name": "action",
+          "type": "void"
+        },
+        {
+          "name": "secondaryAction",
           "type": "void"
         },
         {
@@ -5194,7 +6043,12 @@
           "declaredIn": "SkeletonComponent"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "loaded",
+          "type": "void"
+        }
+      ],
       "slots": [
         "default"
       ]
@@ -5349,6 +6203,24 @@
           "declaredIn": "NoticeBase"
         },
         {
+          "name": "secondaryActionLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "NoticeBase"
+        },
+        {
+          "name": "closeOnSecondaryAction",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "NoticeBase"
+        },
+        {
           "name": "duration",
           "kind": "input",
           "required": false,
@@ -5401,6 +6273,10 @@
         },
         {
           "name": "action",
+          "type": "void"
+        },
+        {
+          "name": "secondaryAction",
           "type": "void"
         },
         {
@@ -5560,6 +6436,24 @@
           "declaredIn": "NoticeBase"
         },
         {
+          "name": "secondaryActionLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "NoticeBase"
+        },
+        {
+          "name": "closeOnSecondaryAction",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "NoticeBase"
+        },
+        {
           "name": "duration",
           "kind": "input",
           "required": false,
@@ -5612,6 +6506,10 @@
         },
         {
           "name": "action",
+          "type": "void"
+        },
+        {
+          "name": "secondaryAction",
           "type": "void"
         },
         {
@@ -5868,11 +6766,33 @@
           "default": "\"end\"",
           "description": "",
           "declaredIn": "CheckboxComponent"
+        },
+        {
+          "name": "checkedCount",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "CheckboxComponent"
+        },
+        {
+          "name": "totalCount",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "CheckboxComponent"
         }
       ],
       "outputs": [
         {
           "name": "valueChange",
+          "type": "boolean"
+        },
+        {
+          "name": "cascade",
           "type": "boolean"
         },
         {
@@ -6030,6 +6950,87 @@
           "default": "\"No chips\"",
           "description": "",
           "declaredIn": "ChipsComponent"
+        },
+        {
+          "name": "maxVisible",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "ChipsComponent"
+        },
+        {
+          "name": "overflowLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"+{count} more\"",
+          "description": "",
+          "declaredIn": "ChipsComponent"
+        },
+        {
+          "name": "allowCreate",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "ChipsComponent"
+        },
+        {
+          "name": "createPlaceholder",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Add a value\"",
+          "description": "",
+          "declaredIn": "ChipsComponent"
+        },
+        {
+          "name": "createInputLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"New chip value\"",
+          "description": "",
+          "declaredIn": "ChipsComponent"
+        },
+        {
+          "name": "createLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Add\"",
+          "description": "",
+          "declaredIn": "ChipsComponent"
+        },
+        {
+          "name": "reorderable",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "ChipsComponent"
+        },
+        {
+          "name": "moveBeforeLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Move before\"",
+          "description": "",
+          "declaredIn": "ChipsComponent"
+        },
+        {
+          "name": "moveAfterLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Move after\"",
+          "description": "",
+          "declaredIn": "ChipsComponent"
         }
       ],
       "outputs": [
@@ -6040,6 +7041,14 @@
         {
           "name": "removed",
           "type": "ChipOption"
+        },
+        {
+          "name": "created",
+          "type": "ChipOption"
+        },
+        {
+          "name": "reordered",
+          "type": "{ options: ChipOption[]; from: number; to: number; }"
         }
       ],
       "slots": []
@@ -6368,6 +7377,33 @@
           "default": "\"−\"",
           "description": "",
           "declaredIn": "CounterButtonComponent"
+        },
+        {
+          "name": "repeat",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "CounterButtonComponent"
+        },
+        {
+          "name": "repeatDelay",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "450",
+          "description": "",
+          "declaredIn": "CounterButtonComponent"
+        },
+        {
+          "name": "repeatInterval",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "90",
+          "description": "",
+          "declaredIn": "CounterButtonComponent"
         }
       ],
       "outputs": [
@@ -6382,6 +7418,10 @@
         {
           "name": "decremented",
           "type": "number"
+        },
+        {
+          "name": "limitReached",
+          "type": "\"min\" | \"max\""
         }
       ],
       "slots": []
@@ -6570,12 +7610,43 @@
           "default": "\"−\"",
           "description": "",
           "declaredIn": "CounterComponent"
+        },
+        {
+          "name": "repeat",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "CounterComponent"
+        },
+        {
+          "name": "repeatDelay",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "450",
+          "description": "",
+          "declaredIn": "CounterComponent"
+        },
+        {
+          "name": "repeatInterval",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "90",
+          "description": "",
+          "declaredIn": "CounterComponent"
         }
       ],
       "outputs": [
         {
           "name": "valueChange",
           "type": "number"
+        },
+        {
+          "name": "limitReached",
+          "type": "\"min\" | \"max\""
         }
       ],
       "slots": []
@@ -6845,11 +7916,78 @@
           "default": "320",
           "description": "",
           "declaredIn": "DatepickerComponent"
+        },
+        {
+          "name": "selectionMode",
+          "kind": "input",
+          "required": false,
+          "type": "\"single\" | \"range\"",
+          "default": "\"single\"",
+          "description": "",
+          "declaredIn": "DatepickerComponent"
+        },
+        {
+          "name": "rangeEnd",
+          "kind": "model",
+          "required": false,
+          "type": "string | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "DatepickerComponent"
+        },
+        {
+          "name": "rangeSeparator",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\" – \"",
+          "description": "",
+          "declaredIn": "DatepickerComponent"
+        },
+        {
+          "name": "showMonthYearSelectors",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "DatepickerComponent"
+        },
+        {
+          "name": "monthSelectLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Month\"",
+          "description": "",
+          "declaredIn": "DatepickerComponent"
+        },
+        {
+          "name": "yearSelectLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Year\"",
+          "description": "",
+          "declaredIn": "DatepickerComponent"
+        },
+        {
+          "name": "yearRange",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "100",
+          "description": "",
+          "declaredIn": "DatepickerComponent"
         }
       ],
       "outputs": [
         {
           "name": "valueChange",
+          "type": "string | null"
+        },
+        {
+          "name": "rangeEndChange",
           "type": "string | null"
         }
       ],
@@ -6987,11 +8125,74 @@
           "declaredIn": "DropdownComponent"
         },
         {
+          "name": "optionsProvider",
+          "kind": "input",
+          "required": false,
+          "type": "(() => Promise<SelectOption[]>) | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "DropdownComponent"
+        },
+        {
+          "name": "optionTemplate",
+          "kind": "input",
+          "required": false,
+          "type": "TemplateRef<{ $implicit: SelectOption; index: number; selected: boolean; }> | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "DropdownComponent"
+        },
+        {
           "name": "placeholder",
           "kind": "input",
           "required": false,
           "type": "string",
           "default": "\"Select an option\"",
+          "description": "",
+          "declaredIn": "DropdownComponent"
+        },
+        {
+          "name": "loading",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "DropdownComponent"
+        },
+        {
+          "name": "loadingText",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Loading options…\"",
+          "description": "",
+          "declaredIn": "DropdownComponent"
+        },
+        {
+          "name": "clearable",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "DropdownComponent"
+        },
+        {
+          "name": "maxRenderedOptions",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "0",
+          "description": "",
+          "declaredIn": "DropdownComponent"
+        },
+        {
+          "name": "moreOptionsLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"{count} more options. Refine your search.\"",
           "description": "",
           "declaredIn": "DropdownComponent"
         }
@@ -7000,6 +8201,18 @@
         {
           "name": "valueChange",
           "type": "string"
+        },
+        {
+          "name": "cleared",
+          "type": "void"
+        },
+        {
+          "name": "optionsLoaded",
+          "type": "SelectOption[]"
+        },
+        {
+          "name": "loadFailed",
+          "type": "unknown"
         }
       ],
       "slots": []
@@ -7114,6 +8327,51 @@
           "required": false,
           "type": "SelectOption[]",
           "default": "[]",
+          "description": "",
+          "declaredIn": "MultiSelectComponent"
+        },
+        {
+          "name": "optionsProvider",
+          "kind": "input",
+          "required": false,
+          "type": "((query: string) => Promise<SelectOption[]>) | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "MultiSelectComponent"
+        },
+        {
+          "name": "searchDebounce",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "250",
+          "description": "",
+          "declaredIn": "MultiSelectComponent"
+        },
+        {
+          "name": "maxRenderedOptions",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "0",
+          "description": "",
+          "declaredIn": "MultiSelectComponent"
+        },
+        {
+          "name": "moreOptionsLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"{count} more options. Refine your search.\"",
+          "description": "",
+          "declaredIn": "MultiSelectComponent"
+        },
+        {
+          "name": "optionTemplate",
+          "kind": "input",
+          "required": false,
+          "type": "TemplateRef<{ $implicit: SelectOption; selected: boolean; }> | null",
+          "default": "null",
           "description": "",
           "declaredIn": "MultiSelectComponent"
         },
@@ -7323,6 +8581,24 @@
           "default": "true",
           "description": "",
           "declaredIn": "MultiSelectComponent"
+        },
+        {
+          "name": "loading",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "MultiSelectComponent"
+        },
+        {
+          "name": "loadingText",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Loading options…\"",
+          "description": "",
+          "declaredIn": "MultiSelectComponent"
         }
       ],
       "outputs": [
@@ -7341,6 +8617,14 @@
         {
           "name": "searchChange",
           "type": "string"
+        },
+        {
+          "name": "optionsLoaded",
+          "type": "SelectOption[]"
+        },
+        {
+          "name": "loadFailed",
+          "type": "unknown"
         }
       ],
       "slots": []
@@ -7898,6 +9182,33 @@
           "default": "\"\"",
           "description": "",
           "declaredIn": "RangeSelectorComponent"
+        },
+        {
+          "name": "orientation",
+          "kind": "input",
+          "required": false,
+          "type": "\"horizontal\" | \"vertical\"",
+          "default": "\"horizontal\"",
+          "description": "",
+          "declaredIn": "RangeSelectorComponent"
+        },
+        {
+          "name": "ticks",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "0",
+          "description": "Number of evenly spaced native tick marks; zero hides ticks.",
+          "declaredIn": "RangeSelectorComponent"
+        },
+        {
+          "name": "valueFormat",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"{value}{unit}\"",
+          "description": "Display template supporting {value} and {unit}.",
+          "declaredIn": "RangeSelectorComponent"
         }
       ],
       "outputs": [
@@ -8347,11 +9658,101 @@
           "declaredIn": "LayoutBase"
         },
         {
+          "name": "flexGrow",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "flexShrink",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "flexBasis",
+          "kind": "input",
+          "required": false,
+          "type": "import(\"./layout-base\").LayoutLength | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileDirection",
+          "kind": "input",
+          "required": false,
+          "type": "\"row\" | \"column\" | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileAlign",
+          "kind": "input",
+          "required": false,
+          "type": "\"center\" | \"stretch\" | \"flex-start\" | \"flex-end\" | \"baseline\" | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileJustify",
+          "kind": "input",
+          "required": false,
+          "type": "\"center\" | \"flex-start\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\" | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileGap",
+          "kind": "input",
+          "required": false,
+          "type": "import(\"./layout-base\").LayoutLength | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobilePadding",
+          "kind": "input",
+          "required": false,
+          "type": "import(\"./layout-base\").LayoutLength | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
           "name": "variant",
           "kind": "input",
           "required": false,
           "type": "\"primary\" | \"secondary\" | \"tertiary\"",
           "default": "\"tertiary\"",
+          "description": "",
+          "declaredIn": "ContainerComponent"
+        },
+        {
+          "name": "role",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "ContainerComponent"
+        },
+        {
+          "name": "ariaLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
           "description": "",
           "declaredIn": "ContainerComponent"
         }
@@ -8424,7 +9825,7 @@
           "name": "headingLevel",
           "kind": "input",
           "required": false,
-          "type": "2 | 3 | 4 | 1 | 6 | 5",
+          "type": "2 | 1 | 3 | 4 | 6 | 5",
           "default": "1",
           "description": "",
           "declaredIn": "HeaderComponent"
@@ -8626,6 +10027,51 @@
           "default": "false",
           "description": "",
           "declaredIn": "HeaderComponent"
+        },
+        {
+          "name": "sticky",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "HeaderComponent"
+        },
+        {
+          "name": "stickyOffset",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"0px\"",
+          "description": "",
+          "declaredIn": "HeaderComponent"
+        },
+        {
+          "name": "zIndex",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "10",
+          "description": "",
+          "declaredIn": "HeaderComponent"
+        },
+        {
+          "name": "headingLines",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "HeaderComponent"
+        },
+        {
+          "name": "subheadingLines",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "HeaderComponent"
         }
       ],
       "outputs": [],
@@ -8728,7 +10174,7 @@
           "name": "gap",
           "kind": "input",
           "required": false,
-          "type": "import(\"./layout-base\").LayoutLength",
+          "type": "LayoutLength",
           "default": "16",
           "description": "",
           "declaredIn": "LayoutBase"
@@ -8737,7 +10183,7 @@
           "name": "padding",
           "kind": "input",
           "required": false,
-          "type": "import(\"./layout-base\").LayoutLength",
+          "type": "LayoutLength",
           "default": "24",
           "description": "",
           "declaredIn": "LayoutBase"
@@ -8746,7 +10192,7 @@
           "name": "height",
           "kind": "input",
           "required": false,
-          "type": "import(\"./layout-base\").LayoutLength",
+          "type": "LayoutLength",
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "LayoutBase"
@@ -8755,8 +10201,80 @@
           "name": "minHeight",
           "kind": "input",
           "required": false,
-          "type": "import(\"./layout-base\").LayoutLength",
+          "type": "LayoutLength",
           "default": "0",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "flexGrow",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "flexShrink",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "flexBasis",
+          "kind": "input",
+          "required": false,
+          "type": "LayoutLength | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileDirection",
+          "kind": "input",
+          "required": false,
+          "type": "\"row\" | \"column\" | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileAlign",
+          "kind": "input",
+          "required": false,
+          "type": "\"center\" | \"stretch\" | \"flex-start\" | \"flex-end\" | \"baseline\" | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileJustify",
+          "kind": "input",
+          "required": false,
+          "type": "\"center\" | \"flex-start\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\" | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileGap",
+          "kind": "input",
+          "required": false,
+          "type": "LayoutLength | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobilePadding",
+          "kind": "input",
+          "required": false,
+          "type": "LayoutLength | null",
+          "default": "null",
           "description": "",
           "declaredIn": "LayoutBase"
         },
@@ -8777,9 +10295,41 @@
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "PaneComponent"
+        },
+        {
+          "name": "minWidth",
+          "kind": "input",
+          "required": false,
+          "type": "LayoutLength",
+          "default": "0",
+          "description": "",
+          "declaredIn": "PaneComponent"
+        },
+        {
+          "name": "maxWidth",
+          "kind": "input",
+          "required": false,
+          "type": "LayoutLength | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "PaneComponent"
+        },
+        {
+          "name": "resizable",
+          "kind": "input",
+          "required": false,
+          "type": "\"none\" | \"horizontal\" | \"vertical\" | \"both\"",
+          "default": "\"none\"",
+          "description": "",
+          "declaredIn": "PaneComponent"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "resized",
+          "type": "{ width: number; height: number; }"
+        }
+      ],
       "slots": [
         "default"
       ]
@@ -8907,12 +10457,93 @@
           "declaredIn": "LayoutBase"
         },
         {
+          "name": "flexGrow",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "flexShrink",
+          "kind": "input",
+          "required": false,
+          "type": "number | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "flexBasis",
+          "kind": "input",
+          "required": false,
+          "type": "import(\"./layout-base\").LayoutLength | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileDirection",
+          "kind": "input",
+          "required": false,
+          "type": "\"row\" | \"column\" | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileAlign",
+          "kind": "input",
+          "required": false,
+          "type": "\"center\" | \"stretch\" | \"flex-start\" | \"flex-end\" | \"baseline\" | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileJustify",
+          "kind": "input",
+          "required": false,
+          "type": "\"center\" | \"flex-start\" | \"flex-end\" | \"space-between\" | \"space-around\" | \"space-evenly\" | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobileGap",
+          "kind": "input",
+          "required": false,
+          "type": "import(\"./layout-base\").LayoutLength | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
+          "name": "mobilePadding",
+          "kind": "input",
+          "required": false,
+          "type": "import(\"./layout-base\").LayoutLength | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "LayoutBase"
+        },
+        {
           "name": "label",
           "kind": "input",
           "required": false,
           "type": "string",
           "default": "\"\"",
           "description": "",
+          "declaredIn": "SectionComponent"
+        },
+        {
+          "name": "labelledBy",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "ID of a projected visible heading that names this section landmark.",
           "declaredIn": "SectionComponent"
         }
       ],
@@ -9179,6 +10810,24 @@
           "declaredIn": "CarouselDirective"
         },
         {
+          "name": "draggable",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "CarouselDirective"
+        },
+        {
+          "name": "dragThreshold",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "48",
+          "description": "",
+          "declaredIn": "CarouselDirective"
+        },
+        {
           "name": "disabled",
           "kind": "input",
           "required": false,
@@ -9264,6 +10913,14 @@
         {
           "name": "slideChange",
           "type": "CarouselChange"
+        },
+        {
+          "name": "dragStarted",
+          "type": "PointerEvent"
+        },
+        {
+          "name": "dragEnded",
+          "type": "{ event: PointerEvent; moved: boolean; }"
         },
         {
           "name": "indexChange",
@@ -9411,12 +11068,25 @@
           "default": "\"3px\"",
           "description": "",
           "declaredIn": "LinkDirective"
+        },
+        {
+          "name": "navigate",
+          "kind": "input",
+          "required": false,
+          "type": "((href: string, event: MouseEvent) => void | Promise<void>) | null",
+          "default": "null",
+          "description": "Optional adapter for Angular Router or another client-side navigator.",
+          "declaredIn": "LinkDirective"
         }
       ],
       "outputs": [
         {
           "name": "activated",
           "type": "MouseEvent"
+        },
+        {
+          "name": "navigationError",
+          "type": "unknown"
         }
       ],
       "slots": []
@@ -9670,12 +11340,42 @@
           "default": "\"24px 0\"",
           "description": "",
           "declaredIn": "StepperContainerComponent"
+        },
+        {
+          "name": "controlledNavigation",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "Emits navigationRequested without updating value so applications can validate asynchronously.",
+          "declaredIn": "StepperContainerComponent"
+        },
+        {
+          "name": "beforeNavigate",
+          "kind": "input",
+          "required": false,
+          "type": "((from: string | null, to: string) => boolean | Promise<boolean>) | null",
+          "default": "null",
+          "description": "",
+          "declaredIn": "StepperContainerComponent"
         }
       ],
       "outputs": [
         {
           "name": "finished",
           "type": "void"
+        },
+        {
+          "name": "navigationRequested",
+          "type": "{ from: string | null; to: string; direction: \"forward\" | \"backward\" | \"direct\"; }"
+        },
+        {
+          "name": "navigationBlocked",
+          "type": "{ from: string | null; to: string; }"
+        },
+        {
+          "name": "navigationError",
+          "type": "unknown"
         },
         {
           "name": "valueChange",
@@ -9825,11 +11525,41 @@
           "default": "true",
           "description": "",
           "declaredIn": "TabContainerComponent"
+        },
+        {
+          "name": "activateOnClose",
+          "kind": "input",
+          "required": false,
+          "type": "\"none\" | \"previous\" | \"next\" | \"first\"",
+          "default": "\"previous\"",
+          "description": "",
+          "declaredIn": "TabContainerComponent"
+        },
+        {
+          "name": "controlledSelection",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "Emits selectionRequested without updating value, allowing router or async ownership.",
+          "declaredIn": "TabContainerComponent"
         }
       ],
       "outputs": [
         {
           "name": "tabClose",
+          "type": "string"
+        },
+        {
+          "name": "tabCloseRequested",
+          "type": "{ value: string; index: number; wasActive: boolean; }"
+        },
+        {
+          "name": "selectionRequested",
+          "type": "string"
+        },
+        {
+          "name": "tabFocus",
           "type": "string"
         },
         {
@@ -10232,6 +11962,42 @@
           "declaredIn": "OverlayBase"
         },
         {
+          "name": "error",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationPhrase",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationValue",
+          "kind": "model",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Type the confirmation phrase to continue\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
           "name": "autoFocus",
           "kind": "input",
           "required": false,
@@ -10257,9 +12023,76 @@
           "default": "\"block\"",
           "description": "",
           "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "fullScreenOnMobile",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "mobileBreakpoint",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "600",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "showDragHandle",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "BottomSheetComponent"
+        },
+        {
+          "name": "snapPoints",
+          "kind": "input",
+          "required": false,
+          "type": "string[]",
+          "default": "[]",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "activeSnap",
+          "kind": "model",
+          "required": false,
+          "type": "number",
+          "default": "0",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "controlledClose",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "Emits closeRequested without closing, allowing an application to run an async guard and update open itself.",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "beforeClose",
+          "kind": "input",
+          "required": false,
+          "type": "((reason: import(\"./overlay-base\").OverlayCloseReason) => boolean | Promise<boolean>) | null",
+          "default": "null",
+          "description": "Return false, or a promise resolving false, to keep the overlay open.",
+          "declaredIn": "OverlayBase"
         }
       ],
       "outputs": [
+        {
+          "name": "snapChanged",
+          "type": "{ index: number; height: string; }"
+        },
         {
           "name": "confirmed",
           "type": "void"
@@ -10273,8 +12106,28 @@
           "type": "import(\"./overlay-base\").OverlayCloseReason"
         },
         {
+          "name": "closeRequested",
+          "type": "import(\"./overlay-base\").OverlayCloseReason"
+        },
+        {
+          "name": "closeBlocked",
+          "type": "import(\"./overlay-base\").OverlayCloseReason"
+        },
+        {
+          "name": "closeGuardError",
+          "type": "unknown"
+        },
+        {
           "name": "openChange",
           "type": "boolean"
+        },
+        {
+          "name": "confirmationValueChange",
+          "type": "string"
+        },
+        {
+          "name": "activeSnapChange",
+          "type": "number"
         }
       ],
       "slots": []
@@ -10573,6 +12426,42 @@
           "declaredIn": "OverlayBase"
         },
         {
+          "name": "error",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationPhrase",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationValue",
+          "kind": "model",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Type the confirmation phrase to continue\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
           "name": "autoFocus",
           "kind": "input",
           "required": false,
@@ -10598,9 +12487,76 @@
           "default": "\"block\"",
           "description": "",
           "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "fullScreenOnMobile",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "mobileBreakpoint",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "600",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "showDragHandle",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "snapPoints",
+          "kind": "input",
+          "required": false,
+          "type": "string[]",
+          "default": "[]",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "activeSnap",
+          "kind": "model",
+          "required": false,
+          "type": "number",
+          "default": "0",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "controlledClose",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "Emits closeRequested without closing, allowing an application to run an async guard and update open itself.",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "beforeClose",
+          "kind": "input",
+          "required": false,
+          "type": "((reason: import(\"./overlay-base\").OverlayCloseReason) => boolean | Promise<boolean>) | null",
+          "default": "null",
+          "description": "Return false, or a promise resolving false, to keep the overlay open.",
+          "declaredIn": "OverlayBase"
         }
       ],
       "outputs": [
+        {
+          "name": "snapChanged",
+          "type": "{ index: number; height: string; }"
+        },
         {
           "name": "confirmed",
           "type": "void"
@@ -10614,8 +12570,28 @@
           "type": "import(\"./overlay-base\").OverlayCloseReason"
         },
         {
+          "name": "closeRequested",
+          "type": "import(\"./overlay-base\").OverlayCloseReason"
+        },
+        {
+          "name": "closeBlocked",
+          "type": "import(\"./overlay-base\").OverlayCloseReason"
+        },
+        {
+          "name": "closeGuardError",
+          "type": "unknown"
+        },
+        {
           "name": "openChange",
           "type": "boolean"
+        },
+        {
+          "name": "confirmationValueChange",
+          "type": "string"
+        },
+        {
+          "name": "activeSnapChange",
+          "type": "number"
         }
       ],
       "slots": []
@@ -10914,6 +12890,42 @@
           "declaredIn": "OverlayBase"
         },
         {
+          "name": "error",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationPhrase",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationValue",
+          "kind": "model",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Type the confirmation phrase to continue\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
           "name": "autoFocus",
           "kind": "input",
           "required": false,
@@ -10939,9 +12951,76 @@
           "default": "\"block\"",
           "description": "",
           "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "fullScreenOnMobile",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "mobileBreakpoint",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "600",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "showDragHandle",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "snapPoints",
+          "kind": "input",
+          "required": false,
+          "type": "string[]",
+          "default": "[]",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "activeSnap",
+          "kind": "model",
+          "required": false,
+          "type": "number",
+          "default": "0",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "controlledClose",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "Emits closeRequested without closing, allowing an application to run an async guard and update open itself.",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "beforeClose",
+          "kind": "input",
+          "required": false,
+          "type": "((reason: import(\"./overlay-base\").OverlayCloseReason) => boolean | Promise<boolean>) | null",
+          "default": "null",
+          "description": "Return false, or a promise resolving false, to keep the overlay open.",
+          "declaredIn": "OverlayBase"
         }
       ],
       "outputs": [
+        {
+          "name": "snapChanged",
+          "type": "{ index: number; height: string; }"
+        },
         {
           "name": "confirmed",
           "type": "void"
@@ -10955,8 +13034,28 @@
           "type": "import(\"./overlay-base\").OverlayCloseReason"
         },
         {
+          "name": "closeRequested",
+          "type": "import(\"./overlay-base\").OverlayCloseReason"
+        },
+        {
+          "name": "closeBlocked",
+          "type": "import(\"./overlay-base\").OverlayCloseReason"
+        },
+        {
+          "name": "closeGuardError",
+          "type": "unknown"
+        },
+        {
           "name": "openChange",
           "type": "boolean"
+        },
+        {
+          "name": "confirmationValueChange",
+          "type": "string"
+        },
+        {
+          "name": "activeSnapChange",
+          "type": "number"
         }
       ],
       "slots": []
@@ -11062,6 +13161,15 @@
           "required": false,
           "type": "number",
           "default": "100",
+          "description": "",
+          "declaredIn": "AnchoredOverlayBase"
+        },
+        {
+          "name": "longPressDelay",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "550",
           "description": "",
           "declaredIn": "AnchoredOverlayBase"
         },
@@ -11448,6 +13556,42 @@
           "declaredIn": "OverlayBase"
         },
         {
+          "name": "error",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationPhrase",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationValue",
+          "kind": "model",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "confirmationLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Type the confirmation phrase to continue\"",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
           "name": "autoFocus",
           "kind": "input",
           "required": false,
@@ -11473,9 +13617,76 @@
           "default": "\"block\"",
           "description": "",
           "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "fullScreenOnMobile",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "SidepanelComponent"
+        },
+        {
+          "name": "mobileBreakpoint",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "600",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "showDragHandle",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "snapPoints",
+          "kind": "input",
+          "required": false,
+          "type": "string[]",
+          "default": "[]",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "activeSnap",
+          "kind": "model",
+          "required": false,
+          "type": "number",
+          "default": "0",
+          "description": "",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "controlledClose",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "Emits closeRequested without closing, allowing an application to run an async guard and update open itself.",
+          "declaredIn": "OverlayBase"
+        },
+        {
+          "name": "beforeClose",
+          "kind": "input",
+          "required": false,
+          "type": "((reason: import(\"./overlay-base\").OverlayCloseReason) => boolean | Promise<boolean>) | null",
+          "default": "null",
+          "description": "Return false, or a promise resolving false, to keep the overlay open.",
+          "declaredIn": "OverlayBase"
         }
       ],
       "outputs": [
+        {
+          "name": "snapChanged",
+          "type": "{ index: number; height: string; }"
+        },
         {
           "name": "confirmed",
           "type": "void"
@@ -11489,8 +13700,28 @@
           "type": "import(\"./overlay-base\").OverlayCloseReason"
         },
         {
+          "name": "closeRequested",
+          "type": "import(\"./overlay-base\").OverlayCloseReason"
+        },
+        {
+          "name": "closeBlocked",
+          "type": "import(\"./overlay-base\").OverlayCloseReason"
+        },
+        {
+          "name": "closeGuardError",
+          "type": "unknown"
+        },
+        {
           "name": "openChange",
           "type": "boolean"
+        },
+        {
+          "name": "confirmationValueChange",
+          "type": "string"
+        },
+        {
+          "name": "activeSnapChange",
+          "type": "number"
         }
       ],
       "slots": []
@@ -11600,6 +13831,15 @@
           "declaredIn": "AnchoredOverlayBase"
         },
         {
+          "name": "longPressDelay",
+          "kind": "input",
+          "required": false,
+          "type": "number",
+          "default": "550",
+          "description": "",
+          "declaredIn": "AnchoredOverlayBase"
+        },
+        {
           "name": "closeOnEscape",
           "kind": "input",
           "required": false,
@@ -11648,7 +13888,7 @@
           "name": "trigger",
           "kind": "input",
           "required": false,
-          "type": "\"hover\" | \"manual\"",
+          "type": "\"hover\" | \"manual\" | \"longpress\"",
           "default": "\"hover\"",
           "description": "",
           "declaredIn": "TooltipDirective"
@@ -11700,6 +13940,10 @@
         {
           "name": "snackbar",
           "signature": "snackbar( message: string, options: NotificationOptions = {}, ): NotificationRef"
+        },
+        {
+          "name": "track",
+          "signature": "async track<T>( operation: Promise<T>, messages: NotificationPromiseMessages<T>, options: NotificationOptions = {}, ): Promise<T>"
         },
         {
           "name": "dismiss",
@@ -12000,37 +14244,37 @@
     ".storybook/main.ts": "f0420b485a5728b2f3239d0ea177a76070c509de9022fc204914a2aeaee63227",
     ".storybook/story-notes.ts": "43062071278e5f633b418e98dc5863ee51e5b52d054d388b65c6d201b0f1fca0",
     "projects/design-library/src/foundations.stories.ts": "8817e55b14c242c77c23411ed6006c7ffe7efbe1e0c4a132667a1e8111b14edf",
-    "projects/design-library/src/lib/actions/fab-button.component.ts": "4750635c44170562ed5d7d7f06a5f5edfaec6e2a6976c984a8888a6f0b87d3db",
+    "projects/design-library/src/lib/actions/fab-button.component.ts": "193036da4370c865f57454f6fc93662c21881e16566722e54fcc2d711e52b556",
     "projects/design-library/src/lib/actions/fab-button.stories.ts": "4c7f340c133e2dc87bf6ce3a9a469ec8ae32d63ea7fe5b857e11be7ce83cd251",
-    "projects/design-library/src/lib/actions/icon-button.component.ts": "05199c784f889577decfcacfbc3335b05d56050df63c16f592b620ae04b61ff5",
+    "projects/design-library/src/lib/actions/icon-button.component.ts": "fc9cc14b0edd2c02625eb150ccbceaaa6e03ad8103c897beaa85c8f32952f7b5",
     "projects/design-library/src/lib/actions/icon-button.stories.ts": "45ca29b4841f17b481b71745da839a4fe700d59381a1ceb2036f448859a3fcb8",
-    "projects/design-library/src/lib/alert.component.ts": "177a03c7fbc63486980a663a7500285fdb0aacf43b28a708d076b8a95dee5867",
+    "projects/design-library/src/lib/alert.component.ts": "d7feeb4f9052fcb44d76b1c0a481949be285041ddf736890b0cbb20db2e8caf7",
     "projects/design-library/src/lib/alert.stories.ts": "70a55a79f05fb836863f72ef7b41460d041184cff5342c5f78a0b3e67630729e",
-    "projects/design-library/src/lib/avatar.component.ts": "1cb9acccb0d04ad88156588c6049ff6c59e36c2a379c20f0952073333397dc7b",
-    "projects/design-library/src/lib/avatar.stories.ts": "fa39907f245913e1e06f7eecd4a3677ff7986522449f77baa581d4b15e81acc0",
-    "projects/design-library/src/lib/badge.component.ts": "04ccb8ba0ec1849fc8599cc3862227b9a4f37d3bd76b3252a5f35ac70ac71897",
+    "projects/design-library/src/lib/avatar.component.ts": "740f56f1c47a8c4a969921004e0cc2005d751dafe5f7ca5cc8efdfda9475e016",
+    "projects/design-library/src/lib/avatar.stories.ts": "302e5585f647bc034535fa95e8cabb0811cd9a7e0b7fd127d95df5d2c3838852",
+    "projects/design-library/src/lib/badge.component.ts": "3742436555845edcabf9bb262ca5e7ec4773405af7a64f8b8d3e8b5b80dc912b",
     "projects/design-library/src/lib/badge.stories.ts": "a3e132ff6c1fbc9d176cc1bcdf4e3ba28cdb19fd2a819983cb70a591726cd749",
-    "projects/design-library/src/lib/button.component.ts": "d844038bdf4993ffdd0eda3d2e65c6dd2c24974fc68c17851544bdd6b45048bc",
+    "projects/design-library/src/lib/button.component.ts": "26c8778cdb319ff44df567d77a1ee6d4eabbcedcfe22a0a939c9f9ece74b9b70",
     "projects/design-library/src/lib/button.stories.ts": "29a8b4b21ca66be03a5cc2dc9acb97f4a56c0dbd1598f2db8b92eec9dd096886",
-    "projects/design-library/src/lib/card.component.ts": "faa35e7fc58acec9b8dd0019eb885bec8097edace5e6aa93cc9b6165f14abd77",
+    "projects/design-library/src/lib/card.component.ts": "7219683a290051765229c10578bfa9d657db414e095e9e0077757a23ca3067de",
     "projects/design-library/src/lib/card.stories.ts": "1cae5557c57301c8df86d31908c44314fb95eb6f62e9f0cb55cf6946b7fcbc8f",
-    "projects/design-library/src/lib/data-display/divider.component.ts": "200e8e24716903961194a6fe0577e78ad27d5aba964dc81acd5f416ad0016b75",
+    "projects/design-library/src/lib/data-display/divider.component.ts": "634b59ef20f4d12ba59cc351cb60858c29722943628140e963baf6457e99880e",
     "projects/design-library/src/lib/data-display/divider.stories.ts": "09885e938338b1f6ce4eae7a72c3582236f8168f7e619201bd22ef5f920c49e6",
-    "projects/design-library/src/lib/data-display/list.component.ts": "e30db60dc61e81cf995ab5f5880d0e2567bde544266aaf7a8f0582268c7c38e1",
-    "projects/design-library/src/lib/data-display/list.stories.ts": "2c535eba1e132dc9eb9643547ba7ba081c78e1c366085d427e0f7357cee8496d",
-    "projects/design-library/src/lib/data-display/tiles.component.ts": "4112a4ddf7789cf396cdd041df4b52eb310d148fd78958b53fba39572bf77699",
-    "projects/design-library/src/lib/data-display/tiles.stories.ts": "fd9f5ba347664714be513aabc37127a6ee0dd256ff698edd4efa2b04ec021876",
+    "projects/design-library/src/lib/data-display/list.component.ts": "ef987b71bb6fe6afa46cf3ee06646db20e783816d9d43fb1df28b3e621d856ff",
+    "projects/design-library/src/lib/data-display/list.stories.ts": "6962a35142da4efded776a8a43ace9ffeb86208eea6cc39777fa97a8ceb57de8",
+    "projects/design-library/src/lib/data-display/tiles.component.ts": "5d622e9bbaef4e48433c50ed1262431587c6f12c8f9f00ea2d1ebe65e9b101e4",
+    "projects/design-library/src/lib/data-display/tiles.stories.ts": "5b960a37c927a612a8cfa5f8e278aa4bbafec21f3bc5e4a39e78876d37d13200",
     "projects/design-library/src/lib/feedback/global-notification.component.ts": "cc36dc3de17afa57b1e170be442ae606cdd2df986b8bc57bf2a0e59bbc053d06",
     "projects/design-library/src/lib/feedback/global-notification.stories.ts": "bb439931fcd5cf4935f150df36414de16dff49b4d3fac770764534a4c8467ccd",
     "projects/design-library/src/lib/feedback/inline-notification.component.ts": "c06428e2825985a4582b89e0589a8f2fe1cdbbc7912a51a9f38278c9791564d2",
     "projects/design-library/src/lib/feedback/inline-notification.stories.ts": "4ec9ade84708062448185a671efb1e81bfecc3392cb3982ad9383ae72c074212",
-    "projects/design-library/src/lib/feedback/notice-base.ts": "58c1cf784bdec681e2bf15ba62d35b829deed484c6ce40f5fc6188d5d27ddd7d",
-    "projects/design-library/src/lib/feedback/notification.service.ts": "0c404a58eb7ebdf3a1294f16c81aeb1a9e2a7781b0cac937e90023d8a99df37e",
+    "projects/design-library/src/lib/feedback/notice-base.ts": "17c66830467cc59dc3b3f6b6063cd783d6b0e5788e9b7f64bbf88a940517a3ff",
+    "projects/design-library/src/lib/feedback/notification.service.ts": "e17bb9a6598c11857cc852aab3cca59ac41dca4349c386ac5152703cd5d3ce0e",
     "projects/design-library/src/lib/feedback/notifications.stories.ts": "51a34c870d2f1b3f12470889b67e802f3f99782c52b3ca2ee1444db83903ae66",
-    "projects/design-library/src/lib/feedback/skeleton.component.ts": "09fc17175c5b16cce6b971c620303ca84ad7e981da30d4f463869d485c520497",
+    "projects/design-library/src/lib/feedback/skeleton.component.ts": "4527f0093ffac9fec9bb3f61c12bb86efcc7497f5670dea72da10e492b0d55ad",
     "projects/design-library/src/lib/feedback/skeleton.stories.ts": "43f97c267bf3feb26ee6ce0e93252007e4cfc0c040167033e4244293108af76c",
     "projects/design-library/src/lib/feedback/snackbar.component.ts": "b0a622dd601f44143fdd0645e38d1defc8c3b9f972407dd4b8ee928208bde736",
-    "projects/design-library/src/lib/feedback/snackbar.stories.ts": "3e59fd71b485856b176bfa9a0521c54663d5823e1ce0ad19ad9c2110b6700aa6",
+    "projects/design-library/src/lib/feedback/snackbar.stories.ts": "2095a2109a9da58ab1a714cead694e8468db754c264c0a161cb0a680f302d41e",
     "projects/design-library/src/lib/feedback/toast.component.ts": "0623d5f269e8e643dedfd8a77b2cb1357ecf9ca1336a194886530264c1d55051",
     "projects/design-library/src/lib/feedback/toast.stories.ts": "8c73390b492cafc7396c2595fb2321e29749d20174a57e955160e8ea6d82c395",
     "projects/design-library/src/lib/icons/icon-catalog.ts": "3ca59703ec72b42a5d81d354c1a1dce196e40c2fa20c9f4d727e9e758ecc2005",
@@ -12038,21 +14282,21 @@
     "projects/design-library/src/lib/icons/icon-registry.ts": "694ae9c0cdf57826e9c2a02fd2f709fe81c4bde1774892da081d871a79b72ad8",
     "projects/design-library/src/lib/icons/icon.component.ts": "1edeff8b7e17b3c97a9aa578e2aafbe9c73d7638f03859b4aaba7b8f077f137f",
     "projects/design-library/src/lib/icons/icon.stories.ts": "9bdec225586df49ab51cec794c1ade12daac298f746b605ad3aab91aa7403d09",
-    "projects/design-library/src/lib/input.component.ts": "1867a2aa801b509c183fed84bf86623b5f7cfd385f0ce8743e1aadf8147124ef",
-    "projects/design-library/src/lib/input.stories.ts": "bf02489e7dd96797470d44d60543e3f70c6191d65f44205e9abf0713445c51af",
-    "projects/design-library/src/lib/inputs/checkbox.component.ts": "c3c4978c261d533476e8b40df52b101507037963f311dc5d8a49d6eeea60b300",
+    "projects/design-library/src/lib/input.component.ts": "037c1c9b111877f45c05da7aed0eb9928933ec4f7a6bb34592d992b1c3cdf997",
+    "projects/design-library/src/lib/input.stories.ts": "145c7fe713d4d0fc0b604317b9a9122979326660755b0d9c980231b2834b9874",
+    "projects/design-library/src/lib/inputs/checkbox.component.ts": "e1d5fdc46bfdaa2638dc70f240e69da2cc338c8b88a54082111bfdf51116c963",
     "projects/design-library/src/lib/inputs/checkbox.stories.ts": "eaf916496db83627345a54a9045288ff98cd6f4a5dc859b5951c24ac4bc9380d",
-    "projects/design-library/src/lib/inputs/chips.component.ts": "eca3e59038dbafeda5d9fe828bbcb7bb747e2e4cb178ff86cbe65417bace8462",
+    "projects/design-library/src/lib/inputs/chips.component.ts": "3016062861b513c77d26e8f717ab4e094344f2e4a6cd2ea32fa7a1727ddc245e",
     "projects/design-library/src/lib/inputs/chips.stories.ts": "19a241de8dba94e61f583a0cd2f01807af413908a0c32d810a73ebebc4689998",
     "projects/design-library/src/lib/inputs/context-selector.component.ts": "92ea23a82ac819f3354e3a3ebb7af3b774ea61dcb677a57bc9a6881c5cdbeb8f",
     "projects/design-library/src/lib/inputs/context-selector.stories.ts": "ee61390bece9d991c27e27cb1936d2c51e92bae017015a84f8b4970d1c8c7fda",
-    "projects/design-library/src/lib/inputs/counter-button.component.ts": "92c7b45b1d0d4f0d8a6a2d74c024cd397ec0a55d109f5a8ff5f7e3aaf2dbf607",
+    "projects/design-library/src/lib/inputs/counter-button.component.ts": "bcfba37ee6450a4e745cb567259f227107cf30bb0d4623abfe7e4eed6977c76c",
     "projects/design-library/src/lib/inputs/counter-button.stories.ts": "fa97af1a60658d07766b69caffbecb6d457ebf0ba23895ad5b217de8ed818705",
-    "projects/design-library/src/lib/inputs/counter.component.ts": "fb7de72d8a305c8a263cf32a78d282ea319b3e85e1c67b54b34d3305ca179543",
+    "projects/design-library/src/lib/inputs/counter.component.ts": "42ff6c75e9aab6f1343d870260d9cf277c4566b494c1f7064af4f9379695e851",
     "projects/design-library/src/lib/inputs/counter.stories.ts": "a4ad8400a01764ef7059c609843b9e4d174a6c5bdbfeeafd7221d23abcc96d4d",
-    "projects/design-library/src/lib/inputs/datepicker.component.ts": "987e016c5e41bbe8867668f53534ef4eedd1814317326a17479fc2caa0b575fe",
+    "projects/design-library/src/lib/inputs/datepicker.component.ts": "9eba8c0661f85884946c49d51d7bafeb21adaa99a80abcbd6338c4bd92f84ed4",
     "projects/design-library/src/lib/inputs/datepicker.stories.ts": "e8db7ced31993a01c8bca1a22d74e7270faaadbf1cdd5b7e47ec82e316e51a5b",
-    "projects/design-library/src/lib/inputs/dropdown.component.ts": "3514102efc676e7e6690a7c89e421e307848b9d4a126d97440de19ec1029e91d",
+    "projects/design-library/src/lib/inputs/dropdown.component.ts": "c1de4762ab84b0b629465673bf25fe05dbecd04ef009a945b353623087087f4d",
     "projects/design-library/src/lib/inputs/dropdown.stories.ts": "6edfdc4dbf7425d328f530ef5e7f6ad48997d340899b81aa591f2f0f72d202fa",
     "projects/design-library/src/lib/inputs/examples/input-masks/custom-patterns.stories.ts": "abd375a5fe6fe7ec70336672d7c7407e7247b535981523b4ebbc1d5c867aaddf",
     "projects/design-library/src/lib/inputs/examples/input-masks/formatting-and-editing.stories.ts": "7a5662a5e84b4b2bbd7d4cd8a4248f6b61b16b40d763bf14d7106b3f6456b9fe",
@@ -12061,11 +14305,11 @@
     "projects/design-library/src/lib/inputs/examples/input-masks/states-and-sizing.stories.ts": "cd2a6676803039a2dc3cf4ea03e9f2cd572681064c061d6a303f99b057feb24b",
     "projects/design-library/src/lib/inputs/examples/input-masks/tax-identifiers.stories.ts": "3ba0787d0571f821cebeefcb4dfb14e04ae6f412b58a0265ee1b87999d6b0ad6",
     "projects/design-library/src/lib/inputs/field-metrics.ts": "ed4fd9eaf22faccfcaa85376a4ed60d83a05fca2e859e809871ed2bb6590537a",
-    "projects/design-library/src/lib/inputs/form-control-base.ts": "42cec3d11deacfe6ebb0a29c1dd6dc1b6ea9464781caf0df85636b61e09796f3",
+    "projects/design-library/src/lib/inputs/form-control-base.ts": "7b9b3ccdbf95b8e0fae26e28aac97118d5f2c3b378ddb7e7b9efb107130ab787",
     "projects/design-library/src/lib/inputs/form-playground.stories.ts": "3aa151117444d452de373ab62c906abe5a78c614c29a15c08a65d9c3a6c49fd7",
     "projects/design-library/src/lib/inputs/input-mask.ts": "fa5f2ceb90fb3d5b5415be7e7adfcdcfb2ebdf6b6198b6c87350aff22e69ce0e",
     "projects/design-library/src/lib/inputs/input-masks.examples.ts": "690b05ddf0405652ced479f5e37bcba1c399be783f969bf215f99529a56b177f",
-    "projects/design-library/src/lib/inputs/multi-select.component.ts": "f1af545d3212d2b275e2cf98de0191b86f491853122ef0a10bd8b3a1c6690cf8",
+    "projects/design-library/src/lib/inputs/multi-select.component.ts": "d0c369a958176763fe45ee7fcca9e78d60c95501413edb4ba7a31cfcefb94993",
     "projects/design-library/src/lib/inputs/multi-select.stories.ts": "21594d742ab4f8e091f14466b5d05996f3d61b4430cdda30ebc1932dcbd2dac4",
     "projects/design-library/src/lib/inputs/number-format.ts": "fef7f54108631b2db9b722b5a49c3251492463ff6daccb4529afba5b8e4f5b01",
     "projects/design-library/src/lib/inputs/number-input.component.ts": "acc189617224e8385870b0e4bac0575d508754fc06a6bcc08fda9950b8d4c502",
@@ -12073,7 +14317,7 @@
     "projects/design-library/src/lib/inputs/popover-control-base.ts": "9fa3bf844ea2f0a4703ef3f22d959f26df278330c8f39cec1debb4ef19bd072d",
     "projects/design-library/src/lib/inputs/radio.component.ts": "4821ef14ff64d6e92dfba376dfb81f6491d54b3b959f63e0819585024f6418ae",
     "projects/design-library/src/lib/inputs/radio.stories.ts": "4ed854eadb1609f67a7b0bea2716abe54c4db0c81778a432e8d6a9482b3dc265",
-    "projects/design-library/src/lib/inputs/range-selector.component.ts": "eef26e7312e658e817c4953b29378a409de5c4ac58f9d9c07f00717bbfc7efdb",
+    "projects/design-library/src/lib/inputs/range-selector.component.ts": "bf60273cda6046a9c0171cf9f7e576f336e53dc6ad3d70897b76aa5fa6913abe",
     "projects/design-library/src/lib/inputs/range-selector.stories.ts": "3275ce72598fc47763c64606544cb2b2e3366dc478a7c8836057847b35caeb91",
     "projects/design-library/src/lib/inputs/segmented-buttons.component.ts": "6ed765139c8d0b637b412777121575c100f0d3c0c240dc114ee86332bdc5ed49",
     "projects/design-library/src/lib/inputs/segmented-buttons.stories.ts": "898aee20e39f3547b8794f401946e8957b233c4bd8aee1f1ae9b245b85fe4730",
@@ -12081,48 +14325,48 @@
     "projects/design-library/src/lib/inputs/validation-message.ts": "4c5d9438fd5a0f14815787b5c4acaf918212fac5bbcb75c7d59615b7d3c7643d",
     "projects/design-library/src/lib/inputs/validation.directive.ts": "2e25e4271e0deca86715736a3b826f571ff7998a65c31c2ca632798ee2edec00",
     "projects/design-library/src/lib/inputs/validation.stories.ts": "1298b8b37024fd2360b761fac34d00bb8ad308f6e4d3c64f07e8161088573126",
-    "projects/design-library/src/lib/layout/container.component.ts": "bd4f6bf7ae4dcde2cbf1f389d48bf4deae299fcfa74ca7bfb468e8f797c54dbc",
+    "projects/design-library/src/lib/layout/container.component.ts": "f636fff6683cabd8f804a5e8c2ff6d2954135ef9049443cbfabf25c6797f0568",
     "projects/design-library/src/lib/layout/container.stories.ts": "4794ab7cf6416474075413ea8db12e394785041302bd9c1bdd9af9ffeac9cd17",
-    "projects/design-library/src/lib/layout/header.component.ts": "de7b9823d75271cdf0dd16a3d9e02851b83144e615270a3089bc9f793a5f3345",
+    "projects/design-library/src/lib/layout/header.component.ts": "e8e11d564b04a19f8cb580d76d11a0cf36fa83403dc8017059f91565a0297c30",
     "projects/design-library/src/lib/layout/header.stories.ts": "bf0c30d1eb11c058059aa5b9f3eff9fcda7ce5f4ecce4b4ac89a753f26be4b3a",
-    "projects/design-library/src/lib/layout/layout-base.ts": "11d5d6453a98c33149a9101de3db19097a80a8ced2adc6a31788d7c63cd4fe4f",
-    "projects/design-library/src/lib/layout/pane.component.ts": "0ee81fa933952bb3edce138ff2a147b7c1b607eb15cbbe11981c55160f8d8754",
+    "projects/design-library/src/lib/layout/layout-base.ts": "5e3b5f44959231705075b3ba5a9116d64dda22ed76ee722dcafb02566ff1c3bb",
+    "projects/design-library/src/lib/layout/pane.component.ts": "eada4cf2abe9cf79e039cab8e5a131da7dd5b452169352aa0e77110445dbad4f",
     "projects/design-library/src/lib/layout/pane.stories.ts": "a9bb3b038f0200e4780578642d7e67be5e9fe18e00e3751b3686f06656c8ea6c",
-    "projects/design-library/src/lib/layout/section.component.ts": "1103979a08c85655b44d91436438de4aa04eccbcf73d179c11741bc6f67f5a98",
+    "projects/design-library/src/lib/layout/section.component.ts": "27a5642953073a3de27881645d456029c935ba92c43320e33c34a434a12773b1",
     "projects/design-library/src/lib/layout/section.stories.ts": "480915de41bfabee754203f98235a216d1b109bfcff4461639d8e96fc165ddf0",
-    "projects/design-library/src/lib/navigation/breadcrumb.component.ts": "d637f4931bfb364f1a2f115b8ed8bc7451faa76de37fb6fdf5d63307c90dfcd3",
+    "projects/design-library/src/lib/navigation/breadcrumb.component.ts": "3fd88b689693de80be30a7667b4eaeb4066f073e8fdfe61f435fd186f7c0949a",
     "projects/design-library/src/lib/navigation/breadcrumb.stories.ts": "faeb84b636f7f9bba5c247fe88b9e832d6ca9908ad561b2f431d984d4198e91b",
-    "projects/design-library/src/lib/navigation/carousel.directive.ts": "1286b598d56b036190f6ce3fd8dbedcc85194378bb1ea58263ed02abf14c3d77",
+    "projects/design-library/src/lib/navigation/carousel.directive.ts": "e79f8fbfcf24178f78259954a636a1127f3b0e8e069f1ccdb0ff00cf98bff716",
     "projects/design-library/src/lib/navigation/carousel.stories.ts": "0791f6bd704f656ba866e1d5ccf3136d7e5c0a99e5fede28bee84343e727713f",
-    "projects/design-library/src/lib/navigation/link.directive.ts": "ca8b94f474ac86549d544d1b3ad6f140eb74dd21486afb75e37ca2c89e25e32b",
+    "projects/design-library/src/lib/navigation/link.directive.ts": "42b04bbc8218cfbdd9ca5d9b2b7ca01fb9322aebad4ca251d6673712c9780214",
     "projects/design-library/src/lib/navigation/link.stories.ts": "33b299f5cb1bb5f616ab60cd4f8e9b4dbbd0c43b0b7522a5e5707f7f2da133c8",
     "projects/design-library/src/lib/navigation/step.component.ts": "bbb040cff70b349a59310c6ccbc9c3f1990c9be8af4ef3826d760b804f8f71a2",
     "projects/design-library/src/lib/navigation/step.stories.ts": "93c873b3424c8181581c4d27f6ba83592d74e053fea93abec2e03d62d751f0e7",
-    "projects/design-library/src/lib/navigation/stepper-container.component.ts": "6716d88d3cba4688b1f539338c2a2027fdb4aa39b85cbce26d5154931aed3e12",
+    "projects/design-library/src/lib/navigation/stepper-container.component.ts": "bc4905ee92b42c5b049b5a0d583a86adbd0709e6fb5263b904d726132c6a9465",
     "projects/design-library/src/lib/navigation/stepper-container.stories.ts": "36db40509734bb6354680e560c7accea0d9753fd30199551b42a6c994fad2c90",
-    "projects/design-library/src/lib/navigation/tab-container.component.ts": "5fc87b47545d8538385930f29791012b8f7e797c1ae517545b47eb508e9a1245",
+    "projects/design-library/src/lib/navigation/tab-container.component.ts": "f86a1d5cabbfa3542cd57da9b3b562ced8600f40161ddbb3e736713af34b6232",
     "projects/design-library/src/lib/navigation/tab-container.stories.ts": "abffe5168ae4ad4889bccd0d737ed6b94a8bfeed0ac6c32c0cfd29aec740818e",
     "projects/design-library/src/lib/navigation/tab.component.ts": "590274f03a2c79545143ee92b787b752669ac755a67b6070f678d5f90e22920b",
     "projects/design-library/src/lib/navigation/tab.stories.ts": "ab296b4ff9be1a4264459bb0b447d2965ce2f12679e5c1d35c5f4eda508f5d50",
     "projects/design-library/src/lib/overlays/anchor-position.ts": "e66455e85a8fd188fc7f00097efbf7214eea87564de8a85cc636a9d07d25a6f1",
-    "projects/design-library/src/lib/overlays/anchored-overlay-base.ts": "3c310878bd1ccdcdf6d664793a78dbf067bac8667d84c152e969aa077c950ad2",
-    "projects/design-library/src/lib/overlays/bottom-sheet.component.ts": "3e0e3d054d026d84d6986dc9064f1ec38b3c663d215e842aa5d00910090d58c6",
+    "projects/design-library/src/lib/overlays/anchored-overlay-base.ts": "5c1e98c7ac0f282699b259c00fbe5dd8ed976be5e4a6449fc1f698b50b82ab21",
+    "projects/design-library/src/lib/overlays/bottom-sheet.component.ts": "936de0e96fae47b533ba3cbc4c8309850f5c77fe3f5e21493704e769a125b1d1",
     "projects/design-library/src/lib/overlays/bottom-sheet.stories.ts": "a2b78c6e54e35954c2c50bf691a574a6768fd3c0d55b3edb5702d8de82896583",
     "projects/design-library/src/lib/overlays/confirmation-dialog.component.ts": "32ca03a0f03a14c2cdcfb035990dbd2b36f30b2767d2e9f846dd0b0f95cfebc4",
     "projects/design-library/src/lib/overlays/confirmation-dialog.stories.ts": "c665c97b16f3aab58d356bf465fdc9ee300c8ace2083152ad45d5cac318c866c",
     "projects/design-library/src/lib/overlays/floating-panel.ts": "5d65c491275b8b1e07863af956c44dfd87747a9557e6628c5fd06f2dcc367cb9",
     "projects/design-library/src/lib/overlays/modal.component.ts": "7cc8a354532b627a21915c45f769bca327230b1300f9c9d3a6d476108d48db2f",
     "projects/design-library/src/lib/overlays/modal.stories.ts": "049f4feaed7486e07099e9011da341fda7230b8de430a8d244e37d4a157a7080",
-    "projects/design-library/src/lib/overlays/overlay-base.ts": "96dbe0f71f41248684173c197ff6a877d21e1ad650a43d519a715f375aacb5a8",
+    "projects/design-library/src/lib/overlays/overlay-base.ts": "95e850b1d4aea885b7ac3424ad88e53a82b5a08b859ad30ef2afcb8e05679582",
     "projects/design-library/src/lib/overlays/popover-service-demo.ts": "7809d6317005db1dd773929110f07027085056f9633eeb81f41d7ec4868b8700",
     "projects/design-library/src/lib/overlays/popover.directive.ts": "ab1ae104ae63ca68fef9c8f40048ae7dc867b6a8e4eec648ffa4e193e9635aa2",
     "projects/design-library/src/lib/overlays/popover.service.ts": "76e291a01845037c6c80b9a0c2696f77e6b55fcf126b1027dcebd1e9a73d3797",
     "projects/design-library/src/lib/overlays/popover.stories.ts": "68bd06cfbf8bca0a50065bf727462c44033f97be3d5ab5bfa72dc6ea0fea3af9",
-    "projects/design-library/src/lib/overlays/sidepanel.component.ts": "2d2f6c1eee16293f4ed794b2de75fbb9b5fd94b3d5dfdfcb4ed1fc1e072a6d93",
+    "projects/design-library/src/lib/overlays/sidepanel.component.ts": "94e9c5677a571bc0037e785d7f023b9449c363c53bfa8bbe98f5026560f54a79",
     "projects/design-library/src/lib/overlays/sidepanel.stories.ts": "e4b5e7b1b0d79821d88c563577bd85b773e2098151ba3cc77b98a2a54cb7af64",
-    "projects/design-library/src/lib/overlays/tooltip.directive.ts": "37fa8a80cd73d33c4e38d0eeccc43fe14733076a9631b67ab1f196c91d7f5054",
+    "projects/design-library/src/lib/overlays/tooltip.directive.ts": "92f5953263f9ce0c91c82563660b7df5a95cc303fb43dbb23ae91690c27c5b3f",
     "projects/design-library/src/lib/overlays/tooltip.stories.ts": "a006e64d05190920b30ebb7061c40151424a1dc123a17863b911ce36193c63f4",
-    "projects/design-library/src/lib/progress.component.ts": "7564863eb4442607b85f96849060a92a5a21103e067167d150d5be5ab7c4a0b4",
+    "projects/design-library/src/lib/progress.component.ts": "e872d18d96c88eddc809494d048a2fbb5f6ea8b4dbe76ba5984a820a5b6112ab",
     "projects/design-library/src/lib/progress.stories.ts": "047752489d626ad1254368e4bc06b00ad040ece7be58f6f54fe244eb717bbae1",
     "projects/design-library/src/lib/shared/appearance.ts": "d9cbe096a6c8ca2d53e8b10f0bb7d9ce88c1c27dbea0ac3c79f7558384da9fd2",
     "projects/design-library/src/lib/shared/tone.ts": "df6049973b80f46dda8997de06118927c829a85682a01388cb147cf2ec85b8d2",
@@ -12130,7 +14374,7 @@
     "projects/design-library/src/lib/toggle.stories.ts": "bca826c46ab65d0f7bd76d25cfd6d13618717f1c18b6db2fe2ecf0940f46977c",
     "projects/design-library/src/public-api.ts": "beff508aa2628334c77a5e26b57ebd9e9b3fea3d9967491b40a5a4e2d30d0eaa",
     "projects/design-library/src/welcome.stories.ts": "4232460020c89b83f6676ad67ee609e74c44530d1ecdadf3dd95d1fe2363dd81",
-    "scripts/generate-config-stories.mjs": "825d443b734ca398220487aa38b3aecb9711235b95f261f2821d27a4b4482ce7",
+    "scripts/generate-config-stories.mjs": "b95eb21d9495291cd3d2fd59db36d3747cf69c5eafce6d5db078b93af803cf20",
     "scripts/generate-llm-guidance.mjs": "090745ab5e0b95b4ba8c1442dd1dce2703807f42e0151bba58a0be83176a42a8",
     "scripts/story-catalog.mjs": "6f676bb41ebe6a12a9372e26e6f5fc8043e9d53dbb48ffc475f375e5e76a581d"
   }

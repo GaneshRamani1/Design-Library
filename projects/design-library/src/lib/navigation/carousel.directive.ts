@@ -18,7 +18,7 @@ export interface CarouselChange {
   index: number;
   previousIndex: number;
   total: number;
-  source: "api" | "keyboard" | "scroll" | "autoplay";
+  source: "api" | "keyboard" | "scroll" | "autoplay" | "drag";
 }
 /** Apply to a container whose direct element children are slides. No clones or content replacement. */
 @Directive({
@@ -49,12 +49,18 @@ export interface CarouselChange {
       'dlCarousel() ? (orientation() === "vertical" ? "y mandatory" : "x mandatory") : "none"',
     "[style.scrollbar-width]": 'showScrollbar() ? "auto" : "none"',
     "[style.overscroll-behavior-x]": '"contain"',
+    "[style.touch-action]":
+      'draggable() ? (orientation() === "vertical" ? "pan-x" : "pan-y") : "auto"',
     "(keydown)": "onKey($event)",
     "(scroll)": "onScroll()",
     "(mouseenter)": "hovered.set(true)",
     "(mouseleave)": "hovered.set(false)",
     "(focusin)": "focusWithin.set(true)",
     "(focusout)": "onBlur($event)",
+    "(pointerdown)": "startDrag($event)",
+    "(pointermove)": "moveDrag($event)",
+    "(pointerup)": "endDrag($event)",
+    "(pointercancel)": "cancelDrag($event)",
   },
 })
 export class CarouselDirective {
@@ -71,6 +77,8 @@ export class CarouselDirective {
   readonly step = input(1);
   readonly loop = input(false);
   readonly keyboard = input(true);
+  readonly draggable = input(true);
+  readonly dragThreshold = input(48);
   readonly disabled = input(false);
   readonly behavior = input<"smooth" | "instant">("smooth");
   readonly showScrollbar = input(false);
@@ -81,6 +89,8 @@ export class CarouselDirective {
   readonly ariaLabel = input("Carousel");
   readonly slideLabel = input("Slide");
   readonly slideChange = output<CarouselChange>();
+  readonly dragStarted = output<PointerEvent>();
+  readonly dragEnded = output<{ event: PointerEvent; moved: boolean }>();
   readonly count = signal(0);
   readonly hovered = signal(false);
   readonly focusWithin = signal(false);
@@ -100,6 +110,9 @@ export class CarouselDirective {
   >();
   private current = 0;
   private scrollTimer: ReturnType<typeof setTimeout> | undefined;
+  private dragPointer: number | null = null;
+  private dragOrigin = 0;
+  private dragPosition = 0;
   readonly safeGap = computed(() => Math.max(0, Number(this.gap()) || 0));
   readonly visibleCount = computed(() => {
     let value = this.slidesPerView();
@@ -378,5 +391,31 @@ export class CarouselDirective {
       !this.element.nativeElement.contains(event.relatedTarget as Node | null)
     )
       this.focusWithin.set(false);
+  }
+  startDrag(event: PointerEvent): void {
+    if (!this.draggable() || this.disabled() || event.button !== 0) return;
+    this.dragPointer = event.pointerId;
+    this.dragOrigin = this.orientation() === "vertical" ? event.clientY : event.clientX;
+    this.dragPosition = this.dragOrigin;
+    this.element.nativeElement.setPointerCapture(event.pointerId);
+    this.dragStarted.emit(event);
+  }
+  moveDrag(event: PointerEvent): void {
+    if (this.dragPointer !== event.pointerId) return;
+    this.dragPosition = this.orientation() === "vertical" ? event.clientY : event.clientX;
+  }
+  endDrag(event: PointerEvent): void {
+    if (this.dragPointer !== event.pointerId) return;
+    const distance = this.dragPosition - this.dragOrigin;
+    const moved = Math.abs(distance) >= Math.max(8, this.dragThreshold());
+    if (moved) this.navigate(this.current + (distance < 0 ? this.increment() : -this.increment()), "drag");
+    this.element.nativeElement.releasePointerCapture(event.pointerId);
+    this.dragPointer = null;
+    this.dragEnded.emit({ event, moved });
+  }
+  cancelDrag(event: PointerEvent): void {
+    if (this.dragPointer !== event.pointerId) return;
+    this.dragPointer = null;
+    this.dragEnded.emit({ event, moved: false });
   }
 }

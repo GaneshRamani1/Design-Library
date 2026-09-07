@@ -27,13 +27,14 @@ import { ButtonComponent } from "../button.component";
   },
   template: `@if (showHeader()) {
       <header>
-        <div class="heading">
+        <ng-content select="[tileHeader]" />
+        @if (showDefaultHeader()) {<div class="heading">
           <span class="label">{{ label() }}</span>
           @if (description()) {
             <p>{{ description() }}</p>
           }
-        </div>
-        @if (showIcon() && icon()) {
+        </div>}
+        @if (showDefaultHeader() && showIcon() && icon()) {
           <span class="icon"
             ><dl-icon [name]="icon()" [size]="iconSize()"
           /></span>
@@ -42,10 +43,11 @@ import { ButtonComponent } from "../button.component";
     }
     @if (loading()) {
       <div class="loading" role="status" [attr.aria-label]="loadingLabel()">
-        <span class="skeleton"></span><span class="skeleton short"></span>
+        <ng-content select="[tileLoading]" />
+        @if (showDefaultLoading()) {<span class="skeleton"></span><span class="skeleton short"></span>}
       </div>
     } @else if (error()) {
-      <div class="error" role="alert">{{ error() }}</div>
+      <div class="error" role="alert"><ng-content select="[tileError]" />@if(showDefaultError()) { {{ error() }} }</div>
     } @else {
       @if (showValue()) {
         <div
@@ -53,9 +55,10 @@ import { ButtonComponent } from "../button.component";
           [attr.role]="valueLabel() ? 'group' : null"
           [attr.aria-label]="valueLabel() || null"
         >
-          <span class="affix">{{ prefix() }}</span
+          <ng-content select="[tileValue]" />
+          @if(showDefaultValue()){<span class="affix">{{ prefix() }}</span
           ><strong>{{ value() ?? emptyText() }}</strong
-          ><span class="affix">{{ suffix() }}</span>
+          ><span class="affix">{{ suffix() }}</span>}
         </div>
       }
       @if (showTrend() && trend()) {
@@ -77,6 +80,8 @@ import { ButtonComponent } from "../button.component";
         </div>
       }
       @if (showChart() && chartPoints().length) {
+        <ng-content select="[tileChart]" />
+        @if(showDefaultChart()) {
         <svg
           class="chart"
           viewBox="0 0 300 80"
@@ -104,7 +109,7 @@ import { ButtonComponent } from "../button.component";
             stroke-linecap="round"
             vector-effect="non-scaling-stroke"
           />
-        </svg>
+        </svg>}
       }
       @if (showProgress()) {
         <div class="goal">
@@ -319,6 +324,8 @@ import { ButtonComponent } from "../button.component";
 })
 export class TilesComponent extends ToneAppearance {
   readonly showHeader = input(true);
+  /** Keep projected tileHeader content while hiding the built-in label and icon. */
+  readonly showDefaultHeader = input(true);
   readonly label = input("Total revenue");
   readonly description = input("");
   readonly value = input<string | number | null>("48,250");
@@ -329,6 +336,7 @@ export class TilesComponent extends ToneAppearance {
   readonly valueSize = input("36px");
   readonly valueColor = input("var(--dl-text)");
   readonly showValue = input(true);
+  readonly showDefaultValue = input(true);
   readonly icon = input("star");
   readonly iconSize = input(20);
   readonly showIcon = input(true);
@@ -343,6 +351,7 @@ export class TilesComponent extends ToneAppearance {
   readonly showTrend = input(true);
   readonly series = input<number[]>([]);
   readonly showChart = input(true);
+  readonly showDefaultChart = input(true);
   readonly chartLabel = input("Metric history");
   readonly chartHeight = input("64px");
   readonly chartColor = input("var(--tone-text)");
@@ -353,7 +362,9 @@ export class TilesComponent extends ToneAppearance {
   readonly progressLabel = input("Goal completion");
   readonly loading = input(false);
   readonly loadingLabel = input("Loading metric");
+  readonly showDefaultLoading = input(true);
   readonly error = input("");
+  readonly showDefaultError = input(true);
   readonly showFooter = input(true);
   readonly footerText = input("");
   readonly actionLabel = input("");

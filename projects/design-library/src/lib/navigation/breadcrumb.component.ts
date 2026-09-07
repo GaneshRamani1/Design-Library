@@ -170,6 +170,16 @@ export class BreadcrumbComponent extends Appearance {
   readonly expandLabel = input("Show full breadcrumb path");
   readonly selected = output<BreadcrumbSelection>();
   readonly expanded = output<void>();
+  readonly structuredData = computed(() => ({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: this.items().map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.label,
+      ...(item.href ? { item: item.href } : {}),
+    })),
+  }));
   private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
   private readonly injector = inject(Injector);
   private readonly expandedItems = signal<BreadcrumbItem[] | null>(null);

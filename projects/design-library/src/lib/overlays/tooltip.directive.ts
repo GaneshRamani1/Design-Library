@@ -4,7 +4,7 @@ import { AnchoredOverlayBase } from "./anchored-overlay-base";
 @Directive({ selector: "[dlTooltip]", standalone: true })
 export class TooltipDirective extends AnchoredOverlayBase {
   readonly dlTooltip = input("");
-  readonly trigger = input<"hover" | "manual">("hover");
+  readonly trigger = input<"hover" | "longpress" | "manual">("hover");
   protected getContent() {
     return this.dlTooltip();
   }

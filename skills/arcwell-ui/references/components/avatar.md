@@ -30,12 +30,23 @@ Represent a person with an image or initials. Compare size, shape, border and st
 | shape | "circle" \| "rounded" \| "square" | "circle" | input | AvatarComponent | See the dedicated configuration story below. |
 | showBorder | boolean | true | input | AvatarComponent | See the dedicated configuration story below. |
 | status | "" \| "online" \| "offline" \| "busy" \| "away" | "" | input | AvatarComponent | See the dedicated configuration story below. |
+| groupIndex | number | 0 | input | AvatarComponent | Zero-based position when avatars overlap in a group. |
+| overlap | string | "10px" | input | AvatarComponent | See the dedicated configuration story below. |
+| reverseStack | boolean | false | input | AvatarComponent | See the dedicated configuration story below. |
+| excessCount | number | 0 | input | AvatarComponent | Renders an overflow avatar such as +4 when greater than zero. |
+| excessLabel | string | "{count} more people" | input | AvatarComponent | See the dedicated configuration story below. |
+| maxExcess | number | 99 | input | AvatarComponent | See the dedicated configuration story below. |
+| interactive | boolean | false | input | AvatarComponent | See the dedicated configuration story below. |
 | name | string | Required | required input | AvatarComponent | See the dedicated configuration story below. |
 | size | "sm" \| "md" \| "lg" | "md" | input | AvatarComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
-No declared outputs. Projected controls keep their own event handlers.
+| Event | Payload |
+|---|---|
+| imageLoaded | { src: string; } |
+| imageFailed | { src: string; } |
+| activated | { name: string; excessCount: number; } |
 
 ## Projection slots
 
@@ -45,7 +56,12 @@ No content projection slots declared.
 
 - `failed()` — boolean
 - `initials()` — string
-
+- `formattedExcess()` — string
+- `resolvedLabel()` — string
+- `stackOrder()` — number
+- `@HostListener("click") activate(): void`
+- `@HostListener("keydown.enter", ["$event"]) @HostListener("keydown.space", ["$event"]) activateFromKeyboard(event: Event): void`
+- `failImage(): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -91,6 +107,7 @@ import { AvatarComponent } from "./avatar.component";
 
 - [Default](http://127.0.0.1:6006/?path=/story/data-display-avatar--default)
 - [Large](http://127.0.0.1:6006/?path=/story/data-display-avatar--large)
+- [Group With Overflow](http://127.0.0.1:6006/?path=/story/data-display-avatar--group-with-overflow)
 
 ## Configuration coverage
 
@@ -108,6 +125,15 @@ import { AvatarComponent } from "./avatar.component";
 - `status`: [StatusOffline](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--status-offline) — Demonstrates the status setting on this avatar. Here it is set to “offline”.
 - `status`: [StatusBusy](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--status-busy) — Demonstrates the status setting on this avatar. Here it is set to “busy”.
 - `status`: [StatusAway](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--status-away) — Demonstrates the status setting on this avatar. Here it is set to “away”.
+- `groupIndex`: [GroupIndex](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--group-index) — Demonstrates the group index setting on this avatar. Here it is set to “8”.
+- `overlap`: [Overlap](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--overlap) — Demonstrates the overlap setting on this avatar. Here it is set to “Custom overlap”.
+- `reverseStack`: [ReverseStackFalse](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--reverse-stack-false) — Demonstrates the reverse stack setting on this avatar. This example has it turned off.
+- `reverseStack`: [ReverseStackTrue](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--reverse-stack-true) — Demonstrates the reverse stack setting on this avatar. This example has it turned on.
+- `excessCount`: [ExcessCount](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--excess-count) — Demonstrates the excess count setting on this avatar. Here it is set to “8”.
+- `excessLabel`: [ExcessLabel](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--excess-label) — Customizes the text for the excess action. Here it is set to “Custom excessLabel”.
+- `maxExcess`: [MaxExcess](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--max-excess) — Demonstrates the max excess setting on this avatar. Here it is set to “107”.
+- `interactive`: [InteractiveFalse](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--interactive-false) — Demonstrates the interactive setting on this avatar. This example has it turned off.
+- `interactive`: [InteractiveTrue](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--interactive-true) — Demonstrates the interactive setting on this avatar. This example has it turned on.
 - `name`: [Name](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--name) — Demonstrates the name setting on this avatar. Here it is set to “Taylor Lee”.
 - `size`: [SizeSm](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--size-sm) — Changes the component size while keeping its proportions consistent. Here it is set to “sm”.
 - `size`: [SizeMd](http://127.0.0.1:6006/?path=/story/data-display-avatar-configuration--size-md) — Changes the component size while keeping its proportions consistent. Here it is set to “md”.
@@ -122,6 +148,9 @@ import { AvatarComponent } from "./avatar.component";
 - `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/data-display-avatar-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/data-display-avatar-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/data-display-avatar-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `event.imageLoaded`: [EventImageLoaded](http://127.0.0.1:6006/?path=/story/data-display-avatar-events--event-image-loaded) — Try the avatar below and inspect imageLoaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.imageFailed`: [EventImageFailed](http://127.0.0.1:6006/?path=/story/data-display-avatar-events--event-image-failed) — Try the avatar below and inspect imageFailed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.activated`: [EventActivated](http://127.0.0.1:6006/?path=/story/data-display-avatar-events--event-activated) — Try the avatar below and inspect activated in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

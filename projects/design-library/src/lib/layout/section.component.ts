@@ -6,12 +6,15 @@ import { LayoutBase, layoutStyles } from "./layout-base";
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    "[attr.role]": "label() ? 'region' : null",
-    "[attr.aria-label]": "label() || null",
+    "[attr.role]": "label() || labelledBy() ? 'region' : null",
+    "[attr.aria-label]": "labelledBy() ? null : label() || null",
+    "[attr.aria-labelledby]": "labelledBy() || null",
   },
   template: `<ng-content />`,
   styles: [layoutStyles],
 })
 export class SectionComponent extends LayoutBase {
   readonly label = input("");
+  /** ID of a projected visible heading that names this section landmark. */
+  readonly labelledBy = input("");
 }

@@ -27,10 +27,13 @@ export type RangeValue = number | [number, number];
   template:
     `<fieldset [disabled]="isDisabled()" [attr.aria-describedby]="descriptionId()" [attr.aria-invalid]="error() ? true : null">
     <legend>{{ label() }}</legend>
-    <div class="readout"><span>{{ range() ? 'Selected range' : 'Selected value' }}</span><output>{{ lower() }}{{ unit() }}{{ range() ? ' – ' + upper() + unit() : '' }}</output></div>
-    <input type="range" [id]="id() + '-control'" [attr.aria-label]="range() ? label() + ' minimum' : label()" [attr.aria-describedby]="descriptionId()" [attr.aria-valuetext]="lower() + unit()" [disabled]="isDisabled()" [min]="minimum()" [max]="range() ? upper() : maximum()" [step]="increment()" [value]="lower()" (input)="slide($event, false)" (blur)="onTouched()" />
-    @if (range()) { <input type="range" [id]="id() + '-upper'" [attr.aria-label]="label() + ' maximum'" [attr.aria-describedby]="descriptionId()" [attr.aria-valuetext]="upper() + unit()" [disabled]="isDisabled()" [min]="lower()" [max]="maximum()" [step]="increment()" [value]="upper()" (input)="slide($event, true)" (blur)="onTouched()" /> }
-    <div class="bounds"><span>{{ minimum() }}{{ unit() }}</span><span>{{ maximum() }}{{ unit() }}</span></div>
+    <div class="readout"><span>{{ range() ? 'Selected range' : 'Selected value' }}</span><output>{{ formatValue(lower()) }}{{ range() ? ' – ' + formatValue(upper()) : '' }}</output></div>
+    <div class="sliders" [class.vertical]="orientation()==='vertical'">
+    <input type="range" [id]="id() + '-control'" [attr.list]="ticks()>1 ? id()+'-ticks' : null" [attr.aria-label]="range() ? label() + ' minimum' : label()" [attr.aria-describedby]="descriptionId()" [attr.aria-valuetext]="formatValue(lower())" [disabled]="isDisabled()" [min]="minimum()" [max]="range() ? upper() : maximum()" [step]="increment()" [value]="lower()" (input)="slide($event, false)" (blur)="onTouched()" />
+    @if (range()) { <input type="range" [id]="id() + '-upper'" [attr.list]="ticks()>1 ? id()+'-ticks' : null" [attr.aria-label]="label() + ' maximum'" [attr.aria-describedby]="descriptionId()" [attr.aria-valuetext]="formatValue(upper())" [disabled]="isDisabled()" [min]="lower()" [max]="maximum()" [step]="increment()" [value]="upper()" (input)="slide($event, true)" (blur)="onTouched()" /> }
+    </div>
+    @if(tickValues().length){<datalist [id]="id()+'-ticks'">@for(tick of tickValues();track tick){<option [value]="tick" [label]="formatValue(tick)"></option>}</datalist>}
+    <div class="bounds"><span>{{ formatValue(minimum()) }}</span><span>{{ formatValue(maximum()) }}</span></div>
   </fieldset>` + fieldMessage,
   styles: [
     fieldStyles,
@@ -57,6 +60,8 @@ export type RangeValue = number | [number, number];
         cursor: pointer;
         height: 22px;
       }
+      .vertical { min-height:180px; display:flex; gap:12px; align-items:center; }
+      .vertical input { width:180px; transform:rotate(-90deg); }
       .bounds {
         margin-top: 8px;
       }
@@ -69,6 +74,15 @@ export class RangeSelectorComponent extends FormControlBase<RangeValue> {
   readonly step = input(1);
   readonly range = input(false);
   readonly unit = input("");
+  readonly orientation = input<"horizontal" | "vertical">("horizontal");
+  /** Number of evenly spaced native tick marks; zero hides ticks. */
+  readonly ticks = input(0);
+  /** Display template supporting {value} and {unit}. */
+  readonly valueFormat = input("{value}{unit}");
+  readonly tickValues = computed(() => {
+    const count = Math.max(0, Math.min(20, Math.floor(this.ticks())));
+    return count < 2 ? [] : Array.from({ length: count }, (_, index) => this.snap(this.minimum() + ((this.maximum()-this.minimum())*index)/(count-1)));
+  });
   readonly minimum = computed(() =>
     Number.isFinite(this.min()) ? this.min() : 0,
   );
@@ -105,6 +119,9 @@ export class RangeSelectorComponent extends FormControlBase<RangeValue> {
     return Number(
       (this.minimum() + Math.min(steps, last) * this.increment()).toFixed(10),
     );
+  }
+  formatValue(value: number): string {
+    return this.valueFormat().replaceAll("{value}", String(value)).replaceAll("{unit}", this.unit());
   }
   slide(event: Event, upper: boolean): void {
     const value = this.snap((event.target as HTMLInputElement).valueAsNumber);

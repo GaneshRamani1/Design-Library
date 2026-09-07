@@ -34,6 +34,7 @@ A floating action button for a prominent action. Compare the icon-only and exten
 | size | "sm" \| "md" \| "lg" | "md" | input | ButtonComponent | See the dedicated configuration story below. |
 | disabled | boolean | false | input | ButtonComponent | See the dedicated configuration story below. |
 | loading | boolean | false | input | ButtonComponent | See the dedicated configuration story below. |
+| loadingMinWidth | string | "" | input | ButtonComponent | Optional stable minimum width applied while loading. |
 | type | "button" \| "submit" \| "reset" | "button" | input | ButtonComponent | See the dedicated configuration story below. |
 | label | string | Required | required input | FabButtonComponent | See the dedicated configuration story below. |
 | extended | boolean | false | input | FabButtonComponent | See the dedicated configuration story below. |
@@ -41,6 +42,8 @@ A floating action button for a prominent action. Compare the icon-only and exten
 | placement | "inline" \| "bottom-right" \| "bottom-left" | "inline" | input | FabButtonComponent | See the dedicated configuration story below. |
 | offset | string | "24px" | input | FabButtonComponent | See the dedicated configuration story below. |
 | zIndex | number | 100 | input | FabButtonComponent | See the dedicated configuration story below. |
+| safeArea | boolean | true | input | FabButtonComponent | See the dedicated configuration story below. |
+| collapseOnMobile | boolean | false | input | FabButtonComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
@@ -55,7 +58,7 @@ No content projection slots declared.
 ## Public instance state and methods
 
 
-
+- `bottomOffset(): string`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -131,6 +134,7 @@ import { FabButtonComponent } from "./fab-button.component";
 - `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--disabled-true) — Prevents user interaction. This example has it turned on.
 - `loading`: [LoadingFalse](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--loading-false) — Shows the loading state. This example has it turned off.
 - `loading`: [LoadingTrue](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--loading-true) — Shows the loading state. This example has it turned on.
+- `loadingMinWidth`: [LoadingMinWidth](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--loading-min-width) — Demonstrates the loading min width setting on this fab button. Here it is set to “Custom loadingMinWidth”.
 - `type`: [TypeButton](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--type-button) — Demonstrates the type setting on this fab button. Here it is set to “button”.
 - `type`: [TypeSubmit](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--type-submit) — Demonstrates the type setting on this fab button. Here it is set to “submit”.
 - `type`: [TypeReset](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--type-reset) — Demonstrates the type setting on this fab button. Here it is set to “reset”.
@@ -143,6 +147,10 @@ import { FabButtonComponent } from "./fab-button.component";
 - `placement`: [PlacementBottomLeft](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--placement-bottom-left) — Changes where the surface opens relative to its anchor or viewport. Here it is set to “bottom-left”. Open the example and try the relevant pointer or keyboard action.
 - `offset`: [Offset](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--offset) — Changes the distance from the anchor or viewport edge. Here it is set to “Custom offset”.
 - `zIndex`: [ZIndex](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--z-index) — Demonstrates the z index setting on this fab button. Here it is set to “108”.
+- `safeArea`: [SafeAreaFalse](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--safe-area-false) — Demonstrates the safe area setting on this fab button. This example has it turned off.
+- `safeArea`: [SafeAreaTrue](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--safe-area-true) — Demonstrates the safe area setting on this fab button. This example has it turned on.
+- `collapseOnMobile`: [CollapseOnMobileFalse](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--collapse-on-mobile-false) — Demonstrates the collapse on mobile setting on this fab button. This example has it turned off.
+- `collapseOnMobile`: [CollapseOnMobileTrue](http://127.0.0.1:6006/?path=/story/actions-fab-button-configuration--collapse-on-mobile-true) — Demonstrates the collapse on mobile setting on this fab button. This example has it turned on.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/actions-fab-button-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/actions-fab-button-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/actions-fab-button-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.

@@ -6,6 +6,26 @@
     "analytics": false
   },
   "projects": {
+    "docs-elements": {
+      "projectType": "application",
+      "root": "projects/docs-elements",
+      "sourceRoot": "projects/docs-elements/src",
+      "prefix": "docs",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "main": "projects/docs-elements/src/main.ts",
+            "tsConfig": "projects/docs-elements/tsconfig.app.json",
+            "outputPath": "dist/docs-elements/browser",
+            "outputHashing": "none",
+            "index": "projects/docs-elements/src/index.html",
+            "polyfills": ["zone.js"],
+            "styles": ["projects/design-library/src/styles.css"]
+          }
+        }
+      }
+    },
     "design-library": {
       "projectType": "library",
       "root": "projects/design-library",

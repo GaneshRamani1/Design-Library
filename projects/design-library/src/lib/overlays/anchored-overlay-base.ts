@@ -34,6 +34,10 @@ let nextAnchor = 0;
     "(focusout)": "focusOut($event)",
     "(click)": "click()",
     "(keydown.escape)": "escape($event)",
+    "(pointerdown)": "pointerDown($event)",
+    "(pointerup)": "pointerEnd()",
+    "(pointercancel)": "pointerEnd()",
+    "(pointerleave)": "pointerEnd()",
   },
 })
 export abstract class AnchoredOverlayBase extends Appearance {
@@ -46,6 +50,7 @@ export abstract class AnchoredOverlayBase extends Appearance {
   readonly maxWidth = input("320px");
   readonly showDelay = input(150);
   readonly hideDelay = input(100);
+  readonly longPressDelay = input(550);
   readonly closeOnEscape = input(true);
   readonly closeOnOutside = input(true);
   readonly panelClass = input("");
@@ -61,7 +66,7 @@ export abstract class AnchoredOverlayBase extends Appearance {
   private stopTracking: (() => void) | null = null;
   private focusTimer: ReturnType<typeof setTimeout> | undefined;
   protected abstract getContent(): string | TemplateRef<unknown> | null;
-  protected abstract mode(): "hover" | "click" | "manual";
+  protected abstract mode(): "hover" | "click" | "manual" | "longpress";
   protected abstract kind(): "tooltip" | "dialog";
   protected shouldFocus(): boolean {
     return false;
@@ -234,5 +239,13 @@ export abstract class AnchoredOverlayBase extends Appearance {
     this.clearTimer();
     this.open.set(false);
     if (focus && this.restore()) this.element.nativeElement.focus();
+  }
+  pointerDown(event: PointerEvent): void {
+    if (this.mode() !== "longpress" || this.disabled() || event.pointerType === "mouse") return;
+    this.clearTimer();
+    this.timer = setTimeout(() => this.open.set(true), Math.max(0, this.longPressDelay()));
+  }
+  pointerEnd(): void {
+    if (this.mode() === "longpress") this.clearTimer();
   }
 }

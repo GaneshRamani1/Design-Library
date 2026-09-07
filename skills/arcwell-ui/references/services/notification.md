@@ -25,6 +25,7 @@ NotificationService programmatic API.
 |---|---|---|
 | toast | `toast(message: string, options: NotificationOptions = {}): NotificationRef` | See the related types and executable examples below. |
 | snackbar | `snackbar( message: string, options: NotificationOptions = {}, ): NotificationRef` | See the related types and executable examples below. |
+| track | `async track<T>( operation: Promise<T>, messages: NotificationPromiseMessages<T>, options: NotificationOptions = {}, ): Promise<T>` | Tracks an asynchronous operation with one stable notification ID. |
 | dismiss | `dismiss( id: string, reason: NoticeDismissReason \| "programmatic" \| "overflow" = "programmatic", ): void` | See the related types and executable examples below. |
 | clear | `clear(): void` | See the related types and executable examples below. |
 
@@ -61,10 +62,22 @@ export interface NotificationOptions {
   dismissLabel?: string;
   actionLabel?: string;
   closeOnAction?: boolean;
+  secondaryActionLabel?: string;
+  closeOnSecondaryAction?: boolean;
   pauseOnHover?: boolean;
   showProgress?: boolean;
   live?: "polite" | "assertive" | "off";
   appearance?: ComponentAppearance;
+  /** Higher-priority notifications are presented before lower-priority entries. */
+  priority?: number;
+  /** Controls what happens when another active notification uses the same id. */
+  duplicatePolicy?: "replace" | "ignore";
+}
+
+export interface NotificationPromiseMessages<T> {
+  loading: string;
+  success: string | ((value: T) => string);
+  error: string | ((reason: unknown) => string);
 }
 
 export interface NotificationDefaults {
@@ -80,9 +93,11 @@ export function provideNotifications( defaults: Partial<NotificationDefaults>, )
 export class NotificationRef {
   readonly afterDismissed: import("rxjs").Observable<NoticeDismissReason | "programmatic" | "overflow">;
   readonly onAction: import("rxjs").Observable<void>;
+  readonly onSecondaryAction: import("rxjs").Observable<void>;
   dismiss(): void;
   finish( reason: NoticeDismissReason | "programmatic" | "overflow", ): void;
   notifyAction(): void;
+  notifySecondaryAction(): void;
 }
 ```
 

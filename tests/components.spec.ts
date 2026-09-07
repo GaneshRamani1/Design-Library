@@ -38,6 +38,26 @@ test("invalid inputs connect their error message", async ({ page }) => {
     "Enter a valid email address.",
   );
 });
+
+test("input adornments, clear action and password reveal preserve the form value", async ({ page }) => {
+  await page.goto("/iframe.html?id=inputs-input--clearable&viewMode=story");
+  const search = page.getByRole("searchbox", { name: "Search" });
+  await search.fill("quarterly report");
+  await page.getByRole("button", { name: "Clear value" }).click();
+  await expect(search).toHaveValue("");
+  await expect(search).toBeFocused();
+
+  await page.goto("/iframe.html?id=inputs-input--password-reveal&viewMode=story");
+  const password = page.getByRole("textbox", { name: "Password", exact: true });
+  await password.fill("secret-value");
+  await page.getByRole("button", { name: "Show password" }).click();
+  await expect(password).toHaveAttribute("type", "text");
+  await expect(password).toHaveValue("secret-value");
+
+  await page.goto("/iframe.html?id=inputs-input--prefix-and-suffix&viewMode=story");
+  await expect(page.locator("dl-input")).toContainText("$", { useInnerText: true });
+  await expect(page.locator("dl-input")).toContainText("USD", { useInnerText: true });
+});
 test("toggle supports keyboard interaction", async ({ page }) => {
   await page.goto("/iframe.html?id=inputs-toggle--default&viewMode=story");
   const toggle = page.getByRole("switch");

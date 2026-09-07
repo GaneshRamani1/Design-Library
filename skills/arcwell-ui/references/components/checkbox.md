@@ -37,12 +37,15 @@ Native checkbox with optional indeterminate state and Angular forms support.
 | indeterminate | boolean | false | model | CheckboxComponent | See the dedicated configuration story below. |
 | description | string | "" | input | CheckboxComponent | See the dedicated configuration story below. |
 | labelPosition | "start" \| "end" | "end" | input | CheckboxComponent | See the dedicated configuration story below. |
+| checkedCount | number \| null | null | input | CheckboxComponent | See the dedicated configuration story below. |
+| totalCount | number \| null | null | input | CheckboxComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
 | Event | Payload |
 |---|---|
 | valueChange | boolean |
+| cascade | boolean |
 | indeterminateChange | boolean |
 
 ## Projection slots
@@ -54,6 +57,8 @@ No content projection slots declared.
 - `value()` — boolean | null
 - `isDisabled()` — boolean
 - `descriptionId()` — string | null
+- `resolvedChecked()` — boolean
+- `resolvedIndeterminate()` — boolean
 - `change(event: Event): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
@@ -79,6 +84,8 @@ export interface SelectOption {
   label: string;
   description?: string;
   disabled?: boolean;
+  /** Optional visible group heading. Consecutive options with the same group share one heading. */
+  group?: string;
 }
 ```
 
@@ -144,6 +151,8 @@ import { CheckboxComponent } from "./checkbox.component";
 - `description`: [Description](http://127.0.0.1:6006/?path=/story/inputs-checkbox-configuration--description) — Adds supporting context below the main label or heading. Here it is set to “More context, in your own words.”.
 - `labelPosition`: [LabelPositionStart](http://127.0.0.1:6006/?path=/story/inputs-checkbox-configuration--label-position-start) — Demonstrates the label position setting on this checkbox. Here it is set to “start”.
 - `labelPosition`: [LabelPositionEnd](http://127.0.0.1:6006/?path=/story/inputs-checkbox-configuration--label-position-end) — Demonstrates the label position setting on this checkbox. Here it is set to “end”.
+- `checkedCount`: [CheckedCount](http://127.0.0.1:6006/?path=/story/inputs-checkbox-configuration--checked-count) — Demonstrates the checked count setting on this checkbox.
+- `totalCount`: [TotalCount](http://127.0.0.1:6006/?path=/story/inputs-checkbox-configuration--total-count) — Demonstrates the total count setting on this checkbox.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/inputs-checkbox-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/inputs-checkbox-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/inputs-checkbox-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -155,6 +164,7 @@ import { CheckboxComponent } from "./checkbox.component";
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/inputs-checkbox-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/inputs-checkbox-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.valueChange`: [EventValueChange](http://127.0.0.1:6006/?path=/story/inputs-checkbox-events--event-value-change) — Try the checkbox below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.cascade`: [EventCascade](http://127.0.0.1:6006/?path=/story/inputs-checkbox-events--event-cascade) — Try the checkbox below and inspect cascade in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.indeterminateChange`: [EventIndeterminateChange](http://127.0.0.1:6006/?path=/story/inputs-checkbox-events--event-indeterminate-change) — Try the checkbox below and inspect indeterminateChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns

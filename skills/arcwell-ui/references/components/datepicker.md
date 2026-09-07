@@ -53,12 +53,20 @@ Open the calendar to choose a local date. Try the arrow keys, month navigation a
 | calendarLabel | string | "Choose a date" | input | DatepickerComponent | See the dedicated configuration story below. |
 | displayFormat | "short" \| "medium" \| "long" | "medium" | input | DatepickerComponent | See the dedicated configuration story below. |
 | calendarWidth | number | 320 | input | DatepickerComponent | See the dedicated configuration story below. |
+| selectionMode | "single" \| "range" | "single" | input | DatepickerComponent | See the dedicated configuration story below. |
+| rangeEnd | string \| null | null | model | DatepickerComponent | See the dedicated configuration story below. |
+| rangeSeparator | string | " – " | input | DatepickerComponent | See the dedicated configuration story below. |
+| showMonthYearSelectors | boolean | false | input | DatepickerComponent | See the dedicated configuration story below. |
+| monthSelectLabel | string | "Month" | input | DatepickerComponent | See the dedicated configuration story below. |
+| yearSelectLabel | string | "Year" | input | DatepickerComponent | See the dedicated configuration story below. |
+| yearRange | number | 100 | input | DatepickerComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
 | Event | Payload |
 |---|---|
 | valueChange | string \| null |
+| rangeEndChange | string \| null |
 
 ## Projection slots
 
@@ -74,18 +82,23 @@ No content projection slots declared.
 - `cursor()` — string
 - `displayValue()` — string
 - `monthLabel()` — string
+- `monthOptions()` — { value: number; label: string; }[]
+- `yearOptions()` — number[]
 - `weekdays()` — { short: string; full: string; }[]
 - `weeks()` — { iso: string; day: number; outside: boolean; disabled: boolean; label: string; }[][]
 - `override toggle(): void`
 - `close(): void`
 - `escape(event: Event): void`
 - `outside(event: Event): void`
-- `override leave(event: FocusEvent): void`
+- `override leave(_event: FocusEvent): void`
 - `allowed(iso: string): boolean`
 - `selectDate(iso: string): void`
 - `clear(): void`
+- `isInRange(iso: string): boolean`
 - `canMoveMonth(delta: number): boolean`
 - `moveMonth(delta: number): void`
+- `setMonth(event: Event): void`
+- `setYear(event: Event): void`
 - `navigate(event: KeyboardEvent): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
@@ -111,6 +124,8 @@ export interface SelectOption {
   label: string;
   description?: string;
   disabled?: boolean;
+  /** Optional visible group heading. Consecutive options with the same group share one heading. */
+  group?: string;
 }
 ```
 
@@ -204,6 +219,15 @@ import { DatepickerComponent } from "./datepicker.component";
 - `displayFormat`: [DisplayFormatMedium](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--display-format-medium) — Changes how the selected date appears in the field. Here it is set to “medium”.
 - `displayFormat`: [DisplayFormatLong](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--display-format-long) — Changes how the selected date appears in the field. Here it is set to “long”.
 - `calendarWidth`: [CalendarWidth](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--calendar-width) — Demonstrates the calendar width setting on this datepicker. Here it is set to “328”.
+- `selectionMode`: [SelectionModeSingle](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--selection-mode-single) — Demonstrates the selection mode setting on this datepicker. Here it is set to “single”.
+- `selectionMode`: [SelectionModeRange](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--selection-mode-range) — Demonstrates the selection mode setting on this datepicker. Here it is set to “range”.
+- `rangeEnd`: [RangeEnd](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--range-end) — Demonstrates the range end setting on this datepicker.
+- `rangeSeparator`: [RangeSeparator](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--range-separator) — Demonstrates the range separator setting on this datepicker. Here it is set to “Custom rangeSeparator”.
+- `showMonthYearSelectors`: [ShowMonthYearSelectorsFalse](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--show-month-year-selectors-false) — Controls whether month year selectors are shown. This example has it turned off.
+- `showMonthYearSelectors`: [ShowMonthYearSelectorsTrue](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--show-month-year-selectors-true) — Controls whether month year selectors are shown. This example has it turned on.
+- `monthSelectLabel`: [MonthSelectLabel](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--month-select-label) — Customizes the text for the month select action. Here it is set to “Custom monthSelectLabel”.
+- `yearSelectLabel`: [YearSelectLabel](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--year-select-label) — Customizes the text for the year select action. Here it is set to “Custom yearSelectLabel”.
+- `yearRange`: [YearRange](http://127.0.0.1:6006/?path=/story/inputs-datepicker-configuration--year-range) — Demonstrates the year range setting on this datepicker. Here it is set to “108”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/inputs-datepicker-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/inputs-datepicker-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/inputs-datepicker-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -215,6 +239,7 @@ import { DatepickerComponent } from "./datepicker.component";
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/inputs-datepicker-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/inputs-datepicker-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.valueChange`: [EventValueChange](http://127.0.0.1:6006/?path=/story/inputs-datepicker-events--event-value-change) — Try the datepicker below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.rangeEndChange`: [EventRangeEndChange](http://127.0.0.1:6006/?path=/story/inputs-datepicker-events--event-range-end-change) — Try the datepicker below and inspect rangeEndChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

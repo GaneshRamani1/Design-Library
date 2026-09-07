@@ -105,6 +105,7 @@ export const buttonStyles = `
     "[attr.aria-busy]": "loading()",
     "[attr.type]": "type()",
     "[style.width]": "fullWidth()?'100%':null",
+    "[style.min-width]": "loading() && loadingMinWidth() ? loadingMinWidth() : null",
   },
   styles: [buttonStyles],
 })
@@ -119,5 +120,7 @@ export class ButtonComponent extends Appearance {
   readonly size = input<"sm" | "md" | "lg">("md");
   readonly disabled = input(false);
   readonly loading = input(false);
+  /** Optional stable minimum width applied while loading. */
+  readonly loadingMinWidth = input("");
   readonly type = input<"button" | "submit" | "reset">("button");
 }

@@ -34,6 +34,7 @@ Nonmodal anchored content. A TemplateRef supports arbitrary interactive content.
 | maxWidth | string | "320px" | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | showDelay | number | 150 | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | hideDelay | number | 100 | input | AnchoredOverlayBase | See the dedicated configuration story below. |
+| longPressDelay | number | 550 | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | closeOnEscape | boolean | true | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | closeOnOutside | boolean | true | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | panelClass | string | "" | input | AnchoredOverlayBase | See the dedicated configuration story below. |
@@ -65,6 +66,8 @@ No content projection slots declared.
 - `click(): void`
 - `escape(e: Event): void`
 - `close(focus = true): void`
+- `pointerDown(event: PointerEvent): void`
+- `pointerEnd(): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -157,6 +160,7 @@ import { PopoverServiceDemo } from "./popover-service-demo";
 - `maxWidth`: [MaxWidth](http://127.0.0.1:6006/?path=/story/overlays-popover-directive-configuration--max-width) — Limits how wide the component can grow. Here it is set to “90vw”.
 - `showDelay`: [ShowDelay](http://127.0.0.1:6006/?path=/story/overlays-popover-directive-configuration--show-delay) — Sets the delay before anchored content appears. Here it is set to “158”.
 - `hideDelay`: [HideDelay](http://127.0.0.1:6006/?path=/story/overlays-popover-directive-configuration--hide-delay) — Sets the delay before anchored content disappears. Here it is set to “108”.
+- `longPressDelay`: [LongPressDelay](http://127.0.0.1:6006/?path=/story/overlays-popover-directive-configuration--long-press-delay) — Demonstrates the long press delay setting on this popover directive. Here it is set to “558”.
 - `closeOnEscape`: [CloseOnEscapeFalse](http://127.0.0.1:6006/?path=/story/overlays-popover-directive-configuration--close-on-escape-false) — Controls dismissal with the Escape key. This example has it turned off. Open the example and try the relevant pointer or keyboard action.
 - `closeOnEscape`: [CloseOnEscapeTrue](http://127.0.0.1:6006/?path=/story/overlays-popover-directive-configuration--close-on-escape-true) — Controls dismissal with the Escape key. This example has it turned on. Open the example and try the relevant pointer or keyboard action.
 - `closeOnOutside`: [CloseOnOutsideFalse](http://127.0.0.1:6006/?path=/story/overlays-popover-directive-configuration--close-on-outside-false) — Controls dismissal when clicking outside the anchored content. This example has it turned off. Open the example and try the relevant pointer or keyboard action.

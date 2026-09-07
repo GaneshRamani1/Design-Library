@@ -44,12 +44,16 @@ Bounded numeric counter with native spinbutton keyboard support.
 | decrementLabel | string | "Decrease" | input | CounterComponent | See the dedicated configuration story below. |
 | incrementIcon | string | "+" | input | CounterComponent | See the dedicated configuration story below. |
 | decrementIcon | string | "−" | input | CounterComponent | See the dedicated configuration story below. |
+| repeat | boolean | true | input | CounterComponent | See the dedicated configuration story below. |
+| repeatDelay | number | 450 | input | CounterComponent | See the dedicated configuration story below. |
+| repeatInterval | number | 90 | input | CounterComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
 | Event | Payload |
 |---|---|
 | valueChange | number |
+| limitReached | "min" \| "max" |
 
 ## Projection slots
 
@@ -65,6 +69,8 @@ No content projection slots declared.
 - `increment()` — number
 - `normalized()` — number
 - `adjust(direction: number): void`
+- `startRepeat(direction: number): void`
+- `stopRepeat(): void`
 - `edit(event: Event): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
@@ -90,6 +96,8 @@ export interface SelectOption {
   label: string;
   description?: string;
   disabled?: boolean;
+  /** Optional visible group heading. Consecutive options with the same group share one heading. */
+  group?: string;
 }
 ```
 
@@ -164,6 +172,10 @@ import { CounterComponent } from "./counter.component";
 - `decrementLabel`: [DecrementLabel](http://127.0.0.1:6006/?path=/story/inputs-counter-configuration--decrement-label) — Customizes the text for the decrement action. Here it is set to “Remove one”.
 - `incrementIcon`: [IncrementIcon](http://127.0.0.1:6006/?path=/story/inputs-counter-configuration--increment-icon) — Demonstrates the increment icon setting on this counter. Here it is set to “＋”.
 - `decrementIcon`: [DecrementIcon](http://127.0.0.1:6006/?path=/story/inputs-counter-configuration--decrement-icon) — Demonstrates the decrement icon setting on this counter. Here it is set to “−”.
+- `repeat`: [RepeatFalse](http://127.0.0.1:6006/?path=/story/inputs-counter-configuration--repeat-false) — Demonstrates the repeat setting on this counter. This example has it turned off.
+- `repeat`: [RepeatTrue](http://127.0.0.1:6006/?path=/story/inputs-counter-configuration--repeat-true) — Demonstrates the repeat setting on this counter. This example has it turned on.
+- `repeatDelay`: [RepeatDelay](http://127.0.0.1:6006/?path=/story/inputs-counter-configuration--repeat-delay) — Demonstrates the repeat delay setting on this counter. Here it is set to “458”.
+- `repeatInterval`: [RepeatInterval](http://127.0.0.1:6006/?path=/story/inputs-counter-configuration--repeat-interval) — Demonstrates the repeat interval setting on this counter. Here it is set to “98”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/inputs-counter-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/inputs-counter-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/inputs-counter-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -175,6 +187,7 @@ import { CounterComponent } from "./counter.component";
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/inputs-counter-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/inputs-counter-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.valueChange`: [EventValueChange](http://127.0.0.1:6006/?path=/story/inputs-counter-events--event-value-change) — Try the counter below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.limitReached`: [EventLimitReached](http://127.0.0.1:6006/?path=/story/inputs-counter-events--event-limit-reached) — Try the counter below and inspect limitReached in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

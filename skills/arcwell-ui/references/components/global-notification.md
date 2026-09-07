@@ -39,6 +39,8 @@ Application-wide banner. Mount once in the application shell.
 | dismissLabel | string | "Dismiss notification" | input | NoticeBase | See the dedicated configuration story below. |
 | actionLabel | string | "" | input | NoticeBase | See the dedicated configuration story below. |
 | closeOnAction | boolean | false | input | InlineNotificationComponent | See the dedicated configuration story below. |
+| secondaryActionLabel | string | "" | input | NoticeBase | See the dedicated configuration story below. |
+| closeOnSecondaryAction | boolean | true | input | NoticeBase | See the dedicated configuration story below. |
 | duration | number | 0 | input | InlineNotificationComponent | See the dedicated configuration story below. |
 | pauseOnHover | boolean | true | input | NoticeBase | See the dedicated configuration story below. |
 | showProgress | boolean | false | input | NoticeBase | See the dedicated configuration story below. |
@@ -59,6 +61,7 @@ Application-wide banner. Mount once in the application shell.
 |---|---|
 | dismissed | import("./notice-base").NoticeDismissReason |
 | action | void |
+| secondaryAction | void |
 | visibleChange | boolean |
 
 ## Projection slots
@@ -76,6 +79,7 @@ No content projection slots declared.
 - `focus(value: boolean): void`
 - `dismiss(reason: NoticeDismissReason = "close"): void`
 - `act(): void`
+- `actSecondary(): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -103,7 +107,7 @@ export type ComponentTone =
   | "danger"
   | "custom";
 
-export type NoticeDismissReason = "close" | "timeout" | "action";
+export type NoticeDismissReason = "close" | "timeout" | "action" | "secondary-action";
 ```
 
 ## Storybook defaults
@@ -176,6 +180,9 @@ import { GlobalNotificationComponent } from "./global-notification.component";
 - `actionLabel`: [ActionLabel](http://127.0.0.1:6006/?path=/story/feedback-global-notification-configuration--action-label) — Customizes the text for the action action. Here it is set to “Review details”.
 - `closeOnAction`: [CloseOnActionFalse](http://127.0.0.1:6006/?path=/story/feedback-global-notification-configuration--close-on-action-false) — Controls whether the notification closes after its action. This example has it turned off. Open the example and try the relevant pointer or keyboard action.
 - `closeOnAction`: [CloseOnActionTrue](http://127.0.0.1:6006/?path=/story/feedback-global-notification-configuration--close-on-action-true) — Controls whether the notification closes after its action. This example has it turned on. Open the example and try the relevant pointer or keyboard action.
+- `secondaryActionLabel`: [SecondaryActionLabel](http://127.0.0.1:6006/?path=/story/feedback-global-notification-configuration--secondary-action-label) — Customizes the text for the secondary action action. Here it is set to “Custom secondaryActionLabel”.
+- `closeOnSecondaryAction`: [CloseOnSecondaryActionFalse](http://127.0.0.1:6006/?path=/story/feedback-global-notification-configuration--close-on-secondary-action-false) — Demonstrates the close on secondary action setting on this global notification. This example has it turned off. Open the example and try the relevant pointer or keyboard action.
+- `closeOnSecondaryAction`: [CloseOnSecondaryActionTrue](http://127.0.0.1:6006/?path=/story/feedback-global-notification-configuration--close-on-secondary-action-true) — Demonstrates the close on secondary action setting on this global notification. This example has it turned on. Open the example and try the relevant pointer or keyboard action.
 - `duration`: [Duration0](http://127.0.0.1:6006/?path=/story/feedback-global-notification-configuration--duration-0) — Sets how long a notification remains visible; zero keeps it open. Here it is set to “0”.
 - `duration`: [Duration3000](http://127.0.0.1:6006/?path=/story/feedback-global-notification-configuration--duration-3000) — Sets how long a notification remains visible; zero keeps it open. Here it is set to “3000”.
 - `duration`: [Duration8000](http://127.0.0.1:6006/?path=/story/feedback-global-notification-configuration--duration-8000) — Sets how long a notification remains visible; zero keeps it open. Here it is set to “8000”.
@@ -212,6 +219,7 @@ import { GlobalNotificationComponent } from "./global-notification.component";
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/feedback-global-notification-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.dismissed`: [EventDismissed](http://127.0.0.1:6006/?path=/story/feedback-global-notification-events--event-dismissed) — Try the global notification below and inspect dismissed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.action`: [EventAction](http://127.0.0.1:6006/?path=/story/feedback-global-notification-events--event-action) — Try the global notification below and inspect action in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.secondaryAction`: [EventSecondaryAction](http://127.0.0.1:6006/?path=/story/feedback-global-notification-events--event-secondary-action) — Try the global notification below and inspect secondaryAction in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.visibleChange`: [EventVisibleChange](http://127.0.0.1:6006/?path=/story/feedback-global-notification-events--event-visible-change) — Try the global notification below and inspect visibleChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns

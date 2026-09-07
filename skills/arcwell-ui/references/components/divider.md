@@ -25,6 +25,7 @@ Separate related content with a horizontal or vertical rule and an optional labe
 |---|---|---|---|---|---|
 | appearance | import("../shared/appearance").ComponentAppearance | {} | input | Appearance | See the dedicated configuration story below. |
 | styleTokens | Record<string, string> | {} | input | Appearance | Any --dl-* token can be overridden without changing the global theme. |
+| decorative | boolean | false | input | DividerComponent | Removes separator semantics when the line is purely visual. |
 | orientation | "horizontal" \| "vertical" | "horizontal" | input | DividerComponent | See the dedicated configuration story below. |
 | label | string | "" | input | DividerComponent | See the dedicated configuration story below. |
 | thickness | string | "1px" | input | DividerComponent | See the dedicated configuration story below. |
@@ -100,6 +101,8 @@ import { DividerComponent } from "./divider.component";
 
 - `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/layout-divider-appearance--appearance) — Overrides multiple visual properties for this instance.
 - `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/layout-divider-appearance--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
+- `decorative`: [DecorativeFalse](http://127.0.0.1:6006/?path=/story/layout-divider-configuration--decorative-false) — Demonstrates the decorative setting on this divider. This example has it turned off.
+- `decorative`: [DecorativeTrue](http://127.0.0.1:6006/?path=/story/layout-divider-configuration--decorative-true) — Demonstrates the decorative setting on this divider. This example has it turned on.
 - `orientation`: [OrientationHorizontal](http://127.0.0.1:6006/?path=/story/layout-divider-configuration--orientation-horizontal) — Switches between horizontal and vertical arrangements. Here it is set to “horizontal”.
 - `orientation`: [OrientationVertical](http://127.0.0.1:6006/?path=/story/layout-divider-configuration--orientation-vertical) — Switches between horizontal and vertical arrangements. Here it is set to “vertical”.
 - `label`: [Label](http://127.0.0.1:6006/?path=/story/layout-divider-configuration--label) — Customizes the visible label. Here it is set to “Custom label”.

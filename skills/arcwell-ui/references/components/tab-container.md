@@ -39,12 +39,17 @@ Switch panels with the tab buttons or arrow keys. Compare activation mode and re
 | panelPadding | string | "16px" | input | TabContainerComponent | See the dedicated configuration story below. |
 | keepAlive | boolean | true | input | TabContainerComponent | See the dedicated configuration story below. |
 | showDivider | boolean | true | input | TabContainerComponent | See the dedicated configuration story below. |
+| activateOnClose | "none" \| "previous" \| "next" \| "first" | "previous" | input | TabContainerComponent | See the dedicated configuration story below. |
+| controlledSelection | boolean | false | input | TabContainerComponent | Emits selectionRequested without updating value, allowing router or async ownership. |
 
 ## Outputs
 
 | Event | Payload |
 |---|---|
 | tabClose | string |
+| tabCloseRequested | { value: string; index: number; wasActive: boolean; } |
+| selectionRequested | string |
+| tabFocus | string |
 | valueChange | string \| null |
 
 ## Projection slots
@@ -55,6 +60,7 @@ Switch panels with the tab buttons or arrow keys. Compare activation mode and re
 
 - `active()` — TabComponent | undefined
 - `select(tab: TabComponent): void`
+- `closeTab(tab: TabComponent, index: number): void`
 - `key(event: KeyboardEvent, index: number): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
@@ -141,6 +147,12 @@ import { TabContainerComponent } from "./tab-container.component";
 - `keepAlive`: [KeepAliveTrue](http://127.0.0.1:6006/?path=/story/navigation-tab-container-configuration--keep-alive-true) — Retains tab panel state while another tab is active. This example has it turned on.
 - `showDivider`: [ShowDividerFalse](http://127.0.0.1:6006/?path=/story/navigation-tab-container-configuration--show-divider-false) — Controls whether divider are shown. This example has it turned off.
 - `showDivider`: [ShowDividerTrue](http://127.0.0.1:6006/?path=/story/navigation-tab-container-configuration--show-divider-true) — Controls whether divider are shown. This example has it turned on.
+- `activateOnClose`: [ActivateOnClosePrevious](http://127.0.0.1:6006/?path=/story/navigation-tab-container-configuration--activate-on-close-previous) — Demonstrates the activate on close setting on this tab container. Here it is set to “previous”.
+- `activateOnClose`: [ActivateOnCloseNext](http://127.0.0.1:6006/?path=/story/navigation-tab-container-configuration--activate-on-close-next) — Demonstrates the activate on close setting on this tab container. Here it is set to “next”.
+- `activateOnClose`: [ActivateOnCloseFirst](http://127.0.0.1:6006/?path=/story/navigation-tab-container-configuration--activate-on-close-first) — Demonstrates the activate on close setting on this tab container. Here it is set to “first”.
+- `activateOnClose`: [ActivateOnCloseNone](http://127.0.0.1:6006/?path=/story/navigation-tab-container-configuration--activate-on-close-none) — Demonstrates the activate on close setting on this tab container. Here it is set to “none”.
+- `controlledSelection`: [ControlledSelectionFalse](http://127.0.0.1:6006/?path=/story/navigation-tab-container-configuration--controlled-selection-false) — Demonstrates the controlled selection setting on this tab container. This example has it turned off.
+- `controlledSelection`: [ControlledSelectionTrue](http://127.0.0.1:6006/?path=/story/navigation-tab-container-configuration--controlled-selection-true) — Demonstrates the controlled selection setting on this tab container. This example has it turned on.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/navigation-tab-container-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/navigation-tab-container-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/navigation-tab-container-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -152,6 +164,9 @@ import { TabContainerComponent } from "./tab-container.component";
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/navigation-tab-container-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/navigation-tab-container-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.tabClose`: [EventTabClose](http://127.0.0.1:6006/?path=/story/navigation-tab-container-events--event-tab-close) — Try the tab container below and inspect tabClose in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.tabCloseRequested`: [EventTabCloseRequested](http://127.0.0.1:6006/?path=/story/navigation-tab-container-events--event-tab-close-requested) — Try the tab container below and inspect tabCloseRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.selectionRequested`: [EventSelectionRequested](http://127.0.0.1:6006/?path=/story/navigation-tab-container-events--event-selection-requested) — Try the tab container below and inspect selectionRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.tabFocus`: [EventTabFocus](http://127.0.0.1:6006/?path=/story/navigation-tab-container-events--event-tab-focus) — Try the tab container below and inspect tabFocus in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.valueChange`: [EventValueChange](http://127.0.0.1:6006/?path=/story/navigation-tab-container-events--event-value-change) — Try the tab container below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns

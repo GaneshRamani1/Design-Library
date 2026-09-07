@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; color-scheme: dark; scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #000; }
+button, input, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.example-grid { background-color: #111; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 24px 24px; }
+.control { display: grid; gap: .45rem; font-size: .8rem; color: #a1a1aa; }
+.control input, .control select { height: 2.6rem; width: 100%; border-radius: .7rem; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); padding: 0 .8rem; color: white; outline: none; }
+.control input:focus, .control select:focus { border-color: rgba(255,255,255,.4); }
+.control select option { background: #18181b; }
+.check { display: flex; align-items: center; gap: .6rem; font-size: .8rem; color: #d4d4d8; }
+.check input { accent-color: #fff; }
+.code-pill { border: 1px solid rgba(255,255,255,.1); border-radius: .35rem; background: rgba(255,255,255,.06); padding: .12rem .35rem; color: #d4d4d8; font-size: .85em; }
+.guidance { border: 1px solid rgba(255,255,255,.1); border-radius: 1.25rem; padding: 1.5rem; background: rgba(255,255,255,.025); }
+.guidance.good { border-color: rgba(110,231,183,.22); background: rgba(16,185,129,.055); }
+.guidance strong { color: white; }
+.guidance ul { margin: 1rem 0 0; padding-left: 1.2rem; color: #a1a1aa; line-height: 1.9; }
+arc-card { display: block; }
+arc-button[cardFooter] { margin-top: 1rem; }
+.eyebrow { font-size: .75rem; font-weight: 650; letter-spacing: .2em; text-transform: uppercase; color: #6ee7b7; }
+.home-title { margin-top: 1rem; max-width: 44rem; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.08; letter-spacing: -.035em; font-weight: 650; color: white; }
+.home-copy { max-width: 42rem; font-size: 1rem; line-height: 1.8; color: #a1a1aa; }
+.home-card { border: 1px solid rgba(255,255,255,.1); border-radius: 1.25rem; background: rgba(255,255,255,.025); padding: 1.5rem; }
+.home-card h3 { margin: 0; color: white; font-weight: 650; }
+.home-card p { margin: .75rem 0 0; color: #a1a1aa; font-size: .875rem; line-height: 1.7; }
+@media (max-width: 640px) { arc-card { --dl-ui-padding: 18px; } }

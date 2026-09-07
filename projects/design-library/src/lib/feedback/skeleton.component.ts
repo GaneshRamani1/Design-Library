@@ -1,4 +1,4 @@
-import { Component, input, computed } from "@angular/core";
+import { Component, input, computed, effect, output } from "@angular/core";
 import { Appearance } from "../shared/appearance";
 @Component({
   selector: "dl-skeleton",
@@ -93,6 +93,16 @@ export class SkeletonComponent extends Appearance {
   readonly lastLineWidth = input("65%");
   readonly animation = input<"shimmer" | "pulse" | "none">("shimmer");
   readonly color = input("var(--dl-border)");
+  readonly loaded = output<void>();
+  private wasLoading = true;
+  constructor() {
+    super();
+    effect(() => {
+      const loading = this.loading();
+      if (this.wasLoading && !loading) this.loaded.emit();
+      this.wasLoading = loading;
+    });
+  }
   readonly lines = computed(() =>
     Array.from({
       length: Math.max(1, Math.min(100, Math.floor(this.count()) || 1)),

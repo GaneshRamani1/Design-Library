@@ -33,16 +33,29 @@ A glass or solid panel with controlled height and overflow.
 | align | "center" \| "stretch" \| "flex-start" \| "flex-end" \| "baseline" | "stretch" | input | LayoutBase | See the dedicated configuration story below. |
 | justify | "center" \| "flex-start" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly" | "flex-start" | input | LayoutBase | See the dedicated configuration story below. |
 | wrap | boolean | false | input | LayoutBase | See the dedicated configuration story below. |
-| gap | import("./layout-base").LayoutLength | 16 | input | LayoutBase | See the dedicated configuration story below. |
-| padding | import("./layout-base").LayoutLength | 24 | input | LayoutBase | See the dedicated configuration story below. |
-| height | import("./layout-base").LayoutLength | "auto" | input | LayoutBase | See the dedicated configuration story below. |
-| minHeight | import("./layout-base").LayoutLength | 0 | input | LayoutBase | See the dedicated configuration story below. |
+| gap | LayoutLength | 16 | input | LayoutBase | See the dedicated configuration story below. |
+| padding | LayoutLength | 24 | input | LayoutBase | See the dedicated configuration story below. |
+| height | LayoutLength | "auto" | input | LayoutBase | See the dedicated configuration story below. |
+| minHeight | LayoutLength | 0 | input | LayoutBase | See the dedicated configuration story below. |
+| flexGrow | number \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| flexShrink | number \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| flexBasis | LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileDirection | "row" \| "column" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileAlign | "center" \| "stretch" \| "flex-start" \| "flex-end" \| "baseline" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileJustify | "center" \| "flex-start" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileGap | LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobilePadding | LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
 | surface | "solid" \| "transparent" \| "glass" | "glass" | input | PaneComponent | See the dedicated configuration story below. |
 | overflow | "auto" \| "visible" \| "hidden" | "auto" | input | PaneComponent | See the dedicated configuration story below. |
+| minWidth | LayoutLength | 0 | input | PaneComponent | See the dedicated configuration story below. |
+| maxWidth | LayoutLength \| null | null | input | PaneComponent | See the dedicated configuration story below. |
+| resizable | "none" \| "horizontal" \| "vertical" \| "both" | "none" | input | PaneComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
-No declared outputs. Projected controls keep their own event handlers.
+| Event | Payload |
+|---|---|
+| resized | { width: number; height: number; } |
 
 ## Projection slots
 
@@ -157,12 +170,36 @@ import { PaneComponent } from "./pane.component";
 - `padding`: [Padding](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--padding) — Changes the space inside the component. Here it is set to “32”.
 - `height`: [Height](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--height) — Sets an explicit height. Here it is set to “280px”.
 - `minHeight`: [MinHeight](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--min-height) — Sets the minimum height. Here it is set to “180”.
+- `flexGrow`: [FlexGrow](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--flex-grow) — Demonstrates the flex grow setting on this pane.
+- `flexShrink`: [FlexShrink](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--flex-shrink) — Demonstrates the flex shrink setting on this pane.
+- `flexBasis`: [FlexBasis](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--flex-basis) — Demonstrates the flex basis setting on this pane.
+- `mobileDirection`: [MobileDirectionRow](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-direction-row) — Demonstrates the mobile direction setting on this pane. Here it is set to “row”.
+- `mobileDirection`: [MobileDirectionColumn](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-direction-column) — Demonstrates the mobile direction setting on this pane. Here it is set to “column”.
+- `mobileAlign`: [MobileAlignStretch](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-align-stretch) — Demonstrates the mobile align setting on this pane. Here it is set to “stretch”.
+- `mobileAlign`: [MobileAlignFlexStart](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-align-flex-start) — Demonstrates the mobile align setting on this pane. Here it is set to “flex-start”.
+- `mobileAlign`: [MobileAlignCenter](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-align-center) — Demonstrates the mobile align setting on this pane. Here it is set to “center”.
+- `mobileAlign`: [MobileAlignFlexEnd](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-align-flex-end) — Demonstrates the mobile align setting on this pane. Here it is set to “flex-end”.
+- `mobileAlign`: [MobileAlignBaseline](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-align-baseline) — Demonstrates the mobile align setting on this pane. Here it is set to “baseline”.
+- `mobileJustify`: [MobileJustifyFlexStart](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-justify-flex-start) — Demonstrates the mobile justify setting on this pane. Here it is set to “flex-start”.
+- `mobileJustify`: [MobileJustifyCenter](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-justify-center) — Demonstrates the mobile justify setting on this pane. Here it is set to “center”.
+- `mobileJustify`: [MobileJustifyFlexEnd](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-justify-flex-end) — Demonstrates the mobile justify setting on this pane. Here it is set to “flex-end”.
+- `mobileJustify`: [MobileJustifySpaceBetween](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-justify-space-between) — Demonstrates the mobile justify setting on this pane. Here it is set to “space-between”.
+- `mobileJustify`: [MobileJustifySpaceAround](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-justify-space-around) — Demonstrates the mobile justify setting on this pane. Here it is set to “space-around”.
+- `mobileJustify`: [MobileJustifySpaceEvenly](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-justify-space-evenly) — Demonstrates the mobile justify setting on this pane. Here it is set to “space-evenly”.
+- `mobileGap`: [MobileGap](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-gap) — Demonstrates the mobile gap setting on this pane.
+- `mobilePadding`: [MobilePadding](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--mobile-padding) — Demonstrates the mobile padding setting on this pane.
 - `surface`: [SurfaceGlass](http://127.0.0.1:6006/?path=/story/layout-pane-variations--surface-glass) — Changes the surface background treatment. Here it is set to “glass”.
 - `surface`: [SurfaceSolid](http://127.0.0.1:6006/?path=/story/layout-pane-variations--surface-solid) — Changes the surface background treatment. Here it is set to “solid”.
 - `surface`: [SurfaceTransparent](http://127.0.0.1:6006/?path=/story/layout-pane-variations--surface-transparent) — Changes the surface background treatment. Here it is set to “transparent”.
 - `overflow`: [OverflowVisible](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--overflow-visible) — Controls whether oversized content is visible, hidden, or scrollable. Here it is set to “visible”.
 - `overflow`: [OverflowAuto](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--overflow-auto) — Controls whether oversized content is visible, hidden, or scrollable. Here it is set to “auto”.
 - `overflow`: [OverflowHidden](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--overflow-hidden) — Controls whether oversized content is visible, hidden, or scrollable. Here it is set to “hidden”.
+- `minWidth`: [MinWidth](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--min-width) — Demonstrates the min width setting on this pane. Here it is set to “8”.
+- `maxWidth`: [MaxWidth](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--max-width) — Limits how wide the component can grow. Here it is set to “90vw”.
+- `resizable`: [ResizableNone](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--resizable-none) — Demonstrates the resizable setting on this pane. Here it is set to “none”.
+- `resizable`: [ResizableHorizontal](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--resizable-horizontal) — Demonstrates the resizable setting on this pane. Here it is set to “horizontal”.
+- `resizable`: [ResizableVertical](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--resizable-vertical) — Demonstrates the resizable setting on this pane. Here it is set to “vertical”.
+- `resizable`: [ResizableBoth](http://127.0.0.1:6006/?path=/story/layout-pane-configuration--resizable-both) — Demonstrates the resizable setting on this pane. Here it is set to “both”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/layout-pane-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/layout-pane-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/layout-pane-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -173,6 +210,7 @@ import { PaneComponent } from "./pane.component";
 - `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/layout-pane-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/layout-pane-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/layout-pane-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `event.resized`: [EventResized](http://127.0.0.1:6006/?path=/story/layout-pane-events--event-resized) — Try the pane below and inspect resized in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

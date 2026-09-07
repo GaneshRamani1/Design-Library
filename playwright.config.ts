@@ -2,6 +2,9 @@ import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
+  // Storybook renders thousands of generated stories; limiting browser
+  // concurrency prevents focus/timer starvation in CI and local release runs.
+  workers: 2,
   retries: process.env["CI"] ? 2 : 0,
   use: { baseURL: "http://127.0.0.1:6006" },
   projects: [

@@ -17,6 +17,7 @@ Labeled form field supporting Angular reactive and template-driven forms.
 - Import the standalone InputComponent from `@arcwell/ui` and add it to the consuming Angular component’s `imports`.
 - Use ReactiveFormsModule with a FormControl, or FormsModule with ngModel. Programmatic writes are not user-change events. Do not assume a `value` input exists unless listed below. Supply required IDs and labels.
 - Use `appearance` for per-instance presentation and `styleTokens` for theme tokens. Preserve the shared light and black/glass themes; use the library stylesheet.
+- Use the exact projection selectors below; unmarked content goes only to the default slot when one exists.
 - Configure inputs with Angular bindings for booleans, numbers, arrays and objects. Do not turn signal-backed inputs into method calls in consumer templates.
 - Consult the linked story before copying a render recipe: its moduleMetadata imports, helper constants, form setup and custom props may be required.
 
@@ -57,18 +58,28 @@ Labeled form field supporting Angular reactive and template-driven forms.
 | maskDefinitions | Record<string, string> | {} | input | InputComponent | See the dedicated configuration story below. |
 | maskOptions | Partial<Omit<Partial<Pick<import("imask").MaskedPattern<string>, "mask" \| "parent" \| "prepare" \| "prepareChar" \| "validate" \| "commit" \| "format" \| "parse" \| "overwrite" \| "eager" \| "skipInvalid" \| "autofix" \| "definitions" \| "blocks" \| "placeholderChar" \| "displayChar" \| "lazy">>, "mask">> | {} | input | InputComponent | Advanced IMask pattern options; explicit options here override the convenience settings. |
 | inputMode | "auto" \| "none" \| "text" \| "email" \| "search" \| "tel" \| "url" \| "numeric" \| "decimal" | "auto" | input | InputComponent | See the dedicated configuration story below. |
+| prefix | string | "" | input | InputComponent | Plain text rendered before the editable value; use inputPrefix projection for rich content. |
+| suffix | string | "" | input | InputComponent | Plain text rendered after the editable value; use inputSuffix projection for rich content. |
+| showClear | boolean | false | input | InputComponent | See the dedicated configuration story below. |
+| clearLabel | string | "Clear value" | input | InputComponent | See the dedicated configuration story below. |
+| showPasswordToggle | boolean | false | input | InputComponent | See the dedicated configuration story below. |
+| passwordShowLabel | string | "Show password" | input | InputComponent | See the dedicated configuration story below. |
+| passwordHideLabel | string | "Hide password" | input | InputComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
 | Event | Payload |
 |---|---|
+| cleared | void |
+| passwordVisibilityChange | boolean |
 | maskAccept | InputMaskValue |
 | maskComplete | InputMaskValue |
 | valueChange | string |
 
 ## Projection slots
 
-No content projection slots declared.
+- `[inputPrefix]`
+- `[inputSuffix]`
 
 ## Public instance state and methods
 
@@ -76,8 +87,11 @@ No content projection slots declared.
 - `resolvedInputMode()` — "auto" | "none" | "text" | "email" | "search" | "tel" | "url" | "numeric" | "decimal" | null
 - `value()` — string
 - `displayValue()` — string
+- `passwordVisible()` — boolean
 - `formDisabled()` — boolean
 - `update(event: Event): void`
+- `clearValue(): void`
+- `togglePassword(): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -137,6 +151,9 @@ import { InputComponent } from "./input.component";
 - [Disabled](http://127.0.0.1:6006/?path=/story/inputs-input--disabled)
 - [Small](http://127.0.0.1:6006/?path=/story/inputs-input--small)
 - [Large](http://127.0.0.1:6006/?path=/story/inputs-input--large)
+- [Clearable](http://127.0.0.1:6006/?path=/story/inputs-input--clearable)
+- [Password Reveal](http://127.0.0.1:6006/?path=/story/inputs-input--password-reveal)
+- [Prefix And Suffix](http://127.0.0.1:6006/?path=/story/inputs-input--prefix-and-suffix)
 
 ## Configuration coverage
 
@@ -215,6 +232,15 @@ import { InputComponent } from "./input.component";
 - `inputMode`: [InputModeUrl](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--input-mode-url) — Requests a suitable on-screen keyboard. Here it is set to “url”.
 - `inputMode`: [InputModeSearch](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--input-mode-search) — Requests a suitable on-screen keyboard. Here it is set to “search”.
 - `inputMode`: [InputModeNone](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--input-mode-none) — Requests a suitable on-screen keyboard. Here it is set to “none”.
+- `prefix`: [Prefix](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--prefix) — Demonstrates the prefix setting on this input. Here it is set to “Custom prefix”.
+- `suffix`: [Suffix](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--suffix) — Demonstrates the suffix setting on this input. Here it is set to “Custom suffix”.
+- `showClear`: [ShowClearFalse](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--show-clear-false) — Controls whether clear are shown. This example has it turned off.
+- `showClear`: [ShowClearTrue](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--show-clear-true) — Controls whether clear are shown. This example has it turned on.
+- `clearLabel`: [ClearLabel](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--clear-label) — Customizes the text for the clear action. Here it is set to “Custom clearLabel”.
+- `showPasswordToggle`: [ShowPasswordToggleFalse](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--show-password-toggle-false) — Controls whether password toggle are shown. This example has it turned off.
+- `showPasswordToggle`: [ShowPasswordToggleTrue](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--show-password-toggle-true) — Controls whether password toggle are shown. This example has it turned on.
+- `passwordShowLabel`: [PasswordShowLabel](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--password-show-label) — Customizes the text for the password show action. Here it is set to “Custom passwordShowLabel”.
+- `passwordHideLabel`: [PasswordHideLabel](http://127.0.0.1:6006/?path=/story/inputs-input-configuration--password-hide-label) — Customizes the text for the password hide action. Here it is set to “Custom passwordHideLabel”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/inputs-input-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/inputs-input-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/inputs-input-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -225,6 +251,8 @@ import { InputComponent } from "./input.component";
 - `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/inputs-input-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/inputs-input-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/inputs-input-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `event.cleared`: [EventCleared](http://127.0.0.1:6006/?path=/story/inputs-input-events--event-cleared) — Try the input below and inspect cleared in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.passwordVisibilityChange`: [EventPasswordVisibilityChange](http://127.0.0.1:6006/?path=/story/inputs-input-events--event-password-visibility-change) — Try the input below and inspect passwordVisibilityChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.maskAccept`: [EventMaskAccept](http://127.0.0.1:6006/?path=/story/inputs-input-events--event-mask-accept) — Try the input below and inspect maskAccept in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.maskComplete`: [EventMaskComplete](http://127.0.0.1:6006/?path=/story/inputs-input-events--event-mask-complete) — Try the input below and inspect maskComplete in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.valueChange`: [EventValueChange](http://127.0.0.1:6006/?path=/story/inputs-input-events--event-value-change) — Try the input below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.

@@ -5,7 +5,7 @@ import { LayoutBase, layoutStyles } from "./layout-base";
   selector: "dl-container",
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { "[attr.data-variant]": "variant()" },
+  host: { "[attr.data-variant]": "variant()", "[attr.role]": "role() || null", "[attr.aria-label]": "ariaLabel() || null" },
   template: `<ng-content />`,
   styles: [
     layoutStyles,
@@ -35,4 +35,6 @@ import { LayoutBase, layoutStyles } from "./layout-base";
 })
 export class ContainerComponent extends LayoutBase {
   readonly variant = input<"primary" | "secondary" | "tertiary">("tertiary");
+  readonly role = input("");
+  readonly ariaLabel = input("");
 }

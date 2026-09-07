@@ -40,12 +40,17 @@ Move through a sequence of steps. Compare optional steps, completion rules and n
 | finishLabel | string | "Finish" | input | StepperContainerComponent | See the dedicated configuration story below. |
 | optionalLabel | string | "Optional" | input | StepperContainerComponent | See the dedicated configuration story below. |
 | panelPadding | string | "24px 0" | input | StepperContainerComponent | See the dedicated configuration story below. |
+| controlledNavigation | boolean | false | input | StepperContainerComponent | Emits navigationRequested without updating value so applications can validate asynchronously. |
+| beforeNavigate | ((from: string \| null, to: string) => boolean \| Promise<boolean>) \| null | null | input | StepperContainerComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
 | Event | Payload |
 |---|---|
 | finished | void |
+| navigationRequested | { from: string \| null; to: string; direction: "forward" \| "backward" \| "direct"; } |
+| navigationBlocked | { from: string \| null; to: string; } |
+| navigationError | unknown |
 | valueChange | string \| null |
 
 ## Projection slots
@@ -54,13 +59,14 @@ Move through a sequence of steps. Compare optional steps, completion rules and n
 
 ## Public instance state and methods
 
+- `navigating()` — boolean
 - `active()` — StepComponent | undefined
 - `activeIndex()` — number
 - `previousIndex()` — number
 - `nextIndex()` — number
 - `canAdvance()` — boolean
 - `canSelect(index: number): boolean`
-- `select(index: number): void`
+- `async select(index: number): Promise<void>`
 - `previous(): void`
 - `next(): void`
 - `key(event: KeyboardEvent, index: number): void`
@@ -141,6 +147,9 @@ import { StepperContainerComponent } from "./stepper-container.component";
 - `finishLabel`: [FinishLabel](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-configuration--finish-label) — Customizes the text for the finish action. Here it is set to “Complete setup”.
 - `optionalLabel`: [OptionalLabel](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-configuration--optional-label) — Customizes the text for the optional action. Here it is set to “Not required”.
 - `panelPadding`: [PanelPadding](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-configuration--panel-padding) — Demonstrates the panel padding setting on this stepper container. Here it is set to “32px”.
+- `controlledNavigation`: [ControlledNavigationFalse](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-configuration--controlled-navigation-false) — Demonstrates the controlled navigation setting on this stepper container. This example has it turned off.
+- `controlledNavigation`: [ControlledNavigationTrue](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-configuration--controlled-navigation-true) — Demonstrates the controlled navigation setting on this stepper container. This example has it turned on.
+- `beforeNavigate`: [BeforeNavigate](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-configuration--before-navigate) — Demonstrates the before navigate setting on this stepper container.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -152,6 +161,9 @@ import { StepperContainerComponent } from "./stepper-container.component";
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.finished`: [EventFinished](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-events--event-finished) — Try the stepper container below and inspect finished in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.navigationRequested`: [EventNavigationRequested](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-events--event-navigation-requested) — Try the stepper container below and inspect navigationRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.navigationBlocked`: [EventNavigationBlocked](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-events--event-navigation-blocked) — Try the stepper container below and inspect navigationBlocked in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.navigationError`: [EventNavigationError](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-events--event-navigation-error) — Try the stepper container below and inspect navigationError in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.valueChange`: [EventValueChange](http://127.0.0.1:6006/?path=/story/navigation-stepper-container-events--event-value-change) — Try the stepper container below and inspect valueChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns

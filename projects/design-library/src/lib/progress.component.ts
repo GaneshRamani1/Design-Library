@@ -3,7 +3,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   input,
+  output,
 } from "@angular/core";
 @Component({
   selector: "dl-progress",
@@ -19,7 +21,9 @@ import {
         }
       </div>
     }
-    <div
+    @if(variant()==='circular') {
+      <div class="circle" role="progressbar" [attr.aria-label]="label()" [attr.aria-valuemin]="minimum()" [attr.aria-valuemax]="maximum()" [attr.aria-valuenow]="indeterminate()?null:clamped()" [class.indeterminate]="indeterminate()" [style.--progress]="normalized()+'%'" [style.--circle-size]="circleSize()"><span>{{showValue()?displayValue():''}}</span></div>
+    } @else {<div
       class="track"
       role="progressbar"
       [attr.aria-label]="label()"
@@ -28,13 +32,13 @@ import {
       [attr.aria-valuenow]="indeterminate() ? null : clamped()"
       [style.height]="height()"
       [style.background]="trackColor()"
-      [class.indeterminate]="indeterminate()"
+      [class.indeterminate]="indeterminate()" [class.segmented]="segments()>1" [style.--segments]="segments()"
     >
       <div
         [style.width.%]="indeterminate() ? 35 : normalized()"
         [style.background]="barColor()"
       ></div>
-    </div>`,
+    </div>}`,
   styles: [
     `
       :host {
@@ -73,6 +77,10 @@ import {
         background: var(--dl-ui-background, var(--dl-primary, #285b45));
         border-radius: var(--dl-ui-radius, 20px);
       }
+      .track.segmented{background:repeating-linear-gradient(90deg,var(--dl-track) 0 calc((100% / var(--segments)) - 3px),transparent calc((100% / var(--segments)) - 3px) calc(100% / var(--segments)))}
+      .circle{width:var(--circle-size);height:var(--circle-size);border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--dl-ui-background,var(--dl-primary)) var(--progress),var(--dl-track) 0);position:relative}
+      .circle:after{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--dl-surface)}
+      .circle span{position:relative;z-index:1}
     `,
   ],
 })
@@ -88,6 +96,21 @@ export class ProgressComponent extends Appearance {
   readonly trackColor = input("var(--dl-track)");
   readonly barColor = input("var(--dl-primary)");
   readonly valueLabel = input("{percent}%");
+  readonly variant = input<"linear" | "circular">("linear");
+  readonly segments = input(1);
+  readonly circleSize = input("72px");
+  /** Emits once whenever determinate progress crosses into its completed state. */
+  readonly completed = output<{ value: number; max: number }>();
+  private wasComplete = false;
+  constructor() {
+    super();
+    effect(() => {
+      const complete = !this.indeterminate() && this.clamped() >= this.maximum();
+      if (complete && !this.wasComplete)
+        this.completed.emit({ value: this.clamped(), max: this.maximum() });
+      this.wasComplete = complete;
+    });
+  }
   readonly minimum = computed(() =>
     Number.isFinite(this.min()) ? this.min() : 0,
   );

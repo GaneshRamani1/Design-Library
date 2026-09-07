@@ -34,6 +34,7 @@ A native icon-only button; label is required for assistive technology.
 | size | "sm" \| "md" \| "lg" | "md" | input | ButtonComponent | See the dedicated configuration story below. |
 | disabled | boolean | false | input | ButtonComponent | See the dedicated configuration story below. |
 | loading | boolean | false | input | ButtonComponent | See the dedicated configuration story below. |
+| loadingMinWidth | string | "" | input | ButtonComponent | Optional stable minimum width applied while loading. |
 | type | "button" \| "submit" \| "reset" | "button" | input | ButtonComponent | See the dedicated configuration story below. |
 | label | string | Required | required input | IconButtonComponent | See the dedicated configuration story below. |
 | iconSize | number | 20 | input | IconButtonComponent | See the dedicated configuration story below. |
@@ -43,7 +44,9 @@ A native icon-only button; label is required for assistive technology.
 
 ## Outputs
 
-No declared outputs. Projected controls keep their own event handlers.
+| Event | Payload |
+|---|---|
+| pressedChange | boolean |
 
 Native `click` is also available and logged by Storybook.
 
@@ -54,7 +57,7 @@ No content projection slots declared.
 ## Public instance state and methods
 
 
-
+- `togglePressed(): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -128,6 +131,7 @@ import { IconButtonComponent } from "./icon-button.component";
 - `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/actions-icon-button-configuration--disabled-true) — Prevents user interaction. This example has it turned on.
 - `loading`: [LoadingFalse](http://127.0.0.1:6006/?path=/story/actions-icon-button-configuration--loading-false) — Shows the loading state. This example has it turned off.
 - `loading`: [LoadingTrue](http://127.0.0.1:6006/?path=/story/actions-icon-button-configuration--loading-true) — Shows the loading state. This example has it turned on.
+- `loadingMinWidth`: [LoadingMinWidth](http://127.0.0.1:6006/?path=/story/actions-icon-button-configuration--loading-min-width) — Demonstrates the loading min width setting on this icon button. Here it is set to “Custom loadingMinWidth”.
 - `type`: [TypeButton](http://127.0.0.1:6006/?path=/story/actions-icon-button-configuration--type-button) — Demonstrates the type setting on this icon button. Here it is set to “button”.
 - `type`: [TypeSubmit](http://127.0.0.1:6006/?path=/story/actions-icon-button-configuration--type-submit) — Demonstrates the type setting on this icon button. Here it is set to “submit”.
 - `type`: [TypeReset](http://127.0.0.1:6006/?path=/story/actions-icon-button-configuration--type-reset) — Demonstrates the type setting on this icon button. Here it is set to “reset”.
@@ -150,6 +154,7 @@ import { IconButtonComponent } from "./icon-button.component";
 - `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/actions-icon-button-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/actions-icon-button-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/actions-icon-button-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `event.pressedChange`: [EventPressedChange](http://127.0.0.1:6006/?path=/story/actions-icon-button-events--event-pressed-change) — Try the icon button below and inspect pressedChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

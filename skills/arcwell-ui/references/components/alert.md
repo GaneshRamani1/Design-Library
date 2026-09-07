@@ -41,6 +41,7 @@ An inline message for status or feedback. Compare the tones, optional action and
 | dismissible | boolean | false | input | AlertComponent | See the dedicated configuration story below. |
 | dismissLabel | string | "Dismiss alert" | input | AlertComponent | See the dedicated configuration story below. |
 | actionLabel | string | "" | input | AlertComponent | See the dedicated configuration story below. |
+| secondaryActionLabel | string | "" | input | AlertComponent | See the dedicated configuration story below. |
 | role | "auto" \| "status" \| "alert" \| "none" | "auto" | input | AlertComponent | See the dedicated configuration story below. |
 | live | "off" \| "polite" \| "assertive" | "polite" | input | AlertComponent | See the dedicated configuration story below. |
 
@@ -50,11 +51,13 @@ An inline message for status or feedback. Compare the tones, optional action and
 |---|---|
 | dismissed | void |
 | action | void |
+| secondaryAction | void |
 | visibleChange | boolean |
 
 ## Projection slots
 
 - `default`
+- `[alertActions]`
 
 ## Public instance state and methods
 
@@ -160,6 +163,7 @@ import { AlertComponent } from "./alert.component";
 - `dismissible`: [DismissibleTrue](http://127.0.0.1:6006/?path=/story/feedback-alert-configuration--dismissible-true) — Adds a dismiss action. This example has it turned on.
 - `dismissLabel`: [DismissLabel](http://127.0.0.1:6006/?path=/story/feedback-alert-configuration--dismiss-label) — Customizes the text for the dismiss action. Here it is set to “Dismiss message”.
 - `actionLabel`: [ActionLabel](http://127.0.0.1:6006/?path=/story/feedback-alert-configuration--action-label) — Customizes the text for the action action. Here it is set to “Review details”.
+- `secondaryActionLabel`: [SecondaryActionLabel](http://127.0.0.1:6006/?path=/story/feedback-alert-configuration--secondary-action-label) — Customizes the text for the secondary action action. Here it is set to “Custom secondaryActionLabel”.
 - `role`: [RoleAuto](http://127.0.0.1:6006/?path=/story/feedback-alert-configuration--role-auto) — Changes the semantic role exposed to assistive technology. Here it is set to “auto”.
 - `role`: [RoleStatus](http://127.0.0.1:6006/?path=/story/feedback-alert-configuration--role-status) — Changes the semantic role exposed to assistive technology. Here it is set to “status”.
 - `role`: [RoleAlert](http://127.0.0.1:6006/?path=/story/feedback-alert-configuration--role-alert) — Changes the semantic role exposed to assistive technology. Here it is set to “alert”.
@@ -179,6 +183,7 @@ import { AlertComponent } from "./alert.component";
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/feedback-alert-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.dismissed`: [EventDismissed](http://127.0.0.1:6006/?path=/story/feedback-alert-events--event-dismissed) — Try the alert below and inspect dismissed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.action`: [EventAction](http://127.0.0.1:6006/?path=/story/feedback-alert-events--event-action) — Try the alert below and inspect action in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.secondaryAction`: [EventSecondaryAction](http://127.0.0.1:6006/?path=/story/feedback-alert-events--event-secondary-action) — Try the alert below and inspect secondaryAction in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.visibleChange`: [EventVisibleChange](http://127.0.0.1:6006/?path=/story/feedback-alert-events--event-visible-change) — Try the alert below and inspect visibleChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns

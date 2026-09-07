@@ -110,6 +110,29 @@ test("weekend filter and read-only datepicker respect constraints", async ({
   await page.getByRole("button", { name: "Start date", exact: true }).click();
   await expect(page.getByRole("dialog")).toBeHidden();
 });
+
+test("datepicker month and year selectors update the visible calendar", async ({ page }) => {
+  await page.goto("/iframe.html?id=inputs-datepicker-configuration--show-month-year-selectors-true&viewMode=story");
+  await page.getByRole("button", { name: "Start date" }).click();
+  const month = page.getByRole("combobox", { name: "Month" });
+  const year = page.getByRole("combobox", { name: "Year" });
+  await expect(month).toBeVisible();
+  await expect(year).toHaveValue("2026");
+  await month.selectOption("9");
+  await expect(page.getByRole("grid")).toHaveAttribute("aria-label", /October 2026/);
+});
+
+test("confirmation phrase blocks submission until the exact text is entered", async ({ page }) => {
+  await page.goto("/iframe.html?id=overlays-confirmation-dialog-configuration--confirmation-phrase&viewMode=story");
+  await page.getByRole("button", { name: "Open confirmation dialog" }).click();
+  const confirm = page.getByRole("button", { name: "Remove workspace" });
+  await expect(confirm).toBeDisabled();
+  const phrase = "Custom confirmationPhrase";
+  await page.getByLabel("Type the confirmation phrase to continue").fill(phrase);
+  await expect(confirm).toBeEnabled();
+  await confirm.click();
+  await expect(page.getByRole("alertdialog")).toHaveCount(0);
+});
 test("chips select, remove and preserve disabled items", async ({ page }) => {
   await page.goto(story("inputs-chips--default"));
   await expect(
@@ -230,5 +253,33 @@ test("notification service stacks messages, caps overflow, supports actions and 
   await page.getByRole("button", { name: "Undo", exact: true }).click();
   await expect(page.getByText("Archive undone", { exact: true })).toBeVisible();
   await page.getByRole("button", { name: "Clear notifications" }).click();
+  await expect(page.getByRole("status")).toHaveCount(0);
+});
+test("avatar groups expose overflow counts as keyboard actions", async ({ page }) => {
+  await page.goto(story("data-display-avatar--group-with-overflow"));
+  const overflow = page.getByRole("button", { name: "8 more people" });
+  await expect(overflow).toHaveText("+8");
+  await overflow.focus();
+  await page.keyboard.press("Enter");
+  await expect(overflow).toBeFocused();
+});
+test("nested lists expand and collapse while custom rows preserve item state", async ({ page }) => {
+  await page.goto(story("data-display-list--nested"));
+  await expect(page.getByRole("button", { name: /Members/ })).toBeVisible();
+  await page.getByRole("button", { name: /Workspace/ }).click();
+  await expect(page.getByRole("button", { name: /Members/ })).toHaveCount(0);
+  await page.goto(story("data-display-list--custom-row-template"));
+  await expect(page.getByText("Custom projected row").first()).toBeVisible();
+});
+test("tile projection can replace every built-in data region", async ({ page }) => {
+  await page.goto(story("data-display-tiles--replaced-regions"));
+  await expect(page.getByText("Custom KPI")).toBeVisible();
+  await expect(page.getByText("84 / 100")).toBeVisible();
+  await expect(page.getByText("Projected visualization")).toBeVisible();
+  await expect(page.locator("dl-tiles svg.chart")).toHaveCount(0);
+});
+test("notification secondary actions dismiss with a distinct recovery path", async ({ page }) => {
+  await page.goto(story("feedback-snackbar--recovery-actions"));
+  await page.getByRole("button", { name: "Undo" }).click();
   await expect(page.getByRole("status")).toHaveCount(0);
 });

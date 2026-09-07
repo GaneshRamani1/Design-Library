@@ -37,7 +37,16 @@ A named page region. Project a heading and any content inside.
 | padding | import("./layout-base").LayoutLength | 24 | input | LayoutBase | See the dedicated configuration story below. |
 | height | import("./layout-base").LayoutLength | "auto" | input | LayoutBase | See the dedicated configuration story below. |
 | minHeight | import("./layout-base").LayoutLength | 0 | input | LayoutBase | See the dedicated configuration story below. |
+| flexGrow | number \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| flexShrink | number \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| flexBasis | import("./layout-base").LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileDirection | "row" \| "column" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileAlign | "center" \| "stretch" \| "flex-start" \| "flex-end" \| "baseline" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileJustify | "center" \| "flex-start" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileGap | import("./layout-base").LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobilePadding | import("./layout-base").LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
 | label | string | "" | input | SectionComponent | See the dedicated configuration story below. |
+| labelledBy | string | "" | input | SectionComponent | ID of a projected visible heading that names this section landmark. |
 
 ## Outputs
 
@@ -155,7 +164,26 @@ import { PaneComponent } from "./pane.component";
 - `padding`: [Padding](http://127.0.0.1:6006/?path=/story/layout-section-configuration--padding) — Changes the space inside the component. Here it is set to “32”.
 - `height`: [Height](http://127.0.0.1:6006/?path=/story/layout-section-configuration--height) — Sets an explicit height. Here it is set to “280px”.
 - `minHeight`: [MinHeight](http://127.0.0.1:6006/?path=/story/layout-section-configuration--min-height) — Sets the minimum height. Here it is set to “180”.
+- `flexGrow`: [FlexGrow](http://127.0.0.1:6006/?path=/story/layout-section-configuration--flex-grow) — Demonstrates the flex grow setting on this section.
+- `flexShrink`: [FlexShrink](http://127.0.0.1:6006/?path=/story/layout-section-configuration--flex-shrink) — Demonstrates the flex shrink setting on this section.
+- `flexBasis`: [FlexBasis](http://127.0.0.1:6006/?path=/story/layout-section-configuration--flex-basis) — Demonstrates the flex basis setting on this section.
+- `mobileDirection`: [MobileDirectionRow](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-direction-row) — Demonstrates the mobile direction setting on this section. Here it is set to “row”.
+- `mobileDirection`: [MobileDirectionColumn](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-direction-column) — Demonstrates the mobile direction setting on this section. Here it is set to “column”.
+- `mobileAlign`: [MobileAlignStretch](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-align-stretch) — Demonstrates the mobile align setting on this section. Here it is set to “stretch”.
+- `mobileAlign`: [MobileAlignFlexStart](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-align-flex-start) — Demonstrates the mobile align setting on this section. Here it is set to “flex-start”.
+- `mobileAlign`: [MobileAlignCenter](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-align-center) — Demonstrates the mobile align setting on this section. Here it is set to “center”.
+- `mobileAlign`: [MobileAlignFlexEnd](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-align-flex-end) — Demonstrates the mobile align setting on this section. Here it is set to “flex-end”.
+- `mobileAlign`: [MobileAlignBaseline](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-align-baseline) — Demonstrates the mobile align setting on this section. Here it is set to “baseline”.
+- `mobileJustify`: [MobileJustifyFlexStart](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-justify-flex-start) — Demonstrates the mobile justify setting on this section. Here it is set to “flex-start”.
+- `mobileJustify`: [MobileJustifyCenter](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-justify-center) — Demonstrates the mobile justify setting on this section. Here it is set to “center”.
+- `mobileJustify`: [MobileJustifyFlexEnd](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-justify-flex-end) — Demonstrates the mobile justify setting on this section. Here it is set to “flex-end”.
+- `mobileJustify`: [MobileJustifySpaceBetween](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-justify-space-between) — Demonstrates the mobile justify setting on this section. Here it is set to “space-between”.
+- `mobileJustify`: [MobileJustifySpaceAround](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-justify-space-around) — Demonstrates the mobile justify setting on this section. Here it is set to “space-around”.
+- `mobileJustify`: [MobileJustifySpaceEvenly](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-justify-space-evenly) — Demonstrates the mobile justify setting on this section. Here it is set to “space-evenly”.
+- `mobileGap`: [MobileGap](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-gap) — Demonstrates the mobile gap setting on this section.
+- `mobilePadding`: [MobilePadding](http://127.0.0.1:6006/?path=/story/layout-section-configuration--mobile-padding) — Demonstrates the mobile padding setting on this section.
 - `label`: [Label](http://127.0.0.1:6006/?path=/story/layout-section-configuration--label) — Customizes the visible label. Here it is set to “Custom label”.
+- `labelledBy`: [LabelledBy](http://127.0.0.1:6006/?path=/story/layout-section-configuration--labelled-by) — Demonstrates the labelled by setting on this section. Here it is set to “Custom labelledBy”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/layout-section-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/layout-section-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/layout-section-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.

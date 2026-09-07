@@ -29,7 +29,8 @@ Present related items with optional icons, descriptions and metadata. Interactiv
 | label | string | "Items" | input | ListComponent | See the dedicated configuration story below. |
 | items | ListItem[] | [] | input | ListComponent | See the dedicated configuration story below. |
 | interactive | boolean | false | input | ListComponent | See the dedicated configuration story below. |
-| selected | string | "" | input | ListComponent | See the dedicated configuration story below. |
+| selected | string \| string[] | "" | model | ListComponent | See the dedicated configuration story below. |
+| selectionMode | "none" \| "single" \| "multiple" | "single" | input | ListComponent | See the dedicated configuration story below. |
 | disabled | boolean | false | input | ListComponent | See the dedicated configuration story below. |
 | density | "compact" \| "regular" \| "comfortable" | "regular" | input | ListComponent | See the dedicated configuration story below. |
 | dividers | boolean | true | input | ListComponent | See the dedicated configuration story below. |
@@ -39,12 +40,19 @@ Present related items with optional icons, descriptions and metadata. Interactiv
 | showMeta | boolean | true | input | ListComponent | See the dedicated configuration story below. |
 | showChevron | boolean | true | input | ListComponent | See the dedicated configuration story below. |
 | emptyText | string | "No items" | input | ListComponent | See the dedicated configuration story below. |
+| itemTemplate | TemplateRef<{ $implicit: ListItem; depth: number; selected: boolean; expanded: boolean; }> \| null | null | input | ListComponent | See the dedicated configuration story below. |
+| nestedIndent | number | 24 | input | ListComponent | See the dedicated configuration story below. |
+| expandOnActivate | boolean | true | input | ListComponent | See the dedicated configuration story below. |
+| expandedIds | string[] | [] | model | ListComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
 | Event | Payload |
 |---|---|
 | itemClick | ListItem |
+| expandedChange | { item: ListItem; expanded: boolean; } |
+| selectedChange | string \| string[] |
+| expandedIdsChange | string[] |
 
 ## Projection slots
 
@@ -52,8 +60,12 @@ Present related items with optional icons, descriptions and metadata. Interactiv
 
 ## Public instance state and methods
 
-
-
+- `visibleItems()` — VisibleListItem[]
+- `selectedIds()` — string[]
+- `isSelected(id: string): boolean`
+- `isExpanded(id: string): boolean`
+- `nestedPadding(depth: number): string`
+- `activate(item: ListItem): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -80,7 +92,10 @@ export interface ListItem {
   icon?: string;
   meta?: string;
   disabled?: boolean;
+  children?: ListItem[];
 }
+
+interface VisibleListItem { item: ListItem; depth: number; }
 ```
 
 ## Storybook defaults
@@ -137,6 +152,8 @@ import { ListComponent } from "./list.component";
 ## Behavioral examples
 
 - [Default](http://127.0.0.1:6006/?path=/story/data-display-list--default)
+- [Nested](http://127.0.0.1:6006/?path=/story/data-display-list--nested)
+- [Custom Row Template](http://127.0.0.1:6006/?path=/story/data-display-list--custom-row-template)
 
 ## Configuration coverage
 
@@ -147,6 +164,9 @@ import { ListComponent } from "./list.component";
 - `interactive`: [InteractiveFalse](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--interactive-false) — Demonstrates the interactive setting on this list. This example has it turned off.
 - `interactive`: [InteractiveTrue](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--interactive-true) — Demonstrates the interactive setting on this list. This example has it turned on.
 - `selected`: [Selected](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--selected) — Controls which item is selected. Here it is set to “Custom selected”.
+- `selectionMode`: [SelectionModeNone](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--selection-mode-none) — Demonstrates the selection mode setting on this list. Here it is set to “none”.
+- `selectionMode`: [SelectionModeSingle](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--selection-mode-single) — Demonstrates the selection mode setting on this list. Here it is set to “single”.
+- `selectionMode`: [SelectionModeMultiple](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--selection-mode-multiple) — Demonstrates the selection mode setting on this list. Here it is set to “multiple”.
 - `disabled`: [DisabledFalse](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--disabled-false) — Prevents user interaction. This example has it turned off.
 - `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--disabled-true) — Prevents user interaction. This example has it turned on.
 - `density`: [DensityCompact](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--density-compact) — Demonstrates the density setting on this list. Here it is set to “compact”.
@@ -164,6 +184,11 @@ import { ListComponent } from "./list.component";
 - `showChevron`: [ShowChevronFalse](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--show-chevron-false) — Controls whether chevron are shown. This example has it turned off.
 - `showChevron`: [ShowChevronTrue](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--show-chevron-true) — Controls whether chevron are shown. This example has it turned on.
 - `emptyText`: [EmptyText](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--empty-text) — Customizes the message when there are no items or matches. Here it is set to “Custom emptyText”.
+- `itemTemplate`: [ItemTemplate](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--item-template) — Demonstrates the item template setting on this list.
+- `nestedIndent`: [NestedIndent](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--nested-indent) — Demonstrates the nested indent setting on this list. Here it is set to “32”.
+- `expandOnActivate`: [ExpandOnActivateFalse](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--expand-on-activate-false) — Demonstrates the expand on activate setting on this list. This example has it turned off.
+- `expandOnActivate`: [ExpandOnActivateTrue](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--expand-on-activate-true) — Demonstrates the expand on activate setting on this list. This example has it turned on.
+- `expandedIds`: [ExpandedIds](http://127.0.0.1:6006/?path=/story/data-display-list-configuration--expanded-ids) — Demonstrates the expanded ids setting on this list.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/data-display-list-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/data-display-list-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/data-display-list-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -175,6 +200,9 @@ import { ListComponent } from "./list.component";
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/data-display-list-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/data-display-list-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.itemClick`: [EventItemClick](http://127.0.0.1:6006/?path=/story/data-display-list-events--event-item-click) — Try the list below and inspect itemClick in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.expandedChange`: [EventExpandedChange](http://127.0.0.1:6006/?path=/story/data-display-list-events--event-expanded-change) — Try the list below and inspect expandedChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.selectedChange`: [EventSelectedChange](http://127.0.0.1:6006/?path=/story/data-display-list-events--event-selected-change) — Try the list below and inspect selectedChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.expandedIdsChange`: [EventExpandedIdsChange](http://127.0.0.1:6006/?path=/story/data-display-list-events--event-expanded-ids-change) — Try the list below and inspect expandedIdsChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

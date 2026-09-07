@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, input } from "@angular/core";
-import { LayoutBase, layoutStyles } from "./layout-base";
+import { ChangeDetectionStrategy, Component, DestroyRef, ElementRef, afterNextRender, inject, input, output } from "@angular/core";
+import { LayoutBase, layoutStyles, type LayoutLength } from "./layout-base";
 /** A glass or solid panel with controlled height and overflow. */
 @Component({
   selector: "dl-pane",
@@ -8,6 +8,9 @@ import { LayoutBase, layoutStyles } from "./layout-base";
   host: {
     "[attr.data-surface]": "surface()",
     "[style.overflow]": "overflow()",
+    "[style.min-width]": "length(minWidth())",
+    "[style.max-width]": "maxWidth() === null ? null : length(maxWidth()!)",
+    "[style.resize]": "resizable()",
   },
   template: `<ng-content />`,
   styles: [
@@ -41,4 +44,24 @@ import { LayoutBase, layoutStyles } from "./layout-base";
 export class PaneComponent extends LayoutBase {
   readonly surface = input<"glass" | "solid" | "transparent">("glass");
   readonly overflow = input<"visible" | "auto" | "hidden">("auto");
+  readonly minWidth = input<LayoutLength>(0);
+  readonly maxWidth = input<LayoutLength | null>(null);
+  readonly resizable = input<"none" | "horizontal" | "vertical" | "both">("none");
+  readonly resized = output<{ width: number; height: number }>();
+  private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly destroyRef = inject(DestroyRef);
+  constructor() {
+    super();
+    afterNextRender(() => {
+      let previous = "";
+      const observer = new ResizeObserver(([entry]) => {
+        const value = { width: entry?.contentRect.width ?? 0, height: entry?.contentRect.height ?? 0 };
+        const signature = `${value.width}:${value.height}`;
+        if (previous && signature !== previous) this.resized.emit(value);
+        previous = signature;
+      });
+      observer.observe(this.element.nativeElement);
+      this.destroyRef.onDestroy(() => observer.disconnect());
+    });
+  }
 }

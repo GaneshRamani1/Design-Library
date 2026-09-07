@@ -56,18 +56,20 @@ import { fieldStyles } from "./inputs/form-control-base";
     },
   ],
   template: `<label
-      ><span class="label"
+      [for]="id() + '-input'"><span class="label"
         >{{ label() }}
         @if (required()) {
           <span aria-hidden="true">*</span>
-        }</span
-      ><input
+        }</span></label>
+      <div class="field input-shell" [attr.aria-invalid]="error() ? true : null">
+        <span class="affix prefix"><ng-content select="[inputPrefix]" />{{ prefix() }}</span>
+      <input
         #field
-        class="field"
+        class="native-field"
         [id]="id() + '-input'"
         [attr.inputmode]="resolvedInputMode()"
         [type]="
-          maskPattern() ? (type() === 'password' ? 'password' : 'text') : type()
+          maskPattern() ? (type() === 'password' && !passwordVisible() ? 'password' : 'text') : (type() === 'password' && passwordVisible() ? 'text' : type())
         "
         [readOnly]="readOnly()"
         [attr.maxlength]="maskPattern() ? null : maxLength()"
@@ -83,13 +85,31 @@ import { fieldStyles } from "./inputs/form-control-base";
         [attr.aria-describedby]="error() || hint() ? id() + '-message' : null"
         (input)="update($event)"
         (blur)="onTouched()"
-    /></label>
+      />
+      <span class="affix suffix"><ng-content select="[inputSuffix]" />{{ suffix() }}</span>
+      @if (showClear() && displayValue() && !readOnly() && !(disabled() || formDisabled())) {
+        <button class="field-action" type="button" [attr.aria-label]="clearLabel()" (click)="clearValue()">×</button>
+      }
+      @if (type() === 'password' && showPasswordToggle()) {
+        <button class="field-action" type="button" [attr.aria-label]="passwordVisible() ? passwordHideLabel() : passwordShowLabel()" [attr.aria-pressed]="passwordVisible()" (click)="togglePassword()">{{ passwordVisible() ? 'Hide' : 'Show' }}</button>
+      }
+      </div>
     @if (error() || hint()) {
       <p class="message" [id]="id() + '-message'" [class.error]="error()">
         {{ error() || hint() }}
       </p>
     }`,
-  styles: [fieldStyles],
+  styles: [fieldStyles, `
+    .input-shell { display:flex; align-items:center; gap:8px; padding:0; }
+    .input-shell:focus-within { outline:2px solid var(--dl-ui-focus-color,var(--dl-focus)); outline-offset:3px; }
+    .native-field { min-width:0; flex:1; height:var(--field-height); padding:var(--field-padding); border:0; outline:0; background:transparent; color:inherit; font:inherit; line-height:20px; }
+    .prefix { padding-inline-start:var(--field-inset); }
+    .suffix, .field-action:last-child { margin-inline-end:var(--field-inset); }
+    .affix { flex:none; color:var(--dl-muted); white-space:nowrap; }
+    .affix:empty { display:none; }
+    .field-action { flex:none; border:0; border-radius:6px; padding:4px 6px; background:transparent; color:inherit; font:inherit; cursor:pointer; }
+    .field-action:focus-visible { outline:2px solid var(--dl-ui-focus-color,var(--dl-focus)); }
+  `],
 })
 export class InputComponent
   extends Appearance
@@ -141,6 +161,17 @@ export class InputComponent
     | "search"
     | "none"
   >("auto");
+  /** Plain text rendered before the editable value; use inputPrefix projection for rich content. */
+  readonly prefix = input("");
+  /** Plain text rendered after the editable value; use inputSuffix projection for rich content. */
+  readonly suffix = input("");
+  readonly showClear = input(false);
+  readonly clearLabel = input("Clear value");
+  readonly showPasswordToggle = input(false);
+  readonly passwordShowLabel = input("Show password");
+  readonly passwordHideLabel = input("Hide password");
+  readonly cleared = output<void>();
+  readonly passwordVisibilityChange = output<boolean>();
   readonly maskAccept = output<InputMaskValue>();
   readonly maskComplete = output<InputMaskValue>();
   readonly valueChange = output<string>();
@@ -172,6 +203,7 @@ export class InputComponent
   );
   readonly value = signal("");
   readonly displayValue = signal("");
+  readonly passwordVisible = signal(false);
   private readonly field = viewChild<ElementRef<HTMLInputElement>>("field");
   private maskControl: InputMask<MaskedPatternOptions> | null = null;
   private appliedOptions: MaskedPatternOptions | null = null;
@@ -336,5 +368,21 @@ export class InputComponent
     this.displayValue.set(value);
     this.onChange(value);
     this.valueChange.emit(value);
+  }
+  clearValue(): void {
+    if (this.readOnly() || this.disabled() || this.formDisabled()) return;
+    this.value.set("");
+    this.displayValue.set("");
+    if (this.maskControl) this.maskControl.value = "";
+    this.onChange("");
+    this.valueChange.emit("");
+    this.cleared.emit();
+    this.field()?.nativeElement.focus();
+  }
+  togglePassword(): void {
+    if (this.type() !== "password" || !this.showPasswordToggle()) return;
+    this.passwordVisible.update((visible) => !visible);
+    this.passwordVisibilityChange.emit(this.passwordVisible());
+    this.field()?.nativeElement.focus();
   }
 }

@@ -33,6 +33,8 @@ Apply to a container whose direct element children are slides. No clones or cont
 | step | number | 1 | input | CarouselDirective | See the dedicated configuration story below. |
 | loop | boolean | false | input | CarouselDirective | See the dedicated configuration story below. |
 | keyboard | boolean | true | input | CarouselDirective | See the dedicated configuration story below. |
+| draggable | boolean | true | input | CarouselDirective | See the dedicated configuration story below. |
+| dragThreshold | number | 48 | input | CarouselDirective | See the dedicated configuration story below. |
 | disabled | boolean | false | input | CarouselDirective | See the dedicated configuration story below. |
 | behavior | "smooth" \| "instant" | "smooth" | input | CarouselDirective | See the dedicated configuration story below. |
 | showScrollbar | boolean | false | input | CarouselDirective | See the dedicated configuration story below. |
@@ -48,6 +50,8 @@ Apply to a container whose direct element children are slides. No clones or cont
 | Event | Payload |
 |---|---|
 | slideChange | CarouselChange |
+| dragStarted | PointerEvent |
+| dragEnded | { event: PointerEvent; moved: boolean; } |
 | indexChange | number |
 
 ## Projection slots
@@ -74,6 +78,10 @@ No content projection slots declared.
 - `onScroll(): void`
 - `onKey(event: KeyboardEvent): void`
 - `onBlur(event: FocusEvent): void`
+- `startDrag(event: PointerEvent): void`
+- `moveDrag(event: PointerEvent): void`
+- `endDrag(event: PointerEvent): void`
+- `cancelDrag(event: PointerEvent): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -84,7 +92,7 @@ export interface CarouselChange {
   index: number;
   previousIndex: number;
   total: number;
-  source: "api" | "keyboard" | "scroll" | "autoplay";
+  source: "api" | "keyboard" | "scroll" | "autoplay" | "drag";
 }
 ```
 
@@ -175,6 +183,9 @@ const controls = `<div style="display:flex;gap:12px;align-items:center;flex-wrap
 - `loop`: [LoopTrue](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--loop-true) — Demonstrates the loop setting on this carousel directive. This example has it turned on.
 - `keyboard`: [KeyboardFalse](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--keyboard-false) — Demonstrates the keyboard setting on this carousel directive. This example has it turned off.
 - `keyboard`: [KeyboardTrue](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--keyboard-true) — Demonstrates the keyboard setting on this carousel directive. This example has it turned on.
+- `draggable`: [DraggableFalse](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--draggable-false) — Demonstrates the draggable setting on this carousel directive. This example has it turned off.
+- `draggable`: [DraggableTrue](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--draggable-true) — Demonstrates the draggable setting on this carousel directive. This example has it turned on.
+- `dragThreshold`: [DragThreshold](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--drag-threshold) — Demonstrates the drag threshold setting on this carousel directive. Here it is set to “56”.
 - `disabled`: [DisabledFalse](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--disabled-false) — Prevents user interaction. This example has it turned off.
 - `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--disabled-true) — Prevents user interaction. This example has it turned on.
 - `behavior`: [BehaviorSmooth](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--behavior-smooth) — Demonstrates the behavior setting on this carousel directive. Here it is set to “smooth”.
@@ -191,6 +202,8 @@ const controls = `<div style="display:flex;gap:12px;align-items:center;flex-wrap
 - `ariaLabel`: [AriaLabel](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--aria-label) — Changes the accessible name announced by assistive technology. Here it is set to “Custom accessible dialog name”.
 - `slideLabel`: [SlideLabel](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-configuration--slide-label) — Customizes the text for the slide action. Here it is set to “Project”.
 - `event.slideChange`: [EventSlideChange](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-events--event-slide-change) — Try the carousel directive below and inspect slideChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.dragStarted`: [EventDragStarted](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-events--event-drag-started) — Try the carousel directive below and inspect dragStarted in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.dragEnded`: [EventDragEnded](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-events--event-drag-ended) — Try the carousel directive below and inspect dragEnded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.indexChange`: [EventIndexChange](http://127.0.0.1:6006/?path=/story/navigation-carousel-directive-events--event-index-change) — Try the carousel directive below and inspect indexChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns

@@ -37,7 +37,17 @@ Centered, width-constrained content with optional flex layout.
 | padding | import("./layout-base").LayoutLength | 24 | input | LayoutBase | See the dedicated configuration story below. |
 | height | import("./layout-base").LayoutLength | "auto" | input | LayoutBase | See the dedicated configuration story below. |
 | minHeight | import("./layout-base").LayoutLength | 0 | input | LayoutBase | See the dedicated configuration story below. |
+| flexGrow | number \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| flexShrink | number \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| flexBasis | import("./layout-base").LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileDirection | "row" \| "column" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileAlign | "center" \| "stretch" \| "flex-start" \| "flex-end" \| "baseline" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileJustify | "center" \| "flex-start" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileGap | import("./layout-base").LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobilePadding | import("./layout-base").LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
 | variant | "primary" \| "secondary" \| "tertiary" | "tertiary" | input | ContainerComponent | See the dedicated configuration story below. |
+| role | string | "" | input | ContainerComponent | See the dedicated configuration story below. |
+| ariaLabel | string | "" | input | ContainerComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
@@ -159,9 +169,29 @@ import { PaneComponent } from "./pane.component";
 - `padding`: [Padding](http://127.0.0.1:6006/?path=/story/layout-container-configuration--padding) — Changes the space inside the component. Here it is set to “32”.
 - `height`: [Height](http://127.0.0.1:6006/?path=/story/layout-container-configuration--height) — Sets an explicit height. Here it is set to “280px”.
 - `minHeight`: [MinHeight](http://127.0.0.1:6006/?path=/story/layout-container-configuration--min-height) — Sets the minimum height. Here it is set to “180”.
+- `flexGrow`: [FlexGrow](http://127.0.0.1:6006/?path=/story/layout-container-configuration--flex-grow) — Demonstrates the flex grow setting on this container.
+- `flexShrink`: [FlexShrink](http://127.0.0.1:6006/?path=/story/layout-container-configuration--flex-shrink) — Demonstrates the flex shrink setting on this container.
+- `flexBasis`: [FlexBasis](http://127.0.0.1:6006/?path=/story/layout-container-configuration--flex-basis) — Demonstrates the flex basis setting on this container.
+- `mobileDirection`: [MobileDirectionRow](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-direction-row) — Demonstrates the mobile direction setting on this container. Here it is set to “row”.
+- `mobileDirection`: [MobileDirectionColumn](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-direction-column) — Demonstrates the mobile direction setting on this container. Here it is set to “column”.
+- `mobileAlign`: [MobileAlignStretch](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-align-stretch) — Demonstrates the mobile align setting on this container. Here it is set to “stretch”.
+- `mobileAlign`: [MobileAlignFlexStart](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-align-flex-start) — Demonstrates the mobile align setting on this container. Here it is set to “flex-start”.
+- `mobileAlign`: [MobileAlignCenter](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-align-center) — Demonstrates the mobile align setting on this container. Here it is set to “center”.
+- `mobileAlign`: [MobileAlignFlexEnd](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-align-flex-end) — Demonstrates the mobile align setting on this container. Here it is set to “flex-end”.
+- `mobileAlign`: [MobileAlignBaseline](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-align-baseline) — Demonstrates the mobile align setting on this container. Here it is set to “baseline”.
+- `mobileJustify`: [MobileJustifyFlexStart](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-justify-flex-start) — Demonstrates the mobile justify setting on this container. Here it is set to “flex-start”.
+- `mobileJustify`: [MobileJustifyCenter](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-justify-center) — Demonstrates the mobile justify setting on this container. Here it is set to “center”.
+- `mobileJustify`: [MobileJustifyFlexEnd](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-justify-flex-end) — Demonstrates the mobile justify setting on this container. Here it is set to “flex-end”.
+- `mobileJustify`: [MobileJustifySpaceBetween](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-justify-space-between) — Demonstrates the mobile justify setting on this container. Here it is set to “space-between”.
+- `mobileJustify`: [MobileJustifySpaceAround](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-justify-space-around) — Demonstrates the mobile justify setting on this container. Here it is set to “space-around”.
+- `mobileJustify`: [MobileJustifySpaceEvenly](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-justify-space-evenly) — Demonstrates the mobile justify setting on this container. Here it is set to “space-evenly”.
+- `mobileGap`: [MobileGap](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-gap) — Demonstrates the mobile gap setting on this container.
+- `mobilePadding`: [MobilePadding](http://127.0.0.1:6006/?path=/story/layout-container-configuration--mobile-padding) — Demonstrates the mobile padding setting on this container.
 - `variant`: [VariantPrimary](http://127.0.0.1:6006/?path=/story/layout-container-variations--variant-primary) — Changes the visual treatment. Here it is set to “primary”.
 - `variant`: [VariantSecondary](http://127.0.0.1:6006/?path=/story/layout-container-variations--variant-secondary) — Changes the visual treatment. Here it is set to “secondary”.
 - `variant`: [VariantTertiary](http://127.0.0.1:6006/?path=/story/layout-container-variations--variant-tertiary) — Changes the visual treatment. Here it is set to “tertiary”.
+- `role`: [Role](http://127.0.0.1:6006/?path=/story/layout-container-configuration--role) — Changes the semantic role exposed to assistive technology. Here it is set to “Custom role”.
+- `ariaLabel`: [AriaLabel](http://127.0.0.1:6006/?path=/story/layout-container-configuration--aria-label) — Changes the accessible name announced by assistive technology. Here it is set to “Custom accessible dialog name”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/layout-container-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/layout-container-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/layout-container-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.

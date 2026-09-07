@@ -76,6 +76,14 @@ export const CustomContent: Story = {
     template: `<div style="width:360px;max-width:100%"><dl-tiles ${argsToTemplate(args)}><p style="margin:0;color:var(--dl-muted)">Subscriptions account for 82% of revenue.</p><span tileFooter>Last 30 days</span></dl-tiles></div>`,
   }),
 };
+export const ReplacedRegions: Story = {
+  args: { showDefaultHeader: false, showDefaultValue: false, showDefaultChart: false },
+  parameters: { storyNote: "Named slots can fully replace built-in header, value and chart regions while the tile retains layout, loading, error and footer behavior." },
+  render: (args) => ({
+    props: args,
+    template: `<div style="width:360px;max-width:100%"><dl-tiles ${argsToTemplate(args)}><div tileHeader style="display:flex;justify-content:space-between;width:100%"><strong>Custom KPI</strong><span>Live</span></div><div tileValue style="font-size:32px;font-weight:700">84 / 100</div><div tileChart style="height:64px;display:grid;place-items:center;border:1px dashed var(--dl-border)">Projected visualization</div></dl-tiles></div>`,
+  }),
+};
 
 export const FlatHistory: Story = {
   args: {

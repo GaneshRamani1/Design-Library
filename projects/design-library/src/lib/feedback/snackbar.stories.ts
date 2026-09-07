@@ -18,3 +18,7 @@ type Story = StoryObj<SnackbarComponent>;
 export const Default: Story = {};
 export const Timed: Story = { args: { duration: 4000, showProgress: true } };
 export const Persistent: Story = { args: { duration: 0 } };
+export const RecoveryActions: Story = {
+  args: { message: "Draft deleted.", secondaryActionLabel: "Undo", actionLabel: "Dismiss", duration: 0 },
+  parameters: { storyNote: "Primary and secondary recovery actions emit separate outputs and independently control dismissal." },
+};

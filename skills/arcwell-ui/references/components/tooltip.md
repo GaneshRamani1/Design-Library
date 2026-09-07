@@ -34,12 +34,13 @@ Hover/focus help text; use popover for interactive content.
 | maxWidth | string | "320px" | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | showDelay | number | 150 | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | hideDelay | number | 100 | input | AnchoredOverlayBase | See the dedicated configuration story below. |
+| longPressDelay | number | 550 | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | closeOnEscape | boolean | true | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | closeOnOutside | boolean | true | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | panelClass | string | "" | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | ariaLabel | string | "Popover" | input | AnchoredOverlayBase | See the dedicated configuration story below. |
 | dlTooltip | string | "" | input | TooltipDirective | See the dedicated configuration story below. |
-| trigger | "hover" \| "manual" | "hover" | input | TooltipDirective | See the dedicated configuration story below. |
+| trigger | "hover" \| "manual" \| "longpress" | "hover" | input | TooltipDirective | See the dedicated configuration story below. |
 
 ## Outputs
 
@@ -63,6 +64,8 @@ No content projection slots declared.
 - `click(): void`
 - `escape(e: Event): void`
 - `close(focus = true): void`
+- `pointerDown(event: PointerEvent): void`
+- `pointerEnd(): void`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
 
@@ -153,6 +156,7 @@ import { ButtonComponent } from "../button.component";
 - `maxWidth`: [MaxWidth](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--max-width) — Limits how wide the component can grow. Here it is set to “90vw”.
 - `showDelay`: [ShowDelay](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--show-delay) — Sets the delay before anchored content appears. Here it is set to “158”.
 - `hideDelay`: [HideDelay](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--hide-delay) — Sets the delay before anchored content disappears. Here it is set to “108”.
+- `longPressDelay`: [LongPressDelay](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--long-press-delay) — Demonstrates the long press delay setting on this tooltip directive. Here it is set to “558”.
 - `closeOnEscape`: [CloseOnEscapeFalse](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--close-on-escape-false) — Controls dismissal with the Escape key. This example has it turned off. Open the example and try the relevant pointer or keyboard action.
 - `closeOnEscape`: [CloseOnEscapeTrue](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--close-on-escape-true) — Controls dismissal with the Escape key. This example has it turned on. Open the example and try the relevant pointer or keyboard action.
 - `closeOnOutside`: [CloseOnOutsideFalse](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--close-on-outside-false) — Controls dismissal when clicking outside the anchored content. This example has it turned off. Open the example and try the relevant pointer or keyboard action.
@@ -161,6 +165,7 @@ import { ButtonComponent } from "../button.component";
 - `ariaLabel`: [AriaLabel](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--aria-label) — Changes the accessible name announced by assistive technology. Here it is set to “Custom accessible dialog name”.
 - `dlTooltip`: [DlTooltip](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--dl-tooltip) — Demonstrates the dl tooltip setting on this tooltip directive. Here it is set to “A custom tooltip.”.
 - `trigger`: [TriggerHover](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--trigger-hover) — Chooses the interaction that opens the anchored content. Here it is set to “hover”. Open the example and try the relevant pointer or keyboard action.
+- `trigger`: [TriggerLongpress](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--trigger-longpress) — Chooses the interaction that opens the anchored content. Here it is set to “longpress”. Open the example and try the relevant pointer or keyboard action.
 - `trigger`: [TriggerManual](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-configuration--trigger-manual) — Chooses the interaction that opens the anchored content. Here it is set to “manual”. Open the example and try the relevant pointer or keyboard action.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/overlays-tooltip-directive-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.

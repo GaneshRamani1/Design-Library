@@ -12,6 +12,7 @@ import { OverlayBase, overlayStyles, overlayTemplate } from "./overlay-base";
 })
 export class BottomSheetComponent extends OverlayBase {
   override readonly height = input<string | null>("90dvh");
+  override readonly showDragHandle = input(true);
   protected override readonly defaultPlacement = "bottom" as const;
   protected override readonly dialogRole = "dialog" as const;
 }

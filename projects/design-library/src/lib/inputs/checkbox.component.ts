@@ -1,9 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   forwardRef,
   input,
   model,
+  output,
 } from "@angular/core";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 import {
@@ -24,7 +26,7 @@ import {
     },
   ],
   template:
-    `<label class="choice" [class.reverse]="labelPosition() === 'start'"><input type="checkbox" [id]="id() + '-control'" [checked]="!!value()" [indeterminate]="indeterminate()" [disabled]="isDisabled()" [required]="required()" [attr.aria-describedby]="descriptionId()" [attr.aria-invalid]="error() ? true : null" (change)="change($event)" (blur)="onTouched()"/><span>{{label()}}{{required() ? ' *' : ''}} @if(description()){<small>{{description()}}</small>}</span></label>` +
+    `<label class="choice" [class.reverse]="labelPosition() === 'start'"><input type="checkbox" [id]="id() + '-control'" [checked]="resolvedChecked()" [indeterminate]="resolvedIndeterminate()" [disabled]="isDisabled()" [required]="required()" [attr.aria-describedby]="descriptionId()" [attr.aria-invalid]="error() ? true : null" (change)="change($event)" (blur)="onTouched()"/><span>{{label()}}{{required() ? ' *' : ''}} @if(description()){<small>{{description()}}</small>}</span></label>` +
     fieldMessage,
   styles: [
     fieldStyles,
@@ -70,9 +72,16 @@ export class CheckboxComponent extends FormControlBase<boolean> {
   readonly indeterminate = model(false);
   readonly description = input("");
   readonly labelPosition = input<"start" | "end">("end");
+  readonly checkedCount = input<number | null>(null);
+  readonly totalCount = input<number | null>(null);
+  readonly cascade = output<boolean>();
+  readonly resolvedChecked = computed(() => this.totalCount() !== null && this.checkedCount() !== null ? this.totalCount()! > 0 && this.checkedCount()! >= this.totalCount()! : !!this.value());
+  readonly resolvedIndeterminate = computed(() => this.totalCount() !== null && this.checkedCount() !== null ? this.checkedCount()! > 0 && this.checkedCount()! < this.totalCount()! : this.indeterminate());
   change(event: Event): void {
     if (this.isDisabled()) return;
     this.indeterminate.set(false);
-    this.commit((event.target as HTMLInputElement).checked);
+    const checked = (event.target as HTMLInputElement).checked;
+    this.commit(checked);
+    if (this.totalCount() !== null) this.cascade.emit(checked);
   }
 }

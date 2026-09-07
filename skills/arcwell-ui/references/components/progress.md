@@ -36,10 +36,15 @@ Show progress within configured bounds. Compare numeric, labeled and indetermina
 | trackColor | string | "var(--dl-track)" | input | ProgressComponent | See the dedicated configuration story below. |
 | barColor | string | "var(--dl-primary)" | input | ProgressComponent | See the dedicated configuration story below. |
 | valueLabel | string | "{percent}%" | input | ProgressComponent | See the dedicated configuration story below. |
+| variant | "linear" \| "circular" | "linear" | input | ProgressComponent | See the dedicated configuration story below. |
+| segments | number | 1 | input | ProgressComponent | See the dedicated configuration story below. |
+| circleSize | string | "72px" | input | ProgressComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
-No declared outputs. Projected controls keep their own event handlers.
+| Event | Payload |
+|---|---|
+| completed | { value: number; max: number; } |
 
 ## Projection slots
 
@@ -118,6 +123,10 @@ import { ProgressComponent } from "./progress.component";
 - `trackColor`: [TrackColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--track-color) — Demonstrates the track color setting on this progress. Here it is set to “#3f3f46”.
 - `barColor`: [BarColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--bar-color) — Demonstrates the bar color setting on this progress. Here it is set to “#a78bfa”.
 - `valueLabel`: [ValueLabel](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--value-label) — Customizes the text for the value action. Here it is set to “{value} complete ({percent}%)”.
+- `variant`: [VariantLinear](http://127.0.0.1:6006/?path=/story/feedback-progress-variations--variant-linear) — Changes the visual treatment. Here it is set to “linear”.
+- `variant`: [VariantCircular](http://127.0.0.1:6006/?path=/story/feedback-progress-variations--variant-circular) — Changes the visual treatment. Here it is set to “circular”.
+- `segments`: [Segments](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--segments) — Demonstrates the segments setting on this progress. Here it is set to “9”.
+- `circleSize`: [CircleSize](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--circle-size) — Demonstrates the circle size setting on this progress. Here it is set to “Custom circleSize”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -128,6 +137,7 @@ import { ProgressComponent } from "./progress.component";
 - `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `event.completed`: [EventCompleted](http://127.0.0.1:6006/?path=/story/feedback-progress-events--event-completed) — Try the progress below and inspect completed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

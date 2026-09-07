@@ -35,6 +35,7 @@ A native button with consistent variants, sizes, and loading feedback.
 | size | "sm" \| "md" \| "lg" | "md" | input | ButtonComponent | See the dedicated configuration story below. |
 | disabled | boolean | false | input | ButtonComponent | See the dedicated configuration story below. |
 | loading | boolean | false | input | ButtonComponent | See the dedicated configuration story below. |
+| loadingMinWidth | string | "" | input | ButtonComponent | Optional stable minimum width applied while loading. |
 | type | "button" \| "submit" \| "reset" | "button" | input | ButtonComponent | See the dedicated configuration story below. |
 
 ## Outputs
@@ -133,6 +134,7 @@ import { FabButtonComponent } from "./actions/fab-button.component";
 - `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/actions-button-configuration--disabled-true) — Prevents user interaction. This example has it turned on.
 - `loading`: [LoadingFalse](http://127.0.0.1:6006/?path=/story/actions-button-configuration--loading-false) — Shows the loading state. This example has it turned off.
 - `loading`: [LoadingTrue](http://127.0.0.1:6006/?path=/story/actions-button-configuration--loading-true) — Shows the loading state. This example has it turned on.
+- `loadingMinWidth`: [LoadingMinWidth](http://127.0.0.1:6006/?path=/story/actions-button-configuration--loading-min-width) — Demonstrates the loading min width setting on this button. Here it is set to “Custom loadingMinWidth”.
 - `type`: [TypeButton](http://127.0.0.1:6006/?path=/story/actions-button-configuration--type-button) — Demonstrates the type setting on this button. Here it is set to “button”.
 - `type`: [TypeSubmit](http://127.0.0.1:6006/?path=/story/actions-button-configuration--type-submit) — Demonstrates the type setting on this button. Here it is set to “submit”.
 - `type`: [TypeReset](http://127.0.0.1:6006/?path=/story/actions-button-configuration--type-reset) — Demonstrates the type setting on this button. Here it is set to “reset”.
