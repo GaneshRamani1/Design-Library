@@ -54,7 +54,7 @@ test("container variants preserve layout and respect appearance overrides", asyn
     ),
   ).toBe(true);
   await page.goto(
-    "/iframe.html?id=layout-container-appearance-style-overrides-background--appearance-background&viewMode=story&args=variant:primary",
+    "/iframe.html?id=layout-container-appearance--appearance-background&viewMode=story&args=variant:primary",
   );
   await expect(page.locator("dl-container").first()).toHaveAttribute(
     "data-variant",

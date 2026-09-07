@@ -87,8 +87,8 @@ test("vertical navigation stacks its content and long snackbar actions remain re
 }) => {
   await page.setViewportSize({ width: 320, height: 640 });
   for (const id of [
-    "navigation-tab-container-layout-and-sizing-orientation--orientation-vertical",
-    "navigation-stepper-container-layout-and-sizing-orientation--orientation-vertical",
+    "navigation-tab-container-configuration--orientation-vertical",
+    "navigation-stepper-container-configuration--orientation-vertical",
   ]) {
     await page.goto(`/iframe.html?id=${id}&viewMode=story`);
     await expect(page.locator(".vertical")).toHaveCSS(

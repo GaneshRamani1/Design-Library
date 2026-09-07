@@ -57,7 +57,7 @@ test("models and inherited outputs both log while controls keep working", async 
 }) => {
   const canvas = await open(
     page,
-    "inputs-checkbox-events-indeterminate-change--event-indeterminate-change",
+    "inputs-checkbox-events--event-indeterminate-change",
   );
   await canvas.locator("dl-checkbox input").click();
   await logged(page, "CheckboxComponent.indeterminateChange");
@@ -96,7 +96,7 @@ test("event stories enable dismissal, tile actions and breadcrumb expansion", as
 }) => {
   let canvas = await open(
     page,
-    "feedback-alert-events-dismissed--event-dismissed",
+    "feedback-alert-events--event-dismissed",
   );
   await canvas.getByRole("button", { name: "Dismiss alert" }).click();
   await logged(page, "AlertComponent.dismissed");
@@ -109,7 +109,7 @@ test("event stories enable dismissal, tile actions and breadcrumb expansion", as
   ).toHaveCount(1);
   canvas = await open(
     page,
-    "navigation-breadcrumb-events-expanded--event-expanded",
+    "navigation-breadcrumb-events--event-expanded",
   );
   await canvas
     .getByRole("button", { name: "Show full breadcrumb path" })

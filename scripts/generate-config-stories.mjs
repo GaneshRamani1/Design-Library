@@ -379,6 +379,14 @@ function titleCase(value) {
     .map((s) => s[0].toUpperCase() + s.slice(1))
     .join("");
 }
+function mdxText(value) {
+  return String(value ?? "")
+    .replaceAll("|", "\\|")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll("{", "&#123;")
+    .replaceAll("}", "&#125;");
+}
 const manifest = [];
 for (const [name, c] of classes) {
   if (!/\.(component|directive)\.ts$/.test(c.file)) continue;
@@ -388,6 +396,7 @@ for (const [name, c] of classes) {
   );
   if (!fs.existsSync(storyFile)) continue;
   const content = fs.readFileSync(storyFile, "utf8");
+  const hasDefault = /export const Default\b/.test(content);
   const baseMetaSource = content.slice(
     0,
     content.indexOf("export default meta"),
@@ -413,18 +422,94 @@ for (const [name, c] of classes) {
           category: catalogGroupFor(f.name).split("/")[0],
           subcategory: groupFor(f.name),
         },
-        description: `Configure ${f.name}. See its dedicated setting folder for examples of each supported mode.`,
-        ...(union(f.type).length
-          ? { control: "select", options: union(f.type) }
-          : {}),
+        description: explanation(
+          f.name,
+          literal(f.initial),
+          title.split("/").at(-1),
+        ),
+        table: {
+          category: catalogGroupFor(f.name).split("/")[0],
+          subcategory: groupFor(f.name),
+          type: { summary: f.type?.getText(f.source) ?? "inferred" },
+          defaultValue: {
+            summary: f.initial?.getText(f.source) ??
+              (f.kind === "model" ? "model" : "required"),
+          },
+        },
+        ...(union(f.type).length === 2 &&
+        union(f.type).every((value) => typeof value === "boolean")
+          ? { control: "boolean" }
+          : union(f.type).length
+            ? { control: "select", options: union(f.type) }
+            : /number/.test(f.type?.getText(f.source) ?? "")
+              ? { control: "number" }
+              : /string/.test(f.type?.getText(f.source) ?? "")
+                ? { control: "text" }
+                : { control: "object" }),
       },
     ]),
   );
+  for (const event of events)
+    descriptions[event] = {
+      control: false,
+      table: { category: "Outputs" },
+      description: `Emitted by ${title.split("/").at(-1)} during interaction and logged in Storybook Actions.`,
+    };
+  if (name === "CardComponent") {
+    Object.assign(descriptions, {
+      heading: {
+        ...descriptions.heading,
+        control: "text",
+        description:
+          "Text rendered in the optional Card header. Leave it empty when projected content provides the heading.",
+      },
+      description: {
+        ...descriptions.description,
+        control: "text",
+        description:
+          "Supporting copy displayed below the heading inside the Card header.",
+      },
+      headingLevel: {
+        ...descriptions.headingLevel,
+        description:
+          "Semantic heading element used for the generated title: h2, h3, or h4. Choose it from the surrounding page hierarchy, not visual size.",
+      },
+      showHeader: {
+        ...descriptions.showHeader,
+        control: "boolean",
+        description:
+          "Shows the generated header when a heading is present. Disable it when the projected body owns its heading structure.",
+      },
+      showFooter: {
+        ...descriptions.showFooter,
+        control: "boolean",
+        description:
+          "Displays content projected with the cardFooter attribute in a separated footer region.",
+      },
+      surface: {
+        ...descriptions.surface,
+        description:
+          "Selects the Card surface treatment: translucent glass, opaque solid, or transparent.",
+      },
+      appearance: {
+        ...descriptions.appearance,
+        control: "object",
+        description:
+          "Applies coordinated instance-level values such as padding, radius, border, background, color, and shadow.",
+      },
+      styleTokens: {
+        ...descriptions.styleTokens,
+        control: "object",
+        description:
+          "Overrides Card CSS custom properties for reusable theme-level customization.",
+      },
+    });
+  }
   const buckets = new Map();
   function addStory(prop, exportName, story, value) {
-    const group = catalogGroupFor(prop),
+    const group = catalogGroupFor(prop).split("/")[0],
       setting = settingName(prop),
-      storyTitle = `${title}/${group}/${setting}`;
+      storyTitle = `${title}/${group}`;
     const description = explanation(prop, value, title.split("/").at(-1));
     story.parameters = {
       ...story.parameters,
@@ -432,7 +517,7 @@ for (const [name, c] of classes) {
       configuration: { property: prop.replace(/^event\./, ""), value },
       docs: { ...story.parameters?.docs, description: { story: description } },
     };
-    const bucket = buckets.get(storyTitle) ?? { group, setting, stories: [] };
+    const bucket = buckets.get(storyTitle) ?? { group, stories: [] };
     bucket.stories.push({ exportName, story });
     buckets.set(storyTitle, bucket);
     records.push({
@@ -443,7 +528,7 @@ for (const [name, c] of classes) {
       group,
       description,
       id: toId(
-        `${title}/${groupFor(prop)}/${setting}`,
+        storyTitle,
         storyNameFromExport(exportName),
       ),
     });
@@ -602,20 +687,26 @@ for (const [name, c] of classes) {
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-|-$/g, "");
   for (const [storyTitle, bucket] of buckets) {
+    if (name === "CardComponent") continue;
     const file = path.join(
       path.dirname(c.file),
       "stories",
       path.basename(c.file).replace(/\.(component|directive)\.ts$/, ""),
-      ...bucket.group.split("/").map(slug),
-      slug(bucket.setting) + ".stories.ts",
+      slug(bucket.group) + ".stories.ts",
     );
     const relative = (target) => {
       let rel = path.relative(path.dirname(file), target).replace(/\.ts$/, "");
       return rel.startsWith(".") ? rel : "./" + rel;
     };
-    let out = `// Generated by scripts/generate-config-stories.mjs. Edit the generator, then regenerate.\nimport type { Meta, StoryObj } from "@storybook/angular";\nimport baseMeta from ${JSON.stringify(relative(storyFile))};\nimport { ${name} } from ${JSON.stringify(relative(c.file))};\nconst meta: Meta<${name}> = { title: ${JSON.stringify(storyTitle)}, id: ${JSON.stringify(toId(`${title}/${groupFor(records.find((r) => r.title === storyTitle).prop)}/${bucket.setting}`))}, component: ${name}, tags: [], args: baseMeta.args, ${inheritsRender ? "render: (args, context) => baseMeta.render!(args, context), " : ""}decorators: baseMeta.decorators, parameters: baseMeta.parameters, argTypes: ${JSON.stringify(descriptions)} };\nexport default meta;\ntype Story = StoryObj<${name}>;\n`;
-    for (const { exportName, story } of bucket.stories)
-      out += `export const ${exportName}: Story = ${JSON.stringify(story).replace(/^\{"name":/, "{name:")};\n`;
+    let out = `// Generated by scripts/generate-config-stories.mjs. Edit the generator, then regenerate.\nimport type { Meta, StoryObj } from "@storybook/angular";\nimport baseMeta${hasDefault ? ", { Default as baseStory }" : ""} from ${JSON.stringify(relative(storyFile))};\nimport { ${name} } from ${JSON.stringify(relative(c.file))};\nconst meta: Meta<${name}> = { ...baseMeta, title: ${JSON.stringify(storyTitle)}, id: ${JSON.stringify(toId(storyTitle))}, component: ${name}, tags: [], args: { ...baseMeta.args }, argTypes: { ...baseMeta.argTypes, ...${JSON.stringify(descriptions)} } };\nexport default meta;\ntype Story = StoryObj<${name}>;\n`;
+    if (bucket.group === "Configuration")
+      out += `export const Default: Story = { ${hasDefault ? "...baseStory," : ""} parameters: { ${hasDefault ? "...baseStory.parameters," : ""} storyNote: "Start with the recommended defaults, then use Controls to configure every public input." } };\n`;
+    for (const { exportName, story } of bucket.stories) {
+      const storySource = JSON.stringify(story).replace(/^\{"name":/, "{name:");
+      out += hasDefault
+        ? `export const ${exportName}: Story = { ...baseStory, ...${storySource}, args: { ...baseStory.args, ...${JSON.stringify(story.args ?? {})} }, parameters: { ...baseStory.parameters, ...${JSON.stringify(story.parameters ?? {})} } };\n`
+        : `export const ${exportName}: Story = ${storySource};\n`;
+    }
     writeOutput(file, out);
   }
 
@@ -634,27 +725,388 @@ for (const [name, c] of classes) {
     .replace(/\.ts$/, "");
   const overviewTitle = `${title}/Configuration/Overview`;
   const overviewId = toId(overviewTitle, "overview");
-  const hasDefault = /export const Default\b/.test(content);
-  writeOutput(
-    overviewFile,
-    `// Generated by scripts/generate-config-stories.mjs. Edit the generator, then regenerate.
-import type { Meta, StoryObj } from "@storybook/angular";
-import baseMeta${hasDefault ? ", { Default as baseStory }" : ""} from ${JSON.stringify(overviewImport.startsWith(".") ? overviewImport : "./" + overviewImport)};
-import { ${name} } from ${JSON.stringify(overviewComponent.startsWith(".") ? overviewComponent : "./" + overviewComponent)};
-const meta: Meta<${name}> = { id: ${JSON.stringify(toId(overviewTitle))}, title: ${JSON.stringify(overviewTitle)}, component: ${name}, tags: [], args: baseMeta.args, ${inheritsRender ? "render: (args, context) => baseMeta.render!(args, context), " : ""}decorators: baseMeta.decorators, parameters: baseMeta.parameters, argTypes: ${JSON.stringify(descriptions)} };
+
+  if (name === "CardComponent") {
+    const cardDirectory = path.join(path.dirname(c.file), "stories", "card");
+    const relativeFromCard = (target) => {
+      let rel = path.relative(cardDirectory, target).replace(/\.ts$/, "");
+      return rel.startsWith(".") ? rel : "./" + rel;
+    };
+    const cardArgs = JSON.stringify({
+      heading: "A little structure. A lot of possibility.",
+      description: "A flexible container for your next great idea.",
+      showHeader: true,
+      showFooter: false,
+      headingLevel: 3,
+      surface: "glass",
+      appearance: {},
+      styleTokens: {},
+    });
+    const sharedMeta = `component: CardComponent, tags: [], args: ${cardArgs}, render: (args) => ({ props: args, template: \`<dl-card \${argsToTemplate(args)}><p>Compose any content inside this card.</p><span cardFooter>Optional footer content.</span></dl-card>\` })`;
+    const cardOverrideStories = Object.entries(appearance)
+      .map(
+        ([property, value]) =>
+          `export const ${titleCase(property)}: Story = { args: { appearance: { ${property}: ${JSON.stringify(value)} } }, parameters: { storyNote: ${JSON.stringify(explanation("appearance." + property, value, "Card"))} } };`,
+      )
+      .join("\n");
+    writeOutput(
+      path.join(cardDirectory, "configuration.stories.ts"),
+      `// Generated by scripts/generate-config-stories.mjs. Edit the generator, then regenerate.
+import { argsToTemplate, type Meta, type StoryObj } from "@storybook/angular";
+import { CardComponent } from ${JSON.stringify(relativeFromCard(c.file))};
+const meta: Meta<CardComponent> = { id: "layout-card-configuration", title: "Layout/Card/Configuration", ${sharedMeta}, argTypes: ${JSON.stringify(descriptions)} };
 export default meta;
-export const Overview: StoryObj<${name}> = { ${hasDefault ? "args: baseStory.args, render: baseStory.render, play: baseStory.play," : ""} parameters: { storyNote: "Start here: configure the component using Controls below. Browse individual settings next, then Variations, Events and Appearance.", controls: { expanded: true, sort: "requiredFirst" } } };
+type Story = StoryObj<CardComponent>;
+export const Default: Story = { parameters: { storyNote: "The recommended card configuration includes a heading and description with optional projected body content." } };
+export const HideHeader: Story = { args: { showHeader: false }, parameters: { storyNote: "Hide the generated header when the projected content supplies its own heading structure." } };
+export const ShowFooter: Story = { args: { showFooter: true }, parameters: { storyNote: "Show the footer slot for secondary actions, summaries, or supporting metadata." } };
+export const HeadingLevel2: Story = { name: "Heading level 2", args: { headingLevel: 2 }, parameters: { storyNote: "Use level 2 when the card heading begins a major page section." } };
+export const HeadingLevel3: Story = { name: "Heading level 3", args: { headingLevel: 3 }, parameters: { storyNote: "Level 3 is the default for cards nested within a page section." } };
+export const HeadingLevel4: Story = { name: "Heading level 4", args: { headingLevel: 4 }, parameters: { storyNote: "Use level 4 for cards nested within a more detailed content hierarchy." } };
+export const CustomContent: Story = { args: { heading: "Quarterly performance", description: "Updated five minutes ago", showFooter: true }, parameters: { storyNote: "Heading, description, body projection, and footer projection can be composed as one content surface." } };
 `,
+    );
+    writeOutput(
+      path.join(cardDirectory, "appearance.stories.ts"),
+      `// Generated by scripts/generate-config-stories.mjs. Edit the generator, then regenerate.
+import { argsToTemplate, type Meta, type StoryObj } from "@storybook/angular";
+import { CardComponent } from ${JSON.stringify(relativeFromCard(c.file))};
+const meta: Meta<CardComponent> = { id: "layout-card-appearance", title: "Layout/Card/Appearance", ${sharedMeta}, argTypes: ${JSON.stringify(descriptions)} };
+export default meta;
+type Story = StoryObj<CardComponent>;
+export const Default: Story = { parameters: { storyNote: "The default appearance inherits the active light or dark theme tokens." } };
+export const CustomStyles: Story = { args: { appearance: { padding: "32px", radius: "24px", borderWidth: "2px", borderColor: "#a78bfa", background: "#251c32", color: "#f5edff", shadow: "0 18px 48px #7c3aed33" } }, parameters: { storyNote: "Use the appearance object when one card needs several coordinated visual overrides." } };
+export const ThemeTokens: Story = { args: { styleTokens: { "--dl-card-surface": "#13231b", "--dl-card-border": "#3f7255", "--dl-card-radius": "20px", "--dl-card-shadow": "0 16px 40px #0005" } }, parameters: { storyNote: "Theme tokens customize the card and can be shared across a feature or product area." } };
+export const Compact: Story = { args: { appearance: { padding: "16px", gap: "12px", radius: "10px" } }, parameters: { storyNote: "A compact appearance works for dense dashboards while preserving the same Card API." } };
+${cardOverrideStories}
+`,
+    );
+    for (const record of records) {
+      if (record.prop === "surface") {
+        record.title = "Layout/Card/Variations";
+        record.story = titleCase(record.value);
+        record.id = toId("layout-card", storyNameFromExport(record.story));
+      } else if (record.prop.startsWith("appearance.")) {
+        record.title = "Layout/Card/Appearance";
+        record.story = titleCase(record.prop.slice("appearance.".length));
+        record.id = toId(
+          "layout-card-appearance",
+          storyNameFromExport(record.story),
+        );
+      } else if (["appearance", "styleTokens"].includes(record.prop)) {
+        record.title = "Layout/Card/Appearance";
+        record.story =
+          record.prop === "styleTokens" ? "ThemeTokens" : "CustomStyles";
+        record.id = toId(
+          "layout-card-appearance",
+          storyNameFromExport(record.story),
+        );
+      } else {
+        record.title = "Layout/Card/Configuration";
+        record.story =
+          record.prop === "headingLevel"
+            ? `HeadingLevel${record.value}`
+            : record.prop === "showHeader" && record.value === false
+              ? "HideHeader"
+              : record.prop === "showFooter" && record.value === true
+                ? "ShowFooter"
+                : ["heading", "description"].includes(record.prop)
+                  ? "CustomContent"
+                  : "Default";
+        record.id = toId(
+          "layout-card-configuration",
+          storyNameFromExport(record.story),
+        );
+      }
+    }
+  }
+
+  const componentSlug = path
+    .basename(c.file)
+    .replace(/\.(component|directive)\.ts$/, "");
+  const componentStoryDirectory = path.join(
+    path.dirname(c.file),
+    "stories",
+    componentSlug,
   );
-  records.unshift({
-    prop: "overview",
-    story: "Overview",
-    title: overviewTitle,
-    group: "Configuration",
-    description:
-      "Configure the component using Controls, then explore individual settings.",
-    id: overviewId,
-  });
+  const playgroundFile = path.join(
+    componentStoryDirectory,
+    "playground.stories.ts",
+  );
+  const playgroundStoryImport = path
+    .relative(path.dirname(playgroundFile), storyFile)
+    .replace(/\.ts$/, "");
+  const playgroundComponentImport = path
+    .relative(path.dirname(playgroundFile), c.file)
+    .replace(/\.ts$/, "");
+  const playgroundTitle = `${title}/Playground`;
+  if (name === "CardComponent")
+    writeOutput(
+      playgroundFile,
+      `// Generated by scripts/generate-config-stories.mjs. Edit the generator, then regenerate.
+import { argsToTemplate, type Meta, type StoryObj } from "@storybook/angular";
+import { ${name} } from ${JSON.stringify(playgroundComponentImport.startsWith(".") ? playgroundComponentImport : "./" + playgroundComponentImport)};
+const meta: Meta<${name}> = { id: ${JSON.stringify(toId(playgroundTitle))}, title: ${JSON.stringify(playgroundTitle)}, component: ${name}, tags: [], args: { heading: "A little structure. A lot of possibility.", description: "A flexible container for your next great idea.", showHeader: true, showFooter: false, headingLevel: 3, surface: "glass", appearance: {}, styleTokens: {} }, render: (args) => ({ props: args, template: \`<dl-card \${argsToTemplate(args)}><p>Compose any content inside this card.</p><span cardFooter>Optional footer content.</span></dl-card>\` }), argTypes: ${JSON.stringify(descriptions)} };
+export default meta;
+export const Playground: StoryObj<${name}> = { parameters: { storyNote: "Use Controls to configure every public input. Interact with the rendered component to inspect output payloads in the Actions panel.", controls: { expanded: true, sort: "requiredFirst" }, docs: { description: { story: "A complete interactive workspace for this component. Every public input is available through Controls and every output is connected to Actions." } } } };
+`,
+    );
+  else
+    writeOutput(
+      playgroundFile,
+      `// Generated by scripts/generate-config-stories.mjs. Edit the generator, then regenerate.
+import type { Meta, StoryObj } from "@storybook/angular";
+import baseMeta from ${JSON.stringify(playgroundStoryImport.startsWith(".") ? playgroundStoryImport : "./" + playgroundStoryImport)};
+import { ${name} } from ${JSON.stringify(playgroundComponentImport.startsWith(".") ? playgroundComponentImport : "./" + playgroundComponentImport)};
+const meta: Meta<${name}> = { ...baseMeta, id: ${JSON.stringify(toId(playgroundTitle))}, title: ${JSON.stringify(playgroundTitle)}, component: ${name}, tags: [], args: { ...baseMeta.args }, argTypes: { ...baseMeta.argTypes, ...${JSON.stringify(descriptions)} } };
+export default meta;
+export const Playground: StoryObj<${name}> = { parameters: { storyNote: "Use Controls to configure every public input. Interact with the rendered component to inspect output payloads in the Actions panel.", controls: { expanded: true, sort: "requiredFirst" }, docs: { description: { story: "A complete interactive workspace for this component. Every public input is available through Controls and every output is connected to Actions." } } } };
+`,
+    );
+
+  const source = fs.readFileSync(c.file, "utf8");
+  const selector = source.match(/selector:\s*["']([^"']+)/)?.[1] ?? name;
+  const slots = [
+    ...new Set(
+      [
+        ...source.matchAll(/<ng-content(?:\s+select=["']([^"']+)["'])?[^>]*>/g),
+      ].map((match) => match[1] ?? "default content"),
+    ),
+  ];
+  const featureGroups = new Map();
+  for (const field of inputs) {
+    const group = catalogGroupFor(field.name).split("/")[0];
+    featureGroups.set(group, [...(featureGroups.get(group) ?? []), field.name]);
+  }
+  const inputRows = inputs.length
+    ? inputs
+        .map(
+          (field) =>
+            `| \`${mdxText(field.name)}\` | \`${mdxText(field.type?.getText(field.source) ?? "inferred")}\` | \`${mdxText(field.initial?.getText(field.source) ?? (field.kind === "model" ? "model" : "required"))}\` | ${mdxText(explanation(field.name, literal(field.initial), title.split("/").at(-1)))} |`,
+        )
+        .join("\n")
+    : "| — | — | — | This component has no configurable inputs. |";
+  const eventRows = events.length
+    ? events
+        .map(
+          (event) =>
+            `| \`${mdxText(event)}\` | Emitted during interaction and logged in the Storybook Actions panel. |`,
+        )
+        .join("\n")
+    : "| — | This component does not expose an Angular output. Native events still behave normally. |";
+  const featureList = [...featureGroups]
+    .map(
+      ([group, props]) =>
+        `- **${mdxText(group)}:** ${props.map((prop) => `\`${mdxText(prop)}\``).join(", ")}`,
+    )
+    .join("\n");
+  const docsFile = path.join(componentStoryDirectory, "documentation.mdx");
+  if (name === "CardComponent")
+    writeOutput(
+      docsFile,
+      `{/* Generated by scripts/generate-config-stories.mjs. Edit the generator, then regenerate. */}
+import { Meta, Canvas, Controls, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as PlaygroundStories from "./playground.stories";
+import * as ConfigurationStories from "./configuration.stories";
+import * as VariationStories from "../../card.stories";
+import * as AppearanceStories from "./appearance.stories";
+
+<Meta title=${JSON.stringify(`${title}/Documentation`)} />
+
+# Card
+
+Build responsive content surfaces for dashboards, forms, settings, and grouped information. Card provides one consistent structure with projected content, an optional footer, semantic headings, three surfaces, and theme-aware styling.
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", margin: "24px 0 36px" }}>
+  <div style={{ padding: "18px", border: "1px solid var(--dl-border)", borderRadius: "12px" }}><strong>Structure</strong><br/><small>Header, body, and optional footer</small></div>
+  <div style={{ padding: "18px", border: "1px solid var(--dl-border)", borderRadius: "12px" }}><strong>Semantic headings</strong><br/><small>Heading levels 2, 3, and 4</small></div>
+  <div style={{ padding: "18px", border: "1px solid var(--dl-border)", borderRadius: "12px" }}><strong>Surfaces</strong><br/><small>Glass, solid, and transparent</small></div>
+  <div style={{ padding: "18px", border: "1px solid var(--dl-border)", borderRadius: "12px" }}><strong>Responsive</strong><br/><small>Fluid content and theme tokens</small></div>
+</div>
+
+## Start with the default
+
+The default combines a glass surface, level-three heading, description, and projected body content.
+
+<Canvas of={ConfigurationStories.Default} />
+
+## Configuration
+
+Use focused scenarios instead of browsing one folder for every property.
+
+- [Default card](?path=/story/layout-card-configuration--default)
+- [Hide the generated header](?path=/story/layout-card-configuration--hide-header)
+- [Show projected footer content](?path=/story/layout-card-configuration--show-footer)
+- [Heading level 2](?path=/story/layout-card-configuration--heading-level-2)
+- [Heading level 3](?path=/story/layout-card-configuration--heading-level-3)
+- [Heading level 4](?path=/story/layout-card-configuration--heading-level-4)
+- [Custom heading, description, and footer](?path=/story/layout-card-configuration--custom-content)
+
+## Variations
+
+Choose the surface from the visual context around the card.
+
+<Canvas of={VariationStories.Glass} />
+
+- [Glass surface](?path=/story/layout-card--glass)
+- [Solid surface](?path=/story/layout-card--solid)
+- [Transparent surface](?path=/story/layout-card--transparent)
+
+## Appearance
+
+Shared style overrides are consolidated because they all use the same \`appearance\` or \`styleTokens\` API.
+
+- [Theme default](?path=/story/layout-card-appearance--default)
+- [Coordinated custom styles](?path=/story/layout-card-appearance--custom-styles)
+- [Theme-token overrides](?path=/story/layout-card-appearance--theme-tokens)
+- [Compact dashboard treatment](?path=/story/layout-card-appearance--compact)
+${Object.keys(appearance)
+  .map(
+    (property) =>
+      `- [${titleCase(property)} override](?path=/story/layout-card-appearance--${slug(property)})`,
+  )
+  .join("\n")}
+
+<Canvas of={AppearanceStories.CustomStyles} />
+
+## Inputs
+
+Card inputs are grouped by the decision they control:
+
+- **Structure:** \`showHeader\` and \`showFooter\` determine which regions render.
+- **Content:** \`heading\`, \`description\`, and \`headingLevel\` define the generated header and its semantic hierarchy.
+- **Variation:** \`surface\` selects glass, solid, or transparent treatment.
+- **Appearance:** \`appearance\` handles one-off coordinated styling; \`styleTokens\` supplies reusable CSS token overrides.
+
+The table below contains the accepted type, default value, control, and a specific explanation for every input.
+
+<ArgTypes of={PlaygroundStories.Playground} />
+
+## Outputs
+
+Card does not emit a custom Angular output because it is a structural content surface. Interactive elements projected into its body or footer keep their own native or component outputs. For example, a projected \`button[dlButton]\` continues to emit its click event directly to the consuming application and to Storybook Actions.
+
+## Content projection
+
+- **Default slot:** place the Card's primary body content between \`<dl-card>\` and \`</dl-card>\`.
+- **Footer slot:** add \`cardFooter\` to an element and enable \`showFooter\` to render it below the divider.
+
+## Playground
+
+Use the playground after reviewing the supported patterns. Every Card input is connected to Controls.
+
+<Canvas of={PlaygroundStories.Playground} />
+
+<Controls of={PlaygroundStories.Playground} />
+
+## Accessibility
+
+- Provide the component's label, ID, and ARIA inputs whenever they are available.
+- Preserve native keyboard behavior and visible focus styles.
+- Keep disabled, read-only, loading, validation, and empty states understandable without color alone.
+- Test the playground in light and dark themes and at mobile width.
+
+## Implementation checklist
+
+1. Choose the heading level from the surrounding page hierarchy.
+2. Choose glass, solid, or transparent from the visual context.
+3. Project body content and add \`cardFooter\` only when needed.
+4. Apply appearance overrides and verify both themes and mobile width.
+`,
+    );
+  else {
+    const stageImports = [...new Set(records.map((record) => record.group))]
+      .filter((group) => ["Configuration", "Events", "Appearance"].includes(group))
+      .map((group) => {
+        const variable = group + "Stories";
+        return `import * as ${variable} from "./${slug(group)}.stories";`;
+      })
+      .join("\n");
+    const linksFor = (group) =>
+      records
+        .filter((record) => record.group === group)
+        .map(
+          (record) =>
+            `- [${mdxText(record.description)}](?path=/story/${record.id})`,
+        )
+        .join("\n") || "This component has no dedicated examples in this stage.";
+    const defaultCanvas = records.some((record) => record.group === "Configuration")
+      ? "<Canvas of={ConfigurationStories.Default} />"
+      : "<Canvas of={PlaygroundStories.Playground} />";
+    writeOutput(
+      docsFile,
+      `{/* Generated by scripts/generate-config-stories.mjs. Edit the generator, then regenerate. */}
+import { Meta, Canvas, Controls, ArgTypes } from "@storybook/addon-docs/blocks";
+import * as PlaygroundStories from "./playground.stories";
+${stageImports}
+
+<Meta title=${JSON.stringify(`${title}/Documentation`)} />
+
+# ${mdxText(title.split("/").at(-1))}
+
+Use this component through the five-stage guide below. Each example keeps the component's authoritative Angular renderer, imports, decorators, defaults, and event observers.
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", margin: "24px 0 36px" }}>
+  <div style={{ padding: "18px", border: "1px solid var(--dl-border)", borderRadius: "12px" }}><strong>Configuration</strong><br/><small>Content, behavior, states, labels, accessibility, and sizing</small></div>
+  <div style={{ padding: "18px", border: "1px solid var(--dl-border)", borderRadius: "12px" }}><strong>Variations</strong><br/><small>Supported semantic and visual modes</small></div>
+  <div style={{ padding: "18px", border: "1px solid var(--dl-border)", borderRadius: "12px" }}><strong>Events</strong><br/><small>Output payloads logged to Storybook Actions</small></div>
+  <div style={{ padding: "18px", border: "1px solid var(--dl-border)", borderRadius: "12px" }}><strong>Appearance</strong><br/><small>Instance styles and reusable theme tokens</small></div>
+</div>
+
+## Start with the default
+
+${defaultCanvas}
+
+## Configuration
+
+${linksFor("Configuration")}
+
+## Variations
+
+Use the Variations stories in the sidebar to compare the component's supported modes using realistic content.
+
+## Events
+
+${linksFor("Events")}
+
+All listed outputs are observed globally and appear in the Storybook Actions panel when the example is operated.
+
+## Appearance
+
+${linksFor("Appearance")}
+
+## Inputs
+
+Inputs are grouped by purpose in Controls. Each row explains the accepted type and the behavior it changes.
+
+<ArgTypes of={PlaygroundStories.Playground} />
+
+## Outputs
+
+| Output | Behavior |
+| --- | --- |
+${eventRows}
+
+## Content projection
+
+${slots.length ? slots.map((slot) => `- \`${mdxText(slot)}\``).join("\n") : "This component does not declare a content projection slot."}
+
+## Playground
+
+Every public input is connected to Controls. Output interactions are connected to Actions.
+
+<Canvas of={PlaygroundStories.Playground} />
+
+<Controls of={PlaygroundStories.Playground} />
+
+## Accessibility and responsive checks
+
+- Verify labels, IDs, ARIA names, keyboard behavior, disabled states, and visible focus.
+- Check narrow mobile width, fluid containers, long text, light theme, and black glass dark theme.
+- Confirm loading, validation, empty, selected, and error states without relying on color alone.
+`,
+    );
+  }
 
   manifest.push({
     component: name,
@@ -735,11 +1187,19 @@ writeOutput(
 );
 for (const rel of fs.readdirSync(root, { recursive: true })) {
   const file = path.join(root, rel);
-  if (!rel.endsWith(".stories.ts") || expectedFiles.has(file)) continue;
   if (
-    fs
-      .readFileSync(file, "utf8")
-      .startsWith("// Generated by scripts/generate-config-stories.mjs.")
+    (!rel.endsWith(".stories.ts") && !rel.endsWith(".mdx")) ||
+    expectedFiles.has(file)
+  )
+    continue;
+  const generatedSource = fs.readFileSync(file, "utf8");
+  if (
+    generatedSource.startsWith(
+      "// Generated by scripts/generate-config-stories.mjs.",
+    ) ||
+    generatedSource.startsWith(
+      "{/* Generated by scripts/generate-config-stories.mjs.",
+    )
   ) {
     if (check) throw new Error("Obsolete generated story: " + file);
     fs.unlinkSync(file);

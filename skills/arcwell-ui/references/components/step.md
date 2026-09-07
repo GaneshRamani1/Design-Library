@@ -107,30 +107,29 @@ import { StepperContainerComponent } from "./stepper-container.component";
 
 ## Configuration coverage
 
-- `overview`: [Overview](http://127.0.0.1:6006/?path=/story/navigation-step-configuration-overview--overview) — Configure the component using Controls, then explore individual settings.
-- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-custom-styles--appearance) — Overrides multiple visual properties for this instance.
-- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-theme-tokens--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
-- `value`: [Value](http://127.0.0.1:6006/?path=/story/navigation-step-values-and-validation-value--value) — Sets the selected or displayed value. Here it is set to “preferences”.
-- `label`: [Label](http://127.0.0.1:6006/?path=/story/navigation-step-content-label--label) — Customizes the visible label. Here it is set to “Custom label”.
-- `description`: [Description](http://127.0.0.1:6006/?path=/story/navigation-step-content-description--description) — Adds supporting context below the main label or heading. Here it is set to “More context, in your own words.”.
-- `icon`: [Icon](http://127.0.0.1:6006/?path=/story/navigation-step-content-icon--icon) — Changes the leading icon. Here it is set to “★”.
-- `completed`: [CompletedFalse](http://127.0.0.1:6006/?path=/story/navigation-step-states-completed--completed-false) — Marks a step as completed. This example has it turned off.
-- `completed`: [CompletedTrue](http://127.0.0.1:6006/?path=/story/navigation-step-states-completed--completed-true) — Marks a step as completed. This example has it turned on.
-- `disabled`: [DisabledFalse](http://127.0.0.1:6006/?path=/story/navigation-step-states-disabled--disabled-false) — Prevents user interaction. This example has it turned off.
-- `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/navigation-step-states-disabled--disabled-true) — Prevents user interaction. This example has it turned on.
-- `optional`: [OptionalFalse](http://127.0.0.1:6006/?path=/story/navigation-step-states-optional--optional-false) — Demonstrates the optional setting on this step. This example has it turned off.
-- `optional`: [OptionalTrue](http://127.0.0.1:6006/?path=/story/navigation-step-states-optional--optional-true) — Demonstrates the optional setting on this step. This example has it turned on.
-- `error`: [Error](http://127.0.0.1:6006/?path=/story/navigation-step-states-error--error) — Displays an error message or error state. Here it is set to “Please review this value.”.
-- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-style-overrides-padding--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-style-overrides-radius--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-style-overrides-border-width--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-style-overrides-border-color--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-style-overrides-background--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-style-overrides-color--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-style-overrides-font-size--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-style-overrides-gap--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-style-overrides-shadow--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/navigation-step-appearance-style-overrides-focus-color--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance) — Overrides multiple visual properties for this instance.
+- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
+- `value`: [Value](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--value) — Sets the selected or displayed value. Here it is set to “preferences”.
+- `label`: [Label](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--label) — Customizes the visible label. Here it is set to “Custom label”.
+- `description`: [Description](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--description) — Adds supporting context below the main label or heading. Here it is set to “More context, in your own words.”.
+- `icon`: [Icon](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--icon) — Changes the leading icon. Here it is set to “★”.
+- `completed`: [CompletedFalse](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--completed-false) — Marks a step as completed. This example has it turned off.
+- `completed`: [CompletedTrue](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--completed-true) — Marks a step as completed. This example has it turned on.
+- `disabled`: [DisabledFalse](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--disabled-false) — Prevents user interaction. This example has it turned off.
+- `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--disabled-true) — Prevents user interaction. This example has it turned on.
+- `optional`: [OptionalFalse](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--optional-false) — Demonstrates the optional setting on this step. This example has it turned off.
+- `optional`: [OptionalTrue](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--optional-true) — Demonstrates the optional setting on this step. This example has it turned on.
+- `error`: [Error](http://127.0.0.1:6006/?path=/story/navigation-step-configuration--error) — Displays an error message or error state. Here it is set to “Please review this value.”.
+- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/navigation-step-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 
 ## Composition patterns
 

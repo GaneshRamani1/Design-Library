@@ -102,33 +102,32 @@ import { ProgressComponent } from "./progress.component";
 
 ## Configuration coverage
 
-- `overview`: [Overview](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration-overview--overview) — Configure the component using Controls, then explore individual settings.
-- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-custom-styles--appearance) — Overrides multiple visual properties for this instance.
-- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-theme-tokens--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
-- `label`: [Label](http://127.0.0.1:6006/?path=/story/feedback-progress-content-label--label) — Customizes the visible label. Here it is set to “Custom label”.
-- `value`: [Value](http://127.0.0.1:6006/?path=/story/feedback-progress-values-and-validation-value--value) — Sets the selected or displayed value. Here it is set to “2”.
-- `min`: [Min](http://127.0.0.1:6006/?path=/story/feedback-progress-values-and-validation-min--min) — Sets the lower allowed bound. Here it is set to “2”.
-- `max`: [Max](http://127.0.0.1:6006/?path=/story/feedback-progress-values-and-validation-max--max) — Sets the upper allowed bound. Here it is set to “10”.
-- `showLabel`: [ShowLabelFalse](http://127.0.0.1:6006/?path=/story/feedback-progress-visibility-show-label--show-label-false) — Controls whether label are shown. This example has it turned off.
-- `showLabel`: [ShowLabelTrue](http://127.0.0.1:6006/?path=/story/feedback-progress-visibility-show-label--show-label-true) — Controls whether label are shown. This example has it turned on.
-- `showValue`: [ShowValueFalse](http://127.0.0.1:6006/?path=/story/feedback-progress-visibility-show-value--show-value-false) — Controls whether value are shown. This example has it turned off.
-- `showValue`: [ShowValueTrue](http://127.0.0.1:6006/?path=/story/feedback-progress-visibility-show-value--show-value-true) — Controls whether value are shown. This example has it turned on.
-- `indeterminate`: [IndeterminateFalse](http://127.0.0.1:6006/?path=/story/feedback-progress-states-indeterminate--indeterminate-false) — Shows a mixed checkbox state. This example has it turned off.
-- `indeterminate`: [IndeterminateTrue](http://127.0.0.1:6006/?path=/story/feedback-progress-states-indeterminate--indeterminate-true) — Shows a mixed checkbox state. This example has it turned on.
-- `height`: [Height](http://127.0.0.1:6006/?path=/story/feedback-progress-layout-and-sizing-height--height) — Sets an explicit height. Here it is set to “280px”.
-- `trackColor`: [TrackColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-track-color--track-color) — Demonstrates the track color setting on this progress. Here it is set to “#3f3f46”.
-- `barColor`: [BarColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-bar-color--bar-color) — Demonstrates the bar color setting on this progress. Here it is set to “#a78bfa”.
-- `valueLabel`: [ValueLabel](http://127.0.0.1:6006/?path=/story/feedback-progress-content-value-label--value-label) — Customizes the text for the value action. Here it is set to “{value} complete ({percent}%)”.
-- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-style-overrides-padding--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-style-overrides-radius--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-style-overrides-border-width--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-style-overrides-border-color--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-style-overrides-background--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-style-overrides-color--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-style-overrides-font-size--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-style-overrides-gap--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-style-overrides-shadow--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance-style-overrides-focus-color--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance) — Overrides multiple visual properties for this instance.
+- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
+- `label`: [Label](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--label) — Customizes the visible label. Here it is set to “Custom label”.
+- `value`: [Value](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--value) — Sets the selected or displayed value. Here it is set to “2”.
+- `min`: [Min](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--min) — Sets the lower allowed bound. Here it is set to “2”.
+- `max`: [Max](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--max) — Sets the upper allowed bound. Here it is set to “10”.
+- `showLabel`: [ShowLabelFalse](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--show-label-false) — Controls whether label are shown. This example has it turned off.
+- `showLabel`: [ShowLabelTrue](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--show-label-true) — Controls whether label are shown. This example has it turned on.
+- `showValue`: [ShowValueFalse](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--show-value-false) — Controls whether value are shown. This example has it turned off.
+- `showValue`: [ShowValueTrue](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--show-value-true) — Controls whether value are shown. This example has it turned on.
+- `indeterminate`: [IndeterminateFalse](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--indeterminate-false) — Shows a mixed checkbox state. This example has it turned off.
+- `indeterminate`: [IndeterminateTrue](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--indeterminate-true) — Shows a mixed checkbox state. This example has it turned on.
+- `height`: [Height](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--height) — Sets an explicit height. Here it is set to “280px”.
+- `trackColor`: [TrackColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--track-color) — Demonstrates the track color setting on this progress. Here it is set to “#3f3f46”.
+- `barColor`: [BarColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--bar-color) — Demonstrates the bar color setting on this progress. Here it is set to “#a78bfa”.
+- `valueLabel`: [ValueLabel](http://127.0.0.1:6006/?path=/story/feedback-progress-configuration--value-label) — Customizes the text for the value action. Here it is set to “{value} complete ({percent}%)”.
+- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/feedback-progress-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 
 ## Composition patterns
 

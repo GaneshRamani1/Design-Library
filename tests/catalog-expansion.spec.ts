@@ -45,8 +45,8 @@ test("interactive popover focuses content, closes outside and restores focus on 
 });
 test("disabled anchored directives do not open", async ({ page }) => {
   for (const id of [
-    "overlays-tooltip-directive-states-disabled--disabled-true",
-    "overlays-popover-directive-states-disabled--disabled-true",
+    "overlays-tooltip-directive-configuration--disabled-true",
+    "overlays-popover-directive-configuration--disabled-true",
   ]) {
     await page.goto(story(id));
     const trigger = page.getByRole("button");
@@ -76,6 +76,7 @@ test("datepicker selects local dates, skips disabled dates and clears through th
     page.getByRole("button", { name: "Previous month" }),
   ).toBeDisabled();
   await page.locator('[data-date="2026-09-11"]').focus();
+  await expect(page.locator('[data-date="2026-09-11"]')).toBeFocused();
   await page.keyboard.press("ArrowRight");
   await expect(page.locator('[data-date="2026-09-13"]')).toBeFocused();
   await page.getByRole("button", { name: "Clear", exact: true }).click();
@@ -154,7 +155,7 @@ test("icon button and FAB retain native disabled behavior and matching dimension
   const box = await button.boundingBox();
   expect(box?.height).toBe(44);
   expect(box?.width).toBe(44);
-  await page.goto(story("actions-icon-button-states-loading--loading-true"));
+  await page.goto(story("actions-icon-button-configuration--loading-true"));
   await expect(
     page.getByRole("button", { name: "Add to favorites" }),
   ).toBeDisabled();

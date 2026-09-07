@@ -113,40 +113,39 @@ import { FabButtonComponent } from "./actions/fab-button.component";
 
 ## Configuration coverage
 
-- `overview`: [Overview](http://127.0.0.1:6006/?path=/story/actions-button-configuration-overview--overview) — Configure the component using Controls, then explore individual settings.
-- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/actions-button-appearance-custom-styles--appearance) — Overrides multiple visual properties for this instance.
-- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/actions-button-appearance-theme-tokens--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
-- `fullWidth`: [FullWidthFalse](http://127.0.0.1:6006/?path=/story/actions-button-layout-and-sizing-full-width--full-width-false) — Makes the button span its container. This example has it turned off.
-- `fullWidth`: [FullWidthTrue](http://127.0.0.1:6006/?path=/story/actions-button-layout-and-sizing-full-width--full-width-true) — Makes the button span its container. This example has it turned on.
-- `icon`: [Icon](http://127.0.0.1:6006/?path=/story/actions-button-content-icon--icon) — Changes the leading icon. Here it is set to “★”.
-- `iconPosition`: [IconPositionStart](http://127.0.0.1:6006/?path=/story/actions-button-layout-and-sizing-icon-position--icon-position-start) — Demonstrates the icon position setting on this button. Here it is set to “start”.
-- `iconPosition`: [IconPositionEnd](http://127.0.0.1:6006/?path=/story/actions-button-layout-and-sizing-icon-position--icon-position-end) — Demonstrates the icon position setting on this button. Here it is set to “end”.
-- `loadingLabel`: [LoadingLabel](http://127.0.0.1:6006/?path=/story/actions-button-labels-loading-label--loading-label) — Customizes the text for the loading action. Here it is set to “Working…”.
-- `variant`: [VariantPrimary](http://127.0.0.1:6006/?path=/story/actions-button-appearance-variant--variant-primary) — Changes the visual treatment. Here it is set to “primary”.
-- `variant`: [VariantSecondary](http://127.0.0.1:6006/?path=/story/actions-button-appearance-variant--variant-secondary) — Changes the visual treatment. Here it is set to “secondary”.
-- `variant`: [VariantTertiary](http://127.0.0.1:6006/?path=/story/actions-button-appearance-variant--variant-tertiary) — Changes the visual treatment. Here it is set to “tertiary”.
-- `variant`: [VariantGhost](http://127.0.0.1:6006/?path=/story/actions-button-appearance-variant--variant-ghost) — Changes the visual treatment. Here it is set to “ghost”.
-- `variant`: [VariantDanger](http://127.0.0.1:6006/?path=/story/actions-button-appearance-variant--variant-danger) — Changes the visual treatment. Here it is set to “danger”.
-- `size`: [SizeSm](http://127.0.0.1:6006/?path=/story/actions-button-layout-and-sizing-size--size-sm) — Changes the component size while keeping its proportions consistent. Here it is set to “sm”.
-- `size`: [SizeMd](http://127.0.0.1:6006/?path=/story/actions-button-layout-and-sizing-size--size-md) — Changes the component size while keeping its proportions consistent. Here it is set to “md”.
-- `size`: [SizeLg](http://127.0.0.1:6006/?path=/story/actions-button-layout-and-sizing-size--size-lg) — Changes the component size while keeping its proportions consistent. Here it is set to “lg”.
-- `disabled`: [DisabledFalse](http://127.0.0.1:6006/?path=/story/actions-button-states-disabled--disabled-false) — Prevents user interaction. This example has it turned off.
-- `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/actions-button-states-disabled--disabled-true) — Prevents user interaction. This example has it turned on.
-- `loading`: [LoadingFalse](http://127.0.0.1:6006/?path=/story/actions-button-states-loading--loading-false) — Shows the loading state. This example has it turned off.
-- `loading`: [LoadingTrue](http://127.0.0.1:6006/?path=/story/actions-button-states-loading--loading-true) — Shows the loading state. This example has it turned on.
-- `type`: [TypeButton](http://127.0.0.1:6006/?path=/story/actions-button-values-and-validation-type--type-button) — Demonstrates the type setting on this button. Here it is set to “button”.
-- `type`: [TypeSubmit](http://127.0.0.1:6006/?path=/story/actions-button-values-and-validation-type--type-submit) — Demonstrates the type setting on this button. Here it is set to “submit”.
-- `type`: [TypeReset](http://127.0.0.1:6006/?path=/story/actions-button-values-and-validation-type--type-reset) — Demonstrates the type setting on this button. Here it is set to “reset”.
-- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/actions-button-appearance-style-overrides-padding--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/actions-button-appearance-style-overrides-radius--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/actions-button-appearance-style-overrides-border-width--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/actions-button-appearance-style-overrides-border-color--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/actions-button-appearance-style-overrides-background--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/actions-button-appearance-style-overrides-color--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/actions-button-appearance-style-overrides-font-size--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/actions-button-appearance-style-overrides-gap--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/actions-button-appearance-style-overrides-shadow--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/actions-button-appearance-style-overrides-focus-color--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance) — Overrides multiple visual properties for this instance.
+- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/actions-button-appearance--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
+- `fullWidth`: [FullWidthFalse](http://127.0.0.1:6006/?path=/story/actions-button-configuration--full-width-false) — Makes the button span its container. This example has it turned off.
+- `fullWidth`: [FullWidthTrue](http://127.0.0.1:6006/?path=/story/actions-button-configuration--full-width-true) — Makes the button span its container. This example has it turned on.
+- `icon`: [Icon](http://127.0.0.1:6006/?path=/story/actions-button-configuration--icon) — Changes the leading icon. Here it is set to “★”.
+- `iconPosition`: [IconPositionStart](http://127.0.0.1:6006/?path=/story/actions-button-configuration--icon-position-start) — Demonstrates the icon position setting on this button. Here it is set to “start”.
+- `iconPosition`: [IconPositionEnd](http://127.0.0.1:6006/?path=/story/actions-button-configuration--icon-position-end) — Demonstrates the icon position setting on this button. Here it is set to “end”.
+- `loadingLabel`: [LoadingLabel](http://127.0.0.1:6006/?path=/story/actions-button-configuration--loading-label) — Customizes the text for the loading action. Here it is set to “Working…”.
+- `variant`: [VariantPrimary](http://127.0.0.1:6006/?path=/story/actions-button-variations--variant-primary) — Changes the visual treatment. Here it is set to “primary”.
+- `variant`: [VariantSecondary](http://127.0.0.1:6006/?path=/story/actions-button-variations--variant-secondary) — Changes the visual treatment. Here it is set to “secondary”.
+- `variant`: [VariantTertiary](http://127.0.0.1:6006/?path=/story/actions-button-variations--variant-tertiary) — Changes the visual treatment. Here it is set to “tertiary”.
+- `variant`: [VariantGhost](http://127.0.0.1:6006/?path=/story/actions-button-variations--variant-ghost) — Changes the visual treatment. Here it is set to “ghost”.
+- `variant`: [VariantDanger](http://127.0.0.1:6006/?path=/story/actions-button-variations--variant-danger) — Changes the visual treatment. Here it is set to “danger”.
+- `size`: [SizeSm](http://127.0.0.1:6006/?path=/story/actions-button-configuration--size-sm) — Changes the component size while keeping its proportions consistent. Here it is set to “sm”.
+- `size`: [SizeMd](http://127.0.0.1:6006/?path=/story/actions-button-configuration--size-md) — Changes the component size while keeping its proportions consistent. Here it is set to “md”.
+- `size`: [SizeLg](http://127.0.0.1:6006/?path=/story/actions-button-configuration--size-lg) — Changes the component size while keeping its proportions consistent. Here it is set to “lg”.
+- `disabled`: [DisabledFalse](http://127.0.0.1:6006/?path=/story/actions-button-configuration--disabled-false) — Prevents user interaction. This example has it turned off.
+- `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/actions-button-configuration--disabled-true) — Prevents user interaction. This example has it turned on.
+- `loading`: [LoadingFalse](http://127.0.0.1:6006/?path=/story/actions-button-configuration--loading-false) — Shows the loading state. This example has it turned off.
+- `loading`: [LoadingTrue](http://127.0.0.1:6006/?path=/story/actions-button-configuration--loading-true) — Shows the loading state. This example has it turned on.
+- `type`: [TypeButton](http://127.0.0.1:6006/?path=/story/actions-button-configuration--type-button) — Demonstrates the type setting on this button. Here it is set to “button”.
+- `type`: [TypeSubmit](http://127.0.0.1:6006/?path=/story/actions-button-configuration--type-submit) — Demonstrates the type setting on this button. Here it is set to “submit”.
+- `type`: [TypeReset](http://127.0.0.1:6006/?path=/story/actions-button-configuration--type-reset) — Demonstrates the type setting on this button. Here it is set to “reset”.
+- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/actions-button-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 
 ## Composition patterns
 

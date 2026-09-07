@@ -72,6 +72,12 @@ export interface ComponentAppearance {
 {
     heading: "A little structure. A lot of possibility.",
     description: "A flexible container for your next great idea.",
+    showHeader: true,
+    showFooter: false,
+    headingLevel: 3,
+    surface: "glass",
+    appearance: {},
+    styleTokens: {},
   }
 ```
 
@@ -98,35 +104,37 @@ import { CardComponent } from "./card.component";
 
 ## Behavioral examples
 
+- [Glass](http://127.0.0.1:6006/?path=/story/layout-card--glass)
+- [Solid](http://127.0.0.1:6006/?path=/story/layout-card--solid)
+- [Transparent](http://127.0.0.1:6006/?path=/story/layout-card--transparent)
 - [Default](http://127.0.0.1:6006/?path=/story/layout-card--default)
 
 ## Configuration coverage
 
-- `overview`: [Overview](http://127.0.0.1:6006/?path=/story/layout-card-configuration-overview--overview) — Configure the component using Controls, then explore individual settings.
-- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/layout-card-appearance-custom-styles--appearance) — Overrides multiple visual properties for this instance.
-- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/layout-card-appearance-theme-tokens--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
-- `showHeader`: [ShowHeaderFalse](http://127.0.0.1:6006/?path=/story/layout-card-visibility-show-header--show-header-false) — Controls whether header are shown. This example has it turned off.
-- `showHeader`: [ShowHeaderTrue](http://127.0.0.1:6006/?path=/story/layout-card-visibility-show-header--show-header-true) — Controls whether header are shown. This example has it turned on.
-- `showFooter`: [ShowFooterFalse](http://127.0.0.1:6006/?path=/story/layout-card-visibility-show-footer--show-footer-false) — Controls whether footer are shown. This example has it turned off.
-- `showFooter`: [ShowFooterTrue](http://127.0.0.1:6006/?path=/story/layout-card-visibility-show-footer--show-footer-true) — Controls whether footer are shown. This example has it turned on.
-- `headingLevel`: [HeadingLevel2](http://127.0.0.1:6006/?path=/story/layout-card-content-heading-level--heading-level-2) — Demonstrates the heading level setting on this card. Here it is set to “2”.
-- `headingLevel`: [HeadingLevel3](http://127.0.0.1:6006/?path=/story/layout-card-content-heading-level--heading-level-3) — Demonstrates the heading level setting on this card. Here it is set to “3”.
-- `headingLevel`: [HeadingLevel4](http://127.0.0.1:6006/?path=/story/layout-card-content-heading-level--heading-level-4) — Demonstrates the heading level setting on this card. Here it is set to “4”.
-- `surface`: [SurfaceGlass](http://127.0.0.1:6006/?path=/story/layout-card-appearance-surface--surface-glass) — Changes the surface background treatment. Here it is set to “glass”.
-- `surface`: [SurfaceSolid](http://127.0.0.1:6006/?path=/story/layout-card-appearance-surface--surface-solid) — Changes the surface background treatment. Here it is set to “solid”.
-- `surface`: [SurfaceTransparent](http://127.0.0.1:6006/?path=/story/layout-card-appearance-surface--surface-transparent) — Changes the surface background treatment. Here it is set to “transparent”.
-- `heading`: [Heading](http://127.0.0.1:6006/?path=/story/layout-card-content-heading--heading) — Customizes the heading. Here it is set to “A custom heading”.
-- `description`: [Description](http://127.0.0.1:6006/?path=/story/layout-card-content-description--description) — Adds supporting context below the main label or heading. Here it is set to “More context, in your own words.”.
-- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/layout-card-appearance-style-overrides-padding--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/layout-card-appearance-style-overrides-radius--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/layout-card-appearance-style-overrides-border-width--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/layout-card-appearance-style-overrides-border-color--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/layout-card-appearance-style-overrides-background--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/layout-card-appearance-style-overrides-color--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/layout-card-appearance-style-overrides-font-size--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/layout-card-appearance-style-overrides-gap--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/layout-card-appearance-style-overrides-shadow--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/layout-card-appearance-style-overrides-focus-color--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance`: [CustomStyles](http://127.0.0.1:6006/?path=/story/layout-card-appearance--custom-styles) — Overrides multiple visual properties for this instance.
+- `styleTokens`: [ThemeTokens](http://127.0.0.1:6006/?path=/story/layout-card-appearance--theme-tokens) — Overrides CSS theme tokens for this instance and its descendants.
+- `showHeader`: [HideHeader](http://127.0.0.1:6006/?path=/story/layout-card-configuration--hide-header) — Controls whether header are shown. This example has it turned off.
+- `showHeader`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Controls whether header are shown. This example has it turned on.
+- `showFooter`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Controls whether footer are shown. This example has it turned off.
+- `showFooter`: [ShowFooter](http://127.0.0.1:6006/?path=/story/layout-card-configuration--show-footer) — Controls whether footer are shown. This example has it turned on.
+- `headingLevel`: [HeadingLevel2](http://127.0.0.1:6006/?path=/story/layout-card-configuration--heading-level-2) — Demonstrates the heading level setting on this card. Here it is set to “2”.
+- `headingLevel`: [HeadingLevel3](http://127.0.0.1:6006/?path=/story/layout-card-configuration--heading-level-3) — Demonstrates the heading level setting on this card. Here it is set to “3”.
+- `headingLevel`: [HeadingLevel4](http://127.0.0.1:6006/?path=/story/layout-card-configuration--heading-level-4) — Demonstrates the heading level setting on this card. Here it is set to “4”.
+- `surface`: [Glass](http://127.0.0.1:6006/?path=/story/layout-card--glass) — Changes the surface background treatment. Here it is set to “glass”.
+- `surface`: [Solid](http://127.0.0.1:6006/?path=/story/layout-card--solid) — Changes the surface background treatment. Here it is set to “solid”.
+- `surface`: [Transparent](http://127.0.0.1:6006/?path=/story/layout-card--transparent) — Changes the surface background treatment. Here it is set to “transparent”.
+- `heading`: [CustomContent](http://127.0.0.1:6006/?path=/story/layout-card-configuration--custom-content) — Customizes the heading. Here it is set to “A custom heading”.
+- `description`: [CustomContent](http://127.0.0.1:6006/?path=/story/layout-card-configuration--custom-content) — Adds supporting context below the main label or heading. Here it is set to “More context, in your own words.”.
+- `appearance.padding`: [Padding](http://127.0.0.1:6006/?path=/story/layout-card-appearance--padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.radius`: [Radius](http://127.0.0.1:6006/?path=/story/layout-card-appearance--radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderWidth`: [BorderWidth](http://127.0.0.1:6006/?path=/story/layout-card-appearance--border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderColor`: [BorderColor](http://127.0.0.1:6006/?path=/story/layout-card-appearance--border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.background`: [Background](http://127.0.0.1:6006/?path=/story/layout-card-appearance--background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.color`: [Color](http://127.0.0.1:6006/?path=/story/layout-card-appearance--color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.fontSize`: [FontSize](http://127.0.0.1:6006/?path=/story/layout-card-appearance--font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.gap`: [Gap](http://127.0.0.1:6006/?path=/story/layout-card-appearance--gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.shadow`: [Shadow](http://127.0.0.1:6006/?path=/story/layout-card-appearance--shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.focusColor`: [FocusColor](http://127.0.0.1:6006/?path=/story/layout-card-appearance--focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 
 ## Composition patterns
 

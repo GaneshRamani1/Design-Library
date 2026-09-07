@@ -109,39 +109,38 @@ import { ICON_CATALOG } from "./icon-catalog";
 
 ## Configuration coverage
 
-- `overview`: [Overview](http://127.0.0.1:6006/?path=/story/data-display-icon-configuration-overview--overview) — Configure the component using Controls, then explore individual settings.
-- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-custom-styles--appearance) — Overrides multiple visual properties for this instance.
-- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-theme-tokens--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
-- `name`: [Name](http://127.0.0.1:6006/?path=/story/data-display-icon-content-name--name) — Demonstrates the name setting on this icon. Here it is set to “star”.
-- `data`: [Data](http://127.0.0.1:6006/?path=/story/data-display-icon-content-data--data) — Accepts a direct SVG icon definition.
-- `size`: [Size16](http://127.0.0.1:6006/?path=/story/data-display-icon-layout-and-sizing-size--size-16) — Changes the component size while keeping its proportions consistent. Here it is set to “16”.
-- `size`: [Size24](http://127.0.0.1:6006/?path=/story/data-display-icon-layout-and-sizing-size--size-24) — Changes the component size while keeping its proportions consistent. Here it is set to “24”.
-- `size`: [Size32](http://127.0.0.1:6006/?path=/story/data-display-icon-layout-and-sizing-size--size-32) — Changes the component size while keeping its proportions consistent. Here it is set to “32”.
-- `size`: [Size48](http://127.0.0.1:6006/?path=/story/data-display-icon-layout-and-sizing-size--size-48) — Changes the component size while keeping its proportions consistent. Here it is set to “48”.
-- `strokeWidth`: [StrokeWidth1](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-stroke-width--stroke-width-1) — Demonstrates the stroke width setting on this icon. Here it is set to “1”.
-- `strokeWidth`: [StrokeWidth2](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-stroke-width--stroke-width-2) — Demonstrates the stroke width setting on this icon. Here it is set to “2”.
-- `strokeWidth`: [StrokeWidth3](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-stroke-width--stroke-width-3) — Demonstrates the stroke width setting on this icon. Here it is set to “3”.
-- `color`: [Color](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-color--color) — Sets the foreground color. Here it is set to “#a78bfa”.
-- `fill`: [Fill](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-fill--fill) — Demonstrates the fill setting on this icon. Here it is set to “none”.
-- `label`: [Label](http://127.0.0.1:6006/?path=/story/data-display-icon-content-label--label) — Customizes the visible label. Here it is set to “Custom label”.
-- `rotation`: [Rotation](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-rotation--rotation) — Demonstrates the rotation setting on this icon. Here it is set to “8”.
-- `flip`: [FlipNone](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-flip--flip-none) — Demonstrates the flip setting on this icon. Here it is set to “none”.
-- `flip`: [FlipHorizontal](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-flip--flip-horizontal) — Demonstrates the flip setting on this icon. Here it is set to “horizontal”.
-- `flip`: [FlipVertical](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-flip--flip-vertical) — Demonstrates the flip setting on this icon. Here it is set to “vertical”.
-- `flip`: [FlipBoth](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-flip--flip-both) — Demonstrates the flip setting on this icon. Here it is set to “both”.
-- `spin`: [SpinFalse](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-spin--spin-false) — Demonstrates the spin setting on this icon. This example has it turned off.
-- `spin`: [SpinTrue](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-spin--spin-true) — Demonstrates the spin setting on this icon. This example has it turned on.
-- `fallback`: [Fallback](http://127.0.0.1:6006/?path=/story/data-display-icon-content-fallback--fallback) — Chooses the fallback when an icon name is missing. Here it is set to “star”.
-- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-style-overrides-padding--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-style-overrides-radius--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-style-overrides-border-width--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-style-overrides-border-color--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-style-overrides-background--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-style-overrides-color--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-style-overrides-font-size--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-style-overrides-gap--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-style-overrides-shadow--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance-style-overrides-focus-color--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance) — Overrides multiple visual properties for this instance.
+- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
+- `name`: [Name](http://127.0.0.1:6006/?path=/story/data-display-icon-configuration--name) — Demonstrates the name setting on this icon. Here it is set to “star”.
+- `data`: [Data](http://127.0.0.1:6006/?path=/story/data-display-icon-configuration--data) — Accepts a direct SVG icon definition.
+- `size`: [Size16](http://127.0.0.1:6006/?path=/story/data-display-icon-configuration--size-16) — Changes the component size while keeping its proportions consistent. Here it is set to “16”.
+- `size`: [Size24](http://127.0.0.1:6006/?path=/story/data-display-icon-configuration--size-24) — Changes the component size while keeping its proportions consistent. Here it is set to “24”.
+- `size`: [Size32](http://127.0.0.1:6006/?path=/story/data-display-icon-configuration--size-32) — Changes the component size while keeping its proportions consistent. Here it is set to “32”.
+- `size`: [Size48](http://127.0.0.1:6006/?path=/story/data-display-icon-configuration--size-48) — Changes the component size while keeping its proportions consistent. Here it is set to “48”.
+- `strokeWidth`: [StrokeWidth1](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--stroke-width-1) — Demonstrates the stroke width setting on this icon. Here it is set to “1”.
+- `strokeWidth`: [StrokeWidth2](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--stroke-width-2) — Demonstrates the stroke width setting on this icon. Here it is set to “2”.
+- `strokeWidth`: [StrokeWidth3](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--stroke-width-3) — Demonstrates the stroke width setting on this icon. Here it is set to “3”.
+- `color`: [Color](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--color) — Sets the foreground color. Here it is set to “#a78bfa”.
+- `fill`: [Fill](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--fill) — Demonstrates the fill setting on this icon. Here it is set to “none”.
+- `label`: [Label](http://127.0.0.1:6006/?path=/story/data-display-icon-configuration--label) — Customizes the visible label. Here it is set to “Custom label”.
+- `rotation`: [Rotation](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--rotation) — Demonstrates the rotation setting on this icon. Here it is set to “8”.
+- `flip`: [FlipNone](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--flip-none) — Demonstrates the flip setting on this icon. Here it is set to “none”.
+- `flip`: [FlipHorizontal](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--flip-horizontal) — Demonstrates the flip setting on this icon. Here it is set to “horizontal”.
+- `flip`: [FlipVertical](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--flip-vertical) — Demonstrates the flip setting on this icon. Here it is set to “vertical”.
+- `flip`: [FlipBoth](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--flip-both) — Demonstrates the flip setting on this icon. Here it is set to “both”.
+- `spin`: [SpinFalse](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--spin-false) — Demonstrates the spin setting on this icon. This example has it turned off.
+- `spin`: [SpinTrue](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--spin-true) — Demonstrates the spin setting on this icon. This example has it turned on.
+- `fallback`: [Fallback](http://127.0.0.1:6006/?path=/story/data-display-icon-configuration--fallback) — Chooses the fallback when an icon name is missing. Here it is set to “star”.
+- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/data-display-icon-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 
 ## Composition patterns
 

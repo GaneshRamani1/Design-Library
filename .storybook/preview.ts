@@ -39,8 +39,16 @@ const preview: Preview = {
         context.parameters["storyNote"] ??
         context.parameters["docs"]?.description?.story ??
         storyNote(context.title, context.name, context.args);
-      const section = context.title.split("/")[2];
-      const journey = ["Configuration", "Variations", "Events", "Appearance"];
+      const titleParts = context.title.split("/");
+      const component = titleParts[1] ?? titleParts[0] ?? "Component";
+      const section = titleParts[2];
+      const journey = [
+        "Configuration",
+        "Variations",
+        "Events",
+        "Appearance",
+        "Playground",
+      ];
       const steps = journey.includes(section)
         ? `<ol class="sb-story-journey" aria-label="Component guide">${journey.map((step, index) => `<li${step === section ? ' aria-current="step"' : ""}>${index + 1}. ${step}</li>`).join("")}</ol>`
         : "";
@@ -48,10 +56,12 @@ const preview: Preview = {
       const setting = configuration
         ? `<p class="sb-story-setting">${section === "Events" ? "Output" : "Property"}: <code>${escape(configuration.property)}</code>${configuration.value === undefined ? "" : ` <span>=</span> <code>${escape(String(JSON.stringify(configuration.value)))}</code>`}</p>`
         : "";
+      const feature = configuration?.property ?? section ?? context.name;
+      const highlight = `<div class="sb-story-highlight"><span class="sb-story-component-label">Component</span><strong>${escape(component)}</strong><span aria-hidden="true">/</span><span class="sb-story-feature-label">Feature</span><strong>${escape(String(feature))}</strong></div>`;
       const layout = context.parameters["layout"] ?? "centered";
       return componentWrapperDecorator(
         (template) =>
-          `<div class="sb-story-layout" data-layout="${escape(layout)}"><aside role="note" aria-label="About this story" class="sb-story-note" ngNonBindable><span class="sb-story-note-icon" aria-hidden="true">i</span><div><p class="sb-story-note-path">${escape(context.title.replaceAll("/", " / "))}</p><h2 class="sb-story-note-title">${escape(context.name)}</h2><p class="sb-story-note-description">${escape(String(note))}</p>${setting}${steps}</div></aside><div class="sb-story-example"><div class="sb-story-content">${template}</div></div></div>`,
+          `<div class="sb-story-layout" data-layout="${escape(layout)}"><aside role="note" aria-label="About this story" class="sb-story-note" ngNonBindable><span class="sb-story-note-icon" aria-hidden="true">i</span><div>${highlight}<p class="sb-story-note-path">${escape(context.title.replaceAll("/", " / "))}</p><h2 class="sb-story-note-title">${escape(context.name)}</h2><p class="sb-story-note-description">${escape(String(note))}</p>${setting}${steps}</div></aside><div class="sb-story-example"><div class="sb-story-content">${template}</div></div></div>`,
       )(story, context);
     },
   ],
@@ -77,10 +87,12 @@ const preview: Preview = {
           "Feedback",
         ];
         const sections = [
+          "Documentation",
           "Configuration",
           "Variations",
           "Events",
           "Appearance",
+          "Playground",
         ];
         const left = a.title.split("/"),
           right = b.title.split("/");

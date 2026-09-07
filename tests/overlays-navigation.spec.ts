@@ -43,7 +43,7 @@ test("overlay dismissal and confirmation are configurable", async ({
   page,
 }) => {
   await page.goto(
-    "/iframe.html?id=overlays-modal-behavior-close-on-escape--close-on-escape-false&viewMode=story",
+    "/iframe.html?id=overlays-modal-configuration--close-on-escape-false&viewMode=story",
   );
   await page.getByRole("button", { name: "Open modal" }).click();
   await page.keyboard.press("Escape");
@@ -84,7 +84,7 @@ test("tabs navigate by keyboard, skip disabled tabs and preserve panel state", a
 });
 test("manual tab activation waits for Enter", async ({ page }) => {
   await page.goto(
-    "/iframe.html?id=navigation-tab-container-behavior-activation--activation-manual&viewMode=story",
+    "/iframe.html?id=navigation-tab-container-configuration--activation-manual&viewMode=story",
   );
   await page.getByRole("tab", { name: "Overview", exact: true }).focus();
   await page.keyboard.press("ArrowRight");
@@ -98,7 +98,7 @@ test("linear stepper requires completion and supports finishing", async ({
   page,
 }) => {
   await page.goto(
-    "/iframe.html?id=navigation-stepper-container-behavior-linear--linear-true&viewMode=story",
+    "/iframe.html?id=navigation-stepper-container-configuration--linear-true&viewMode=story",
   );
   const next = page.getByRole("button", { name: "Next", exact: true });
   await expect(next).toBeDisabled();
@@ -116,7 +116,7 @@ test("checkbox supports indeterminate state and counter clamps edits", async ({
   page,
 }) => {
   await page.goto(
-    "/iframe.html?id=inputs-checkbox-states-indeterminate--indeterminate-true&viewMode=story",
+    "/iframe.html?id=inputs-checkbox-configuration--indeterminate-true&viewMode=story",
   );
   const checkbox = page.getByRole("checkbox");
   await expect(checkbox).toHaveJSProperty("indeterminate", true);
@@ -145,14 +145,14 @@ test("alerts and badges offer five semantic states plus custom and dismiss actio
       "custom",
     ]) {
       await page.goto(
-        `/iframe.html?id=${component}-appearance-tone--tone-${tone}&viewMode=story`,
+        `/iframe.html?id=${component}-variations--tone-${tone}&viewMode=story`,
       );
       await expect(
         page.locator(component === "feedback-alert" ? "dl-alert" : "dl-badge"),
       ).toHaveAttribute("data-tone", tone);
     }
   await page.goto(
-    "/iframe.html?id=feedback-alert-behavior-dismissible--dismissible-true&viewMode=story",
+    "/iframe.html?id=feedback-alert-configuration--dismissible-true&viewMode=story",
   );
   await page.getByRole("button", { name: "Dismiss alert" }).click();
   await expect(page.locator("dl-alert")).toBeHidden();
@@ -180,7 +180,7 @@ test("sidepanels and bottom sheets use their expected viewport edges", async ({
   expect(Math.abs(box.height - 576)).toBeLessThan(2);
   expect(Math.abs(box.y + box.height - 640)).toBeLessThan(2);
   await page.goto(
-    "/iframe.html?id=overlays-bottom-sheet-layout-and-sizing-height--height&viewMode=story",
+    "/iframe.html?id=overlays-bottom-sheet-configuration--height&viewMode=story",
   );
   await page.getByRole("button", { name: "Open bottom sheet" }).click();
   box = (await page.getByRole("dialog").boundingBox())!;

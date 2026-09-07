@@ -104,29 +104,28 @@ import { TabContainerComponent } from "./tab-container.component";
 
 ## Configuration coverage
 
-- `overview`: [Overview](http://127.0.0.1:6006/?path=/story/navigation-tab-configuration-overview--overview) — Configure the component using Controls, then explore individual settings.
-- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-custom-styles--appearance) — Overrides multiple visual properties for this instance.
-- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-theme-tokens--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
-- `value`: [Value](http://127.0.0.1:6006/?path=/story/navigation-tab-values-and-validation-value--value) — Sets the selected or displayed value. Here it is set to “activity”.
-- `label`: [Label](http://127.0.0.1:6006/?path=/story/navigation-tab-content-label--label) — Customizes the visible label. Here it is set to “Custom label”.
-- `disabled`: [DisabledFalse](http://127.0.0.1:6006/?path=/story/navigation-tab-states-disabled--disabled-false) — Prevents user interaction. This example has it turned off.
-- `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/navigation-tab-states-disabled--disabled-true) — Prevents user interaction. This example has it turned on.
-- `icon`: [Icon](http://127.0.0.1:6006/?path=/story/navigation-tab-content-icon--icon) — Changes the leading icon. Here it is set to “★”.
-- `badge`: [Badge](http://127.0.0.1:6006/?path=/story/navigation-tab-content-badge--badge) — Demonstrates the badge setting on this tab. Here it is set to “12”.
-- `closable`: [ClosableFalse](http://127.0.0.1:6006/?path=/story/navigation-tab-behavior-closable--closable-false) — Adds an action for closing a tab. This example has it turned off.
-- `closable`: [ClosableTrue](http://127.0.0.1:6006/?path=/story/navigation-tab-behavior-closable--closable-true) — Adds an action for closing a tab. This example has it turned on.
-- `closeLabel`: [CloseLabel](http://127.0.0.1:6006/?path=/story/navigation-tab-labels-close-label--close-label) — Customizes the text for the close action. Here it is set to “Dismiss window”.
-- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-style-overrides-padding--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-style-overrides-radius--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-style-overrides-border-width--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-style-overrides-border-color--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-style-overrides-background--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-style-overrides-color--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-style-overrides-font-size--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-style-overrides-gap--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-style-overrides-shadow--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance-style-overrides-focus-color--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
-- `event.closed`: [EventClosed](http://127.0.0.1:6006/?path=/story/navigation-tab-events-closed--event-closed) — Try the tab below and inspect closed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `appearance`: [Appearance](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance) — Overrides multiple visual properties for this instance.
+- `styleTokens`: [StyleTokens](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--style-tokens) — Overrides CSS theme tokens for this instance and its descendants.
+- `value`: [Value](http://127.0.0.1:6006/?path=/story/navigation-tab-configuration--value) — Sets the selected or displayed value. Here it is set to “activity”.
+- `label`: [Label](http://127.0.0.1:6006/?path=/story/navigation-tab-configuration--label) — Customizes the visible label. Here it is set to “Custom label”.
+- `disabled`: [DisabledFalse](http://127.0.0.1:6006/?path=/story/navigation-tab-configuration--disabled-false) — Prevents user interaction. This example has it turned off.
+- `disabled`: [DisabledTrue](http://127.0.0.1:6006/?path=/story/navigation-tab-configuration--disabled-true) — Prevents user interaction. This example has it turned on.
+- `icon`: [Icon](http://127.0.0.1:6006/?path=/story/navigation-tab-configuration--icon) — Changes the leading icon. Here it is set to “★”.
+- `badge`: [Badge](http://127.0.0.1:6006/?path=/story/navigation-tab-configuration--badge) — Demonstrates the badge setting on this tab. Here it is set to “12”.
+- `closable`: [ClosableFalse](http://127.0.0.1:6006/?path=/story/navigation-tab-configuration--closable-false) — Adds an action for closing a tab. This example has it turned off.
+- `closable`: [ClosableTrue](http://127.0.0.1:6006/?path=/story/navigation-tab-configuration--closable-true) — Adds an action for closing a tab. This example has it turned on.
+- `closeLabel`: [CloseLabel](http://127.0.0.1:6006/?path=/story/navigation-tab-configuration--close-label) — Customizes the text for the close action. Here it is set to “Dismiss window”.
+- `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.borderColor`: [AppearanceBorderColor](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance-border-color) — Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.background`: [AppearanceBackground](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance-background) — Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.color`: [AppearanceColor](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance-color) — Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.fontSize`: [AppearanceFontSize](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance-font-size) — Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.gap`: [AppearanceGap](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance-gap) — Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.shadow`: [AppearanceShadow](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance-shadow) — Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/navigation-tab-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
+- `event.closed`: [EventClosed](http://127.0.0.1:6006/?path=/story/navigation-tab-events--event-closed) — Try the tab below and inspect closed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 

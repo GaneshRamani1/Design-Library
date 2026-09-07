@@ -63,10 +63,18 @@ import { ChangeDetectionStrategy, Component, input } from "@angular/core";
       h2,
       h3,
       h4 {
-        font-size: var(--dl-ui-font-size, 17px);
         margin: 0 0 6px;
         font-weight: 600;
         letter-spacing: -0.4px;
+      }
+      h2 {
+        font-size: var(--dl-ui-font-size, 22px);
+      }
+      h3 {
+        font-size: var(--dl-ui-font-size, 18px);
+      }
+      h4 {
+        font-size: var(--dl-ui-font-size, 15px);
       }
       p {
         font-size: var(--dl-ui-font-size, 13px);
