@@ -35,7 +35,7 @@ Open a panel attached to a viewport edge. Try its content, dismissal and focus r
 | height | string \| null | null | input | OverlayBase | See the dedicated configuration story below. |
 | maxWidth | string | "100vw" | input | OverlayBase | See the dedicated configuration story below. |
 | maxHeight | string | "100dvh" | input | OverlayBase | See the dedicated configuration story below. |
-| placement | "auto" \| "bottom" \| "center" \| "left" \| "right" | "auto" | input | OverlayBase | See the dedicated configuration story below. |
+| placement | "auto" \| "left" \| "right" \| "bottom" \| "center" | "auto" | input | OverlayBase | See the dedicated configuration story below. |
 | padding | string | "24px" | input | OverlayBase | See the dedicated configuration story below. |
 | radius | string | "var(--dl-card-radius)" | input | OverlayBase | See the dedicated configuration story below. |
 | hasBackdrop | boolean | true | input | OverlayBase | See the dedicated configuration story below. |

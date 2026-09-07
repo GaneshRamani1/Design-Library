@@ -33,7 +33,13 @@
     "storybook:test-editor": "node --test scripts/storybook-editor.test.mjs",
     "mcp": "node mcp/server.mjs",
     "mcp:http": "node mcp/http-server.mjs",
-    "mcp:test": "node --test mcp/*.test.mjs"
+    "mcp:test": "node --test mcp/*.test.mjs",
+    "status:generate": "node scripts/generate-component-status.mjs",
+    "status:check": "node scripts/generate-component-status.mjs --check",
+    "budget:check": "node scripts/check-storybook-budget.mjs",
+    "consumer:verify": "npm run build && node scripts/verify-package-consumer.mjs",
+    "release:verify": "npm run check && npm run budget:check && npm run consumer:verify && node scripts/pack-release.mjs",
+    "release:version": "node scripts/verify-release-version.mjs"
   },
   "dependencies": {
     "@angular/animations": "22.1.5",

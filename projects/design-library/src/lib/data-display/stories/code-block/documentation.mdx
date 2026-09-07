@@ -30,6 +30,7 @@ Verify semantics, keyboard behavior, long content, and narrow layouts before rel
 - [Demonstrates the code setting on this code block. Here it is set to “Custom code”.](?path=/story/data-display-code-block-configuration--code)
 - [Demonstrates the language setting on this code block. Here it is set to “Custom language”.](?path=/story/data-display-code-block-configuration--language)
 - [Customizes the visible label. Here it is set to “Custom label”.](?path=/story/data-display-code-block-configuration--label)
+- [Demonstrates the filename setting on this code block. Here it is set to “Custom filename”.](?path=/story/data-display-code-block-configuration--filename)
 - [Changes the accessible name announced by assistive technology. Here it is set to “Custom accessible dialog name”.](?path=/story/data-display-code-block-configuration--aria-label)
 - [Controls whether header are shown. This example has it turned off.](?path=/story/data-display-code-block-configuration--show-header-false)
 - [Controls whether header are shown. This example has it turned on.](?path=/story/data-display-code-block-configuration--show-header-true)
@@ -45,6 +46,17 @@ Verify semantics, keyboard behavior, long content, and narrow layouts before rel
 - [Customizes the text for the copy action. Here it is set to “Custom copyLabel”.](?path=/story/data-display-code-block-configuration--copy-label)
 - [Customizes the text for the copied action. Here it is set to “Custom copiedLabel”.](?path=/story/data-display-code-block-configuration--copied-label)
 - [Customizes the text for the copy aria action. Here it is set to “Custom copyAriaLabel”.](?path=/story/data-display-code-block-configuration--copy-aria-label)
+- [Demonstrates the downloadable setting on this code block. This example has it turned off.](?path=/story/data-display-code-block-configuration--downloadable-false)
+- [Demonstrates the downloadable setting on this code block. This example has it turned on.](?path=/story/data-display-code-block-configuration--downloadable-true)
+- [Customizes the text for the download action. Here it is set to “Custom downloadLabel”.](?path=/story/data-display-code-block-configuration--download-label)
+- [Demonstrates the collapsible setting on this code block. This example has it turned off.](?path=/story/data-display-code-block-configuration--collapsible-false)
+- [Demonstrates the collapsible setting on this code block. This example has it turned on.](?path=/story/data-display-code-block-configuration--collapsible-true)
+- [Demonstrates the initially expanded setting on this code block. This example has it turned off.](?path=/story/data-display-code-block-configuration--initially-expanded-false)
+- [Demonstrates the initially expanded setting on this code block. This example has it turned on.](?path=/story/data-display-code-block-configuration--initially-expanded-true)
+- [Customizes the text for the collapse action. Here it is set to “Custom collapseLabel”.](?path=/story/data-display-code-block-configuration--collapse-label)
+- [Customizes the text for the expand action. Here it is set to “Custom expandLabel”.](?path=/story/data-display-code-block-configuration--expand-label)
+- [Demonstrates the playground link setting on this code block. Here it is set to “Custom playgroundLink”.](?path=/story/data-display-code-block-configuration--playground-link)
+- [Customizes the text for the playground action. Here it is set to “Custom playgroundLabel”.](?path=/story/data-display-code-block-configuration--playground-label)
 
 ## Variations
 
@@ -54,6 +66,9 @@ Use the Variations stories in the sidebar to compare the component's supported m
 
 - [Try the code block below and inspect copied in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.](?path=/story/data-display-code-block-events--event-copied)
 - [Try the code block below and inspect copyFailed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.](?path=/story/data-display-code-block-events--event-copy-failed)
+- [Try the code block below and inspect downloaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.](?path=/story/data-display-code-block-events--event-downloaded)
+- [Try the code block below and inspect expandedChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.](?path=/story/data-display-code-block-events--event-expanded-change)
+- [Try the code block below and inspect playgroundRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.](?path=/story/data-display-code-block-events--event-playground-requested)
 
 All listed outputs are observed globally and appear in the Storybook Actions panel when the example is operated.
 
@@ -84,6 +99,9 @@ Inputs are grouped by purpose in Controls. Each row explains the accepted type a
 | --- | --- |
 | `copied` | Emits the copied interaction payload. The real payload is logged in Actions. |
 | `copyFailed` | Emits the copy failed interaction payload. The real payload is logged in Actions. |
+| `downloaded` | Emits the downloaded interaction payload. The real payload is logged in Actions. |
+| `expandedChange` | Emits the expanded change interaction payload. The real payload is logged in Actions. |
+| `playgroundRequested` | Emits the playground requested interaction payload. The real payload is logged in Actions. |
 
 ## Content projection
 

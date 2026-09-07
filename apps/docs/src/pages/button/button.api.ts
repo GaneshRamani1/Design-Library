@@ -6,7 +6,8 @@ export const buttonApi: ComponentApi = {
       name: "variant",
       type: '"primary" | "secondary" | "tertiary" | "ghost" | "danger"',
       defaultValue: '"primary"',
-      description: "Sets the button's visual importance and semantic treatment.",
+      description:
+        "Sets the button's visual importance and semantic treatment.",
     },
     {
       name: "size",
@@ -24,7 +25,8 @@ export const buttonApi: ComponentApi = {
       name: "loading",
       type: "boolean",
       defaultValue: "false",
-      description: "Shows progress and disables the button while work is running.",
+      description:
+        "Shows progress and disables the button while work is running.",
     },
     {
       name: "loadingLabel",
@@ -62,7 +64,8 @@ export const buttonApi: ComponentApi = {
       name: "click",
       type: "MouseEvent",
       defaultValue: "native event",
-      description: "Fires when the user activates the button. Disabled and loading buttons do not emit it.",
+      description:
+        "Fires when the user activates the button. Disabled and loading buttons do not emit it.",
     },
   ],
 };

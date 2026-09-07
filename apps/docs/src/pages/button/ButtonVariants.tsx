@@ -35,19 +35,22 @@ export function ButtonVariants() {
           />
         </div>
       </header>
-      <div className="min-w-0"><div className="example-grid grid min-h-56 place-items-center p-8 md:min-h-64">
-        {selected.preview}
-      </div><div className="border-t border-white/10 p-5 md:p-6">
-        <p className="text-xs font-semibold uppercase tracking-[.16em] text-zinc-600">
-          When to use {selected.title.toLowerCase()}
-        </p>
-        <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-300">
-          {selected.description}
-        </p>
-        <div className="mt-5">
-          <CodeBlock code={selected.source} />
+      <div className="min-w-0">
+        <div className="example-grid grid min-h-56 place-items-center p-8 md:min-h-64">
+          {selected.preview}
         </div>
-      </div></div>
+        <div className="border-t border-white/10 p-5 md:p-6">
+          <p className="text-xs font-semibold uppercase tracking-[.16em] text-zinc-600">
+            When to use {selected.title.toLowerCase()}
+          </p>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-300">
+            {selected.description}
+          </p>
+          <div className="mt-5">
+            <CodeBlock code={selected.source} />
+          </div>
+        </div>
+      </div>
     </article>
   );
 }

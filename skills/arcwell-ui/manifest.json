@@ -230,7 +230,9 @@
     "data-display-badge-variations--variant-outline",
     "data-display-badge-variations--variant-soft",
     "data-display-badge-variations--variant-solid",
+    "data-display-code-block--collapsed",
     "data-display-code-block--default",
+    "data-display-code-block--file-actions",
     "data-display-code-block--light",
     "data-display-code-block--with-line-numbers",
     "data-display-code-block--wrapped",
@@ -248,16 +250,28 @@
     "data-display-code-block-appearance--style-tokens",
     "data-display-code-block-configuration--aria-label",
     "data-display-code-block-configuration--code",
+    "data-display-code-block-configuration--collapse-label",
+    "data-display-code-block-configuration--collapsible-false",
+    "data-display-code-block-configuration--collapsible-true",
     "data-display-code-block-configuration--copied-label",
     "data-display-code-block-configuration--copy-aria-label",
     "data-display-code-block-configuration--copy-label",
     "data-display-code-block-configuration--copyable-false",
     "data-display-code-block-configuration--copyable-true",
+    "data-display-code-block-configuration--download-label",
+    "data-display-code-block-configuration--downloadable-false",
+    "data-display-code-block-configuration--downloadable-true",
+    "data-display-code-block-configuration--expand-label",
+    "data-display-code-block-configuration--filename",
+    "data-display-code-block-configuration--initially-expanded-false",
+    "data-display-code-block-configuration--initially-expanded-true",
     "data-display-code-block-configuration--label",
     "data-display-code-block-configuration--language",
     "data-display-code-block-configuration--line-numbers-false",
     "data-display-code-block-configuration--line-numbers-true",
     "data-display-code-block-configuration--max-height",
+    "data-display-code-block-configuration--playground-label",
+    "data-display-code-block-configuration--playground-link",
     "data-display-code-block-configuration--show-header-false",
     "data-display-code-block-configuration--show-header-true",
     "data-display-code-block-configuration--theme-dark",
@@ -266,6 +280,9 @@
     "data-display-code-block-configuration--wrap-true",
     "data-display-code-block-events--event-copied",
     "data-display-code-block-events--event-copy-failed",
+    "data-display-code-block-events--event-downloaded",
+    "data-display-code-block-events--event-expanded-change",
+    "data-display-code-block-events--event-playground-requested",
     "data-display-icon--default",
     "data-display-icon--registry",
     "data-display-icon-appearance--appearance",
@@ -1655,6 +1672,8 @@
     "layout-card--default",
     "layout-card--glass",
     "layout-card--showcase",
+    "layout-card--showcase-right-rail",
+    "layout-card--showcase-scrollable-preview",
     "layout-card--solid",
     "layout-card--transparent",
     "layout-card-appearance--background",
@@ -3493,11 +3512,83 @@
           "declaredIn": "CardComponent"
         },
         {
+          "name": "railPlacement",
+          "kind": "input",
+          "required": false,
+          "type": "\"left\" | \"right\"",
+          "default": "\"left\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "railCollapsible",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "railInitiallyOpen",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "collapseRailLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Collapse controls\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "expandRailLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Expand controls\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "stickyRail",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
           "name": "previewMinHeight",
           "kind": "input",
           "required": false,
           "type": "string",
           "default": "\"240px\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "previewMaxHeight",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"none\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "previewScrollable",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
           "description": "",
           "declaredIn": "CardComponent"
         },
@@ -3614,6 +3705,10 @@
         {
           "name": "activated",
           "type": "Event"
+        },
+        {
+          "name": "railOpenChange",
+          "type": "boolean"
         }
       ],
       "slots": [
@@ -4672,6 +4767,15 @@
           "declaredIn": "CodeBlockComponent"
         },
         {
+          "name": "filename",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
           "name": "ariaLabel",
           "kind": "input",
           "required": false,
@@ -4760,6 +4864,78 @@
           "default": "\"Copy code\"",
           "description": "",
           "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "downloadable",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "downloadLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Download\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "collapsible",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "initiallyExpanded",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "collapseLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Collapse\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "expandLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Expand\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "playgroundLink",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "playgroundLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Open playground\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
         }
       ],
       "outputs": [
@@ -4770,6 +4946,18 @@
         {
           "name": "copyFailed",
           "type": "unknown"
+        },
+        {
+          "name": "downloaded",
+          "type": "string"
+        },
+        {
+          "name": "expandedChange",
+          "type": "boolean"
+        },
+        {
+          "name": "playgroundRequested",
+          "type": "string"
         }
       ],
       "slots": []
@@ -12046,7 +12234,7 @@
           "name": "placement",
           "kind": "input",
           "required": false,
-          "type": "\"auto\" | \"bottom\" | \"center\" | \"left\" | \"right\"",
+          "type": "\"auto\" | \"left\" | \"right\" | \"bottom\" | \"center\"",
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "OverlayBase"
@@ -12510,7 +12698,7 @@
           "name": "placement",
           "kind": "input",
           "required": false,
-          "type": "\"auto\" | \"bottom\" | \"center\" | \"left\" | \"right\"",
+          "type": "\"auto\" | \"left\" | \"right\" | \"bottom\" | \"center\"",
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "OverlayBase"
@@ -12974,7 +13162,7 @@
           "name": "placement",
           "kind": "input",
           "required": false,
-          "type": "\"auto\" | \"bottom\" | \"center\" | \"left\" | \"right\"",
+          "type": "\"auto\" | \"left\" | \"right\" | \"bottom\" | \"center\"",
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "OverlayBase"
@@ -13640,7 +13828,7 @@
           "name": "placement",
           "kind": "input",
           "required": false,
-          "type": "\"auto\" | \"bottom\" | \"center\" | \"left\" | \"right\"",
+          "type": "\"auto\" | \"left\" | \"right\" | \"bottom\" | \"center\"",
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "OverlayBase"
@@ -14534,10 +14722,10 @@
     "projects/design-library/src/lib/badge.stories.ts": "a3e132ff6c1fbc9d176cc1bcdf4e3ba28cdb19fd2a819983cb70a591726cd749",
     "projects/design-library/src/lib/button.component.ts": "09528ab750a3ec5c434f6f1d5cbe15658f369720b3c661586f8e45baca9a6320",
     "projects/design-library/src/lib/button.stories.ts": "29a8b4b21ca66be03a5cc2dc9acb97f4a56c0dbd1598f2db8b92eec9dd096886",
-    "projects/design-library/src/lib/card.component.ts": "51360861cdedee5b5b57fda2ddc55d5c75281bd0300fd639471cccbee4e816e5",
-    "projects/design-library/src/lib/card.stories.ts": "324525b0f2a92a17b401ff8931da29b5bb098d7330642400b31c5c465e8c3f82",
-    "projects/design-library/src/lib/data-display/code-block.component.ts": "fe16d86ff73ec7772fbbd4c9eeb5e1243f3eeb45a1e651d61254f00b5e99f686",
-    "projects/design-library/src/lib/data-display/code-block.stories.ts": "08a3d4be17eb899b4cccad0fbb6635f4960a99617e965a61eb48123c517972c2",
+    "projects/design-library/src/lib/card.component.ts": "13d73fbe1ac4e532cf6181b7b5bfb1e1260019dd6d495193d1b43e79dc596abb",
+    "projects/design-library/src/lib/card.stories.ts": "5f0cd6f6aec888d219a87bad72f8b1bfe532fe63a2a52115cd93c5862d44ec85",
+    "projects/design-library/src/lib/data-display/code-block.component.ts": "b79e664e4a0bd1dfa870b24fdca0cdada5d6ba00c4aee31b15104be8caf5c230",
+    "projects/design-library/src/lib/data-display/code-block.stories.ts": "253b5358c9f5371148c4cc2a35e7134afca1d47cd3be17b6b0445ebaec056a7c",
     "projects/design-library/src/lib/data-display/divider.component.ts": "634b59ef20f4d12ba59cc351cb60858c29722943628140e963baf6457e99880e",
     "projects/design-library/src/lib/data-display/divider.stories.ts": "09885e938338b1f6ce4eae7a72c3582236f8168f7e619201bd22ef5f920c49e6",
     "projects/design-library/src/lib/data-display/list.component.ts": "ef987b71bb6fe6afa46cf3ee06646db20e783816d9d43fb1df28b3e621d856ff",
@@ -14574,7 +14762,7 @@
     "projects/design-library/src/lib/inputs/counter-button.stories.ts": "fa97af1a60658d07766b69caffbecb6d457ebf0ba23895ad5b217de8ed818705",
     "projects/design-library/src/lib/inputs/counter.component.ts": "42ff6c75e9aab6f1343d870260d9cf277c4566b494c1f7064af4f9379695e851",
     "projects/design-library/src/lib/inputs/counter.stories.ts": "a4ad8400a01764ef7059c609843b9e4d174a6c5bdbfeeafd7221d23abcc96d4d",
-    "projects/design-library/src/lib/inputs/datepicker.component.ts": "9eba8c0661f85884946c49d51d7bafeb21adaa99a80abcbd6338c4bd92f84ed4",
+    "projects/design-library/src/lib/inputs/datepicker.component.ts": "2758ba00b50ff8e50181a06642cb0975e72e3cfba6dcd16b47992b6d704f20e2",
     "projects/design-library/src/lib/inputs/datepicker.stories.ts": "e8db7ced31993a01c8bca1a22d74e7270faaadbf1cdd5b7e47ec82e316e51a5b",
     "projects/design-library/src/lib/inputs/dropdown.component.ts": "c1de4762ab84b0b629465673bf25fe05dbecd04ef009a945b353623087087f4d",
     "projects/design-library/src/lib/inputs/dropdown.stories.ts": "6edfdc4dbf7425d328f530ef5e7f6ad48997d340899b81aa591f2f0f72d202fa",

@@ -20,5 +20,21 @@ export default meta;
 type Story = StoryObj<CodeBlockComponent>;
 export const Default: Story = {};
 export const WithLineNumbers: Story = { args: { lineNumbers: true } };
-export const Wrapped: Story = { args: { wrap: true, code: `${sample}\n<!-- Long content wraps instead of forcing the containing layout wider. -->` } };
+export const Wrapped: Story = {
+  args: {
+    wrap: true,
+    code: `${sample}\n<!-- Long content wraps instead of forcing the containing layout wider. -->`,
+  },
+};
 export const Light: Story = { args: { theme: "light" } };
+export const FileActions: Story = {
+  args: {
+    filename: "button.component.html",
+    downloadable: true,
+    playgroundLink: "https://stackblitz.com/",
+    lineNumbers: true,
+  },
+};
+export const Collapsed: Story = {
+  args: { collapsible: true, initiallyExpanded: false },
+};

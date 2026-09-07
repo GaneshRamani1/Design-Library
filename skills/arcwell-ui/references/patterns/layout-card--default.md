@@ -23,7 +23,13 @@ A composition detected from an existing explicit Storybook render recipe.
     surface: "glass",
     layout: "default",
     railWidth: "260px",
+    railPlacement: "left",
+    railCollapsible: false,
+    railInitiallyOpen: true,
+    stickyRail: false,
     previewMinHeight: "240px",
+    previewMaxHeight: "none",
+    previewScrollable: false,
     showGuidance: true,
     showCode: true,
     appearance: {},
@@ -39,7 +45,10 @@ Resolve helper constants, imported components and inherited args from the CSF so
 
 ```ts
 (args) => ({
-    props: { ...args, codeSample: '<button dlButton variant="primary">Continue</button>' },
+    props: {
+      ...args,
+      codeSample: '<button dlButton variant="primary">Continue</button>',
+    },
     template: `<dl-card ${argsToTemplate(args)}><p>Compose any content inside this card.</p><span cardFooter>Optional footer content.</span></dl-card>`,
   })
 ```

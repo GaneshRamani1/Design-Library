@@ -1,0 +1,806 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "skills/arcwell-ui/manifest.json",
+  "components": [
+    {
+      "component": "AlertComponent",
+      "selector": "dl-alert",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/alert.md"
+    },
+    {
+      "component": "AvatarComponent",
+      "selector": "dl-avatar",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/avatar.md"
+    },
+    {
+      "component": "BadgeComponent",
+      "selector": "dl-badge",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/badge.md"
+    },
+    {
+      "component": "ButtonComponent",
+      "selector": "button[dlButton]",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/button.md"
+    },
+    {
+      "component": "CardComponent",
+      "selector": "dl-card",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/card.md"
+    },
+    {
+      "component": "InputComponent",
+      "selector": "dl-input",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/input.md"
+    },
+    {
+      "component": "ProgressComponent",
+      "selector": "dl-progress",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/progress.md"
+    },
+    {
+      "component": "ToggleComponent",
+      "selector": "dl-toggle",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/toggle.md"
+    },
+    {
+      "component": "FabButtonComponent",
+      "selector": "button[dlFab]",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/fab-button.md"
+    },
+    {
+      "component": "IconButtonComponent",
+      "selector": "button[dlIconButton]",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/icon-button.md"
+    },
+    {
+      "component": "CodeBlockComponent",
+      "selector": "dl-code-block",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/code-block.md"
+    },
+    {
+      "component": "DividerComponent",
+      "selector": "dl-divider",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/divider.md"
+    },
+    {
+      "component": "ListComponent",
+      "selector": "dl-list",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/list.md"
+    },
+    {
+      "component": "TilesComponent",
+      "selector": "dl-tiles, dl-tile",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/tiles.md"
+    },
+    {
+      "component": "GlobalNotificationComponent",
+      "selector": "dl-global-notification",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/global-notification.md"
+    },
+    {
+      "component": "InlineNotificationComponent",
+      "selector": "dl-inline-notification",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/inline-notification.md"
+    },
+    {
+      "component": "SkeletonComponent",
+      "selector": "dl-skeleton",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/skeleton.md"
+    },
+    {
+      "component": "SnackbarComponent",
+      "selector": "dl-snackbar",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/snackbar.md"
+    },
+    {
+      "component": "ToastComponent",
+      "selector": "dl-toast",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/toast.md"
+    },
+    {
+      "component": "IconComponent",
+      "selector": "dl-icon",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/icon.md"
+    },
+    {
+      "component": "CheckboxComponent",
+      "selector": "dl-checkbox",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/checkbox.md"
+    },
+    {
+      "component": "ChipsComponent",
+      "selector": "dl-chips",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/chips.md"
+    },
+    {
+      "component": "ContextSelectorComponent",
+      "selector": "dl-context-selector",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/context-selector.md"
+    },
+    {
+      "component": "CounterButtonComponent",
+      "selector": "dl-counter-button",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/counter-button.md"
+    },
+    {
+      "component": "CounterComponent",
+      "selector": "dl-counter",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/counter.md"
+    },
+    {
+      "component": "DatepickerComponent",
+      "selector": "dl-datepicker",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/datepicker.md"
+    },
+    {
+      "component": "DropdownComponent",
+      "selector": "dl-dropdown",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/dropdown.md"
+    },
+    {
+      "component": "MultiSelectComponent",
+      "selector": "dl-multi-select",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/multi-select.md"
+    },
+    {
+      "component": "NumberInputComponent",
+      "selector": "dl-number-input",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/number-input.md"
+    },
+    {
+      "component": "RadioComponent",
+      "selector": "dl-radio",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/radio.md"
+    },
+    {
+      "component": "RangeSelectorComponent",
+      "selector": "dl-range-selector",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/range-selector.md"
+    },
+    {
+      "component": "SegmentedButtonsComponent",
+      "selector": "dl-segmented-buttons",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/segmented-buttons.md"
+    },
+    {
+      "component": "ValidationDirective",
+      "selector": "[dlValidation]",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/validation.md"
+    },
+    {
+      "component": "ContainerComponent",
+      "selector": "dl-container",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/container.md"
+    },
+    {
+      "component": "HeaderComponent",
+      "selector": "dl-header",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/header.md"
+    },
+    {
+      "component": "PaneComponent",
+      "selector": "dl-pane",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/pane.md"
+    },
+    {
+      "component": "SectionComponent",
+      "selector": "dl-section",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/section.md"
+    },
+    {
+      "component": "BreadcrumbComponent",
+      "selector": "dl-breadcrumb",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/breadcrumb.md"
+    },
+    {
+      "component": "CarouselDirective",
+      "selector": "[dlCarousel]",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/carousel.md"
+    },
+    {
+      "component": "LinkDirective",
+      "selector": "a[dlLink]",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/link.md"
+    },
+    {
+      "component": "StepComponent",
+      "selector": "dl-step",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/step.md"
+    },
+    {
+      "component": "StepperContainerComponent",
+      "selector": "dl-stepper-container, dl-stepper",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/stepper-container.md"
+    },
+    {
+      "component": "TabContainerComponent",
+      "selector": "dl-tab-container",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/tab-container.md"
+    },
+    {
+      "component": "TabComponent",
+      "selector": "dl-tab",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/tab.md"
+    },
+    {
+      "component": "BottomSheetComponent",
+      "selector": "dl-bottom-sheet",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/bottom-sheet.md"
+    },
+    {
+      "component": "ConfirmationDialogComponent",
+      "selector": "dl-confirmation-dialog",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/confirmation-dialog.md"
+    },
+    {
+      "component": "ModalComponent",
+      "selector": "dl-modal",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/modal.md"
+    },
+    {
+      "component": "PopoverDirective",
+      "selector": "[dlPopover]",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/popover.md"
+    },
+    {
+      "component": "SidepanelComponent",
+      "selector": "dl-sidepanel",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/sidepanel.md"
+    },
+    {
+      "component": "TooltipDirective",
+      "selector": "[dlTooltip]",
+      "status": "stable",
+      "accessibility": "automated",
+      "responsive": true,
+      "themes": [
+        "light",
+        "dark"
+      ],
+      "browsers": [
+        "Chromium",
+        "WebKit"
+      ],
+      "documentation": "references/components/tooltip.md"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import { defineConfig } from "@playwright/test";
 const storybookPort = process.env["STORYBOOK_TEST_PORT"] ?? "6006";
 const storybookUrl = `http://127.0.0.1:${storybookPort}`;
 export default defineConfig({
+  snapshotPathTemplate: "{testDir}/{testFilePath}-snapshots/{arg}{ext}",
   testDir: "./tests",
   fullyParallel: true,
   // Storybook renders thousands of generated stories; limiting browser
@@ -30,6 +31,7 @@ export default defineConfig({
         "**/variants.spec.ts",
         "**/anchored-position.spec.ts",
         "**/code-block-card.spec.ts",
+        "**/i18n-rtl.spec.ts",
       ],
       use: { browserName: "webkit" },
     },

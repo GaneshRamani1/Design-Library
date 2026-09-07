@@ -8,7 +8,9 @@ const meta: Meta<CardComponent> = {
   title: "Layout/Card/Variations",
   component: CardComponent,
   tags: [],
-  decorators: [moduleMetadata({ imports: [ButtonComponent, CodeBlockComponent] })],
+  decorators: [
+    moduleMetadata({ imports: [ButtonComponent, CodeBlockComponent] }),
+  ],
   args: {
     heading: "A little structure. A lot of possibility.",
     description: "A flexible container for your next great idea.",
@@ -18,7 +20,13 @@ const meta: Meta<CardComponent> = {
     surface: "glass",
     layout: "default",
     railWidth: "260px",
+    railPlacement: "left",
+    railCollapsible: false,
+    railInitiallyOpen: true,
+    stickyRail: false,
     previewMinHeight: "240px",
+    previewMaxHeight: "none",
+    previewScrollable: false,
     showGuidance: true,
     showCode: true,
     appearance: {},
@@ -39,7 +47,10 @@ const meta: Meta<CardComponent> = {
     styleTokens: { control: "object" },
   },
   render: (args) => ({
-    props: { ...args, codeSample: '<button dlButton variant="primary">Continue</button>' },
+    props: {
+      ...args,
+      codeSample: '<button dlButton variant="primary">Continue</button>',
+    },
     template: `<dl-card ${argsToTemplate(args)}><p>Compose any content inside this card.</p><span cardFooter>Optional footer content.</span></dl-card>`,
   }),
 };
@@ -87,5 +98,25 @@ export const Showcase: Story = {
       <span cardFooter>Optional footer content.</span>
     </dl-card>`,
   }),
-  parameters: { storyNote: "The showcase layout composes a configuration rail, live preview, usage guidance, and copyable code. It collapses into one column on mobile." },
+  parameters: {
+    storyNote:
+      "The showcase layout composes a configuration rail, live preview, usage guidance, and copyable code. It collapses into one column on mobile.",
+  },
+};
+export const ShowcaseRightRail: Story = {
+  ...Showcase,
+  args: {
+    ...Showcase.args,
+    railPlacement: "right",
+    railCollapsible: true,
+    stickyRail: true,
+  },
+};
+export const ShowcaseScrollablePreview: Story = {
+  ...Showcase,
+  args: {
+    ...Showcase.args,
+    previewScrollable: true,
+    previewMaxHeight: "320px",
+  },
 };

@@ -14,4 +14,11 @@ export { GlobalSearch } from "./GlobalSearch";
 export { FeatureGrid } from "./FeatureGrid";
 export { ComponentPlayground } from "./ComponentPlayground";
 export { DocsButton } from "./DocsButton";
-export { DocsDropdown, DocsSearch, DocsSegmented, DocsSelectableList, DocsTabs, DocsToggle } from "./DocsControls";
+export {
+  DocsDropdown,
+  DocsSearch,
+  DocsSegmented,
+  DocsSelectableList,
+  DocsTabs,
+  DocsToggle,
+} from "./DocsControls";

@@ -1,1 +1,5 @@
-export { InstallationPage, TokensPage } from "./FoundationsPage";
+export {
+  ComponentStatusPage,
+  InstallationPage,
+  TokensPage,
+} from "./FoundationsPage";

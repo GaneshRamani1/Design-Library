@@ -1669,7 +1669,15 @@
       "surface",
       "layout",
       "railWidth",
+      "railPlacement",
+      "railCollapsible",
+      "railInitiallyOpen",
+      "collapseRailLabel",
+      "expandRailLabel",
+      "stickyRail",
       "previewMinHeight",
+      "previewMaxHeight",
+      "previewScrollable",
       "showGuidance",
       "showCode",
       "heading",
@@ -1684,7 +1692,8 @@
       "emptyText"
     ],
     "events": [
-      "activated"
+      "activated",
+      "railOpenChange"
     ],
     "stories": [
       {
@@ -1831,12 +1840,129 @@
         "id": "layout-card-configuration--default"
       },
       {
+        "prop": "railPlacement",
+        "story": "Default",
+        "value": "left",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the rail placement setting on this card. Here it is set to “left”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "railPlacement",
+        "story": "Default",
+        "value": "right",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the rail placement setting on this card. Here it is set to “right”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "railCollapsible",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the rail collapsible setting on this card. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "railCollapsible",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the rail collapsible setting on this card. This example has it turned on.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "railInitiallyOpen",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the rail initially open setting on this card. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "railInitiallyOpen",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the rail initially open setting on this card. This example has it turned on.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "collapseRailLabel",
+        "story": "Default",
+        "value": "Custom collapseRailLabel",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the collapse rail action. Here it is set to “Custom collapseRailLabel”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "expandRailLabel",
+        "story": "Default",
+        "value": "Custom expandRailLabel",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the expand rail action. Here it is set to “Custom expandRailLabel”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "stickyRail",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the sticky rail setting on this card. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "stickyRail",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the sticky rail setting on this card. This example has it turned on.",
+        "id": "layout-card-configuration--default"
+      },
+      {
         "prop": "previewMinHeight",
         "story": "Default",
         "value": "Custom previewMinHeight",
         "title": "Layout/Card/Configuration",
         "group": "Configuration",
         "description": "Demonstrates the preview min height setting on this card. Here it is set to “Custom previewMinHeight”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "previewMaxHeight",
+        "story": "Default",
+        "value": "Custom previewMaxHeight",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the preview max height setting on this card. Here it is set to “Custom previewMaxHeight”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "previewScrollable",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the preview scrollable setting on this card. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "previewScrollable",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the preview scrollable setting on this card. This example has it turned on.",
         "id": "layout-card-configuration--default"
       },
       {
@@ -2097,6 +2223,14 @@
         "title": "Layout/Card/Configuration",
         "group": "Events",
         "description": "Try the card below and inspect activated in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "event.railOpenChange",
+        "story": "Default",
+        "title": "Layout/Card/Configuration",
+        "group": "Events",
+        "description": "Try the card below and inspect railOpenChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "layout-card-configuration--default"
       }
     ]
@@ -4510,6 +4644,7 @@
       "code",
       "language",
       "label",
+      "filename",
       "ariaLabel",
       "showHeader",
       "copyable",
@@ -4519,11 +4654,22 @@
       "theme",
       "copyLabel",
       "copiedLabel",
-      "copyAriaLabel"
+      "copyAriaLabel",
+      "downloadable",
+      "downloadLabel",
+      "collapsible",
+      "initiallyExpanded",
+      "collapseLabel",
+      "expandLabel",
+      "playgroundLink",
+      "playgroundLabel"
     ],
     "events": [
       "copied",
-      "copyFailed"
+      "copyFailed",
+      "downloaded",
+      "expandedChange",
+      "playgroundRequested"
     ],
     "stories": [
       {
@@ -4578,6 +4724,15 @@
         "group": "Configuration",
         "description": "Customizes the visible label. Here it is set to “Custom label”.",
         "id": "data-display-code-block-configuration--label"
+      },
+      {
+        "prop": "filename",
+        "story": "Filename",
+        "value": "Custom filename",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the filename setting on this code block. Here it is set to “Custom filename”.",
+        "id": "data-display-code-block-configuration--filename"
       },
       {
         "prop": "ariaLabel",
@@ -4715,6 +4870,105 @@
         "id": "data-display-code-block-configuration--copy-aria-label"
       },
       {
+        "prop": "downloadable",
+        "story": "DownloadableFalse",
+        "value": false,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the downloadable setting on this code block. This example has it turned off.",
+        "id": "data-display-code-block-configuration--downloadable-false"
+      },
+      {
+        "prop": "downloadable",
+        "story": "DownloadableTrue",
+        "value": true,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the downloadable setting on this code block. This example has it turned on.",
+        "id": "data-display-code-block-configuration--downloadable-true"
+      },
+      {
+        "prop": "downloadLabel",
+        "story": "DownloadLabel",
+        "value": "Custom downloadLabel",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the download action. Here it is set to “Custom downloadLabel”.",
+        "id": "data-display-code-block-configuration--download-label"
+      },
+      {
+        "prop": "collapsible",
+        "story": "CollapsibleFalse",
+        "value": false,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the collapsible setting on this code block. This example has it turned off.",
+        "id": "data-display-code-block-configuration--collapsible-false"
+      },
+      {
+        "prop": "collapsible",
+        "story": "CollapsibleTrue",
+        "value": true,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the collapsible setting on this code block. This example has it turned on.",
+        "id": "data-display-code-block-configuration--collapsible-true"
+      },
+      {
+        "prop": "initiallyExpanded",
+        "story": "InitiallyExpandedFalse",
+        "value": false,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the initially expanded setting on this code block. This example has it turned off.",
+        "id": "data-display-code-block-configuration--initially-expanded-false"
+      },
+      {
+        "prop": "initiallyExpanded",
+        "story": "InitiallyExpandedTrue",
+        "value": true,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the initially expanded setting on this code block. This example has it turned on.",
+        "id": "data-display-code-block-configuration--initially-expanded-true"
+      },
+      {
+        "prop": "collapseLabel",
+        "story": "CollapseLabel",
+        "value": "Custom collapseLabel",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the collapse action. Here it is set to “Custom collapseLabel”.",
+        "id": "data-display-code-block-configuration--collapse-label"
+      },
+      {
+        "prop": "expandLabel",
+        "story": "ExpandLabel",
+        "value": "Custom expandLabel",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the expand action. Here it is set to “Custom expandLabel”.",
+        "id": "data-display-code-block-configuration--expand-label"
+      },
+      {
+        "prop": "playgroundLink",
+        "story": "PlaygroundLink",
+        "value": "Custom playgroundLink",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the playground link setting on this code block. Here it is set to “Custom playgroundLink”.",
+        "id": "data-display-code-block-configuration--playground-link"
+      },
+      {
+        "prop": "playgroundLabel",
+        "story": "PlaygroundLabel",
+        "value": "Custom playgroundLabel",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the playground action. Here it is set to “Custom playgroundLabel”.",
+        "id": "data-display-code-block-configuration--playground-label"
+      },
+      {
         "prop": "appearance.padding",
         "story": "AppearancePadding",
         "value": "28px",
@@ -4819,6 +5073,30 @@
         "group": "Events",
         "description": "Try the code block below and inspect copyFailed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "data-display-code-block-events--event-copy-failed"
+      },
+      {
+        "prop": "event.downloaded",
+        "story": "EventDownloaded",
+        "title": "Data display/Code block/Events",
+        "group": "Events",
+        "description": "Try the code block below and inspect downloaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-code-block-events--event-downloaded"
+      },
+      {
+        "prop": "event.expandedChange",
+        "story": "EventExpandedChange",
+        "title": "Data display/Code block/Events",
+        "group": "Events",
+        "description": "Try the code block below and inspect expandedChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-code-block-events--event-expanded-change"
+      },
+      {
+        "prop": "event.playgroundRequested",
+        "story": "EventPlaygroundRequested",
+        "title": "Data display/Code block/Events",
+        "group": "Events",
+        "description": "Try the code block below and inspect playgroundRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-code-block-events--event-playground-requested"
       }
     ]
   },

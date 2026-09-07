@@ -28,6 +28,7 @@ A responsive, copyable code surface with lightweight syntax highlighting.
 | code | string | "" | input | CodeBlockComponent | See the dedicated configuration story below. |
 | language | string | "Angular" | input | CodeBlockComponent | See the dedicated configuration story below. |
 | label | string | "" | input | CodeBlockComponent | See the dedicated configuration story below. |
+| filename | string | "" | input | CodeBlockComponent | See the dedicated configuration story below. |
 | ariaLabel | string | "Code example" | input | CodeBlockComponent | See the dedicated configuration story below. |
 | showHeader | boolean | true | input | CodeBlockComponent | See the dedicated configuration story below. |
 | copyable | boolean | true | input | CodeBlockComponent | See the dedicated configuration story below. |
@@ -38,6 +39,14 @@ A responsive, copyable code surface with lightweight syntax highlighting.
 | copyLabel | string | "Copy" | input | CodeBlockComponent | See the dedicated configuration story below. |
 | copiedLabel | string | "Copied" | input | CodeBlockComponent | See the dedicated configuration story below. |
 | copyAriaLabel | string | "Copy code" | input | CodeBlockComponent | See the dedicated configuration story below. |
+| downloadable | boolean | false | input | CodeBlockComponent | See the dedicated configuration story below. |
+| downloadLabel | string | "Download" | input | CodeBlockComponent | See the dedicated configuration story below. |
+| collapsible | boolean | false | input | CodeBlockComponent | See the dedicated configuration story below. |
+| initiallyExpanded | boolean | true | input | CodeBlockComponent | See the dedicated configuration story below. |
+| collapseLabel | string | "Collapse" | input | CodeBlockComponent | See the dedicated configuration story below. |
+| expandLabel | string | "Expand" | input | CodeBlockComponent | See the dedicated configuration story below. |
+| playgroundLink | string | "" | input | CodeBlockComponent | See the dedicated configuration story below. |
+| playgroundLabel | string | "Open playground" | input | CodeBlockComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
@@ -45,6 +54,9 @@ A responsive, copyable code surface with lightweight syntax highlighting.
 |---|---|
 | copied | string |
 | copyFailed | unknown |
+| downloaded | string |
+| expandedChange | boolean |
+| playgroundRequested | string |
 
 ## Projection slots
 
@@ -53,8 +65,13 @@ No content projection slots declared.
 ## Public instance state and methods
 
 - `copiedState()` — boolean
+- `expanded()` — boolean
 - `status()` — string
 - `lines()` — CodeToken[][]
+- `ngOnInit(): void`
+- `toggleExpanded(): void`
+- `download(): void`
+- `openPlayground(): void`
 - `async copy(): Promise<void>`
 
 Methods include event handlers; use consumer-facing methods demonstrated by the stories. Angular form lifecycle hooks are managed by Angular.
@@ -77,7 +94,14 @@ export interface ComponentAppearance {
 
 export interface CodeToken {
   value: string;
-  kind: "plain" | "comment" | "string" | "tag" | "binding" | "keyword" | "punctuation";
+  kind:
+    | "plain"
+    | "comment"
+    | "string"
+    | "tag"
+    | "binding"
+    | "keyword"
+    | "punctuation";
 }
 ```
 
@@ -108,6 +132,8 @@ import { CodeBlockComponent } from "./code-block.component";
 - [With Line Numbers](http://127.0.0.1:6006/?path=/story/data-display-code-block--with-line-numbers)
 - [Wrapped](http://127.0.0.1:6006/?path=/story/data-display-code-block--wrapped)
 - [Light](http://127.0.0.1:6006/?path=/story/data-display-code-block--light)
+- [File Actions](http://127.0.0.1:6006/?path=/story/data-display-code-block--file-actions)
+- [Collapsed](http://127.0.0.1:6006/?path=/story/data-display-code-block--collapsed)
 
 ## Configuration coverage
 
@@ -116,6 +142,7 @@ import { CodeBlockComponent } from "./code-block.component";
 - `code`: [Code](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--code) — Demonstrates the code setting on this code block. Here it is set to “Custom code”.
 - `language`: [Language](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--language) — Demonstrates the language setting on this code block. Here it is set to “Custom language”.
 - `label`: [Label](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--label) — Customizes the visible label. Here it is set to “Custom label”.
+- `filename`: [Filename](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--filename) — Demonstrates the filename setting on this code block. Here it is set to “Custom filename”.
 - `ariaLabel`: [AriaLabel](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--aria-label) — Changes the accessible name announced by assistive technology. Here it is set to “Custom accessible dialog name”.
 - `showHeader`: [ShowHeaderFalse](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--show-header-false) — Controls whether header are shown. This example has it turned off.
 - `showHeader`: [ShowHeaderTrue](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--show-header-true) — Controls whether header are shown. This example has it turned on.
@@ -131,6 +158,17 @@ import { CodeBlockComponent } from "./code-block.component";
 - `copyLabel`: [CopyLabel](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--copy-label) — Customizes the text for the copy action. Here it is set to “Custom copyLabel”.
 - `copiedLabel`: [CopiedLabel](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--copied-label) — Customizes the text for the copied action. Here it is set to “Custom copiedLabel”.
 - `copyAriaLabel`: [CopyAriaLabel](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--copy-aria-label) — Customizes the text for the copy aria action. Here it is set to “Custom copyAriaLabel”.
+- `downloadable`: [DownloadableFalse](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--downloadable-false) — Demonstrates the downloadable setting on this code block. This example has it turned off.
+- `downloadable`: [DownloadableTrue](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--downloadable-true) — Demonstrates the downloadable setting on this code block. This example has it turned on.
+- `downloadLabel`: [DownloadLabel](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--download-label) — Customizes the text for the download action. Here it is set to “Custom downloadLabel”.
+- `collapsible`: [CollapsibleFalse](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--collapsible-false) — Demonstrates the collapsible setting on this code block. This example has it turned off.
+- `collapsible`: [CollapsibleTrue](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--collapsible-true) — Demonstrates the collapsible setting on this code block. This example has it turned on.
+- `initiallyExpanded`: [InitiallyExpandedFalse](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--initially-expanded-false) — Demonstrates the initially expanded setting on this code block. This example has it turned off.
+- `initiallyExpanded`: [InitiallyExpandedTrue](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--initially-expanded-true) — Demonstrates the initially expanded setting on this code block. This example has it turned on.
+- `collapseLabel`: [CollapseLabel](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--collapse-label) — Customizes the text for the collapse action. Here it is set to “Custom collapseLabel”.
+- `expandLabel`: [ExpandLabel](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--expand-label) — Customizes the text for the expand action. Here it is set to “Custom expandLabel”.
+- `playgroundLink`: [PlaygroundLink](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--playground-link) — Demonstrates the playground link setting on this code block. Here it is set to “Custom playgroundLink”.
+- `playgroundLabel`: [PlaygroundLabel](http://127.0.0.1:6006/?path=/story/data-display-code-block-configuration--playground-label) — Customizes the text for the playground action. Here it is set to “Custom playgroundLabel”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/data-display-code-block-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/data-display-code-block-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/data-display-code-block-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
@@ -143,6 +181,9 @@ import { CodeBlockComponent } from "./code-block.component";
 - `appearance.focusColor`: [AppearanceFocusColor](http://127.0.0.1:6006/?path=/story/data-display-code-block-appearance--appearance-focus-color) — Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `event.copied`: [EventCopied](http://127.0.0.1:6006/?path=/story/data-display-code-block-events--event-copied) — Try the code block below and inspect copied in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 - `event.copyFailed`: [EventCopyFailed](http://127.0.0.1:6006/?path=/story/data-display-code-block-events--event-copy-failed) — Try the code block below and inspect copyFailed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.downloaded`: [EventDownloaded](http://127.0.0.1:6006/?path=/story/data-display-code-block-events--event-downloaded) — Try the code block below and inspect downloaded in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.expandedChange`: [EventExpandedChange](http://127.0.0.1:6006/?path=/story/data-display-code-block-events--event-expanded-change) — Try the code block below and inspect expandedChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
+- `event.playgroundRequested`: [EventPlaygroundRequested](http://127.0.0.1:6006/?path=/story/data-display-code-block-events--event-playground-requested) — Try the code block below and inspect playgroundRequested in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.
 
 ## Composition patterns
 
