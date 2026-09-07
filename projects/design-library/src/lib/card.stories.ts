@@ -1,7 +1,9 @@
+import { argsToTemplate } from "@storybook/angular";
 import type { Meta, StoryObj } from "@storybook/angular";
 import { CardComponent } from "./card.component";
 const meta: Meta<CardComponent> = {
-  title: "Components/Card",
+  id: "layout-card",
+  title: "Layout/Card/Variations",
   component: CardComponent,
   tags: ["autodocs"],
   args: {
@@ -11,8 +13,7 @@ const meta: Meta<CardComponent> = {
   argTypes: {},
   render: (args) => ({
     props: args,
-    template:
-      '<dl-card [heading]="heading" [description]="description"><p style="font-size:14px">Compose any content inside this card.</p></dl-card>',
+    template: `<dl-card ${argsToTemplate(args)}><p>Compose any content inside this card.</p><span cardFooter>Optional footer content.</span></dl-card>`,
   }),
 };
 export default meta;

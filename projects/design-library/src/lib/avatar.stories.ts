@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/angular";
 import { AvatarComponent } from "./avatar.component";
 const meta: Meta<AvatarComponent> = {
-  title: "Components/Avatar",
+  id: "data-display-avatar",
+  title: "Data display/Avatar/Variations",
   component: AvatarComponent,
   tags: ["autodocs"],
   args: { name: "Alex Morgan", size: "md" },

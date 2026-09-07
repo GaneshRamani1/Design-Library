@@ -1,5 +1,8 @@
+@import "@angular/cdk/overlay-prebuilt.css";
 /* Import once in your application's global stylesheet. Override tokens to theme. */
-:root {
+:root,
+[data-theme="light"] {
+  color-scheme: light;
   --dl-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --dl-primary: #285b45;
   --dl-primary-hover: #1e4835;
@@ -13,8 +16,136 @@
   --dl-focus: #3577b9;
   --dl-danger: #ab3434;
   --dl-success: #285b45;
+  --dl-on-primary: #ffffff;
+  --dl-danger-fill: #ab3434;
+  --dl-danger-hover: #8e2929;
+  --dl-on-danger: #ffffff;
+  --dl-track: #e8ede5;
+  --dl-switch-track: #a4afa5;
+  --dl-switch-thumb: #ffffff;
+  --dl-avatar-bg: #e9eee4;
+  --dl-avatar-text: #476044;
+  --dl-neutral-bg: #eef0ed;
+  --dl-neutral-text: #59625b;
+  --dl-info-bg: #f1f6fd;
+  --dl-info-text: #315786;
+  --dl-info-border: #d6e3f6;
+  --dl-success-bg: #f0f7f0;
+  --dl-success-text: #285b3b;
+  --dl-success-border: #d5e7d7;
+  --dl-warning-bg: #fff8e9;
+  --dl-warning-text: #825916;
+  --dl-warning-border: #efdeb7;
+  --dl-danger-bg: #fff2f2;
+  --dl-danger-text: #993535;
+  --dl-danger-border: #f0d0d0;
+  --dl-accent: #718468;
+  --dl-art-grid: #b9c4b0;
+  --dl-art-back: #d8e2c8;
+  --dl-card-surface: #ffffff;
+  --dl-card-sheen: none;
+  --dl-card-border: #dce2da;
+  --dl-card-radius: 14px;
+  --dl-card-shadow: none;
+  --dl-card-blur: none;
+  --dl-card-hover-shadow: none;
+  --dl-ambient: none;
+  --dl-art-front: linear-gradient(135deg, #39624b, #204632);
+  --dl-art-ink: #e8efdc;
+  --dl-art-shadow: 0 18px 35px #264a3126;
+  --dl-avatar-warm-bg: #e8dcd1;
+  --dl-avatar-warm-text: #8a6852;
+  --dl-avatar-blue-bg: #e0e5f0;
+  --dl-avatar-blue-text: #576b91;
+  --dl-avatar-pink-bg: #ece0e6;
+  --dl-avatar-pink-text: #91657d;
+}
+[data-theme="dark"] {
+  color-scheme: dark;
+  --dl-card-surface: rgba(24, 24, 24, 0.66);
+  --dl-card-sheen: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.07),
+    transparent 45%,
+    rgba(255, 255, 255, 0.015)
+  );
+  --dl-card-border: rgba(255, 255, 255, 0.16);
+  --dl-card-radius: 24px;
+  --dl-card-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 18px 48px rgba(0, 0, 0, 0.3);
+  --dl-card-blur: blur(24px) saturate(120%);
+  --dl-card-hover-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 24px 60px rgba(0, 0, 0, 0.45);
+  --dl-ambient:
+    radial-gradient(
+      ellipse at 12% 50%,
+      rgba(255, 255, 255, 0.065),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 90% 90%,
+      rgba(255, 255, 255, 0.04),
+      transparent 35%
+    );
+  --dl-art-front: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.24),
+    rgba(255, 255, 255, 0.035)
+  );
+  --dl-art-ink: #ffffff;
+  --dl-art-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 28px 60px rgba(0, 0, 0, 0.6);
+  --dl-primary: #ffffff;
+  --dl-primary-hover: #e5e5e5;
+  --dl-primary-soft: #242424;
+  --dl-text: #f5f5f5;
+  --dl-muted: #a6a6a6;
+  --dl-border: #333333;
+  --dl-surface: #151515;
+  --dl-background: #000000;
+  --dl-focus: #b8cbff;
+  --dl-danger: #f59898;
+  --dl-success: #ffffff;
+  --dl-on-primary: #080808;
+  --dl-danger-fill: #ef9999;
+  --dl-danger-hover: #ffb2b2;
+  --dl-on-danger: #3d1515;
+  --dl-track: #333333;
+  --dl-switch-track: #525252;
+  --dl-switch-thumb: #ffffff;
+  --dl-avatar-bg: #303030;
+  --dl-avatar-text: #e5e5e5;
+  --dl-neutral-bg: #2b2b2b;
+  --dl-neutral-text: #d4d4d4;
+  --dl-info-bg: #203349;
+  --dl-info-text: #accdf8;
+  --dl-info-border: #3d5b7d;
+  --dl-success-bg: #233c2c;
+  --dl-success-text: #a1d9af;
+  --dl-success-border: #40674a;
+  --dl-warning-bg: #40351f;
+  --dl-warning-text: #efd08c;
+  --dl-warning-border: #6e5930;
+  --dl-danger-bg: #43292b;
+  --dl-danger-text: #f4b0b0;
+  --dl-danger-border: #75474a;
+  --dl-accent: #bcbcbc;
+  --dl-art-grid: #474747;
+  --dl-art-back: #252525;
+  --dl-avatar-warm-bg: #49392e;
+  --dl-avatar-warm-text: #e4bb9b;
+  --dl-avatar-blue-bg: #303e56;
+  --dl-avatar-blue-text: #b5cbee;
+  --dl-avatar-pink-bg: #49323f;
+  --dl-avatar-pink-text: #e0b6cc;
 }
 body {
+  background: var(--dl-background);
   font-family: var(--dl-font);
   color: var(--dl-text);
 }
+
+/* CDK overlays retain the library theme, including focus and glass surfaces. */
+.dl-overlay-backdrop { background: rgba(0,0,0,.64); backdrop-filter: blur(4px); }
+.dl-overlay-panel { max-width: 100vw; max-height: 100dvh; }
+.dl-overlay-panel .cdk-dialog-container { width:100%; height:100%; outline:none; }

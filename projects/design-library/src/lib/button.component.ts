@@ -1,67 +1,58 @@
+import { Appearance } from "./shared/appearance";
 import { ChangeDetectionStrategy, Component, input } from "@angular/core";
-/** A native button with consistent variants, sizes, and loading feedback. */
-@Component({
-  selector: "button[dlButton]",
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `@if (loading()) {
-      <span class="spinner" aria-hidden="true"></span>
-    }
-    <ng-content />`,
-  host: {
-    "[attr.data-variant]": "variant()",
-    "[attr.data-size]": "size()",
-    "[disabled]": "disabled() || loading()",
-    "[attr.aria-busy]": "loading()",
-    "[attr.type]": "type()",
-  },
-  styles: [
-    `
+export const buttonStyles = `
       :host {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        border: 1px solid transparent;
-        border-radius: var(--dl-radius, 10px);
-        font: 600 14px var(--dl-font, sans-serif);
+        gap: var(--dl-ui-gap, 8px);
+        border: var(--dl-ui-border-width, 1px) solid
+          var(--dl-ui-border-color, transparent);
+        border-radius: var(--dl-ui-radius, var(--dl-radius, 10px));
+        font: 600 var(--dl-ui-font-size, 14px) var(--dl-font, sans-serif);
         cursor: pointer;
-        padding: 11px 18px;
-        background: var(--dl-primary, #285b45);
-        color: white;
+        padding: var(--dl-ui-padding, 11px 18px);
+        background: var(--dl-ui-background, var(--dl-primary, #285b45));
+        color: var(--dl-ui-color, var(--dl-on-primary, white));
         transition:
           background 0.15s,
           box-shadow 0.15s;
       }
       :host(:hover:not(:disabled)) {
-        background: var(--dl-primary-hover, #1e4835);
+        background: var(--dl-ui-background, var(--dl-primary-hover, #1e4835));
       }
       :host([data-variant="secondary"]) {
-        background: var(--dl-surface, #fff);
-        color: var(--dl-text, #202a24);
-        border-color: var(--dl-border, #dce2da);
+        background: var(--dl-ui-background, var(--dl-surface, #fff));
+        color: var(--dl-ui-color, var(--dl-text, #202a24));
+        border-color: var(--dl-ui-border-color, var(--dl-border, #dce2da));
       }
+      :host([data-variant="tertiary"]),
       :host([data-variant="ghost"]) {
-        background: transparent;
-        color: var(--dl-primary, #285b45);
+        background: var(--dl-ui-background, transparent);
+        color: var(--dl-ui-color, var(--dl-primary, #285b45));
       }
       :host([data-variant="danger"]) {
-        background: var(--dl-danger, #ab3434);
+        background: var(--dl-ui-background, var(--dl-danger-fill, #ab3434));
+        color: var(--dl-ui-color, var(--dl-on-danger, white));
+      }
+      :host([data-variant="danger"]:hover:not(:disabled)) {
+        background: var(--dl-ui-background, var(--dl-danger-hover, #8e2929));
       }
       :host([data-variant="secondary"]:hover:not(:disabled)),
+      :host([data-variant="tertiary"]:hover:not(:disabled)),
       :host([data-variant="ghost"]:hover:not(:disabled)) {
-        background: var(--dl-primary-soft, #edf4ee);
+        background: var(--dl-ui-background, var(--dl-primary-soft, #edf4ee));
       }
       :host([data-size="sm"]) {
-        padding: 7px 12px;
-        font-size: 12px;
+        padding: var(--dl-ui-padding, 7px 12px);
+        font-size: var(--dl-ui-font-size, 12px);
       }
       :host([data-size="lg"]) {
-        padding: 14px 23px;
-        font-size: 16px;
+        padding: var(--dl-ui-padding, 14px 23px);
+        font-size: var(--dl-ui-font-size, 16px);
       }
       :host(:focus-visible) {
-        outline: 3px solid var(--dl-focus, #3577b9);
+        outline: 3px solid var(--dl-ui-focus-color, var(--dl-focus, #3577b9));
         outline-offset: 3px;
       }
       :host(:disabled) {
@@ -71,9 +62,10 @@ import { ChangeDetectionStrategy, Component, input } from "@angular/core";
       .spinner {
         width: 12px;
         height: 12px;
-        border: 2px solid currentColor;
+        border: var(--dl-ui-border-width, 2px) solid
+          var(--dl-ui-border-color, currentColor);
         border-right-color: transparent;
-        border-radius: 50%;
+        border-radius: var(--dl-ui-radius, 50%);
         animation: spin 0.7s linear infinite;
       }
       @keyframes spin {
@@ -86,13 +78,44 @@ import { ChangeDetectionStrategy, Component, input } from "@angular/core";
           animation: none;
         }
       }
-    `,
-  ],
+    `;
+/** A native button with consistent variants, sizes, and loading feedback. */
+@Component({
+  selector: "button[dlButton]",
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `@if (loading()) {
+      <span class="spinner" aria-hidden="true"></span>
+    }
+    @if (icon() && iconPosition() === "start") {
+      <span aria-hidden="true">{{ icon() }}</span>
+    }
+    @if (loading() && loadingLabel()) {
+      <span>{{ loadingLabel() }}</span>
+    } @else {
+      <ng-content />
+    }
+    @if (icon() && iconPosition() === "end") {
+      <span aria-hidden="true">{{ icon() }}</span>
+    }`,
+  host: {
+    "[attr.data-variant]": "variant()",
+    "[attr.data-size]": "size()",
+    "[disabled]": "disabled() || loading()",
+    "[attr.aria-busy]": "loading()",
+    "[attr.type]": "type()",
+    "[style.width]": "fullWidth()?'100%':null",
+  },
+  styles: [buttonStyles],
 })
-export class ButtonComponent {
-  readonly variant = input<"primary" | "secondary" | "ghost" | "danger">(
-    "primary",
-  );
+export class ButtonComponent extends Appearance {
+  readonly fullWidth = input(false);
+  readonly icon = input("");
+  readonly iconPosition = input<"start" | "end">("start");
+  readonly loadingLabel = input("");
+  readonly variant = input<
+    "primary" | "secondary" | "tertiary" | "ghost" | "danger"
+  >("primary");
   readonly size = input<"sm" | "md" | "lg">("md");
   readonly disabled = input(false);
   readonly loading = input(false);

@@ -1,3 +1,4 @@
+import { STORY_OUTPUT_OBSERVERS } from "../../../.storybook/output-observers.generated";
 import { Component, signal } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import type { Meta, StoryObj } from "@storybook/angular";
@@ -16,6 +17,7 @@ import {
   selector: "dl-welcome",
   standalone: true,
   imports: [
+    ...STORY_OUTPUT_OBSERVERS,
     FormsModule,
     ButtonComponent,
     BadgeComponent,
@@ -58,7 +60,7 @@ import {
       <div class="hero-actions">
         <a
           class="primary-link"
-          href="./?path=/docs/components-button--documentation"
+          href="./?path=/docs/actions-button--documentation"
           target="_top"
           >Explore components <span>↗</span></a
         ><a
@@ -80,7 +82,7 @@ import {
       </div>
     </section>
     <div class="features">
-      <span><i>◈</i> 8 standalone components</span
+      <span><i>◈</i> 37 components · 2 directives</span
       ><span><i>⌘</i> Fully typed APIs</span
       ><span><i>◉</i> Accessible by design</span
       ><span><i>↗</i> Ready to export</span>
@@ -91,14 +93,14 @@ import {
           <div class="eyebrow subtle">THE BUILDING BLOCKS</div>
           <h2>Small pieces. Endless possibilities.</h2>
         </div>
-        <span class="count">COMPONENT PREVIEW <span>08</span></span>
+        <span class="count">COMPONENT PREVIEW <span>08 / 39</span></span>
       </div>
       <div class="grid">
         <article class="specimen">
           <div class="specimen-title">
             <span>Buttons</span
             ><a
-              href="./?path=/docs/components-button--documentation"
+              href="./?path=/docs/actions-button--documentation"
               target="_top"
               aria-label="Button documentation"
               >↗</a
@@ -133,7 +135,7 @@ import {
           <div class="specimen-title">
             <span>Form inputs</span
             ><a
-              href="./?path=/docs/components-input--documentation"
+              href="./?path=/docs/inputs-input--documentation"
               target="_top"
               aria-label="Input documentation"
               >↗</a
@@ -157,7 +159,7 @@ import {
           <div class="specimen-title">
             <span>Badges</span
             ><a
-              href="./?path=/docs/components-badge--documentation"
+              href="./?path=/docs/data-display-badge--documentation"
               target="_top"
               aria-label="Badge documentation"
               >↗</a
@@ -178,7 +180,7 @@ import {
           <div class="specimen-title">
             <span>Avatars</span
             ><a
-              href="./?path=/docs/components-avatar--documentation"
+              href="./?path=/docs/data-display-avatar--documentation"
               target="_top"
               aria-label="Avatar documentation"
               >↗</a
@@ -204,7 +206,7 @@ import {
           <div class="specimen-title">
             <span>Toggles</span
             ><a
-              href="./?path=/docs/components-toggle--documentation"
+              href="./?path=/docs/inputs-toggle--documentation"
               target="_top"
               aria-label="Toggle documentation"
               >↗</a
@@ -225,7 +227,7 @@ import {
           <div class="specimen-title">
             <span>Progress</span
             ><a
-              href="./?path=/docs/components-progress--documentation"
+              href="./?path=/docs/feedback-progress--documentation"
               target="_top"
               aria-label="Progress documentation"
               >↗</a
@@ -245,7 +247,7 @@ import {
           <div class="specimen-title">
             <span>Alerts <code>dl-alert</code></span
             ><a
-              href="./?path=/docs/components-alert--documentation"
+              href="./?path=/docs/feedback-alert--documentation"
               target="_top"
               aria-label="Alert documentation"
               >↗</a
@@ -259,7 +261,7 @@ import {
           <div class="specimen-title">
             <span>Cards <code>dl-card</code></span
             ><a
-              href="./?path=/docs/components-card--documentation"
+              href="./?path=/docs/layout-card--documentation"
               target="_top"
               aria-label="Card documentation"
               >↗</a
@@ -270,6 +272,146 @@ import {
             description="A flexible space for content that belongs together."
           />
         </article>
+      </div>
+    </section>
+    <section class="collection" aria-label="Explore the library">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow subtle">ROOM TO BUILD</div>
+          <h2>Structure first. Details next.</h2>
+        </div>
+      </div>
+      <div class="bottom-grid">
+        <a
+          class="wide-specimen collection-link"
+          href="./?path=/docs/layout-container--documentation"
+          target="_top"
+          ><div class="specimen-title">
+            Layout <span aria-hidden="true">↗</span>
+          </div>
+          <h2>Give every idea its space.</h2>
+          <p>
+            Sections, panes and containers. Flexible sizing, stretch, direction
+            and height — with glass built in.
+          </p>
+          <code>CONTAINER · SECTION · PANE · CARD</code></a
+        >
+        <a
+          class="wide-specimen collection-link"
+          href="./?path=/story/inputs-form-playground--default"
+          target="_top"
+          ><div class="specimen-title">
+            Inputs <span aria-hidden="true">↗</span>
+          </div>
+          <h2>All the ways to choose.</h2>
+          <p>
+            Dropdowns, context selectors, radios, toggles, multi-select and
+            ranges. Try them together in a working form.
+          </p>
+          <code>EXPLORE THE FORM PLAYGROUND</code></a
+        >
+      </div>
+    </section>
+    <section class="collection" aria-label="More components">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow subtle">THE EXTENDED COLLECTION</div>
+          <h2>From a date to a tiny detail.</h2>
+        </div>
+      </div>
+      <div class="grid">
+        <article class="specimen">
+          <div class="specimen-title">
+            <span>SVG icon catalog</span
+            ><a
+              href="./?path=/story/data-display-icon-catalog--all-icons"
+              target="_top"
+              aria-label="Browse all SVG icons"
+              >↗</a
+            >
+          </div>
+          <p>1,807 searchable SVGs. One consistent visual language.</p>
+          <div class="specimen-foot">
+            <code>dl-icon</code><dl-badge>1,807 icons</dl-badge>
+          </div>
+        </article>
+        <article class="specimen">
+          <div class="specimen-title">
+            <span>Notifications</span
+            ><a
+              href="./?path=/story/feedback-notifications-service--default"
+              target="_top"
+              aria-label="Notifications examples"
+              >↗</a
+            >
+          </div>
+          <p>
+            Toasts and snackbars with actions, timers and thoughtful dismissal.
+          </p>
+          <div class="specimen-foot"><code>NotificationService</code></div>
+        </article>
+        <article class="specimen">
+          <div class="specimen-title">
+            <span>Datepicker</span
+            ><a
+              href="./?path=/docs/inputs-datepicker--documentation"
+              target="_top"
+              aria-label="Datepicker documentation"
+              >↗</a
+            >
+          </div>
+          <p>
+            A calendar that speaks your language, with the right dates in reach.
+          </p>
+          <div class="specimen-foot"><code>dl-datepicker</code></div>
+        </article>
+        <article class="specimen">
+          <div class="specimen-title">
+            <span>Anchored content</span
+            ><a
+              href="./?path=/story/overlays-popover-directive--interactive"
+              target="_top"
+              aria-label="Popover examples"
+              >↗</a
+            >
+          </div>
+          <p>
+            A little help, or a little more detail, exactly where it belongs.
+          </p>
+          <div class="specimen-foot"><code>dlTooltip · dlPopover</code></div>
+        </article>
+      </div>
+    </section>
+    <section class="collection" aria-label="Overlays and navigation">
+      <div class="bottom-grid">
+        <a
+          class="wide-specimen collection-link"
+          href="./?path=/story/overlays-modal--default"
+          target="_top"
+          ><div class="specimen-title">
+            Overlays <span aria-hidden="true">↗</span>
+          </div>
+          <h2>A little room to focus.</h2>
+          <p>
+            Sidepanels, bottom sheets, confirmation dialogs and modals, powered
+            by Angular CDK.
+          </p>
+          <code>FOCUS · POSITION · DISMISSAL · ACTIONS</code></a
+        >
+        <a
+          class="wide-specimen collection-link"
+          href="./?path=/story/navigation-tab-container--default"
+          target="_top"
+          ><div class="specimen-title">
+            Navigation <span aria-hidden="true">↗</span>
+          </div>
+          <h2>Make the next step clear.</h2>
+          <p>
+            Composable tabs and steppers, with keyboard navigation and
+            configurable progression.
+          </p>
+          <code>TABS · PANELS · STEPS · CONTAINERS</code></a
+        >
       </div>
     </section>
     <footer>
@@ -284,8 +426,9 @@ import {
     `
       :host {
         display: block;
-        background: #f8f9f6;
-        color: #26352b;
+        background: var(--dl-background);
+        background-image: var(--dl-ambient);
+        color: var(--dl-text);
         font-family:
           Inter,
           -apple-system,
@@ -302,7 +445,7 @@ import {
         text-decoration: none;
       }
       a:focus-visible {
-        outline: 3px solid #3577b9;
+        outline: 3px solid var(--dl-focus);
         outline-offset: 4px;
       }
       .page {
@@ -315,7 +458,7 @@ import {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid #e1e5dc;
+        border-bottom: 1px solid var(--dl-border);
       }
       .brand {
         display: flex;
@@ -328,9 +471,9 @@ import {
       .mark {
         width: 29px;
         height: 29px;
-        background: #285b45;
+        background: var(--dl-primary);
         border-radius: 8px;
-        color: #fff;
+        color: var(--dl-on-primary);
         display: grid;
         place-items: center;
         font-family: Georgia, serif;
@@ -343,7 +486,7 @@ import {
         font-weight: 500;
         letter-spacing: 1.5px;
         margin-left: 14px;
-        color: #748071;
+        color: var(--dl-muted);
       }
       .top-right {
         display: flex;
@@ -352,10 +495,10 @@ import {
         font-size: 12px;
       }
       .version {
-        border: 1px solid #dce2d6;
+        border: 1px solid var(--dl-border);
         border-radius: 6px;
         padding: 4px 7px;
-        color: #78826f;
+        color: var(--dl-muted);
         font-family: monospace;
         font-size: 10px;
       }
@@ -376,7 +519,7 @@ import {
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: #5b865d;
+        background: var(--dl-accent);
       }
       h1 {
         font-size: clamp(36px, 4.4vw, 61px);
@@ -387,12 +530,12 @@ import {
       }
       h1 em {
         font-style: normal;
-        color: #718468;
+        color: var(--dl-accent);
       }
       .hero p {
         font-size: 14px;
         line-height: 1.9;
-        color: #748071;
+        color: var(--dl-muted);
         margin-bottom: 25px;
       }
       .hero-actions {
@@ -404,14 +547,14 @@ import {
       .primary-link {
         padding: 12px 17px;
         border-radius: 8px;
-        background: #285b45;
-        color: #fff;
+        background: var(--dl-primary);
+        color: var(--dl-on-primary);
         font-weight: 500;
         display: flex;
         gap: 24px;
       }
       .primary-link:hover {
-        background: #1e4835;
+        background: var(--dl-primary-hover);
       }
       .text-link {
         display: flex;
@@ -427,13 +570,16 @@ import {
       .art-grid {
         position: absolute;
         inset: 0;
-        background-image: radial-gradient(#b9c4b0 1px, transparent 1px);
+        background-image: radial-gradient(
+          var(--dl-art-grid) 1px,
+          transparent 1px
+        );
         background-size: 20px 20px;
         mask-image: radial-gradient(ellipse, #000, transparent 70%);
       }
       .orbit {
         position: absolute;
-        border: 1px solid #d8e1d0;
+        border: 1px solid var(--dl-border);
         border-radius: 50%;
         width: 270px;
         height: 270px;
@@ -456,12 +602,15 @@ import {
         transform: rotate(-13deg);
       }
       .tile-back {
-        background: #d8e2c8;
+        background: var(--dl-art-back);
         transform: rotate(14deg) translate(18px, -8px);
       }
       .tile-front {
-        background: linear-gradient(135deg, #39624b, #204632);
-        box-shadow: 0 18px 35px #264a3126;
+        background: var(--dl-art-front);
+        backdrop-filter: var(--dl-card-blur);
+        -webkit-backdrop-filter: var(--dl-card-blur);
+        border: 1px solid var(--dl-card-border);
+        box-shadow: var(--dl-art-shadow);
         display: grid;
         place-items: center;
       }
@@ -469,7 +618,7 @@ import {
         font-family: Georgia, serif;
         font-style: italic;
         font-size: 122px;
-        color: #e8efdc;
+        color: var(--dl-art-ink);
         line-height: 1;
         transform: translateY(-6px);
       }
@@ -478,8 +627,8 @@ import {
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        background: #a7ba90;
-        border: 3px solid #f8f9f6;
+        background: var(--dl-accent);
+        border: 3px solid var(--dl-background);
       }
       .dot-one {
         top: 62px;
@@ -490,7 +639,7 @@ import {
         bottom: 76px;
         width: 17px;
         height: 17px;
-        background: #285b45;
+        background: var(--dl-primary);
       }
       .art-caption {
         position: absolute;
@@ -499,15 +648,15 @@ import {
         text-align: center;
         font-size: 8px;
         letter-spacing: 2px;
-        color: #87917d;
+        color: var(--dl-muted);
       }
       .features {
         display: flex;
         justify-content: space-between;
-        border-top: 1px solid #e1e5dc;
-        border-bottom: 1px solid #e1e5dc;
+        border-top: 1px solid var(--dl-border);
+        border-bottom: 1px solid var(--dl-border);
         padding: 20px 0;
-        color: #64715f;
+        color: var(--dl-muted);
         font-size: 11px;
       }
       .features span {
@@ -518,7 +667,7 @@ import {
       .features i {
         font-size: 16px;
         font-style: normal;
-        color: #6a7f61;
+        color: var(--dl-muted);
       }
       .collection {
         padding: 38px 0;
@@ -530,7 +679,7 @@ import {
         margin-bottom: 25px;
       }
       .subtle {
-        color: #89927f;
+        color: var(--dl-muted);
         font-size: 8px;
         letter-spacing: 1.6px;
       }
@@ -543,12 +692,12 @@ import {
       .count {
         font-size: 8px;
         letter-spacing: 1.2px;
-        color: #858e7c;
+        color: var(--dl-muted);
       }
       .count span {
         margin-left: 7px;
         padding: 3px 5px;
-        border: 1px solid #dce2d6;
+        border: 1px solid var(--dl-border);
         border-radius: 4px;
         font-family: monospace;
       }
@@ -557,10 +706,30 @@ import {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 16px;
       }
+      .specimen,
+      .wide-specimen {
+        background-color: var(--dl-card-surface);
+        background-image: var(--dl-card-sheen);
+        border: 1px solid var(--dl-card-border);
+        border-radius: var(--dl-card-radius);
+        backdrop-filter: var(--dl-card-blur);
+        -webkit-backdrop-filter: var(--dl-card-blur);
+        box-shadow: var(--dl-card-shadow);
+        transition: box-shadow 220ms ease;
+      }
+      @media (hover: hover) {
+        .specimen:hover,
+        .wide-specimen:hover {
+          box-shadow: var(--dl-card-hover-shadow);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .specimen,
+        .wide-specimen {
+          transition: none;
+        }
+      }
       .specimen {
-        border: 1px solid #dfe4d9;
-        border-radius: 12px;
-        background: #fff;
         padding: 19px 20px 0;
         min-width: 0;
       }
@@ -572,12 +741,12 @@ import {
         font-weight: 600;
       }
       .specimen-title a {
-        color: #8b9683;
+        color: var(--dl-muted);
         font-size: 16px;
       }
       .specimen > p {
         font-size: 10px;
-        color: #84907e;
+        color: var(--dl-muted);
         margin: 0 0 19px;
         line-height: 1.5;
       }
@@ -619,16 +788,16 @@ import {
         margin-left: -11px;
       }
       .avatar-stack dl-avatar:nth-child(2) {
-        background: #e8dcd1;
-        color: #8a6852;
+        background: var(--dl-avatar-warm-bg);
+        color: var(--dl-avatar-warm-text);
       }
       .avatar-stack dl-avatar:nth-child(3) {
-        background: #e0e5f0;
-        color: #576b91;
+        background: var(--dl-avatar-blue-bg);
+        color: var(--dl-avatar-blue-text);
       }
       .avatar-stack dl-avatar:nth-child(4) {
-        background: #ece0e6;
-        color: #91657d;
+        background: var(--dl-avatar-pink-bg);
+        color: var(--dl-avatar-pink-text);
       }
       .avatar-demo strong {
         display: block;
@@ -639,7 +808,7 @@ import {
         display: block;
         font-size: 9px;
         margin-top: 5px;
-        color: #84907e;
+        color: var(--dl-muted);
       }
       .toggle-demo {
         flex-direction: column;
@@ -652,14 +821,14 @@ import {
         min-width: 0;
       }
       .specimen-foot {
-        border-top: 1px solid #eff1ec;
+        border-top: 1px solid var(--dl-border);
         padding: 12px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
       code {
-        color: #8a937f;
+        color: var(--dl-muted);
         font:
           10px ui-monospace,
           monospace;
@@ -667,7 +836,7 @@ import {
       .specimen-foot dl-badge {
         font-size: 8px;
         padding: 2px 6px;
-        background: #f0f5ec;
+        background: var(--dl-success-bg);
       }
       .bottom-grid {
         display: grid;
@@ -676,9 +845,6 @@ import {
         margin-top: 16px;
       }
       .wide-specimen {
-        border: 1px solid #dfe4d9;
-        background: #fff;
-        border-radius: 12px;
         padding: 18px 20px;
       }
       .wide-specimen .specimen-title {
@@ -690,28 +856,37 @@ import {
       }
       .wide-specimen dl-card {
         padding: 16px;
-        background: #fafbf8;
       }
       .wide-specimen dl-alert {
         font-size: 11px;
+      }
+      .collection-link p {
+        color: var(--dl-muted);
+        font-size: 13px;
+        line-height: 1.8;
+        max-width: 48ch;
+      }
+      .collection-link {
+        display: block;
+        padding: 28px;
       }
       footer {
         padding: 24px 0 28px;
         display: flex;
         justify-content: space-between;
-        border-top: 1px solid #e1e5dc;
+        border-top: 1px solid var(--dl-border);
         font-size: 10px;
-        color: #8a9381;
+        color: var(--dl-muted);
       }
       footer b {
         font-size: 16px;
-        color: #54674e;
+        color: var(--dl-muted);
         margin-right: 14px;
         letter-spacing: -0.5px;
       }
       .footer-dot {
         margin: 0 9px;
-        color: #a6af9e;
+        color: var(--dl-muted);
       }
       @media (min-width: 1400px) {
         .hero-art {
@@ -788,6 +963,16 @@ import {
         }
         .specimen > p {
           font-size: 12px;
+        }
+        .collection-link p {
+          color: var(--dl-muted);
+          font-size: 13px;
+          line-height: 1.8;
+          max-width: 48ch;
+        }
+        .collection-link {
+          display: block;
+          padding: 28px;
         }
         footer {
           gap: 16px;

@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/angular";
 import { ToggleComponent } from "./toggle.component";
 const meta: Meta<ToggleComponent> = {
-  title: "Components/Toggle",
+  id: "inputs-toggle",
+  title: "Inputs/Toggle/Variations",
   component: ToggleComponent,
   tags: ["autodocs"],
   args: { label: "Email notifications", disabled: false },

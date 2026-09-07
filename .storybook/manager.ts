@@ -1,15 +1,15 @@
 import { addons } from "storybook/manager-api";
-import { create } from "storybook/theming";
-addons.setConfig({
-  theme: create({
-    base: "light",
-    brandTitle: "Arcwell UI / Angular",
-    colorPrimary: "#285b45",
-    colorSecondary: "#285b45",
-    appBg: "#f6f7f4",
-    appContentBg: "#ffffff",
-    appBorderColor: "#e0e5dc",
-    fontBase:
-      '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-  }),
+import { GLOBALS_UPDATED, SET_GLOBALS } from "storybook/internal/core-events";
+import { catalogTheme, savedTheme, rememberTheme } from "./theme";
+
+addons.setConfig({ theme: catalogTheme(savedTheme()) });
+const updateTheme = ({ globals }: { globals: Record<string, unknown> }) => {
+  rememberTheme(globals["theme"] === "light" ? "light" : "dark");
+  addons.setConfig({
+    theme: catalogTheme(globals["theme"] === "light" ? "light" : "dark"),
+  });
+};
+addons.register("arcwell/theme", () => {
+  addons.getChannel().on(SET_GLOBALS, updateTheme);
+  addons.getChannel().on(GLOBALS_UPDATED, updateTheme);
 });

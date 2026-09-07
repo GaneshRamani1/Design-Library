@@ -1,9 +1,11 @@
+import { Appearance } from "./shared/appearance";
 import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
   input,
   signal,
+  output,
 } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 @Component({
@@ -17,28 +19,53 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
       multi: true,
     },
   ],
-  template: `<label
+  host: { "[attr.data-size]": "size()" },
+  template: `<label [class.reverse]="labelPosition() === 'start'"
     ><input
       type="checkbox"
       role="switch"
+      [attr.aria-label]="showLabel() ? null : label()"
       [checked]="checked()"
       [disabled]="disabled() || formDisabled()"
       (change)="update($event)"
       (blur)="onTouched()"
-    /><span class="track" aria-hidden="true"><span></span></span
-    ><span>{{ label() }}</span></label
-  >`,
+    /><span class="track" aria-hidden="true"><span></span></span>
+    @if (showLabel()) {
+      <span
+        >{{ label() }}
+        @if (description()) {
+          <small>{{ description() }}</small>
+        }
+      </span>
+    }
+  </label>`,
   styles: [
     `
       :host {
         display: inline-block;
-        font: 13px var(--dl-font, sans-serif);
-        color: var(--dl-text, #202a24);
+        font: var(--dl-ui-font-size, 13px) var(--dl-font, sans-serif);
+        color: var(--dl-ui-color, var(--dl-text, #202a24));
+      }
+      small {
+        display: block;
+        color: var(--dl-ui-color, var(--dl-muted));
+        font-size: var(--dl-ui-font-size, 12px);
+        margin-top: 4px;
+      }
+      .reverse {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+      }
+      :host([data-size="sm"]) {
+        font-size: var(--dl-ui-font-size, 12px);
+      }
+      :host([data-size="lg"]) {
+        font-size: var(--dl-ui-font-size, 16px);
       }
       label {
         display: flex;
         align-items: center;
-        gap: 11px;
+        gap: var(--dl-ui-gap, 11px);
         cursor: pointer;
         position: relative;
       }
@@ -55,27 +82,28 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
         display: inline-flex;
         width: 36px;
         height: 22px;
-        border-radius: 20px;
+        border-radius: var(--dl-ui-radius, 20px);
         align-items: center;
-        background: #a4afa5;
+        background: var(--dl-ui-background, var(--dl-switch-track, #a4afa5));
         transition: background 0.15s;
       }
       .track span {
         width: 16px;
         height: 16px;
         margin: 3px;
-        border-radius: 50%;
-        background: white;
+        border-radius: var(--dl-ui-radius, 50%);
+        background: var(--dl-ui-background, var(--dl-switch-thumb, white));
         transition: transform 0.15s;
       }
       input:checked + .track {
-        background: var(--dl-primary, #285b45);
+        background: var(--dl-ui-background, var(--dl-primary, #285b45));
       }
       input:checked + .track span {
         transform: translateX(14px);
+        background: var(--dl-ui-background, var(--dl-on-primary, white));
       }
       input:focus-visible + .track {
-        outline: 3px solid var(--dl-focus, #3577b9);
+        outline: 3px solid var(--dl-ui-focus-color, var(--dl-focus, #3577b9));
         outline-offset: 3px;
       }
       label:has(input:disabled) {
@@ -91,9 +119,17 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
     `,
   ],
 })
-export class ToggleComponent implements ControlValueAccessor {
+export class ToggleComponent
+  extends Appearance
+  implements ControlValueAccessor
+{
+  readonly size = input<"sm" | "md" | "lg">("md");
+  readonly description = input("");
+  readonly labelPosition = input<"start" | "end">("end");
+  readonly showLabel = input(true);
   readonly label = input.required<string>();
   readonly disabled = input(false);
+  readonly valueChange = output<boolean>();
   readonly checked = signal(false);
   readonly formDisabled = signal(false);
   private onChange: (value: boolean) => void = () => {};
@@ -114,5 +150,6 @@ export class ToggleComponent implements ControlValueAccessor {
     const checked = (event.target as HTMLInputElement).checked;
     this.checked.set(checked);
     this.onChange(checked);
+    this.valueChange.emit(checked);
   }
 }

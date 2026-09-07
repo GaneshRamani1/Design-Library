@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/angular";
 import { ProgressComponent } from "./progress.component";
 const meta: Meta<ProgressComponent> = {
-  title: "Components/Progress",
+  id: "feedback-progress",
+  title: "Feedback/Progress/Variations",
   component: ProgressComponent,
   tags: ["autodocs"],
   args: { label: "Project progress", value: 64 },
