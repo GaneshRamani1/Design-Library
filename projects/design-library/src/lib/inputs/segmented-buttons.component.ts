@@ -22,7 +22,7 @@ export interface SegmentOption extends SelectOption {
     },
   ],
   template:
-    `<span class="label" [id]="id()+'-label'">{{label()}}</span><div class="segments" [class.vertical]="orientation()==='vertical'" [attr.role]="multiple()?'group':'radiogroup'" [attr.aria-labelledby]="id()+'-label'" [attr.aria-describedby]="descriptionId()" [attr.aria-orientation]="orientation()" (keydown)="navigate($event)">@for(option of options();track option.value){<button type="button" [disabled]="isDisabled()||option.disabled" [attr.role]="multiple()?null:'radio'" [attr.aria-checked]="multiple()?null:selected(option.value)" [attr.aria-pressed]="multiple()?selected(option.value):null" [attr.tabindex]="multiple()?0:tabIndex(option.value)" [class.selected]="selected(option.value)" (click)="choose(option)" (focus)="reveal($event)" (blur)="onTouched()">@if(option.icon){<dl-icon [name]="option.icon" [size]="18"/>}<span>{{option.label}}</span></button>}</div>` +
+    `@if(showLabel()){<span class="label" [id]="id()+'-label'">{{label()}}</span>}<div class="segments" [class.vertical]="orientation()==='vertical'" [attr.role]="multiple()?'group':'radiogroup'" [attr.aria-label]="showLabel()?null:label()" [attr.aria-labelledby]="showLabel()?id()+'-label':null" [attr.aria-describedby]="descriptionId()" [attr.aria-orientation]="orientation()" (keydown)="navigate($event)">@for(option of options();track option.value){<button type="button" [disabled]="isDisabled()||option.disabled" [attr.role]="multiple()?null:'radio'" [attr.aria-checked]="multiple()?null:selected(option.value)" [attr.aria-pressed]="multiple()?selected(option.value):null" [attr.tabindex]="multiple()?0:tabIndex(option.value)" [class.selected]="selected(option.value)" (click)="choose(option)" (focus)="reveal($event)" (blur)="onTouched()">@if(option.icon){<dl-icon [name]="option.icon" [size]="18"/>}<span>{{option.label}}</span></button>}</div>` +
     fieldMessage,
   styles: [
     fieldStyles,
@@ -81,6 +81,7 @@ export interface SegmentOption extends SelectOption {
   ],
 })
 export class SegmentedButtonsComponent extends FormControlBase<string[]> {
+  readonly showLabel = input(true);
   readonly options = input<SegmentOption[]>([]);
   readonly multiple = input(false);
   readonly allowEmpty = input(false);

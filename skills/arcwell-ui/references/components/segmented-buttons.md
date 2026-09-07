@@ -34,6 +34,7 @@ Switch between related choices. Single selection uses radio behavior; multiple s
 | disabled | boolean | false | input | FormControlBase | See the dedicated configuration story below. |
 | size | "sm" \| "md" \| "lg" | "md" | input | FormControlBase | See the dedicated configuration story below. |
 | stretch | boolean | false | input | FormControlBase | See the dedicated configuration story below. |
+| showLabel | boolean | true | input | SegmentedButtonsComponent | See the dedicated configuration story below. |
 | options | SegmentOption[] | [] | input | SegmentedButtonsComponent | See the dedicated configuration story below. |
 | multiple | boolean | false | input | SegmentedButtonsComponent | See the dedicated configuration story below. |
 | allowEmpty | boolean | false | input | SegmentedButtonsComponent | See the dedicated configuration story below. |
@@ -151,6 +152,8 @@ import { SegmentedButtonsComponent } from "./segmented-buttons.component";
 - `size`: [SizeLg](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--size-lg) — Changes the component size while keeping its proportions consistent. Here it is set to “lg”.
 - `stretch`: [StretchFalse](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--stretch-false) — Lets the component fill the available container width. This example has it turned off.
 - `stretch`: [StretchTrue](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--stretch-true) — Lets the component fill the available container width. This example has it turned on.
+- `showLabel`: [ShowLabelFalse](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--show-label-false) — Controls whether label are shown. This example has it turned off.
+- `showLabel`: [ShowLabelTrue](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--show-label-true) — Controls whether label are shown. This example has it turned on.
 - `options`: [Options](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--options) — Provides a custom set of choices, including a disabled option.
 - `multiple`: [MultipleFalse](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--multiple-false) — Enables selecting more than one option. This example has it turned off.
 - `multiple`: [MultipleTrue](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--multiple-true) — Enables selecting more than one option. This example has it turned on.

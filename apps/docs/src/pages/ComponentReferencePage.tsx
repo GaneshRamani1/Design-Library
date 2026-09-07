@@ -32,7 +32,7 @@ export function ComponentReferencePage() {
   return (
     <div className="mx-auto grid max-w-[1400px] grid-cols-1 px-5 md:px-10 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-12"><article className="min-w-0 max-w-4xl">
       <ComponentHeader category={component.category} title={component.title} description={component.description} selector={component.selector} />
-      <div className="sticky top-16 z-20 border-y border-white/10 bg-black/90 py-2 backdrop-blur-xl"><DocsTabs value={tab} onChange={(value) => { setTab(value); window.scrollTo({ top: 0, behavior: "smooth" }); }} /></div>
+      <div className="docs-tabbar sticky top-16 z-20 border-y py-2 backdrop-blur-xl"><DocsTabs value={tab} onChange={(value) => { setTab(value); window.scrollTo({ top: 0, behavior: "smooth" }); }} /></div>
       {tab === "overview" && <>
       <PageSection id="preview" title="Live component"><NativePreview component={component} /></PageSection>
       <PageSection id="usage" title="Usage"><div className="space-y-4">{component.integration.map((decision) => <p className="max-w-3xl leading-7 text-zinc-400" key={decision}>{decision}</p>)}</div></PageSection>

@@ -38,11 +38,12 @@ export class DocsDropdownAdapter {
   selector: "docs-segmented-adapter",
   standalone: true,
   imports: [FormsModule, SegmentedButtonsComponent],
-  template: `<dl-segmented-buttons [id]="id" [label]="label" [options]="options" [ngModel]="selection" (ngModelChange)="update($event)" />`,
+  template: `<dl-segmented-buttons [id]="id" [label]="label" [showLabel]="showLabel" [options]="options" [ngModel]="selection" (ngModelChange)="update($event)" />`,
 })
 export class DocsSegmentedAdapter {
   @Input() id = "docs-segmented";
   @Input() label = "Choose a value";
+  @Input() showLabel = true;
   @Input() options: ControlOption[] = [];
   private currentValue = "";
   selection: string[] = [];
@@ -63,7 +64,7 @@ export class DocsSegmentedAdapter {
   selector: "docs-tabs-adapter",
   standalone: true,
   imports: [TabComponent, TabContainerComponent],
-  template: `<dl-tab-container label="Documentation sections" [value]="value" [panelPadding]="'0'" (valueChange)="update($event)">@for (option of options; track option.value) { <dl-tab [value]="option.value" [label]="option.label" /> }</dl-tab-container>`,
+  template: `<dl-tab-container label="Documentation sections" [value]="value" [stretch]="true" [panelPadding]="'0'" (valueChange)="update($event)">@for (option of options; track option.value) { <dl-tab [value]="option.value" [label]="option.label" /> }</dl-tab-container>`,
 })
 export class DocsTabsAdapter {
   @Input() options: ControlOption[] = [];

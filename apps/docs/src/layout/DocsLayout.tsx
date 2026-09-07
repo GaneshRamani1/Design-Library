@@ -28,8 +28,8 @@ export function DocsLayout() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-black text-zinc-300">
-      <header className="fixed inset-x-0 top-0 z-50 flex h-16 items-center border-b border-white/10 bg-black/80 px-4 backdrop-blur-xl md:px-6">
+    <div className="docs-shell min-h-screen text-zinc-300">
+      <header className="docs-chrome fixed inset-x-0 top-0 z-50 flex h-16 items-center border-b px-4 backdrop-blur-xl md:px-6">
         <button className="mr-3 rounded-lg p-2 text-zinc-400 md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle navigation">☰</button>
         <NavLink to="/" className="flex items-center gap-3 font-semibold text-white"><span className="grid size-8 place-items-center rounded-xl bg-white text-black">A</span>Arcwell UI</NavLink>
         <span className="ml-3 hidden rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-zinc-500 sm:inline">Documentation</span>
@@ -41,7 +41,7 @@ export function DocsLayout() {
 
       {menuOpen && <button className="fixed inset-0 top-16 z-30 bg-black/60 md:hidden" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
 
-      <aside className={`${menuOpen ? "translate-x-0" : "-translate-x-full"} fixed bottom-0 left-0 top-16 z-40 w-72 overflow-y-auto border-r border-white/10 bg-black p-5 transition-transform md:translate-x-0`}>
+      <aside className={`${menuOpen ? "translate-x-0" : "-translate-x-full"} docs-sidebar fixed bottom-0 left-0 top-16 z-40 w-72 overflow-y-auto border-r p-5 transition-transform md:translate-x-0`}>
         <label className="block"><span className="sr-only">Search documentation</span><input className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none focus:border-white/30" placeholder="Search documentation…" /></label>
         <nav className="mt-8 space-y-7">
           {navigation.map((group) => (

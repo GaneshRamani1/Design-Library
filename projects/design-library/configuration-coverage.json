@@ -14271,6 +14271,7 @@
       "disabled",
       "size",
       "stretch",
+      "showLabel",
       "options",
       "multiple",
       "allowEmpty",
@@ -14422,6 +14423,24 @@
         "group": "Configuration",
         "description": "Lets the component fill the available container width. This example has it turned on.",
         "id": "inputs-segmented-buttons-configuration--stretch-true"
+      },
+      {
+        "prop": "showLabel",
+        "story": "ShowLabelFalse",
+        "value": false,
+        "title": "Inputs/Segmented buttons/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether label are shown. This example has it turned off.",
+        "id": "inputs-segmented-buttons-configuration--show-label-false"
+      },
+      {
+        "prop": "showLabel",
+        "story": "ShowLabelTrue",
+        "value": true,
+        "title": "Inputs/Segmented buttons/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether label are shown. This example has it turned on.",
+        "id": "inputs-segmented-buttons-configuration--show-label-true"
       },
       {
         "prop": "options",

@@ -24,6 +24,7 @@ export function ButtonVariants() {
           <DocsSegmented
             id="button-variant-example"
             label="Button variant"
+            showLabel={false}
             options={buttonExamples.map((example) => ({
               value: example.id,
               label: example.title,
