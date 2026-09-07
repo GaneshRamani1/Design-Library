@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { DocsDropdown, DocsToggle } from "../../components";
+import { CodeBlock, DocsDropdown, DocsToggle } from "../../components";
 import { setCustomElementProperties } from "../../utils/customElement";
 
 type ButtonVariant = "primary" | "secondary" | "tertiary" | "ghost" | "danger";
@@ -64,7 +64,7 @@ export function ButtonPlayground() {
             </div>
           </div>
         </div>
-        <pre className="overflow-x-auto border-t border-white/10 p-5 text-[13px] leading-6 text-zinc-300"><code>{source}</code></pre>
+        <div className="border-t border-white/10"><CodeBlock code={source} embedded /></div>
       </div>
     </div>
   );

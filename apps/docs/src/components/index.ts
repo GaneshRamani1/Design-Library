@@ -1,5 +1,6 @@
 export { ApiTable } from "./ApiTable";
 export { CodeBlock } from "./CodeBlock";
+export { HighlightedCode } from "./HighlightedCode";
 export { ComponentHeader } from "./ComponentHeader";
 export { ConfigurationRenderer } from "./ConfigurationRenderer";
 export { ConfigurationGroup } from "./ConfigurationGroup";

@@ -38,12 +38,13 @@ export class DocsDropdownAdapter {
   selector: "docs-segmented-adapter",
   standalone: true,
   imports: [FormsModule, SegmentedButtonsComponent],
-  template: `<dl-segmented-buttons [id]="id" [label]="label" [showLabel]="showLabel" [options]="options" [ngModel]="selection" (ngModelChange)="update($event)" />`,
+  template: `<dl-segmented-buttons [id]="id" [label]="label" [showLabel]="showLabel" [orientation]="orientation" [options]="options" [ngModel]="selection" (ngModelChange)="update($event)" />`,
 })
 export class DocsSegmentedAdapter {
   @Input() id = "docs-segmented";
   @Input() label = "Choose a value";
   @Input() showLabel = true;
+  @Input() orientation: "horizontal" | "vertical" = "vertical";
   @Input() options: ControlOption[] = [];
   private currentValue = "";
   selection: string[] = [];

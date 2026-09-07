@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { DocsDropdown, DocsToggle, PageToc } from "../../components";
+import { CodeBlock, DocsDropdown, DocsToggle, PageToc } from "../../components";
 
 const api = [
   { name: "heading", type: "string", default: '""', description: "Primary title displayed in the card header." },
@@ -22,15 +22,7 @@ const tokens = [
 const nav = ["Overview", "Examples", "API", "Patterns", "Overrides", "Accessibility", "Playground"];
 
 function Code({ children }: { children: string }) {
-  const [copied, setCopied] = useState(false);
-  return (
-    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#090909]">
-      <button className="absolute right-3 top-3 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-zinc-300 opacity-0 transition group-hover:opacity-100" onClick={() => { void navigator.clipboard.writeText(children); setCopied(true); setTimeout(() => setCopied(false), 1200); }}>
-        {copied ? "Copied" : "Copy"}
-      </button>
-      <pre className="overflow-x-auto p-5 text-[13px] leading-6 text-zinc-300"><code>{children}</code></pre>
-    </div>
-  );
+  return <CodeBlock code={children} />;
 }
 
 function Section({ id, eyebrow, title, children }: { id: string; eyebrow: string; title: string; children: React.ReactNode }) {
@@ -42,10 +34,10 @@ function Section({ id, eyebrow, title, children }: { id: string; eyebrow: string
 }
 
 function Example({ title, description, children, code }: { title: string; description: string; children: React.ReactNode; code: string }) {
-  return <article className="overflow-hidden rounded-3xl border border-white/10 bg-zinc-950">
-    <div className="border-b border-white/10 px-6 py-5"><h3 className="font-semibold text-white">{title}</h3><p className="mt-1 text-sm text-zinc-400">{description}</p></div>
-    <div className="example-grid flex min-h-72 items-center justify-center p-6 md:p-10">{children}</div>
-    <details className="border-t border-white/10"><summary className="cursor-pointer px-6 py-4 text-sm font-medium text-zinc-300">View Angular code</summary><div className="px-4 pb-4"><Code>{code}</Code></div></details>
+  return <article className="overflow-hidden rounded-3xl border border-white/10 bg-zinc-950 lg:grid lg:grid-cols-[280px_minmax(0,1fr)]">
+    <div className="border-b border-white/10 px-6 py-5 lg:border-b-0 lg:border-r"><h3 className="font-semibold text-white">{title}</h3><p className="mt-2 text-sm leading-6 text-zinc-400">{description}</p></div>
+    <div className="min-w-0"><div className="example-grid flex min-h-72 items-center justify-center p-6 md:p-10">{children}</div>
+    <details className="border-t border-white/10"><summary className="cursor-pointer px-6 py-4 text-sm font-medium text-zinc-300">View Angular code</summary><div className="px-4 pb-4"><Code>{code}</Code></div></details></div>
   </article>;
 }
 

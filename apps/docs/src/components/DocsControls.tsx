@@ -25,9 +25,9 @@ export function DocsDropdown({ id, label, options, value, onChange }: { id: stri
   return <arc-docs-dropdown className="block w-full" ref={ref} />;
 }
 
-export function DocsSegmented({ id, label, options, value, onChange, showLabel = true }: { id: string; label: string; options: Array<{ value: string; label: string }>; value: string; onChange: (value: string) => void; showLabel?: boolean }) {
+export function DocsSegmented({ id, label, options, value, onChange, showLabel = true, orientation = "vertical" }: { id: string; label: string; options: Array<{ value: string; label: string }>; value: string; onChange: (value: string) => void; showLabel?: boolean; orientation?: "horizontal" | "vertical" }) {
   const ref = useRef<HTMLElement>(null);
-  useEffect(() => { void setCustomElementProperties(ref.current, { id, label, options, value, showLabel }); }, [id, label, options, value, showLabel]);
+  useEffect(() => { void setCustomElementProperties(ref.current, { id, label, options, value, showLabel, orientation }); }, [id, label, options, value, showLabel, orientation]);
   useEffect(() => {
     const element = ref.current!;
     const listener = (event: Event) => onChange(String((event as CustomEvent).detail));

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { ComponentDoc, ConfigurationExample } from "../pages/types";
+import { CodeBlock } from "./CodeBlock";
 import { DocsButton } from "./DocsButton";
 
 const directiveSlugs = new Set(["carousel", "link", "popover", "tooltip", "validation"]);
@@ -68,7 +69,6 @@ function selectorMarkup(component: ComponentDoc, property: string, value: unknow
 export function ConfigurationRenderer({ component, example, embedded = false }: { component: ComponentDoc; example: ConfigurationExample; embedded?: boolean }) {
   const host = useRef<HTMLDivElement>(null);
   const defaultHost = useRef<HTMLDivElement>(null);
-  const [copied, setCopied] = useState(false);
   const [renderOverlay, setRenderOverlay] = useState(false);
   const value = inferredValue(example);
   const source = selectorMarkup(component, example.property, value);
@@ -98,5 +98,5 @@ export function ConfigurationRenderer({ component, example, embedded = false }: 
 
   const valueLabel = typeof value === "object" ? example.label : String(value);
   const isAppearance = example.kind === "appearance";
-  return <article className={`overflow-hidden bg-white/[.025] ${embedded ? "" : "rounded-2xl border border-white/10"}`}><div className="flex items-start justify-between gap-3 p-5"><div><p className="text-[10px] font-semibold uppercase tracking-[.16em] text-zinc-600">What this value changes</p><p className="mt-2 text-sm leading-6 text-zinc-300">{example.description}</p></div><code className="shrink-0 text-xs text-zinc-500">{valueLabel}</code></div><div className={`example-grid grid min-h-40 items-center gap-6 border-y border-white/10 p-5 ${isAppearance ? "sm:grid-cols-2" : "place-items-center"}`}>{isAppearance && <div className="grid min-h-28 place-items-center"><span className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-zinc-500">Default</span><div ref={defaultHost} /></div>}{directiveSlugs.has(component.slug) ? <code className="text-sm text-emerald-300">{component.selector}</code> : requiresTrigger && !renderOverlay ? <DocsButton onClick={() => setRenderOverlay(true)} size="md" variant="primary">Render preview</DocsButton> : <div className="grid w-full max-w-md place-items-center"><span className={isAppearance ? "mb-3 text-[10px] font-semibold uppercase tracking-widest text-zinc-500" : "hidden"}>Override</span><div ref={host} /></div>}</div><div className="docs-code-surface relative bg-black/40 p-4 pr-24"><pre className="overflow-x-auto text-xs leading-5 text-zinc-400"><code>{source}</code></pre><DocsButton className="absolute right-3 top-3" onClick={() => { void navigator.clipboard.writeText(source); setCopied(true); setTimeout(() => setCopied(false), 1200); }}>{copied ? "Copied" : "Copy"}</DocsButton></div></article>;
+  return <article className={`overflow-hidden bg-white/[.025] ${embedded ? "" : "rounded-2xl border border-white/10"}`}><div className="flex items-start justify-between gap-3 p-5"><div><p className="text-[10px] font-semibold uppercase tracking-[.16em] text-zinc-600">What this value changes</p><p className="mt-2 text-sm leading-6 text-zinc-300">{example.description}</p></div><code className="shrink-0 text-xs text-zinc-500">{valueLabel}</code></div><div className={`example-grid grid min-h-40 items-center gap-6 border-y border-white/10 p-5 ${isAppearance ? "sm:grid-cols-2" : "place-items-center"}`}>{isAppearance && <div className="grid min-h-28 place-items-center"><span className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-zinc-500">Default</span><div ref={defaultHost} /></div>}{directiveSlugs.has(component.slug) ? <code className="text-sm text-emerald-300">{component.selector}</code> : requiresTrigger && !renderOverlay ? <DocsButton onClick={() => setRenderOverlay(true)} size="md" variant="primary">Render preview</DocsButton> : <div className="grid w-full max-w-md place-items-center"><span className={isAppearance ? "mb-3 text-[10px] font-semibold uppercase tracking-widest text-zinc-500" : "hidden"}>Override</span><div ref={host} /></div>}</div><CodeBlock code={source} embedded /></article>;
 }

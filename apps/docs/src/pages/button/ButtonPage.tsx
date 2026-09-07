@@ -3,7 +3,7 @@ import { buttonApi } from "./button.api";
 import { ButtonPlayground } from "./ButtonPlayground";
 import { ButtonVariants } from "./ButtonVariants";
 import { ButtonIconConfiguration } from "./ButtonIconConfiguration";
-import { DocsTabs, FeatureGrid, PageToc } from "../../components";
+import { CodeBlock, DocsTabs, FeatureGrid, PageToc } from "../../components";
 import buttonDocs from "../catalog/button/docs.json";
 import type { ComponentDoc } from "../types";
 
@@ -50,7 +50,7 @@ export function ButtonPage() {
             <tbody>{buttonApi.outputs.map((item) => <tr className="border-t border-white/10" key={item.name}><td className="p-4 font-mono text-emerald-300">{item.name}</td><td className="p-4 font-mono text-xs text-zinc-300">{item.type}</td><td className="p-4 text-xs text-zinc-500">{item.defaultValue}</td><td className="p-4 leading-6 text-zinc-400">{item.description}</td></tr>)}</tbody>
           </table>
         </div>
-        <pre className="docs-code-surface mt-5 overflow-x-auto rounded-2xl border border-white/10 bg-[#090909] p-5 text-[13px] leading-6 text-zinc-300"><code>{'<button dlButton (click)="continue()">Continue</button>'}</code></pre>
+        <div className="mt-5"><CodeBlock code={'<button dlButton (click)="continue()">Continue</button>'} /></div>
       </section>}
       {tab === "appearance" && <section id="appearance" className="scroll-mt-24 py-16"><h2 className="mb-3 text-3xl font-semibold text-white">Appearance</h2><p className="mb-8 max-w-2xl text-zinc-400">Use scoped appearance inputs for deliberate instance changes while preserving the shared design tokens.</p><FeatureGrid component={component} items={appearance} emptyMessage="No appearance overrides are documented." /></section>}
       {tab === "playground" && <section id="playground" className="scroll-mt-24 py-16"><h2 className="mb-3 text-3xl font-semibold text-white">Playground</h2><p className="mb-8 text-zinc-400">Configure the real Angular component and inspect the resulting Angular markup.</p><ButtonPlayground /></section>}

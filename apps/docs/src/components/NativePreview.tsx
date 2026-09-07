@@ -39,5 +39,5 @@ export function NativePreview({ component }: { component: ComponentDoc }) {
   }, [component]);
 
   if (directives.has(component.slug)) return <div className="rounded-2xl border border-white/10 bg-white/[.025] p-6"><p className="text-sm text-zinc-400">This Angular directive is applied to a compatible host element.</p><code className="mt-4 block text-emerald-300">{component.selector}</code></div>;
-  return <div className="overflow-hidden rounded-3xl border border-white/10"><div className="example-grid grid min-h-64 place-items-center p-8"><div ref={host} className="w-full max-w-xl" /></div><div aria-live="polite" className="border-t border-white/10 bg-black p-4 text-xs text-zinc-500">{events.length ? events.map((event) => <div key={event}>{event}</div>) : "Interact with the component to inspect emitted outputs."}</div></div>;
+  return <div className="overflow-hidden rounded-3xl border border-white/10"><div className="example-grid grid min-h-64 place-items-center p-8"><div ref={host} className="w-full max-w-xl" /></div><div aria-live="polite" className="docs-code-surface border-t border-white/10 bg-black p-4 text-xs text-zinc-500">{events.length ? events.map((event) => <div key={event}>{event}</div>) : "Interact with the component to inspect emitted outputs."}</div></div>;
 }

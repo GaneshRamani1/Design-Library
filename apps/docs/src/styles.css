@@ -29,6 +29,17 @@ body { margin: 0; background: #000; }
 [data-theme="light"] .docs-code-surface { border-color: var(--dl-border); background: #f0f3ee; color: var(--dl-text); }
 [data-theme="light"] .docs-code-surface [class~="text-zinc-300"],
 [data-theme="light"] .docs-code-surface [class~="text-zinc-400"] { color: #3f4942; }
+.code-comment { color: #7c8780; }
+.code-string { color: #a7f3d0; }
+.code-tag { color: #93c5fd; }
+.code-binding { color: #f0abfc; }
+.code-keyword { color: #c4b5fd; }
+.code-punctuation { color: #a1a1aa; }
+[data-theme="light"] .code-string { color: #176b4c; }
+[data-theme="light"] .code-tag { color: #215ea8; }
+[data-theme="light"] .code-binding { color: #8a3d88; }
+[data-theme="light"] .code-keyword { color: #6941a5; }
+[data-theme="light"] .code-punctuation { color: #66716a; }
 [data-theme="light"] .example-grid { background-color: #f2f5f0; background-image: linear-gradient(rgba(32,42,36,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(32,42,36,.06) 1px, transparent 1px); }
 button, input, select { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
