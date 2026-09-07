@@ -12,10 +12,9 @@ test("header renders semantic text, metadata and functioning projected actions",
   await expect(
     page.getByRole("heading", { level: 1, name: "Workspace overview" }),
   ).toBeVisible();
-  await expect(
-    page.getByRole("list", { name: "Workspace details" }),
-  ).toContainText("Design team");
-  await expect(page.getByRole("listitem")).toHaveCount(3);
+  const details = page.getByRole("list", { name: "Workspace details" });
+  await expect(details).toContainText("Design team");
+  await expect(details.getByRole("listitem")).toHaveCount(3);
   await expect(page.locator("dl-header .left")).toContainText("Back");
   await expect(page.locator("dl-header .right")).toContainText("New project");
   await page.getByRole("button", { name: "New project", exact: true }).click();

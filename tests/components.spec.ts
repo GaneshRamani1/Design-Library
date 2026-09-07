@@ -66,7 +66,7 @@ test("catalog links open documentation in the Storybook shell", async ({
   await expect(
     page
       .frameLocator("#storybook-preview-iframe")
-      .getByRole("heading", { name: "Button", exact: true }),
+      .getByRole("heading", { name: "Variations", exact: true }),
   ).toBeVisible();
 });
 
@@ -95,7 +95,7 @@ test("theme switch updates the catalog, persists through navigation, and themes 
   );
   await preview.getByRole("link", { name: "Explore components" }).click();
   await expect(
-    preview.getByRole("heading", { name: "Button", exact: true }),
+    preview.getByRole("heading", { name: "Variations", exact: true }),
   ).toBeVisible();
   await expect(preview.locator("html")).toHaveAttribute("data-theme", "light");
   await page

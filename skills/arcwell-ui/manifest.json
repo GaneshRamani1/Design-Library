@@ -12181,7 +12181,7 @@
     "projects/design-library/src/lib/toggle.stories.ts": "bca826c46ab65d0f7bd76d25cfd6d13618717f1c18b6db2fe2ecf0940f46977c",
     "projects/design-library/src/public-api.ts": "beff508aa2628334c77a5e26b57ebd9e9b3fea3d9967491b40a5a4e2d30d0eaa",
     "projects/design-library/src/welcome.stories.ts": "4232460020c89b83f6676ad67ee609e74c44530d1ecdadf3dd95d1fe2363dd81",
-    "scripts/generate-config-stories.mjs": "f06e08e937ffed1ff25023f9e58fe1aaa407e0389c376958c4361d7bfa44370e",
+    "scripts/generate-config-stories.mjs": "4ac88762d2021b0eae87c17deddc1eae8b1760612e801b174fe09c0c1563133d",
     "scripts/generate-llm-guidance.mjs": "090745ab5e0b95b4ba8c1442dd1dce2703807f42e0151bba58a0be83176a42a8",
     "scripts/story-catalog.mjs": "6f676bb41ebe6a12a9372e26e6f5fc8043e9d53dbb48ffc475f375e5e76a581d"
   }
