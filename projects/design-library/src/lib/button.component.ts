@@ -14,6 +14,7 @@ export const buttonStyles = `
         padding: var(--dl-ui-padding, 11px 18px);
         background: var(--dl-ui-background, var(--dl-primary, #285b45));
         color: var(--dl-ui-color, var(--dl-on-primary, white));
+        box-shadow: var(--dl-ui-shadow, none);
         transition:
           background 0.15s,
           box-shadow 0.15s;

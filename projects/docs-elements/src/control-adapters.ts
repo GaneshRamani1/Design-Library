@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { DropdownComponent, SegmentedButtonsComponent, TabComponent, TabContainerComponent, ToggleComponent } from "@arcwell/ui";
 
-interface ControlOption { value: string; label: string; }
+interface ControlOption { value: string; label: string; description?: string; }
 
 @Component({
   selector: "docs-toggle-adapter",
@@ -38,13 +38,14 @@ export class DocsDropdownAdapter {
   selector: "docs-segmented-adapter",
   standalone: true,
   imports: [FormsModule, SegmentedButtonsComponent],
-  template: `<dl-segmented-buttons [id]="id" [label]="label" [showLabel]="showLabel" [orientation]="orientation" [options]="options" [ngModel]="selection" (ngModelChange)="update($event)" />`,
+  template: `<dl-segmented-buttons [id]="id" [label]="label" [showLabel]="showLabel" [orientation]="orientation" [presentation]="presentation" [options]="options" [ngModel]="selection" (ngModelChange)="update($event)" />`,
 })
 export class DocsSegmentedAdapter {
   @Input() id = "docs-segmented";
   @Input() label = "Choose a value";
   @Input() showLabel = true;
   @Input() orientation: "horizontal" | "vertical" = "vertical";
+  @Input() presentation: "segmented" | "list" = "segmented";
   @Input() options: ControlOption[] = [];
   private currentValue = "";
   selection: string[] = [];

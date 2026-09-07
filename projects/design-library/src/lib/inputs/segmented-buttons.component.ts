@@ -9,6 +9,7 @@ import {
 import { IconComponent } from "../icons/icon.component";
 export interface SegmentOption extends SelectOption {
   icon?: string;
+  description?: string;
 }
 @Component({
   selector: "dl-segmented-buttons",
@@ -22,7 +23,7 @@ export interface SegmentOption extends SelectOption {
     },
   ],
   template:
-    `@if(showLabel()){<span class="label" [id]="id()+'-label'">{{label()}}</span>}<div class="segments" [class.vertical]="orientation()==='vertical'" [attr.role]="multiple()?'group':'radiogroup'" [attr.aria-label]="showLabel()?null:label()" [attr.aria-labelledby]="showLabel()?id()+'-label':null" [attr.aria-describedby]="descriptionId()" [attr.aria-orientation]="orientation()" (keydown)="navigate($event)">@for(option of options();track option.value){<button type="button" [disabled]="isDisabled()||option.disabled" [attr.role]="multiple()?null:'radio'" [attr.aria-checked]="multiple()?null:selected(option.value)" [attr.aria-pressed]="multiple()?selected(option.value):null" [attr.tabindex]="multiple()?0:tabIndex(option.value)" [class.selected]="selected(option.value)" (click)="choose(option)" (focus)="reveal($event)" (blur)="onTouched()">@if(option.icon){<dl-icon [name]="option.icon" [size]="18"/>}<span>{{option.label}}</span></button>}</div>` +
+    `@if(showLabel()){<span class="label" [id]="id()+'-label'">{{label()}}</span>}<div class="segments" [class.vertical]="orientation()==='vertical'" [class.selectable-list]="presentation()==='list'" [attr.role]="multiple()?'group':'radiogroup'" [attr.aria-label]="showLabel()?null:label()" [attr.aria-labelledby]="showLabel()?id()+'-label':null" [attr.aria-describedby]="descriptionId()" [attr.aria-orientation]="orientation()" (keydown)="navigate($event)">@for(option of options();track option.value){<button type="button" [disabled]="isDisabled()||option.disabled" [attr.role]="multiple()?null:'radio'" [attr.aria-checked]="multiple()?null:selected(option.value)" [attr.aria-pressed]="multiple()?selected(option.value):null" [attr.tabindex]="multiple()?0:tabIndex(option.value)" [class.selected]="selected(option.value)" (click)="choose(option)" (focus)="reveal($event)" (blur)="onTouched()">@if(option.icon){<dl-icon [name]="option.icon" [size]="18"/>}<span class="option-copy"><span>{{option.label}}</span>@if(option.description){<small>{{option.description}}</small>}</span>@if(presentation()==='list'){<span class="indicator" aria-hidden="true">{{selected(option.value)?'✓':''}}</span>}</button>}</div>` +
     fieldMessage,
   styles: [
     fieldStyles,
@@ -71,6 +72,15 @@ export interface SegmentOption extends SelectOption {
         min-width: 0;
         overflow-wrap: anywhere;
       }
+      .option-copy { display:flex; flex-direction:column; gap:2px; }
+      .option-copy small { color:var(--dl-muted); font-size:12px; line-height:1.4; }
+      .selectable-list { flex-direction:column; padding:0; gap:0; overflow:hidden; }
+      .selectable-list button { justify-content:flex-start; min-height:58px; padding:10px 12px; border-radius:0; text-align:left; }
+      .selectable-list button + button { border-top:1px solid var(--dl-border); }
+      .selectable-list .option-copy { flex:1; }
+      .selectable-list .indicator { width:20px; color:var(--dl-primary); text-align:center; }
+      .selectable-list .selected { background:var(--dl-primary-soft); color:var(--dl-text); box-shadow:inset 3px 0 var(--dl-primary); }
+      .selectable-list .selected .option-copy small { color:var(--dl-muted); }
       @media (max-width: 600px) {
         .segments:not(.vertical) button {
           flex: 1 0 auto;
@@ -86,6 +96,7 @@ export class SegmentedButtonsComponent extends FormControlBase<string[]> {
   readonly multiple = input(false);
   readonly allowEmpty = input(false);
   readonly orientation = input<"horizontal" | "vertical">("horizontal");
+  readonly presentation = input<"segmented" | "list">("segmented");
   reveal(event: FocusEvent): void {
     (event.target as HTMLElement).scrollIntoView({
       block: "nearest",

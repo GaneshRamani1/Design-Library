@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CodeBlock, DocsSegmented } from "../../components";
+import { CodeBlock, DocsSelectableList } from "../../components";
 import { buttonExamples } from "./button.examples";
 
 export function ButtonVariants() {
@@ -21,14 +21,14 @@ export function ButtonVariants() {
           update the preview, guidance, and Angular example together.
         </p>
         <div className="mt-5 w-full overflow-x-auto pb-1">
-          <DocsSegmented
+          <DocsSelectableList
             id="button-variant-example"
             label="Button variant"
             showLabel={false}
-            orientation="vertical"
             options={buttonExamples.map((example) => ({
               value: example.id,
               label: example.title,
+              description: example.description,
             }))}
             value={selected.id}
             onChange={chooseVariant}

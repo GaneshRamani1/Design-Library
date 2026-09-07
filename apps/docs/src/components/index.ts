@@ -13,4 +13,4 @@ export { EventReference } from "./EventReference";
 export { FeatureGrid } from "./FeatureGrid";
 export { ComponentPlayground } from "./ComponentPlayground";
 export { DocsButton } from "./DocsButton";
-export { DocsDropdown, DocsSegmented, DocsTabs, DocsToggle } from "./DocsControls";
+export { DocsDropdown, DocsSegmented, DocsSelectableList, DocsTabs, DocsToggle } from "./DocsControls";

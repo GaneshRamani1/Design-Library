@@ -1525,6 +1525,8 @@
     "inputs-segmented-buttons-configuration--options",
     "inputs-segmented-buttons-configuration--orientation-horizontal",
     "inputs-segmented-buttons-configuration--orientation-vertical",
+    "inputs-segmented-buttons-configuration--presentation-list",
+    "inputs-segmented-buttons-configuration--presentation-segmented",
     "inputs-segmented-buttons-configuration--required-false",
     "inputs-segmented-buttons-configuration--required-true",
     "inputs-segmented-buttons-configuration--show-label-false",
@@ -9360,6 +9362,15 @@
           "default": "\"horizontal\"",
           "description": "",
           "declaredIn": "SegmentedButtonsComponent"
+        },
+        {
+          "name": "presentation",
+          "kind": "input",
+          "required": false,
+          "type": "\"segmented\" | \"list\"",
+          "default": "\"segmented\"",
+          "description": "",
+          "declaredIn": "SegmentedButtonsComponent"
         }
       ],
       "outputs": [
@@ -14265,7 +14276,7 @@
     "projects/design-library/src/lib/avatar.stories.ts": "302e5585f647bc034535fa95e8cabb0811cd9a7e0b7fd127d95df5d2c3838852",
     "projects/design-library/src/lib/badge.component.ts": "3742436555845edcabf9bb262ca5e7ec4773405af7a64f8b8d3e8b5b80dc912b",
     "projects/design-library/src/lib/badge.stories.ts": "a3e132ff6c1fbc9d176cc1bcdf4e3ba28cdb19fd2a819983cb70a591726cd749",
-    "projects/design-library/src/lib/button.component.ts": "26c8778cdb319ff44df567d77a1ee6d4eabbcedcfe22a0a939c9f9ece74b9b70",
+    "projects/design-library/src/lib/button.component.ts": "09528ab750a3ec5c434f6f1d5cbe15658f369720b3c661586f8e45baca9a6320",
     "projects/design-library/src/lib/button.stories.ts": "29a8b4b21ca66be03a5cc2dc9acb97f4a56c0dbd1598f2db8b92eec9dd096886",
     "projects/design-library/src/lib/card.component.ts": "7219683a290051765229c10578bfa9d657db414e095e9e0077757a23ca3067de",
     "projects/design-library/src/lib/card.stories.ts": "1cae5557c57301c8df86d31908c44314fb95eb6f62e9f0cb55cf6946b7fcbc8f",
@@ -14330,7 +14341,7 @@
     "projects/design-library/src/lib/inputs/radio.stories.ts": "4ed854eadb1609f67a7b0bea2716abe54c4db0c81778a432e8d6a9482b3dc265",
     "projects/design-library/src/lib/inputs/range-selector.component.ts": "bf60273cda6046a9c0171cf9f7e576f336e53dc6ad3d70897b76aa5fa6913abe",
     "projects/design-library/src/lib/inputs/range-selector.stories.ts": "3275ce72598fc47763c64606544cb2b2e3366dc478a7c8836057847b35caeb91",
-    "projects/design-library/src/lib/inputs/segmented-buttons.component.ts": "a2ad37d02f661e31c66d0a234a54ccac98a50e21ac821d605e9498f42033d5d6",
+    "projects/design-library/src/lib/inputs/segmented-buttons.component.ts": "7c8d634a7734ada16f5c11c354a5e9551d01294e021dc1756ce4b22e581a3c96",
     "projects/design-library/src/lib/inputs/segmented-buttons.stories.ts": "898aee20e39f3547b8794f401946e8957b233c4bd8aee1f1ae9b245b85fe4730",
     "projects/design-library/src/lib/inputs/selection-styles.ts": "01544de8a79cd3c1ba498b46002512f1fc202a938dece0cd9e686e2711593341",
     "projects/design-library/src/lib/inputs/validation-message.ts": "4c5d9438fd5a0f14815787b5c4acaf918212fac5bbcb75c7d59615b7d3c7643d",

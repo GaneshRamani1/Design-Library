@@ -39,6 +39,7 @@ Switch between related choices. Single selection uses radio behavior; multiple s
 | multiple | boolean | false | input | SegmentedButtonsComponent | See the dedicated configuration story below. |
 | allowEmpty | boolean | false | input | SegmentedButtonsComponent | See the dedicated configuration story below. |
 | orientation | "horizontal" \| "vertical" | "horizontal" | input | SegmentedButtonsComponent | See the dedicated configuration story below. |
+| presentation | "segmented" \| "list" | "segmented" | input | SegmentedButtonsComponent | See the dedicated configuration story below. |
 
 ## Outputs
 
@@ -90,6 +91,7 @@ export interface SelectOption {
 
 export interface SegmentOption extends SelectOption {
   icon?: string;
+  description?: string;
 }
 ```
 
@@ -161,6 +163,8 @@ import { SegmentedButtonsComponent } from "./segmented-buttons.component";
 - `allowEmpty`: [AllowEmptyTrue](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--allow-empty-true) — Allows the selection to be cleared. This example has it turned on.
 - `orientation`: [OrientationHorizontal](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--orientation-horizontal) — Switches between horizontal and vertical arrangements. Here it is set to “horizontal”.
 - `orientation`: [OrientationVertical](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--orientation-vertical) — Switches between horizontal and vertical arrangements. Here it is set to “vertical”.
+- `presentation`: [PresentationSegmented](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--presentation-segmented) — Demonstrates the presentation setting on this segmented buttons. Here it is set to “segmented”.
+- `presentation`: [PresentationList](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-configuration--presentation-list) — Demonstrates the presentation setting on this segmented buttons. Here it is set to “list”.
 - `appearance.padding`: [AppearancePadding](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-appearance--appearance-padding) — Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.radius`: [AppearanceRadius](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-appearance--appearance-radius) — Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.
 - `appearance.borderWidth`: [AppearanceBorderWidth](http://127.0.0.1:6006/?path=/story/inputs-segmented-buttons-appearance--appearance-border-width) — Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.

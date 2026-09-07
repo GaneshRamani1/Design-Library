@@ -64,7 +64,7 @@ export function ButtonPlayground() {
             </div>
           </div>
         </div>
-        <div className="border-t border-white/10"><CodeBlock code={source} embedded /></div>
+        <div className="border-t border-white/10 p-5"><CodeBlock code={source} /></div>
       </div>
     </div>
   );

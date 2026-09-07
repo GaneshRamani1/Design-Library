@@ -14275,7 +14275,8 @@
       "options",
       "multiple",
       "allowEmpty",
-      "orientation"
+      "orientation",
+      "presentation"
     ],
     "events": [
       "valueChange"
@@ -14519,6 +14520,24 @@
         "group": "Configuration",
         "description": "Switches between horizontal and vertical arrangements. Here it is set to “vertical”.",
         "id": "inputs-segmented-buttons-configuration--orientation-vertical"
+      },
+      {
+        "prop": "presentation",
+        "story": "PresentationSegmented",
+        "value": "segmented",
+        "title": "Inputs/Segmented buttons/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the presentation setting on this segmented buttons. Here it is set to “segmented”.",
+        "id": "inputs-segmented-buttons-configuration--presentation-segmented"
+      },
+      {
+        "prop": "presentation",
+        "story": "PresentationList",
+        "value": "list",
+        "title": "Inputs/Segmented buttons/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the presentation setting on this segmented buttons. Here it is set to “list”.",
+        "id": "inputs-segmented-buttons-configuration--presentation-list"
       },
       {
         "prop": "appearance.padding",

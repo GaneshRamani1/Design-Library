@@ -25,9 +25,23 @@ export function DocsDropdown({ id, label, options, value, onChange }: { id: stri
   return <arc-docs-dropdown className="block w-full" ref={ref} />;
 }
 
-export function DocsSegmented({ id, label, options, value, onChange, showLabel = true, orientation = "vertical" }: { id: string; label: string; options: Array<{ value: string; label: string }>; value: string; onChange: (value: string) => void; showLabel?: boolean; orientation?: "horizontal" | "vertical" }) {
+export interface DocsChoice { value: string; label: string; description?: string; }
+
+export function DocsSegmented({ id, label, options, value, onChange, showLabel = true, orientation = "horizontal" }: { id: string; label: string; options: DocsChoice[]; value: string; onChange: (value: string) => void; showLabel?: boolean; orientation?: "horizontal" | "vertical" }) {
   const ref = useRef<HTMLElement>(null);
-  useEffect(() => { void setCustomElementProperties(ref.current, { id, label, options, value, showLabel, orientation }); }, [id, label, options, value, showLabel, orientation]);
+  useEffect(() => { void setCustomElementProperties(ref.current, { id, label, options, value, showLabel, orientation, presentation: "segmented" }); }, [id, label, options, value, showLabel, orientation]);
+  useEffect(() => {
+    const element = ref.current!;
+    const listener = (event: Event) => onChange(String((event as CustomEvent).detail));
+    element.addEventListener("valueChange", listener);
+    return () => element.removeEventListener("valueChange", listener);
+  }, [onChange]);
+  return <arc-docs-segmented className="block w-full" ref={ref} />;
+}
+
+export function DocsSelectableList({ id, label, options, value, onChange, showLabel = true }: { id: string; label: string; options: DocsChoice[]; value: string; onChange: (value: string) => void; showLabel?: boolean }) {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => { void setCustomElementProperties(ref.current, { id, label, options, value, showLabel, orientation: "vertical", presentation: "list" }); }, [id, label, options, value, showLabel]);
   useEffect(() => {
     const element = ref.current!;
     const listener = (event: Event) => onChange(String((event as CustomEvent).detail));
