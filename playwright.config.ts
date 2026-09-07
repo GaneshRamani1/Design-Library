@@ -1,4 +1,6 @@
 import { defineConfig } from "@playwright/test";
+const storybookPort = process.env["STORYBOOK_TEST_PORT"] ?? "6006";
+const storybookUrl = `http://127.0.0.1:${storybookPort}`;
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: true,
@@ -6,7 +8,7 @@ export default defineConfig({
   // concurrency prevents focus/timer starvation in CI and local release runs.
   workers: 2,
   retries: process.env["CI"] ? 2 : 0,
-  use: { baseURL: "http://127.0.0.1:6006" },
+  use: { baseURL: storybookUrl },
   projects: [
     { name: "chromium", use: { browserName: "chromium" } },
     {
@@ -27,13 +29,14 @@ export default defineConfig({
         "**/number-input.spec.ts",
         "**/variants.spec.ts",
         "**/anchored-position.spec.ts",
+        "**/code-block-card.spec.ts",
       ],
       use: { browserName: "webkit" },
     },
   ],
   webServer: {
-    command: "npx http-server storybook-static -p 6006 -a 127.0.0.1 -c-1",
-    url: "http://127.0.0.1:6006",
+    command: `npx http-server storybook-static -p ${storybookPort} -a 127.0.0.1 -c-1`,
+    url: storybookUrl,
     reuseExistingServer: !process.env["CI"],
   },
 });

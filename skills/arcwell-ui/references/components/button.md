@@ -152,6 +152,8 @@ import { FabButtonComponent } from "./actions/fab-button.component";
 ## Composition patterns
 
 - [Actions/Button / Variants](../patterns/actions-button--variants.md)
+- [Layout/Card / Default](../patterns/layout-card--default.md)
+- [Layout/Card / Showcase](../patterns/layout-card--showcase.md)
 - [Inputs/Number input / Default](../patterns/inputs-number-input--default.md)
 - [Inputs/Validation directive / Default](../patterns/inputs-validation-directive--default.md)
 - [Inputs/Validation directive / On Submit](../patterns/inputs-validation-directive--on-submit.md)

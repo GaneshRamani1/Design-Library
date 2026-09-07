@@ -6,7 +6,7 @@ import { DocsButton } from "./DocsButton";
 const directiveSlugs = new Set(["carousel", "link", "popover", "tooltip", "validation"]);
 const appearanceValues: Record<string, string> = {
   padding: "18px 30px", radius: "999px", borderWidth: "3px",
-  borderColor: "#34d399", background: "#312e81", color: "#fde047",
+  borderColor: "#34d399", background: "#312e81", color: "#312e81",
   fontSize: "18px", gap: "28px", shadow: "0 0 0 4px #34d399, 0 20px 48px rgba(52,211,153,.55)",
   focusColor: "#f59e0b",
 };
@@ -20,7 +20,7 @@ export function inferredValue(example: ConfigurationExample) {
   const quoted = text.match(/[“"]([^”"]+)[”"]/g)?.at(-1)?.slice(1, -1);
   if (quoted !== undefined) return /^-?\d+(\.\d+)?$/.test(quoted) ? Number(quoted) : quoted;
   if (example.property === "options" || example.property === "items") return [{ value: "one", label: "First option" }, { value: "two", label: "Second option" }];
-  if (example.property === "appearance") return { background: "#312e81", color: "#fde047", radius: "999px", padding: "18px 30px", shadow: "0 0 0 4px #34d399, 0 20px 48px rgba(52,211,153,.55)" };
+  if (example.property === "appearance") return { background: "#312e81", color: "#cffafe", radius: "999px", padding: "18px 30px", shadow: "0 0 0 4px #34d399, 0 20px 48px rgba(52,211,153,.55)" };
   if (example.property === "styleTokens") return { "--dl-primary": "#34d399", "--dl-on-primary": "#052e24" };
   return "Example";
 }
@@ -54,6 +54,7 @@ function selectorMarkup(component: ComponentDoc, property: string, value: unknow
   const bindingName = nested[0];
   const bindingValue = property === "appearance.borderWidth"
     ? { borderWidth: value, borderColor: "#34d399" }
+    : property === "appearance.color" ? { color: value, background: "#ffffff" }
     : nested[1] ? { [nested[1]]: value } : value;
   if (selector.startsWith("[")) return `<div\n  ${selector.slice(1, -1)}\n  [${bindingName}]="${binding(bindingValue)}"\n>\n  Content\n</div>`;
   const attributeSelector = selector.match(/^(\w+)\[([^\]]+)\]$/);
@@ -82,6 +83,9 @@ export function ConfigurationRenderer({ component, example, embedded = false }: 
     if (["loadingLabel", "loadingMinWidth"].includes(example.property)) properties.loading = true;
     if (example.property === "appearance.borderWidth") {
       properties.appearance = { ...(properties.appearance as object), borderColor: "#34d399" };
+    }
+    if (example.property === "appearance.color") {
+      properties.appearance = { ...(properties.appearance as object), background: "#ffffff" };
     }
     if (example.property === "appearance.gap") properties.icon = "★";
     Object.assign(element, properties);
@@ -115,5 +119,5 @@ export function ConfigurationRenderer({ component, example, embedded = false }: 
 
   const valueLabel = typeof value === "object" ? example.label : String(value);
   const isAppearance = example.kind === "appearance";
-  return <article className={`overflow-hidden bg-white/[.025] ${embedded ? "" : "rounded-2xl border border-white/10"}`}><div className="flex items-start justify-between gap-3 p-5"><div><p className="text-[10px] font-semibold uppercase tracking-[.16em] text-zinc-600">What this value changes</p><p className="mt-2 text-sm leading-6 text-zinc-300">{example.description}</p></div><code className="shrink-0 text-xs text-zinc-500">{valueLabel}</code></div><div className={`example-grid grid min-h-40 items-center gap-6 border-y border-white/10 p-5 ${isAppearance ? "sm:grid-cols-2" : "place-items-center"}`}>{isAppearance && <div className="grid min-h-28 place-items-center"><span className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-zinc-500">Default</span><div ref={defaultHost} /></div>}{directiveSlugs.has(component.slug) ? <code className="text-sm text-emerald-300">{component.selector}</code> : requiresTrigger && !renderOverlay ? <DocsButton onClick={() => setRenderOverlay(true)} size="md" variant="primary">Render preview</DocsButton> : <div className="grid w-full max-w-md place-items-center"><span className={isAppearance ? "mb-3 text-[10px] font-semibold uppercase tracking-widest text-zinc-500" : "hidden"}>Override</span><div ref={host} /></div>}</div><div className="p-5"><CodeBlock code={source} /></div></article>;
+  return <article className={`overflow-hidden bg-white/[.025] ${embedded ? "" : "rounded-2xl border border-white/10"}`}><div className="flex items-start justify-between gap-3 p-5"><div><p className="text-[10px] font-semibold uppercase tracking-[.16em] text-zinc-600">What this value changes</p><p className="mt-2 text-sm leading-6 text-zinc-300">{example.description}</p>{example.property === "appearance.color" && <p className="mt-2 text-xs leading-5 text-zinc-500">The example pairs the foreground with a white background so the contrast remains readable in both documentation themes.</p>}</div><code className="shrink-0 text-xs text-zinc-500">{valueLabel}</code></div><div className={`example-grid grid min-h-40 items-stretch gap-6 border-y border-white/10 p-5 ${isAppearance ? "sm:grid-cols-2" : "place-items-center"}`}>{isAppearance && <div className="grid min-h-36 w-full grid-rows-[24px_1fr] place-items-center"><span className="text-[10px] font-semibold uppercase tracking-widest text-zinc-500">Default</span><div className="flex min-h-28 w-full items-center justify-center" ref={defaultHost} /></div>}{directiveSlugs.has(component.slug) ? <code className="text-sm text-emerald-300">{component.selector}</code> : requiresTrigger && !renderOverlay ? <DocsButton onClick={() => setRenderOverlay(true)} size="md" variant="primary">Render preview</DocsButton> : <div className={isAppearance ? "grid min-h-36 w-full grid-rows-[24px_1fr] place-items-center" : "grid w-full max-w-md place-items-center"}>{isAppearance && <span className="text-[10px] font-semibold uppercase tracking-widest text-zinc-500">Override</span>}<div className={isAppearance ? "flex min-h-28 w-full items-center justify-center" : ""} ref={host} /></div>}</div><div className="p-5"><CodeBlock code={source} /></div></article>;
 }

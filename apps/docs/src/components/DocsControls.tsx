@@ -25,6 +25,18 @@ export function DocsDropdown({ id, label, options, value, onChange }: { id: stri
   return <arc-docs-dropdown className="block w-full" ref={ref} />;
 }
 
+export function DocsSearch({ id, label, placeholder, value, onChange }: { id: string; label: string; placeholder: string; value: string; onChange: (value: string) => void }) {
+  const ref = useRef<HTMLElement>(null);
+  useEffect(() => { void setCustomElementProperties(ref.current, { id, label, placeholder, value }); }, [id, label, placeholder, value]);
+  useEffect(() => {
+    const element = ref.current!;
+    const listener = (event: Event) => onChange(String((event as CustomEvent).detail));
+    element.addEventListener("valueChange", listener);
+    return () => element.removeEventListener("valueChange", listener);
+  }, [onChange]);
+  return <arc-docs-search className="block w-full" ref={ref} />;
+}
+
 export interface DocsChoice { value: string; label: string; description?: string; }
 
 export function DocsSegmented({ id, label, options, value, onChange, showLabel = true, orientation = "horizontal" }: { id: string; label: string; options: DocsChoice[]; value: string; onChange: (value: string) => void; showLabel?: boolean; orientation?: "horizontal" | "vertical" }) {

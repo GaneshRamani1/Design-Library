@@ -30,6 +30,11 @@ A surface for related content, with optional heading and footer sections. Compar
 | showFooter | boolean | false | input | CardComponent | See the dedicated configuration story below. |
 | headingLevel | 2 \| 3 \| 4 | 3 | input | CardComponent | See the dedicated configuration story below. |
 | surface | "solid" \| "transparent" \| "glass" | "glass" | input | CardComponent | See the dedicated configuration story below. |
+| layout | "default" \| "showcase" | "default" | input | CardComponent | Switches from a standard content surface to a responsive documentation/demo composition. |
+| railWidth | string | "260px" | input | CardComponent | See the dedicated configuration story below. |
+| previewMinHeight | string | "240px" | input | CardComponent | See the dedicated configuration story below. |
+| showGuidance | boolean | true | input | CardComponent | See the dedicated configuration story below. |
+| showCode | boolean | true | input | CardComponent | See the dedicated configuration story below. |
 | heading | string | "" | input | CardComponent | See the dedicated configuration story below. |
 | description | string | "" | input | CardComponent | See the dedicated configuration story below. |
 | role | string | "" | input | CardComponent | See the dedicated configuration story below. |
@@ -52,6 +57,10 @@ A surface for related content, with optional heading and footer sections. Compar
 - `[cardLoading]`
 - `[cardError]`
 - `[cardEmpty]`
+- `[cardRail]`
+- `[cardPreview]`
+- `[cardGuidance]`
+- `[cardCode]`
 - `default`
 - `[cardFooter]`
 
@@ -89,6 +98,11 @@ export interface ComponentAppearance {
     showFooter: false,
     headingLevel: 3,
     surface: "glass",
+    layout: "default",
+    railWidth: "260px",
+    previewMinHeight: "240px",
+    showGuidance: true,
+    showCode: true,
     appearance: {},
     styleTokens: {},
   }
@@ -99,9 +113,11 @@ export interface ComponentAppearance {
 This is source evidence, not a standalone application. Resolve referenced helpers from the linked CSF file.
 
 ```ts
-import { argsToTemplate } from "@storybook/angular";
+import { argsToTemplate, moduleMetadata } from "@storybook/angular";
 import type { Meta, StoryObj } from "@storybook/angular";
 import { CardComponent } from "./card.component";
+import { ButtonComponent } from "./button.component";
+import { CodeBlockComponent } from "./data-display/code-block.component";
 ```
 
 ```ts
@@ -110,7 +126,7 @@ import { CardComponent } from "./card.component";
 
 ```ts
 (args) => ({
-    props: args,
+    props: { ...args, codeSample: '<button dlButton variant="primary">Continue</button>' },
     template: `<dl-card ${argsToTemplate(args)}><p>Compose any content inside this card.</p><span cardFooter>Optional footer content.</span></dl-card>`,
   })
 ```
@@ -121,6 +137,7 @@ import { CardComponent } from "./card.component";
 - [Solid](http://127.0.0.1:6006/?path=/story/layout-card--solid)
 - [Transparent](http://127.0.0.1:6006/?path=/story/layout-card--transparent)
 - [Default](http://127.0.0.1:6006/?path=/story/layout-card--default)
+- [Showcase](http://127.0.0.1:6006/?path=/story/layout-card--showcase)
 
 ## Configuration coverage
 
@@ -136,6 +153,14 @@ import { CardComponent } from "./card.component";
 - `surface`: [Glass](http://127.0.0.1:6006/?path=/story/layout-card--glass) — Changes the surface background treatment. Here it is set to “glass”.
 - `surface`: [Solid](http://127.0.0.1:6006/?path=/story/layout-card--solid) — Changes the surface background treatment. Here it is set to “solid”.
 - `surface`: [Transparent](http://127.0.0.1:6006/?path=/story/layout-card--transparent) — Changes the surface background treatment. Here it is set to “transparent”.
+- `layout`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Chooses block or flex layout for projected content. Here it is set to “default”.
+- `layout`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Chooses block or flex layout for projected content. Here it is set to “showcase”.
+- `railWidth`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the rail width setting on this card. Here it is set to “Custom railWidth”.
+- `previewMinHeight`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the preview min height setting on this card. Here it is set to “Custom previewMinHeight”.
+- `showGuidance`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Controls whether guidance are shown. This example has it turned off.
+- `showGuidance`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Controls whether guidance are shown. This example has it turned on.
+- `showCode`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Controls whether code are shown. This example has it turned off.
+- `showCode`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Controls whether code are shown. This example has it turned on.
 - `heading`: [CustomContent](http://127.0.0.1:6006/?path=/story/layout-card-configuration--custom-content) — Customizes the heading. Here it is set to “A custom heading”.
 - `description`: [CustomContent](http://127.0.0.1:6006/?path=/story/layout-card-configuration--custom-content) — Adds supporting context below the main label or heading. Here it is set to “More context, in your own words.”.
 - `role`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Changes the semantic role exposed to assistive technology. Here it is set to “Custom role”.
@@ -164,6 +189,8 @@ import { CardComponent } from "./card.component";
 
 ## Composition patterns
 
+- [Layout/Card / Default](../patterns/layout-card--default.md)
+- [Layout/Card / Showcase](../patterns/layout-card--showcase.md)
 - [Navigation/Carousel directive / Default](../patterns/navigation-carousel-directive--default.md)
 - [Navigation/Carousel directive / Right To Left](../patterns/navigation-carousel-directive--right-to-left.md)
 - [Navigation/Carousel directive / Dynamic Slides](../patterns/navigation-carousel-directive--dynamic-slides.md)

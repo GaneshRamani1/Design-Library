@@ -3,7 +3,7 @@
 # Arcwell UI — LLM guidance
 
 - [Skill entry point](skills/arcwell-ui/SKILL.md)
-- [49 component/directive prompts, 3 service prompts and 31 composition patterns](skills/arcwell-ui/references/index.md)
+- [50 component/directive prompts, 3 service prompts and 33 composition patterns](skills/arcwell-ui/references/index.md)
 - [Regeneration and watch commands](skills/arcwell-ui/references/maintenance.md)
 
 Run `npm run skills:generate` after component, service or Storybook changes; `npm run skills:check` fails if committed guidance is stale. CI uses the same check.

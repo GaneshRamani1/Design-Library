@@ -5,7 +5,7 @@ import { DialogModule } from "@angular/cdk/dialog";
 import { OverlayModule } from "@angular/cdk/overlay";
 import {
   AlertComponent, AvatarComponent, BadgeComponent, BottomSheetComponent,
-  BreadcrumbComponent, ButtonComponent, CardComponent, CheckboxComponent,
+  BreadcrumbComponent, ButtonComponent, CardComponent, CheckboxComponent, CodeBlockComponent,
   ChipsComponent, ConfirmationDialogComponent, ContainerComponent,
   ContextSelectorComponent, CounterButtonComponent, CounterComponent,
   DatepickerComponent, DividerComponent, DropdownComponent, FabButtonComponent,
@@ -18,12 +18,13 @@ import {
   TabComponent, TabContainerComponent, TilesComponent, ToastComponent,
   ToggleComponent,
 } from "@arcwell/ui";
-import { DocsDropdownAdapter, DocsSegmentedAdapter, DocsTabsAdapter, DocsToggleAdapter } from "./control-adapters";
+import { DocsDropdownAdapter, DocsSearchAdapter, DocsSegmentedAdapter, DocsTabsAdapter, DocsToggleAdapter } from "./control-adapters";
 
 const elements: Array<[string, Type<unknown>]> = [
   ["alert", AlertComponent], ["avatar", AvatarComponent], ["badge", BadgeComponent],
   ["bottom-sheet", BottomSheetComponent], ["breadcrumb", BreadcrumbComponent],
   ["button", ButtonComponent], ["card", CardComponent], ["checkbox", CheckboxComponent],
+  ["code-block", CodeBlockComponent],
   ["chips", ChipsComponent], ["confirmation-dialog", ConfirmationDialogComponent],
   ["container", ContainerComponent], ["context-selector", ContextSelectorComponent],
   ["counter-button", CounterButtonComponent], ["counter", CounterComponent],
@@ -42,6 +43,7 @@ const elements: Array<[string, Type<unknown>]> = [
   ["tab", TabComponent], ["tab-container", TabContainerComponent],
   ["tiles", TilesComponent], ["toast", ToastComponent], ["toggle", ToggleComponent],
   ["docs-dropdown", DocsDropdownAdapter], ["docs-toggle", DocsToggleAdapter],
+  ["docs-search", DocsSearchAdapter],
   ["docs-segmented", DocsSegmentedAdapter],
   ["docs-tabs", DocsTabsAdapter],
 ];

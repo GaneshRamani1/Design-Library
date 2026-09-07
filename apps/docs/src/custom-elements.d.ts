@@ -13,6 +13,7 @@ declare module "react" {
         "show-header"?: boolean;
         "show-footer"?: boolean;
       };
+      "arc-code-block": ElementProps;
       "arc-button": ElementProps & {
         cardFooter?: boolean;
         variant?: "primary" | "secondary" | "tertiary" | "ghost" | "danger";
@@ -24,6 +25,7 @@ declare module "react" {
       };
       "arc-docs-toggle": ElementProps;
       "arc-docs-dropdown": ElementProps;
+      "arc-docs-search": ElementProps;
       "arc-docs-segmented": ElementProps;
       "arc-docs-tabs": ElementProps;
     }

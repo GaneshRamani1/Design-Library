@@ -37,6 +37,7 @@ export * from "./lib/icons/icon.component";
 export * from "./lib/actions/icon-button.component";
 export * from "./lib/actions/fab-button.component";
 export * from "./lib/data-display/divider.component";
+export * from "./lib/data-display/code-block.component";
 export * from "./lib/data-display/list.component";
 export * from "./lib/feedback/skeleton.component";
 export * from "./lib/feedback/toast.component";

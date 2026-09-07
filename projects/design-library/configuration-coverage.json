@@ -1667,6 +1667,11 @@
       "showFooter",
       "headingLevel",
       "surface",
+      "layout",
+      "railWidth",
+      "previewMinHeight",
+      "showGuidance",
+      "showCode",
       "heading",
       "description",
       "role",
@@ -1797,6 +1802,78 @@
         "group": "Variations",
         "description": "Changes the surface background treatment. Here it is set to “transparent”.",
         "id": "layout-card--transparent"
+      },
+      {
+        "prop": "layout",
+        "story": "Default",
+        "value": "default",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Chooses block or flex layout for projected content. Here it is set to “default”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "layout",
+        "story": "Default",
+        "value": "showcase",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Chooses block or flex layout for projected content. Here it is set to “showcase”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "railWidth",
+        "story": "Default",
+        "value": "Custom railWidth",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the rail width setting on this card. Here it is set to “Custom railWidth”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "previewMinHeight",
+        "story": "Default",
+        "value": "Custom previewMinHeight",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the preview min height setting on this card. Here it is set to “Custom previewMinHeight”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "showGuidance",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether guidance are shown. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "showGuidance",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether guidance are shown. This example has it turned on.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "showCode",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether code are shown. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "showCode",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether code are shown. This example has it turned on.",
+        "id": "layout-card-configuration--default"
       },
       {
         "prop": "heading",
@@ -4421,6 +4498,327 @@
         "group": "Events",
         "description": "Try the icon button below and inspect pressedChange in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
         "id": "actions-icon-button-events--event-pressed-change"
+      }
+    ]
+  },
+  {
+    "component": "CodeBlockComponent",
+    "title": "Data display/Code block",
+    "inputs": [
+      "appearance",
+      "styleTokens",
+      "code",
+      "language",
+      "label",
+      "ariaLabel",
+      "showHeader",
+      "copyable",
+      "lineNumbers",
+      "wrap",
+      "maxHeight",
+      "theme",
+      "copyLabel",
+      "copiedLabel",
+      "copyAriaLabel"
+    ],
+    "events": [
+      "copied",
+      "copyFailed"
+    ],
+    "stories": [
+      {
+        "prop": "appearance",
+        "story": "Appearance",
+        "value": {
+          "padding": "24px",
+          "radius": "20px"
+        },
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides multiple visual properties for this instance.",
+        "id": "data-display-code-block-appearance--appearance"
+      },
+      {
+        "prop": "styleTokens",
+        "story": "StyleTokens",
+        "value": {
+          "--dl-primary": "#7c3aed",
+          "--dl-text": "#a78bfa",
+          "--dl-success-bg": "#2e1c47",
+          "--dl-success-text": "#dfc7ff"
+        },
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides CSS theme tokens for this instance and its descendants.",
+        "id": "data-display-code-block-appearance--style-tokens"
+      },
+      {
+        "prop": "code",
+        "story": "Code",
+        "value": "Custom code",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the code setting on this code block. Here it is set to “Custom code”.",
+        "id": "data-display-code-block-configuration--code"
+      },
+      {
+        "prop": "language",
+        "story": "Language",
+        "value": "Custom language",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the language setting on this code block. Here it is set to “Custom language”.",
+        "id": "data-display-code-block-configuration--language"
+      },
+      {
+        "prop": "label",
+        "story": "Label",
+        "value": "Custom label",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the visible label. Here it is set to “Custom label”.",
+        "id": "data-display-code-block-configuration--label"
+      },
+      {
+        "prop": "ariaLabel",
+        "story": "AriaLabel",
+        "value": "Custom accessible dialog name",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Changes the accessible name announced by assistive technology. Here it is set to “Custom accessible dialog name”.",
+        "id": "data-display-code-block-configuration--aria-label"
+      },
+      {
+        "prop": "showHeader",
+        "story": "ShowHeaderFalse",
+        "value": false,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether header are shown. This example has it turned off.",
+        "id": "data-display-code-block-configuration--show-header-false"
+      },
+      {
+        "prop": "showHeader",
+        "story": "ShowHeaderTrue",
+        "value": true,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Controls whether header are shown. This example has it turned on.",
+        "id": "data-display-code-block-configuration--show-header-true"
+      },
+      {
+        "prop": "copyable",
+        "story": "CopyableFalse",
+        "value": false,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the copyable setting on this code block. This example has it turned off.",
+        "id": "data-display-code-block-configuration--copyable-false"
+      },
+      {
+        "prop": "copyable",
+        "story": "CopyableTrue",
+        "value": true,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the copyable setting on this code block. This example has it turned on.",
+        "id": "data-display-code-block-configuration--copyable-true"
+      },
+      {
+        "prop": "lineNumbers",
+        "story": "LineNumbersFalse",
+        "value": false,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the line numbers setting on this code block. This example has it turned off.",
+        "id": "data-display-code-block-configuration--line-numbers-false"
+      },
+      {
+        "prop": "lineNumbers",
+        "story": "LineNumbersTrue",
+        "value": true,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the line numbers setting on this code block. This example has it turned on.",
+        "id": "data-display-code-block-configuration--line-numbers-true"
+      },
+      {
+        "prop": "wrap",
+        "story": "WrapFalse",
+        "value": false,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Allows children to continue on another line. This example has it turned off.",
+        "id": "data-display-code-block-configuration--wrap-false"
+      },
+      {
+        "prop": "wrap",
+        "story": "WrapTrue",
+        "value": true,
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Allows children to continue on another line. This example has it turned on.",
+        "id": "data-display-code-block-configuration--wrap-true"
+      },
+      {
+        "prop": "maxHeight",
+        "story": "MaxHeight",
+        "value": "75dvh",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Limits the height before content needs to scroll. Here it is set to “75dvh”.",
+        "id": "data-display-code-block-configuration--max-height"
+      },
+      {
+        "prop": "theme",
+        "story": "ThemeDark",
+        "value": "dark",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the theme setting on this code block. Here it is set to “dark”.",
+        "id": "data-display-code-block-configuration--theme-dark"
+      },
+      {
+        "prop": "theme",
+        "story": "ThemeLight",
+        "value": "light",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the theme setting on this code block. Here it is set to “light”.",
+        "id": "data-display-code-block-configuration--theme-light"
+      },
+      {
+        "prop": "copyLabel",
+        "story": "CopyLabel",
+        "value": "Custom copyLabel",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the copy action. Here it is set to “Custom copyLabel”.",
+        "id": "data-display-code-block-configuration--copy-label"
+      },
+      {
+        "prop": "copiedLabel",
+        "story": "CopiedLabel",
+        "value": "Custom copiedLabel",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the copied action. Here it is set to “Custom copiedLabel”.",
+        "id": "data-display-code-block-configuration--copied-label"
+      },
+      {
+        "prop": "copyAriaLabel",
+        "story": "CopyAriaLabel",
+        "value": "Custom copyAriaLabel",
+        "title": "Data display/Code block/Configuration",
+        "group": "Configuration",
+        "description": "Customizes the text for the copy aria action. Here it is set to “Custom copyAriaLabel”.",
+        "id": "data-display-code-block-configuration--copy-aria-label"
+      },
+      {
+        "prop": "appearance.padding",
+        "story": "AppearancePadding",
+        "value": "28px",
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides padding for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
+        "id": "data-display-code-block-appearance--appearance-padding"
+      },
+      {
+        "prop": "appearance.radius",
+        "story": "AppearanceRadius",
+        "value": "24px",
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides radius for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
+        "id": "data-display-code-block-appearance--appearance-radius"
+      },
+      {
+        "prop": "appearance.borderWidth",
+        "story": "AppearanceBorderWidth",
+        "value": "3px",
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides border width for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
+        "id": "data-display-code-block-appearance--appearance-border-width"
+      },
+      {
+        "prop": "appearance.borderColor",
+        "story": "AppearanceBorderColor",
+        "value": "#a78bfa",
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides border color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
+        "id": "data-display-code-block-appearance--appearance-border-color"
+      },
+      {
+        "prop": "appearance.background",
+        "story": "AppearanceBackground",
+        "value": "#251c32",
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides background for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
+        "id": "data-display-code-block-appearance--appearance-background"
+      },
+      {
+        "prop": "appearance.color",
+        "story": "AppearanceColor",
+        "value": "#e9d5ff",
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
+        "id": "data-display-code-block-appearance--appearance-color"
+      },
+      {
+        "prop": "appearance.fontSize",
+        "story": "AppearanceFontSize",
+        "value": "18px",
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides font size for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
+        "id": "data-display-code-block-appearance--appearance-font-size"
+      },
+      {
+        "prop": "appearance.gap",
+        "story": "AppearanceGap",
+        "value": "24px",
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides gap for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
+        "id": "data-display-code-block-appearance--appearance-gap"
+      },
+      {
+        "prop": "appearance.shadow",
+        "story": "AppearanceShadow",
+        "value": "0 12px 32px #7c3aed40",
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides shadow for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
+        "id": "data-display-code-block-appearance--appearance-shadow"
+      },
+      {
+        "prop": "appearance.focusColor",
+        "story": "AppearanceFocusColor",
+        "value": "#f59e0b",
+        "title": "Data display/Code block/Appearance",
+        "group": "Appearance",
+        "description": "Overrides focus color for this instance. Compare the example with the default to see the visual change; the component's behavior stays the same.",
+        "id": "data-display-code-block-appearance--appearance-focus-color"
+      },
+      {
+        "prop": "event.copied",
+        "story": "EventCopied",
+        "title": "Data display/Code block/Events",
+        "group": "Events",
+        "description": "Try the code block below and inspect copied in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-code-block-events--event-copied"
+      },
+      {
+        "prop": "event.copyFailed",
+        "story": "EventCopyFailed",
+        "title": "Data display/Code block/Events",
+        "group": "Events",
+        "description": "Try the code block below and inspect copyFailed in the Actions panel. Actions shows the real emitted payload; normal form and demo updates still run.",
+        "id": "data-display-code-block-events--event-copy-failed"
       }
     ]
   },

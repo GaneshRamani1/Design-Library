@@ -125,7 +125,7 @@ test("Card has webpage documentation and a controlled playground", async ({
   expect(titles).toContain("Layout/Card/Documentation");
   expect(titles).toContain("Layout/Card/Playground");
   expect(titles.filter((title) => title.endsWith("/Documentation")).length).toBe(
-    49,
+    50,
   );
   for (const story of [
     "padding",

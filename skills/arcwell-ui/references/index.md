@@ -18,6 +18,7 @@ Load only the component, service and pattern references relevant to the task. AP
 | Inputs | [ToggleComponent](components/toggle.md) | `dl-toggle` |
 | Actions | [FabButtonComponent](components/fab-button.md) | `button[dlFab]` |
 | Actions | [IconButtonComponent](components/icon-button.md) | `button[dlIconButton]` |
+| Data display | [CodeBlockComponent](components/code-block.md) | `dl-code-block` |
 | Layout | [DividerComponent](components/divider.md) | `dl-divider` |
 | Data display | [ListComponent](components/list.md) | `dl-list` |
 | Data display | [TilesComponent](components/tiles.md) | `dl-tiles, dl-tile` |
@@ -67,6 +68,8 @@ Load only the component, service and pattern references relevant to the task. AP
 ## Patterns
 
 - [Actions/Button / Variants](patterns/actions-button--variants.md)
+- [Layout/Card / Default](patterns/layout-card--default.md)
+- [Layout/Card / Showcase](patterns/layout-card--showcase.md)
 - [Inputs/Number input / Default](patterns/inputs-number-input--default.md)
 - [Inputs/Number input / Percentage](patterns/inputs-number-input--percentage.md)
 - [Inputs/Number input / Fraction Percentage](patterns/inputs-number-input--fraction-percentage.md)

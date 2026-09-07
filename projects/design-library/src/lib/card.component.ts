@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, input, output } from "@angular/core
   selector: "dl-card",
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { "[attr.data-surface]": "surface()", "[attr.data-interactive]": "interactive() || null", "[attr.role]": "interactive() ? 'button' : role() || null", "[attr.tabindex]": "interactive() && !disabled() ? 0 : null", "[attr.aria-disabled]": "interactive() && disabled() || null", "[attr.aria-busy]": "loading() || null", "(click)": "activate($event)", "(keydown.enter)": "activate($event)", "(keydown.space)": "$event.preventDefault(); activate($event)" },
+  host: { "[attr.data-surface]": "surface()", "[attr.data-layout]": "layout()", "[style.--dl-card-rail-width]": "railWidth()", "[style.--dl-card-preview-min-height]": "previewMinHeight()", "[attr.data-interactive]": "interactive() || null", "[attr.role]": "interactive() ? 'button' : role() || null", "[attr.tabindex]": "interactive() && !disabled() ? 0 : null", "[attr.aria-disabled]": "interactive() && disabled() || null", "[attr.aria-busy]": "loading() || null", "(click)": "activate($event)", "(keydown.enter)": "activate($event)", "(keydown.space)": "$event.preventDefault(); activate($event)" },
   template: `@if (showHeader() && heading()) {
       <header>
         @switch (headingLevel()) {
@@ -23,7 +23,16 @@ import { ChangeDetectionStrategy, Component, input, output } from "@angular/core
         }
       </header>
     }
-    @if(loading()){<div class="state" role="status"><ng-content select="[cardLoading]" />{{loadingLabel()}}</div>}@else if(error()){<div class="state error" role="alert"><ng-content select="[cardError]" />{{error()}}</div>}@else if(empty()){<div class="state"><ng-content select="[cardEmpty]" />{{emptyText()}}</div>}@else{<ng-content />}
+    @if(loading()){<div class="state" role="status"><ng-content select="[cardLoading]" />{{loadingLabel()}}</div>}@else if(error()){<div class="state error" role="alert"><ng-content select="[cardError]" />{{error()}}</div>}@else if(empty()){<div class="state"><ng-content select="[cardEmpty]" />{{emptyText()}}</div>}@else if(layout()==='showcase'){
+      <div class="showcase">
+        <aside><ng-content select="[cardRail]" /></aside>
+        <div class="showcase-main">
+          <section class="preview"><ng-content select="[cardPreview]" /></section>
+          @if(showGuidance()){<section class="guidance"><ng-content select="[cardGuidance]" /></section>}
+          @if(showCode()){<section class="code"><ng-content select="[cardCode]" /></section>}
+        </div>
+      </div>
+    }@else{<ng-content />}
     @if (showFooter()) {
       <footer><ng-content select="[cardFooter]" /></footer>
     }`,
@@ -52,6 +61,13 @@ import { ChangeDetectionStrategy, Component, input, output } from "@angular/core
         box-shadow: var(--dl-ui-shadow, none);
         backdrop-filter: none;
       }
+      :host([data-layout="showcase"]){padding:0;overflow:hidden}
+      :host([data-layout="showcase"])>header{padding:24px;margin:0;border-bottom:1px solid var(--dl-border)}
+      .showcase{display:grid;grid-template-columns:minmax(180px,var(--dl-card-rail-width,260px)) minmax(0,1fr)}
+      .showcase>aside{padding:24px;border-right:1px solid var(--dl-border);background:color-mix(in srgb,var(--dl-surface) 72%,transparent)}
+      .showcase-main{min-width:0}.preview{display:grid;min-height:var(--dl-card-preview-min-height,240px);place-items:center;padding:24px;background-image:linear-gradient(var(--dl-border) 1px,transparent 1px),linear-gradient(90deg,var(--dl-border) 1px,transparent 1px);background-size:24px 24px}
+      .guidance,.code{padding:20px;border-top:1px solid var(--dl-border)}
+      :host([data-layout="showcase"])>footer{margin:0;padding:20px 24px;border-top:1px solid var(--dl-border)}
       footer {
         margin-top: 20px;
         padding-top: 16px;
@@ -84,6 +100,7 @@ import { ChangeDetectionStrategy, Component, input, output } from "@angular/core
       }
       .state{min-height:80px;display:grid;place-items:center;color:var(--dl-muted);text-align:center}.error{color:var(--dl-danger-text)}
       :host([data-interactive="true"]){cursor:pointer}:host([data-interactive="true"]):focus-visible{outline:2px solid var(--dl-ui-focus-color,var(--dl-focus));outline-offset:3px}:host([aria-disabled="true"]){opacity:.55;cursor:not-allowed}
+      @media(max-width:760px){.showcase{grid-template-columns:1fr}.showcase>aside{border-right:0;border-bottom:1px solid var(--dl-border)}.preview{min-height:min(var(--dl-card-preview-min-height,240px),55vh)}}
     `,
   ],
 })
@@ -92,6 +109,12 @@ export class CardComponent extends Appearance {
   readonly showFooter = input(false);
   readonly headingLevel = input<2 | 3 | 4>(3);
   readonly surface = input<"glass" | "solid" | "transparent">("glass");
+  /** Switches from a standard content surface to a responsive documentation/demo composition. */
+  readonly layout = input<"default" | "showcase">("default");
+  readonly railWidth = input("260px");
+  readonly previewMinHeight = input("240px");
+  readonly showGuidance = input(true);
+  readonly showCode = input(true);
   readonly heading = input("");
   readonly description = input("");
   readonly role = input("");

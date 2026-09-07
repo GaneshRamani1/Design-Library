@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { componentCatalog } from "../pages/catalog";
+import { GlobalSearch } from "../components";
 
 const rootOrder = ["Layout", "Inputs", "Navigation", "Overlays", "Actions", "Data display", "Feedback"];
 const componentGroups = componentCatalog.reduce<Record<string, typeof componentCatalog>>((groups, component) => {
@@ -42,7 +43,7 @@ export function DocsLayout() {
       {menuOpen && <button className="fixed inset-0 top-16 z-30 bg-black/60 md:hidden" aria-label="Close navigation" onClick={() => setMenuOpen(false)} />}
 
       <aside className={`${menuOpen ? "translate-x-0" : "-translate-x-full"} docs-sidebar fixed bottom-0 left-0 top-16 z-40 w-72 overflow-y-auto border-r p-5 transition-transform md:translate-x-0`}>
-        <label className="block"><span className="sr-only">Search documentation</span><input className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none focus:border-white/30" placeholder="Search documentation…" /></label>
+        <GlobalSearch />
         <nav className="mt-8 space-y-7">
           {navigation.map((group) => (
             <section key={group.label}>
@@ -56,7 +57,7 @@ export function DocsLayout() {
         </nav>
       </aside>
 
-      <main className="pt-16 md:pl-72"><Outlet /></main>
+      <main className="min-w-0 overflow-x-clip pt-16 md:pl-72"><Outlet /></main>
     </div>
   );
 }

@@ -230,6 +230,42 @@
     "data-display-badge-variations--variant-outline",
     "data-display-badge-variations--variant-soft",
     "data-display-badge-variations--variant-solid",
+    "data-display-code-block--default",
+    "data-display-code-block--light",
+    "data-display-code-block--with-line-numbers",
+    "data-display-code-block--wrapped",
+    "data-display-code-block-appearance--appearance",
+    "data-display-code-block-appearance--appearance-background",
+    "data-display-code-block-appearance--appearance-border-color",
+    "data-display-code-block-appearance--appearance-border-width",
+    "data-display-code-block-appearance--appearance-color",
+    "data-display-code-block-appearance--appearance-focus-color",
+    "data-display-code-block-appearance--appearance-font-size",
+    "data-display-code-block-appearance--appearance-gap",
+    "data-display-code-block-appearance--appearance-padding",
+    "data-display-code-block-appearance--appearance-radius",
+    "data-display-code-block-appearance--appearance-shadow",
+    "data-display-code-block-appearance--style-tokens",
+    "data-display-code-block-configuration--aria-label",
+    "data-display-code-block-configuration--code",
+    "data-display-code-block-configuration--copied-label",
+    "data-display-code-block-configuration--copy-aria-label",
+    "data-display-code-block-configuration--copy-label",
+    "data-display-code-block-configuration--copyable-false",
+    "data-display-code-block-configuration--copyable-true",
+    "data-display-code-block-configuration--label",
+    "data-display-code-block-configuration--language",
+    "data-display-code-block-configuration--line-numbers-false",
+    "data-display-code-block-configuration--line-numbers-true",
+    "data-display-code-block-configuration--max-height",
+    "data-display-code-block-configuration--show-header-false",
+    "data-display-code-block-configuration--show-header-true",
+    "data-display-code-block-configuration--theme-dark",
+    "data-display-code-block-configuration--theme-light",
+    "data-display-code-block-configuration--wrap-false",
+    "data-display-code-block-configuration--wrap-true",
+    "data-display-code-block-events--event-copied",
+    "data-display-code-block-events--event-copy-failed",
     "data-display-icon--default",
     "data-display-icon--registry",
     "data-display-icon-appearance--appearance",
@@ -1618,6 +1654,7 @@
     "inputs-validation-directive-events--event-validation-change",
     "layout-card--default",
     "layout-card--glass",
+    "layout-card--showcase",
     "layout-card--solid",
     "layout-card--transparent",
     "layout-card-appearance--background",
@@ -3438,6 +3475,51 @@
           "declaredIn": "CardComponent"
         },
         {
+          "name": "layout",
+          "kind": "input",
+          "required": false,
+          "type": "\"default\" | \"showcase\"",
+          "default": "\"default\"",
+          "description": "Switches from a standard content surface to a responsive documentation/demo composition.",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "railWidth",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"260px\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "previewMinHeight",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"240px\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "showGuidance",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "showCode",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
           "name": "heading",
           "kind": "input",
           "required": false,
@@ -3538,6 +3620,10 @@
         "[cardLoading]",
         "[cardError]",
         "[cardEmpty]",
+        "[cardRail]",
+        "[cardPreview]",
+        "[cardGuidance]",
+        "[cardCode]",
         "default",
         "[cardFooter]"
       ]
@@ -4531,6 +4617,159 @@
         {
           "name": "pressedChange",
           "type": "boolean"
+        }
+      ],
+      "slots": []
+    },
+    {
+      "component": "CodeBlockComponent",
+      "selector": "dl-code-block",
+      "file": "references/components/code-block.md",
+      "inputs": [
+        {
+          "name": "appearance",
+          "kind": "input",
+          "required": false,
+          "type": "import(\"../shared/appearance\").ComponentAppearance",
+          "default": "{}",
+          "description": "",
+          "declaredIn": "Appearance"
+        },
+        {
+          "name": "styleTokens",
+          "kind": "input",
+          "required": false,
+          "type": "Record<string, string>",
+          "default": "{}",
+          "description": "Any --dl-* token can be overridden without changing the global theme.",
+          "declaredIn": "Appearance"
+        },
+        {
+          "name": "code",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "language",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Angular\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "label",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "ariaLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Code example\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "showHeader",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "copyable",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "lineNumbers",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "wrap",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "false",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "maxHeight",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"none\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "theme",
+          "kind": "input",
+          "required": false,
+          "type": "\"dark\" | \"light\"",
+          "default": "\"dark\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "copyLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Copy\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "copiedLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Copied\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        },
+        {
+          "name": "copyAriaLabel",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"Copy code\"",
+          "description": "",
+          "declaredIn": "CodeBlockComponent"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "copied",
+          "type": "string"
+        },
+        {
+          "name": "copyFailed",
+          "type": "unknown"
         }
       ],
       "slots": []
@@ -14005,6 +14244,23 @@
       ]
     },
     {
+      "id": "layout-card--default",
+      "file": "references/patterns/layout-card--default.md",
+      "components": [
+        "button",
+        "card"
+      ]
+    },
+    {
+      "id": "layout-card--showcase",
+      "file": "references/patterns/layout-card--showcase.md",
+      "components": [
+        "button",
+        "card",
+        "code-block"
+      ]
+    },
+    {
       "id": "inputs-number-input--default",
       "file": "references/patterns/inputs-number-input--default.md",
       "components": [
@@ -14278,8 +14534,10 @@
     "projects/design-library/src/lib/badge.stories.ts": "a3e132ff6c1fbc9d176cc1bcdf4e3ba28cdb19fd2a819983cb70a591726cd749",
     "projects/design-library/src/lib/button.component.ts": "09528ab750a3ec5c434f6f1d5cbe15658f369720b3c661586f8e45baca9a6320",
     "projects/design-library/src/lib/button.stories.ts": "29a8b4b21ca66be03a5cc2dc9acb97f4a56c0dbd1598f2db8b92eec9dd096886",
-    "projects/design-library/src/lib/card.component.ts": "7219683a290051765229c10578bfa9d657db414e095e9e0077757a23ca3067de",
-    "projects/design-library/src/lib/card.stories.ts": "1cae5557c57301c8df86d31908c44314fb95eb6f62e9f0cb55cf6946b7fcbc8f",
+    "projects/design-library/src/lib/card.component.ts": "51360861cdedee5b5b57fda2ddc55d5c75281bd0300fd639471cccbee4e816e5",
+    "projects/design-library/src/lib/card.stories.ts": "324525b0f2a92a17b401ff8931da29b5bb098d7330642400b31c5c465e8c3f82",
+    "projects/design-library/src/lib/data-display/code-block.component.ts": "fe16d86ff73ec7772fbbd4c9eeb5e1243f3eeb45a1e651d61254f00b5e99f686",
+    "projects/design-library/src/lib/data-display/code-block.stories.ts": "08a3d4be17eb899b4cccad0fbb6635f4960a99617e965a61eb48123c517972c2",
     "projects/design-library/src/lib/data-display/divider.component.ts": "634b59ef20f4d12ba59cc351cb60858c29722943628140e963baf6457e99880e",
     "projects/design-library/src/lib/data-display/divider.stories.ts": "09885e938338b1f6ce4eae7a72c3582236f8168f7e619201bd22ef5f920c49e6",
     "projects/design-library/src/lib/data-display/list.component.ts": "ef987b71bb6fe6afa46cf3ee06646db20e783816d9d43fb1df28b3e621d856ff",
@@ -14394,7 +14652,7 @@
     "projects/design-library/src/lib/shared/tone.ts": "df6049973b80f46dda8997de06118927c829a85682a01388cb147cf2ec85b8d2",
     "projects/design-library/src/lib/toggle.component.ts": "850c5ad58603173ce7b4111e93898a24c941aaeba1b8e7456998a6b5f37e8b6f",
     "projects/design-library/src/lib/toggle.stories.ts": "bca826c46ab65d0f7bd76d25cfd6d13618717f1c18b6db2fe2ecf0940f46977c",
-    "projects/design-library/src/public-api.ts": "beff508aa2628334c77a5e26b57ebd9e9b3fea3d9967491b40a5a4e2d30d0eaa",
+    "projects/design-library/src/public-api.ts": "7f4dbdad29d31ec55316db9fbbad8fd9262c5fe1844116e606e2e1d4ad596636",
     "projects/design-library/src/welcome.stories.ts": "4232460020c89b83f6676ad67ee609e74c44530d1ecdadf3dd95d1fe2363dd81",
     "scripts/generate-config-stories.mjs": "b95eb21d9495291cd3d2fd59db36d3747cf69c5eafce6d5db078b93af803cf20",
     "scripts/generate-llm-guidance.mjs": "090745ab5e0b95b4ba8c1442dd1dce2703807f42e0151bba58a0be83176a42a8",

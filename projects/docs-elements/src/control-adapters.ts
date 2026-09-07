@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { DropdownComponent, SegmentedButtonsComponent, TabComponent, TabContainerComponent, ToggleComponent } from "@arcwell/ui";
+import { DropdownComponent, InputComponent, SegmentedButtonsComponent, TabComponent, TabContainerComponent, ToggleComponent } from "@arcwell/ui";
 
 interface ControlOption { value: string; label: string; description?: string; }
 
@@ -29,6 +29,21 @@ export class DocsDropdownAdapter {
   @Input() id = "docs-control";
   @Input() label = "Select value";
   @Input() options: ControlOption[] = [];
+  @Input() value = "";
+  @Output() valueChange = new EventEmitter<string>();
+  update(value: string): void { this.value = value; this.valueChange.emit(value); }
+}
+
+@Component({
+  selector: "docs-search-adapter",
+  standalone: true,
+  imports: [FormsModule, InputComponent],
+  template: `<dl-input [id]="id" [label]="label" type="search" [placeholder]="placeholder" [stretch]="true" [showClear]="true" [ngModel]="value" (ngModelChange)="update($event)" />`,
+})
+export class DocsSearchAdapter {
+  @Input() id = "docs-search";
+  @Input() label = "Search";
+  @Input() placeholder = "Search…";
   @Input() value = "";
   @Output() valueChange = new EventEmitter<string>();
   update(value: string): void { this.value = value; this.valueChange.emit(value); }
