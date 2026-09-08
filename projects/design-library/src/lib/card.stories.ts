@@ -19,6 +19,14 @@ const meta: Meta<CardComponent> = {
     headingLevel: 3,
     surface: "glass",
     layout: "default",
+    splitLeftWidth: "1fr",
+    splitRightWidth: "1fr",
+    splitGap: "0px",
+    splitPadding: "24px",
+    splitDivider: true,
+    splitPlacement: "left",
+    splitAlign: "stretch",
+    splitStackAt: "md",
     railWidth: "260px",
     railPlacement: "left",
     railCollapsible: false,
@@ -42,7 +50,7 @@ const meta: Meta<CardComponent> = {
       control: "select",
       options: ["glass", "solid", "transparent"],
     },
-    layout: { control: "select", options: ["default", "showcase"] },
+    layout: { control: "select", options: ["default", "showcase", "split"] },
     appearance: { control: "object" },
     styleTokens: { control: "object" },
   },
@@ -118,5 +126,39 @@ export const ShowcaseScrollablePreview: Story = {
     ...Showcase.args,
     previewScrollable: true,
     previewMaxHeight: "320px",
+  },
+};
+export const TwoColumn: Story = {
+  args: {
+    layout: "split",
+    showHeader: false,
+    splitLeftWidth: "34%",
+    splitRightWidth: "1fr",
+    splitDivider: true,
+  },
+  render: (args) => ({
+    props: args,
+    template: `<dl-card ${argsToTemplate(args)}>
+      <div cardLeft><strong style="color:var(--dl-primary)">heading</strong><p style="margin-top:8px">Change the value to update this example.</p></div>
+      <div cardRight><small>WHAT THIS VALUE CHANGES</small><p style="margin:10px 0 24px">Customizes the component heading and keeps guidance beside the preview.</p><div style="min-height:180px;display:grid;place-items:center;background:linear-gradient(var(--dl-border) 1px,transparent 1px),linear-gradient(90deg,var(--dl-border) 1px,transparent 1px);background-size:24px 24px"><button dlButton>Preview action</button></div><dl-code-block style="margin-top:20px" language="Angular" [code]="codeSample" /></div>
+    </dl-card>`,
+  }),
+  parameters: {
+    layout: "fullscreen",
+    storyNote:
+      "Projects independent left and right regions into a configurable two-column card. The columns stack at the selected container breakpoint.",
+  },
+};
+export const TwoColumnRightLabel: Story = {
+  ...TwoColumn,
+  args: { ...TwoColumn.args, splitPlacement: "right", splitLeftWidth: "280px" },
+};
+export const TwoColumnWithGap: Story = {
+  ...TwoColumn,
+  args: {
+    ...TwoColumn.args,
+    splitGap: "24px",
+    splitPadding: "20px",
+    splitDivider: false,
   },
 };

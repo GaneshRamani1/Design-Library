@@ -42,7 +42,7 @@ Format numeric, currency and percentage values with localized separators and num
 | minPrecision | number \| null | null | input | NumberInputComponent | See the dedicated configuration story below. |
 | useGrouping | boolean | true | input | NumberInputComponent | See the dedicated configuration story below. |
 | percentValue | "points" \| "fraction" | "points" | input | NumberInputComponent | See the dedicated configuration story below. |
-| signDisplay | "auto" \| "always" \| "exceptZero" \| "never" | "auto" | input | NumberInputComponent | See the dedicated configuration story below. |
+| signDisplay | "auto" \| "never" \| "always" \| "exceptZero" | "auto" | input | NumberInputComponent | See the dedicated configuration story below. |
 | formatOn | "blur" \| "input" | "blur" | input | NumberInputComponent | See the dedicated configuration story below. |
 | maskInput | boolean | true | input | NumberInputComponent | See the dedicated configuration story below. |
 | selectOnFocus | boolean | true | input | NumberInputComponent | See the dedicated configuration story below. |

@@ -70,6 +70,7 @@ Load only the component, service and pattern references relevant to the task. AP
 - [Actions/Button / Variants](patterns/actions-button--variants.md)
 - [Layout/Card / Default](patterns/layout-card--default.md)
 - [Layout/Card / Showcase](patterns/layout-card--showcase.md)
+- [Layout/Card / Two Column](patterns/layout-card--two-column.md)
 - [Inputs/Number input / Default](patterns/inputs-number-input--default.md)
 - [Inputs/Number input / Percentage](patterns/inputs-number-input--percentage.md)
 - [Inputs/Number input / Fraction Percentage](patterns/inputs-number-input--fraction-percentage.md)

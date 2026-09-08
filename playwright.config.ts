@@ -31,6 +31,7 @@ export default defineConfig({
         "**/variants.spec.ts",
         "**/anchored-position.spec.ts",
         "**/code-block-card.spec.ts",
+        "**/card-split.spec.ts",
         "**/i18n-rtl.spec.ts",
       ],
       use: { browserName: "webkit" },

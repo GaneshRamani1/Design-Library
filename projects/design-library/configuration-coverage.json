@@ -1668,6 +1668,14 @@
       "headingLevel",
       "surface",
       "layout",
+      "splitLeftWidth",
+      "splitRightWidth",
+      "splitGap",
+      "splitPadding",
+      "splitDivider",
+      "splitPlacement",
+      "splitAlign",
+      "splitStackAt",
       "railWidth",
       "railPlacement",
       "railCollapsible",
@@ -1828,6 +1836,159 @@
         "title": "Layout/Card/Configuration",
         "group": "Configuration",
         "description": "Chooses block or flex layout for projected content. Here it is set to “showcase”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "layout",
+        "story": "Default",
+        "value": "split",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Chooses block or flex layout for projected content. Here it is set to “split”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitLeftWidth",
+        "story": "Default",
+        "value": "Custom splitLeftWidth",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split left width setting on this card. Here it is set to “Custom splitLeftWidth”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitRightWidth",
+        "story": "Default",
+        "value": "Custom splitRightWidth",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split right width setting on this card. Here it is set to “Custom splitRightWidth”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitGap",
+        "story": "Default",
+        "value": "Custom splitGap",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split gap setting on this card. Here it is set to “Custom splitGap”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitPadding",
+        "story": "Default",
+        "value": "Custom splitPadding",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split padding setting on this card. Here it is set to “Custom splitPadding”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitDivider",
+        "story": "Default",
+        "value": false,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split divider setting on this card. This example has it turned off.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitDivider",
+        "story": "Default",
+        "value": true,
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split divider setting on this card. This example has it turned on.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitPlacement",
+        "story": "Default",
+        "value": "left",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split placement setting on this card. Here it is set to “left”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitPlacement",
+        "story": "Default",
+        "value": "right",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split placement setting on this card. Here it is set to “right”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitAlign",
+        "story": "Default",
+        "value": "stretch",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split align setting on this card. Here it is set to “stretch”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitAlign",
+        "story": "Default",
+        "value": "start",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split align setting on this card. Here it is set to “start”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitAlign",
+        "story": "Default",
+        "value": "center",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split align setting on this card. Here it is set to “center”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitAlign",
+        "story": "Default",
+        "value": "end",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split align setting on this card. Here it is set to “end”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitStackAt",
+        "story": "Default",
+        "value": "never",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split stack at setting on this card. Here it is set to “never”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitStackAt",
+        "story": "Default",
+        "value": "sm",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split stack at setting on this card. Here it is set to “sm”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitStackAt",
+        "story": "Default",
+        "value": "md",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split stack at setting on this card. Here it is set to “md”.",
+        "id": "layout-card-configuration--default"
+      },
+      {
+        "prop": "splitStackAt",
+        "story": "Default",
+        "value": "lg",
+        "title": "Layout/Card/Configuration",
+        "group": "Configuration",
+        "description": "Demonstrates the split stack at setting on this card. Here it is set to “lg”.",
         "id": "layout-card-configuration--default"
       },
       {

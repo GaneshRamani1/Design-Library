@@ -188,6 +188,7 @@ import { CodeBlockComponent } from "./code-block.component";
 ## Composition patterns
 
 - [Layout/Card / Showcase](../patterns/layout-card--showcase.md)
+- [Layout/Card / Two Column](../patterns/layout-card--two-column.md)
 
 ## Copyable task prompt
 

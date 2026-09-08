@@ -30,7 +30,15 @@ A surface for related content, with optional heading and footer sections. Compar
 | showFooter | boolean | false | input | CardComponent | See the dedicated configuration story below. |
 | headingLevel | 2 \| 3 \| 4 | 3 | input | CardComponent | See the dedicated configuration story below. |
 | surface | "solid" \| "transparent" \| "glass" | "glass" | input | CardComponent | See the dedicated configuration story below. |
-| layout | "default" \| "showcase" | "default" | input | CardComponent | Switches from a standard content surface to a responsive documentation/demo composition. |
+| layout | "default" \| "showcase" \| "split" | "default" | input | CardComponent | Switches from a standard content surface to a responsive documentation/demo composition. |
+| splitLeftWidth | string | "1fr" | input | CardComponent | Widths accept any grid track value, including px, %, fr and minmax(). |
+| splitRightWidth | string | "1fr" | input | CardComponent | See the dedicated configuration story below. |
+| splitGap | string | "0px" | input | CardComponent | See the dedicated configuration story below. |
+| splitPadding | string | "24px" | input | CardComponent | See the dedicated configuration story below. |
+| splitDivider | boolean | true | input | CardComponent | See the dedicated configuration story below. |
+| splitPlacement | "left" \| "right" | "left" | input | CardComponent | See the dedicated configuration story below. |
+| splitAlign | "start" \| "end" \| "stretch" \| "center" | "stretch" | input | CardComponent | See the dedicated configuration story below. |
+| splitStackAt | "sm" \| "md" \| "lg" \| "never" | "md" | input | CardComponent | See the dedicated configuration story below. |
 | railWidth | string | "260px" | input | CardComponent | See the dedicated configuration story below. |
 | railPlacement | "left" \| "right" | "left" | input | CardComponent | See the dedicated configuration story below. |
 | railCollapsible | boolean | false | input | CardComponent | See the dedicated configuration story below. |
@@ -66,6 +74,8 @@ A surface for related content, with optional heading and footer sections. Compar
 - `[cardLoading]`
 - `[cardError]`
 - `[cardEmpty]`
+- `[cardLeft]`
+- `[cardRight]`
 - `[cardRail]`
 - `[cardPreview]`
 - `[cardGuidance]`
@@ -110,6 +120,14 @@ export interface ComponentAppearance {
     headingLevel: 3,
     surface: "glass",
     layout: "default",
+    splitLeftWidth: "1fr",
+    splitRightWidth: "1fr",
+    splitGap: "0px",
+    splitPadding: "24px",
+    splitDivider: true,
+    splitPlacement: "left",
+    splitAlign: "stretch",
+    splitStackAt: "md",
     railWidth: "260px",
     railPlacement: "left",
     railCollapsible: false,
@@ -160,6 +178,9 @@ import { CodeBlockComponent } from "./data-display/code-block.component";
 - [Showcase](http://127.0.0.1:6006/?path=/story/layout-card--showcase)
 - [Showcase Right Rail](http://127.0.0.1:6006/?path=/story/layout-card--showcase-right-rail)
 - [Showcase Scrollable Preview](http://127.0.0.1:6006/?path=/story/layout-card--showcase-scrollable-preview)
+- [Two Column](http://127.0.0.1:6006/?path=/story/layout-card--two-column)
+- [Two Column Right Label](http://127.0.0.1:6006/?path=/story/layout-card--two-column-right-label)
+- [Two Column With Gap](http://127.0.0.1:6006/?path=/story/layout-card--two-column-with-gap)
 
 ## Configuration coverage
 
@@ -177,6 +198,23 @@ import { CodeBlockComponent } from "./data-display/code-block.component";
 - `surface`: [Transparent](http://127.0.0.1:6006/?path=/story/layout-card--transparent) — Changes the surface background treatment. Here it is set to “transparent”.
 - `layout`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Chooses block or flex layout for projected content. Here it is set to “default”.
 - `layout`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Chooses block or flex layout for projected content. Here it is set to “showcase”.
+- `layout`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Chooses block or flex layout for projected content. Here it is set to “split”.
+- `splitLeftWidth`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split left width setting on this card. Here it is set to “Custom splitLeftWidth”.
+- `splitRightWidth`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split right width setting on this card. Here it is set to “Custom splitRightWidth”.
+- `splitGap`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split gap setting on this card. Here it is set to “Custom splitGap”.
+- `splitPadding`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split padding setting on this card. Here it is set to “Custom splitPadding”.
+- `splitDivider`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split divider setting on this card. This example has it turned off.
+- `splitDivider`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split divider setting on this card. This example has it turned on.
+- `splitPlacement`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split placement setting on this card. Here it is set to “left”.
+- `splitPlacement`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split placement setting on this card. Here it is set to “right”.
+- `splitAlign`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split align setting on this card. Here it is set to “stretch”.
+- `splitAlign`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split align setting on this card. Here it is set to “start”.
+- `splitAlign`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split align setting on this card. Here it is set to “center”.
+- `splitAlign`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split align setting on this card. Here it is set to “end”.
+- `splitStackAt`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split stack at setting on this card. Here it is set to “never”.
+- `splitStackAt`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split stack at setting on this card. Here it is set to “sm”.
+- `splitStackAt`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split stack at setting on this card. Here it is set to “md”.
+- `splitStackAt`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the split stack at setting on this card. Here it is set to “lg”.
 - `railWidth`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the rail width setting on this card. Here it is set to “Custom railWidth”.
 - `railPlacement`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the rail placement setting on this card. Here it is set to “left”.
 - `railPlacement`: [Default](http://127.0.0.1:6006/?path=/story/layout-card-configuration--default) — Demonstrates the rail placement setting on this card. Here it is set to “right”.
@@ -227,6 +265,7 @@ import { CodeBlockComponent } from "./data-display/code-block.component";
 
 - [Layout/Card / Default](../patterns/layout-card--default.md)
 - [Layout/Card / Showcase](../patterns/layout-card--showcase.md)
+- [Layout/Card / Two Column](../patterns/layout-card--two-column.md)
 - [Navigation/Carousel directive / Default](../patterns/navigation-carousel-directive--default.md)
 - [Navigation/Carousel directive / Right To Left](../patterns/navigation-carousel-directive--right-to-left.md)
 - [Navigation/Carousel directive / Dynamic Slides](../patterns/navigation-carousel-directive--dynamic-slides.md)

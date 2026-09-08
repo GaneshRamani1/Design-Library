@@ -30,7 +30,7 @@ A glass or solid panel with controlled height and overflow.
 | stretch | boolean | true | input | LayoutBase | See the dedicated configuration story below. |
 | layout | "block" \| "flex" | "flex" | input | LayoutBase | See the dedicated configuration story below. |
 | direction | "row" \| "column" | "column" | input | LayoutBase | See the dedicated configuration story below. |
-| align | "center" \| "stretch" \| "flex-start" \| "flex-end" \| "baseline" | "stretch" | input | LayoutBase | See the dedicated configuration story below. |
+| align | "stretch" \| "center" \| "flex-start" \| "flex-end" \| "baseline" | "stretch" | input | LayoutBase | See the dedicated configuration story below. |
 | justify | "center" \| "flex-start" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly" | "flex-start" | input | LayoutBase | See the dedicated configuration story below. |
 | wrap | boolean | false | input | LayoutBase | See the dedicated configuration story below. |
 | gap | LayoutLength | 16 | input | LayoutBase | See the dedicated configuration story below. |
@@ -41,7 +41,7 @@ A glass or solid panel with controlled height and overflow.
 | flexShrink | number \| null | null | input | LayoutBase | See the dedicated configuration story below. |
 | flexBasis | LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
 | mobileDirection | "row" \| "column" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
-| mobileAlign | "center" \| "stretch" \| "flex-start" \| "flex-end" \| "baseline" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
+| mobileAlign | "stretch" \| "center" \| "flex-start" \| "flex-end" \| "baseline" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
 | mobileJustify | "center" \| "flex-start" \| "flex-end" \| "space-between" \| "space-around" \| "space-evenly" \| null | null | input | LayoutBase | See the dedicated configuration story below. |
 | mobileGap | LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |
 | mobilePadding | LayoutLength \| null | null | input | LayoutBase | See the dedicated configuration story below. |

@@ -1676,6 +1676,9 @@
     "layout-card--showcase-scrollable-preview",
     "layout-card--solid",
     "layout-card--transparent",
+    "layout-card--two-column",
+    "layout-card--two-column-right-label",
+    "layout-card--two-column-with-gap",
     "layout-card-appearance--background",
     "layout-card-appearance--border-color",
     "layout-card-appearance--border-width",
@@ -3497,9 +3500,81 @@
           "name": "layout",
           "kind": "input",
           "required": false,
-          "type": "\"default\" | \"showcase\"",
+          "type": "\"default\" | \"showcase\" | \"split\"",
           "default": "\"default\"",
           "description": "Switches from a standard content surface to a responsive documentation/demo composition.",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "splitLeftWidth",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"1fr\"",
+          "description": "Widths accept any grid track value, including px, %, fr and minmax().",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "splitRightWidth",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"1fr\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "splitGap",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"0px\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "splitPadding",
+          "kind": "input",
+          "required": false,
+          "type": "string",
+          "default": "\"24px\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "splitDivider",
+          "kind": "input",
+          "required": false,
+          "type": "boolean",
+          "default": "true",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "splitPlacement",
+          "kind": "input",
+          "required": false,
+          "type": "\"left\" | \"right\"",
+          "default": "\"left\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "splitAlign",
+          "kind": "input",
+          "required": false,
+          "type": "\"start\" | \"end\" | \"stretch\" | \"center\"",
+          "default": "\"stretch\"",
+          "description": "",
+          "declaredIn": "CardComponent"
+        },
+        {
+          "name": "splitStackAt",
+          "kind": "input",
+          "required": false,
+          "type": "\"sm\" | \"md\" | \"lg\" | \"never\"",
+          "default": "\"md\"",
+          "description": "",
           "declaredIn": "CardComponent"
         },
         {
@@ -3715,6 +3790,8 @@
         "[cardLoading]",
         "[cardError]",
         "[cardEmpty]",
+        "[cardLeft]",
+        "[cardRight]",
         "[cardRail]",
         "[cardPreview]",
         "[cardGuidance]",
@@ -9231,7 +9308,7 @@
           "name": "signDisplay",
           "kind": "input",
           "required": false,
-          "type": "\"auto\" | \"always\" | \"exceptZero\" | \"never\"",
+          "type": "\"auto\" | \"never\" | \"always\" | \"exceptZero\"",
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "NumberInputComponent"
@@ -10047,7 +10124,7 @@
           "name": "align",
           "kind": "input",
           "required": false,
-          "type": "\"center\" | \"stretch\" | \"flex-start\" | \"flex-end\" | \"baseline\"",
+          "type": "\"stretch\" | \"center\" | \"flex-start\" | \"flex-end\" | \"baseline\"",
           "default": "\"stretch\"",
           "description": "",
           "declaredIn": "LayoutBase"
@@ -10146,7 +10223,7 @@
           "name": "mobileAlign",
           "kind": "input",
           "required": false,
-          "type": "\"center\" | \"stretch\" | \"flex-start\" | \"flex-end\" | \"baseline\" | null",
+          "type": "\"stretch\" | \"center\" | \"flex-start\" | \"flex-end\" | \"baseline\" | null",
           "default": "null",
           "description": "",
           "declaredIn": "LayoutBase"
@@ -10596,7 +10673,7 @@
           "name": "align",
           "kind": "input",
           "required": false,
-          "type": "\"center\" | \"stretch\" | \"flex-start\" | \"flex-end\" | \"baseline\"",
+          "type": "\"stretch\" | \"center\" | \"flex-start\" | \"flex-end\" | \"baseline\"",
           "default": "\"stretch\"",
           "description": "",
           "declaredIn": "LayoutBase"
@@ -10695,7 +10772,7 @@
           "name": "mobileAlign",
           "kind": "input",
           "required": false,
-          "type": "\"center\" | \"stretch\" | \"flex-start\" | \"flex-end\" | \"baseline\" | null",
+          "type": "\"stretch\" | \"center\" | \"flex-start\" | \"flex-end\" | \"baseline\" | null",
           "default": "null",
           "description": "",
           "declaredIn": "LayoutBase"
@@ -10846,7 +10923,7 @@
           "name": "align",
           "kind": "input",
           "required": false,
-          "type": "\"center\" | \"stretch\" | \"flex-start\" | \"flex-end\" | \"baseline\"",
+          "type": "\"stretch\" | \"center\" | \"flex-start\" | \"flex-end\" | \"baseline\"",
           "default": "\"stretch\"",
           "description": "",
           "declaredIn": "LayoutBase"
@@ -10945,7 +11022,7 @@
           "name": "mobileAlign",
           "kind": "input",
           "required": false,
-          "type": "\"center\" | \"stretch\" | \"flex-start\" | \"flex-end\" | \"baseline\" | null",
+          "type": "\"stretch\" | \"center\" | \"flex-start\" | \"flex-end\" | \"baseline\" | null",
           "default": "null",
           "description": "",
           "declaredIn": "LayoutBase"
@@ -12234,7 +12311,7 @@
           "name": "placement",
           "kind": "input",
           "required": false,
-          "type": "\"auto\" | \"left\" | \"right\" | \"bottom\" | \"center\"",
+          "type": "\"auto\" | \"left\" | \"right\" | \"center\" | \"bottom\"",
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "OverlayBase"
@@ -12698,7 +12775,7 @@
           "name": "placement",
           "kind": "input",
           "required": false,
-          "type": "\"auto\" | \"left\" | \"right\" | \"bottom\" | \"center\"",
+          "type": "\"auto\" | \"left\" | \"right\" | \"center\" | \"bottom\"",
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "OverlayBase"
@@ -13162,7 +13239,7 @@
           "name": "placement",
           "kind": "input",
           "required": false,
-          "type": "\"auto\" | \"left\" | \"right\" | \"bottom\" | \"center\"",
+          "type": "\"auto\" | \"left\" | \"right\" | \"center\" | \"bottom\"",
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "OverlayBase"
@@ -13828,7 +13905,7 @@
           "name": "placement",
           "kind": "input",
           "required": false,
-          "type": "\"auto\" | \"left\" | \"right\" | \"bottom\" | \"center\"",
+          "type": "\"auto\" | \"left\" | \"right\" | \"center\" | \"bottom\"",
           "default": "\"auto\"",
           "description": "",
           "declaredIn": "OverlayBase"
@@ -14449,6 +14526,15 @@
       ]
     },
     {
+      "id": "layout-card--two-column",
+      "file": "references/patterns/layout-card--two-column.md",
+      "components": [
+        "button",
+        "card",
+        "code-block"
+      ]
+    },
+    {
       "id": "inputs-number-input--default",
       "file": "references/patterns/inputs-number-input--default.md",
       "components": [
@@ -14722,8 +14808,8 @@
     "projects/design-library/src/lib/badge.stories.ts": "a3e132ff6c1fbc9d176cc1bcdf4e3ba28cdb19fd2a819983cb70a591726cd749",
     "projects/design-library/src/lib/button.component.ts": "09528ab750a3ec5c434f6f1d5cbe15658f369720b3c661586f8e45baca9a6320",
     "projects/design-library/src/lib/button.stories.ts": "29a8b4b21ca66be03a5cc2dc9acb97f4a56c0dbd1598f2db8b92eec9dd096886",
-    "projects/design-library/src/lib/card.component.ts": "13d73fbe1ac4e532cf6181b7b5bfb1e1260019dd6d495193d1b43e79dc596abb",
-    "projects/design-library/src/lib/card.stories.ts": "5f0cd6f6aec888d219a87bad72f8b1bfe532fe63a2a52115cd93c5862d44ec85",
+    "projects/design-library/src/lib/card.component.ts": "3f5a998087bebf3479a83815b7ae9d4dfb4466040768660d5609ca7383d89627",
+    "projects/design-library/src/lib/card.stories.ts": "38abd8e516489d140106716094d9287c2bb8a2d1682505dd98c4936f66cc7d8a",
     "projects/design-library/src/lib/data-display/code-block.component.ts": "b79e664e4a0bd1dfa870b24fdca0cdada5d6ba00c4aee31b15104be8caf5c230",
     "projects/design-library/src/lib/data-display/code-block.stories.ts": "253b5358c9f5371148c4cc2a35e7134afca1d47cd3be17b6b0445ebaec056a7c",
     "projects/design-library/src/lib/data-display/divider.component.ts": "634b59ef20f4d12ba59cc351cb60858c29722943628140e963baf6457e99880e",
@@ -14732,9 +14818,9 @@
     "projects/design-library/src/lib/data-display/list.stories.ts": "6962a35142da4efded776a8a43ace9ffeb86208eea6cc39777fa97a8ceb57de8",
     "projects/design-library/src/lib/data-display/tiles.component.ts": "5d622e9bbaef4e48433c50ed1262431587c6f12c8f9f00ea2d1ebe65e9b101e4",
     "projects/design-library/src/lib/data-display/tiles.stories.ts": "5b960a37c927a612a8cfa5f8e278aa4bbafec21f3bc5e4a39e78876d37d13200",
-    "projects/design-library/src/lib/feedback/global-notification.component.ts": "cc36dc3de17afa57b1e170be442ae606cdd2df986b8bc57bf2a0e59bbc053d06",
+    "projects/design-library/src/lib/feedback/global-notification.component.ts": "4e45b92af5b6c5b101c928e113ce541870e11bfa6c435a31e19cfaef9a535716",
     "projects/design-library/src/lib/feedback/global-notification.stories.ts": "bb439931fcd5cf4935f150df36414de16dff49b4d3fac770764534a4c8467ccd",
-    "projects/design-library/src/lib/feedback/inline-notification.component.ts": "c06428e2825985a4582b89e0589a8f2fe1cdbbc7912a51a9f38278c9791564d2",
+    "projects/design-library/src/lib/feedback/inline-notification.component.ts": "34d5538cf9315cc89a78d614c717643b3a1b24584ca777417993a353d36508b3",
     "projects/design-library/src/lib/feedback/inline-notification.stories.ts": "4ec9ade84708062448185a671efb1e81bfecc3392cb3982ad9383ae72c074212",
     "projects/design-library/src/lib/feedback/notice-base.ts": "17c66830467cc59dc3b3f6b6063cd783d6b0e5788e9b7f64bbf88a940517a3ff",
     "projects/design-library/src/lib/feedback/notification.service.ts": "e17bb9a6598c11857cc852aab3cca59ac41dca4349c386ac5152703cd5d3ce0e",

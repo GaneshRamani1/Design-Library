@@ -17,9 +17,17 @@ import {
     "[attr.data-rail-collapsed]": "!railOpen() || null",
     "[attr.data-sticky-rail]": "stickyRail() || null",
     "[attr.data-preview-scrollable]": "previewScrollable() || null",
+    "[attr.data-split-placement]": "splitPlacement()",
+    "[attr.data-split-divider]": "splitDivider() || null",
+    "[attr.data-split-stack]": "splitStackAt()",
+    "[attr.data-split-align]": "splitAlign()",
     "[style.--dl-card-rail-width]": "railWidth()",
     "[style.--dl-card-preview-min-height]": "previewMinHeight()",
     "[style.--dl-card-preview-max-height]": "previewMaxHeight()",
+    "[style.--dl-card-split-left]": "splitLeftWidth()",
+    "[style.--dl-card-split-right]": "splitRightWidth()",
+    "[style.--dl-card-split-gap]": "splitGap()",
+    "[style.--dl-card-split-padding]": "splitPadding()",
     "[attr.data-interactive]": "interactive() || null",
     "[attr.role]": "interactive() ? 'button' : role() || null",
     "[attr.tabindex]": "interactive() && !disabled() ? 0 : null",
@@ -58,6 +66,13 @@ import {
     } @else if (empty()) {
       <div class="state">
         <ng-content select="[cardEmpty]" />{{ emptyText() }}
+      </div>
+    } @else if (layout() === "split") {
+      <div class="split">
+        <section class="split-left"><ng-content select="[cardLeft]" /></section>
+        <section class="split-right">
+          <ng-content select="[cardRight]" />
+        </section>
       </div>
     } @else if (layout() === "showcase") {
       <div class="showcase">
@@ -100,6 +115,9 @@ import {
     `
       :host {
         display: block;
+        width: 100%;
+        box-sizing: border-box;
+        container-type: inline-size;
         background-color: var(--dl-ui-background, var(--dl-card-surface, #fff));
         background-image: var(--dl-card-sheen, none);
         backdrop-filter: var(--dl-card-blur, none);
@@ -125,6 +143,40 @@ import {
         padding: 0;
         overflow: hidden;
       }
+      :host([data-layout="split"]) {
+        padding: 0;
+        overflow: hidden;
+      }
+      :host([data-layout="split"]) > header {
+        padding: var(--dl-card-split-padding, 24px);
+        margin: 0;
+        border-bottom: 1px solid var(--dl-border);
+      }
+      .split {
+        display: grid;
+        grid-template-columns: minmax(0, var(--dl-card-split-left, 1fr)) minmax(
+            0,
+            var(--dl-card-split-right, 1fr)
+          );
+        gap: var(--dl-card-split-gap, 0);
+        align-items: var(--dl-card-split-align, stretch);
+      }
+      .split-left,
+      .split-right {
+        min-width: 0;
+        padding: var(--dl-card-split-padding, 24px);
+      }
+      :host([data-split-divider="true"]) .split-left {
+        border-right: 1px solid var(--dl-border);
+      }
+      :host([data-split-placement="right"]) .split-left {
+        order: 2;
+      }
+      :host([data-split-placement="right"][data-split-divider="true"])
+        .split-left {
+        border-right: 0;
+        border-left: 1px solid var(--dl-border);
+      }
       :host([data-layout="showcase"]) > header {
         padding: 24px;
         margin: 0;
@@ -132,10 +184,9 @@ import {
       }
       .showcase {
         display: grid;
-        grid-template-columns: minmax(
-            180px,
-            var(--dl-card-rail-width, 260px)
-          ) minmax(0, 1fr);
+        grid-template-columns:
+          minmax(180px, var(--dl-card-rail-width, 260px))
+          minmax(0, 1fr);
       }
       :host([data-rail-placement="right"]) .showcase {
         grid-template-columns: minmax(0, 1fr) minmax(
@@ -202,6 +253,11 @@ import {
       :host([data-layout="showcase"]) > footer {
         margin: 0;
         padding: 20px 24px;
+        border-top: 1px solid var(--dl-border);
+      }
+      :host([data-layout="split"]) > footer {
+        margin: 0;
+        padding: var(--dl-card-split-padding, 24px);
         border-top: 1px solid var(--dl-border);
       }
       footer {
@@ -275,6 +331,36 @@ import {
           min-height: min(var(--dl-card-preview-min-height, 240px), 55vh);
         }
       }
+      @container (max-width: 959px) {
+        :host([data-split-stack="lg"]) .split {
+          grid-template-columns: 1fr;
+        }
+        :host([data-split-stack="lg"]) .split-left {
+          order: 0;
+          border: 0;
+          border-bottom: 1px solid var(--dl-border);
+        }
+      }
+      @container (max-width: 759px) {
+        :host([data-split-stack="md"]) .split {
+          grid-template-columns: 1fr;
+        }
+        :host([data-split-stack="md"]) .split-left {
+          order: 0;
+          border: 0;
+          border-bottom: 1px solid var(--dl-border);
+        }
+      }
+      @container (max-width: 479px) {
+        :host([data-split-stack="sm"]) .split {
+          grid-template-columns: 1fr;
+        }
+        :host([data-split-stack="sm"]) .split-left {
+          order: 0;
+          border: 0;
+          border-bottom: 1px solid var(--dl-border);
+        }
+      }
     `,
   ],
 })
@@ -284,7 +370,18 @@ export class CardComponent extends Appearance {
   readonly headingLevel = input<2 | 3 | 4>(3);
   readonly surface = input<"glass" | "solid" | "transparent">("glass");
   /** Switches from a standard content surface to a responsive documentation/demo composition. */
-  readonly layout = input<"default" | "showcase">("default");
+  readonly layout = input<"default" | "showcase" | "split">("default");
+  /** Widths accept any grid track value, including px, %, fr and minmax(). */
+  readonly splitLeftWidth = input("1fr");
+  readonly splitRightWidth = input("1fr");
+  readonly splitGap = input("0px");
+  readonly splitPadding = input("24px");
+  readonly splitDivider = input(true);
+  readonly splitPlacement = input<"left" | "right">("left");
+  readonly splitAlign = input<"stretch" | "start" | "center" | "end">(
+    "stretch",
+  );
+  readonly splitStackAt = input<"never" | "sm" | "md" | "lg">("md");
   readonly railWidth = input("260px");
   readonly railPlacement = input<"left" | "right">("left");
   readonly railCollapsible = input(false);
