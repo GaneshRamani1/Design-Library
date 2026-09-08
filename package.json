@@ -19,6 +19,8 @@
     "build-storybook": "ng run design-library:build-storybook",
     "typecheck": "tsc --noEmit -p .storybook/tsconfig.json",
     "test": "playwright test",
+    "test:ci": "playwright test --grep-invert 'responsive baselines'",
+    "test:visual": "playwright test tests/visual-regression.spec.ts --project=chromium",
     "pack:library": "npm run build && npm pack ./dist/design-library --pack-destination ./dist",
     "check": "npm run skills:check && npm run skills:test && npm run storybook:test-editor && npm run typecheck && npm run build && npm run build-storybook && npm run skills:verify-storybook",
     "format": "prettier --write .",
